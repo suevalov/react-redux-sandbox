@@ -33,7 +33,12 @@
     "browserify": {
         "transform": [
             "browserify-shim",
-            "reactify"
+            [
+                "reactify",
+                {
+                    "es6": true
+                }
+            ]
         ]
     },
     "browser": {},
