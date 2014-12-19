@@ -8,7 +8,6 @@ var path = require('path');
 var $ = require('gulp-load-plugins')();
 var browserify = require('browserify');
 var watchify = require('watchify');
-var stylus = require('gulp-stylus');
 var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream'),
     sourceFile = './app/scripts/app.js',
@@ -41,7 +40,7 @@ gulp.task('scripts', function () {
 
 gulp.task('styles', function() {
     return gulp.src('app/styles/main.styl')
-        .pipe(stylus({
+        .pipe($.stylus({
             sourcemap: {
                 inline: true,
                 sourceRoot: '..',
@@ -111,7 +110,8 @@ gulp.task('serve', function () {
     gulp.src('./dist')
         .pipe($.webserver({
             livereload: true,
-            port: 9000
+            port: 9000,
+            open: true
         }));
 });
 
