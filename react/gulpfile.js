@@ -8,14 +8,14 @@ var path = require('path');
 var $ = require('gulp-load-plugins')();
 var browserify = require('browserify');
 var watchify = require('watchify');
-var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream'),
     sourceFile = './app/scripts/app.js',
     destFolder = './dist/scripts',
     destFileName = 'app.js';
 
 // Scripts
-gulp.task('scripts', function () {
+gulp.task('scripts', function() {
+
     var bundler = watchify(browserify({
         entries: [sourceFile],
         insertGlobals: true,
@@ -24,8 +24,6 @@ gulp.task('scripts', function () {
         fullPaths: true
     }));
 
-    bundler.on('update', rebundle);
-
     function rebundle() {
         return bundler.bundle()
             // log errors if they happen
@@ -33,6 +31,8 @@ gulp.task('scripts', function () {
             .pipe(source(destFileName))
             .pipe(gulp.dest(destFolder));
     }
+
+    bundler.on('update', rebundle);
 
     return rebundle();
 
@@ -50,14 +50,8 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('dist/styles'));
 });
 
-gulp.task('jade', function () {
-    return gulp.src('app/template/*.jade')
-        .pipe($.jade({ pretty: true }))
-        .pipe(gulp.dest('dist'));
-});
-
 // HTML
-gulp.task('html', function () {
+gulp.task('html', function() {
     return gulp.src('app/*.html')
         .pipe($.useref())
         .pipe(gulp.dest('dist'))
@@ -65,7 +59,7 @@ gulp.task('html', function () {
 });
 
 // Images
-gulp.task('images', function () {
+gulp.task('images', function() {
     return gulp.src('app/images/**/*')
         .pipe($.cache($.imagemin({
             optimizationLevel: 3,
@@ -76,7 +70,7 @@ gulp.task('images', function () {
         .pipe($.size());
 });
 
-gulp.task('jest', function () {
+gulp.task('jest', function() {
     var nodeModules = path.resolve('./node_modules');
     return gulp.src('app/scripts/**/__tests__')
         .pipe($.jest({
@@ -86,27 +80,27 @@ gulp.task('jest', function () {
 });
 
 // Clean
-gulp.task('clean', function (cb) {
+gulp.task('clean', function(cb) {
     del(['dist/styles', 'dist/scripts', 'dist/images'], cb);
 });
 
 // Bundle
-gulp.task('bundle', ['styles', 'scripts', 'bower'], function(){
+gulp.task('bundle', ['styles', 'scripts', 'bower'], function() {
     return gulp.src('./app/*.html')
-               .pipe($.useref.assets())
-               .pipe($.useref.restore())
-               .pipe($.useref())
-               .pipe(gulp.dest('dist'));
+        .pipe($.useref.assets())
+        .pipe($.useref.restore())
+        .pipe($.useref())
+        .pipe(gulp.dest('dist'));
 });
 
 // Build
 gulp.task('build', ['html', 'bundle', 'images']);
 
 // Default task
-gulp.task('default', ['clean', 'build', 'jest' ]);
+gulp.task('default', ['clean', 'build', 'jest']);
 
 // Webserver
-gulp.task('serve', function () {
+gulp.task('serve', function() {
     gulp.src('./dist')
         .pipe($.webserver({
             livereload: true,
@@ -127,18 +121,14 @@ gulp.task('json', function() {
         .pipe(gulp.dest('dist/scripts/'));
 });
 
-
 // Watch
-gulp.task('watch', ['html', 'bundle', 'serve'], function () {
+gulp.task('watch', ['html', 'bundle', 'serve'], function() {
 
     // Watch .json files
     gulp.watch('app/scripts/**/*.json', ['json']);
 
     // Watch .html files
     gulp.watch('app/*.html', ['html']);
-
-    // Watch .jade files
-    gulp.watch('app/template/**/*.jade', ['jade', 'html']);
 
     // Watch image filesf
     gulp.watch('app/images/**/*', ['images']);
