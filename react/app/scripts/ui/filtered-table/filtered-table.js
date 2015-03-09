@@ -8,11 +8,11 @@ var ProductCategoryRow = React.createClass({
     render: function() {
         return (
             <tr>
-                <th colSpan="2">
+                <th colSpan='2'>
                     {this.props.category}
                 </th>
             </tr>
-        )
+        );
     }
 });
 
@@ -28,7 +28,7 @@ var ProductRow = React.createClass({
                 <td>{name}</td>
                 <td>{this.props.product.price}</td>
             </tr>
-        )
+        );
     }
 });
 
@@ -73,17 +73,17 @@ var SearchBar = React.createClass({
         return (
             <form>
                 <input
-                    type="text"
-                    placeholder="Search..."
+                    type='text'
+                    placeholder='Search...'
                     value={this.props.filterText}
-                    ref="filterTextInput"
+                    ref='filterTextInput'
                     onChange={this.handleChange}
                 />
                 <p>
                     <input
-                        type="checkbox"
+                        type='checkbox'
                         checked={this.props.inStockOnly}
-                        ref="inStockOnlyInput"
+                        ref='inStockOnlyInput'
                         onChange={this.handleChange}
                     />
                     {' '}
@@ -99,7 +99,7 @@ var FilteredProductTable = React.createClass({
         return {
             filterText: '',
             inStockOnly: false
-        }
+        };
     },
     handleUserInput: function(filterText, inStockOnly) {
         this.setState({

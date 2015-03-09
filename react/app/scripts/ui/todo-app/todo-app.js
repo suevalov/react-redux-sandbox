@@ -1,6 +1,6 @@
 'use strict';
 
-var React = window.React = require('react'),
+var React = require('react'),
     Timer = require('../timer/timer');
 
 var TodoList = React.createClass({

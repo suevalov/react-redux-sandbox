@@ -19,5 +19,9 @@ module.exports = React.createClass({
     componentWillUnmount: function() {
         clearInterval(this.interval);
     },
-    render: require('./timer-template')
+    render: function() {
+        return (
+            <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
+        );
+    }
 });
