@@ -3,8 +3,8 @@
 'use strict';
 
 var React = window.React = require('react'),
-    TodoApp = require('./ui/todo-app/todo-app'),
-    FilteredTable = require('./ui/filtered-table/filtered-table');
+    TodoApp = require('./scripts/ui/todo-app/todo-app'),
+    FilteredTable = require('./scripts/ui/filtered-table/filtered-table');
 
 var PRODUCTS = [
     {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
