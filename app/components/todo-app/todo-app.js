@@ -2,37 +2,63 @@
 
 
 import React from 'react';
-import LocalStorageMixin from 'react-localstorage';
+import Reflux from 'reflux';
+import { PureRenderMixin } from 'react/addons';
+import { assert } from 'chai';
+
+import TodoStore from '../../stores/todo-store';
+import TodoActions from '../../actions/todo-actions';
+
+var TodoItem = React.createClass({
+
+  mixins: [ PureRenderMixin ],
+
+  propTypes: {
+    label: React.PropTypes.string.isRequired,
+    id: React.PropTypes.number.isRequired
+  },
+
+  clickHandler(e) {
+    e.preventDefault();
+    TodoActions.removeItem(this.props.id);
+  },
+
+  render() {
+    return (
+      <li>{this.props.label}
+        <button onClick={this.clickHandler}>x</button>
+      </li>
+    )
+  }
+
+});
 
 var TodoList = React.createClass({
-  render: function() {
-    var createItem = function(itemText) {
-      return <li>{itemText}</li>;
-    };
-    return <ul>{this.props.items.map(createItem)}</ul>;
+
+  render() {
+    return <ul>{this.props.items.map((item) => {
+      return (
+        <TodoItem label={item.label} id={item.id} />
+      );
+    }).toJS()}</ul>;
   }
+
 });
 
 export default React.createClass({
 
-  mixins: [LocalStorageMixin],
-
-  getInitialState() {
-    return {items: [], text: ''};
-  },
+  mixins: [
+    Reflux.connect(TodoStore, 'items'),
+    PureRenderMixin
+  ],
 
   onInputChange(e) {
-    this.setState({text: e.target.value});
-  },
-
-  handleSubmit(e) {
-    e.preventDefault();
-    if (this.state.text) {
-      let nextItems = this.state.items.concat([this.state.text]);
-      this.setState({
-        items: nextItems,
-        text: ''
-      });
+    var text = e.target.value;
+    if (e.which === 13 && text) {
+      TodoActions.addItem(text);
+      e.target.value = '';
+    } else if (e.which === 27) {
+      e.target.value = '';
     }
   },
 
@@ -40,10 +66,7 @@ export default React.createClass({
     return (
       <div>
         <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onInputChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
+        <input onKeyUp={this.onInputChange} />
       </div>
     );
   }

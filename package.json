@@ -5,14 +5,16 @@
   "main": "app/main.js",
   "dependencies": {
     "babel": "4.7.1",
+    "chai": "^2.1.1",
     "eventemitter3": "^0.1.6",
     "express": "4.12.2",
     "flux": "2.0.1",
     "front-matter": "^1.0.0",
     "immutable": "^3.6.4",
     "lodash": "3.4.0",
-    "react": "~0.12.2",
+    "react": "^0.12.2",
     "react-router": "^0.12.4",
+    "reflux": "^0.2.6",
     "superagent": "^0.21.0"
   },
   "devDependencies": {
