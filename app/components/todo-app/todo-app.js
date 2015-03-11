@@ -4,8 +4,6 @@
 import React from 'react';
 import Reflux from 'reflux';
 import { PureRenderMixin } from 'react/addons';
-import { assert } from 'chai';
-
 import TodoStore from '../../stores/todo-store';
 import TodoActions from '../../actions/todo-actions';
 
@@ -14,8 +12,8 @@ var TodoItem = React.createClass({
   mixins: [ PureRenderMixin ],
 
   propTypes: {
-    label: React.PropTypes.string.isRequired,
-    id: React.PropTypes.number.isRequired
+    id: React.PropTypes.number.isRequired,
+    label: React.PropTypes.string.isRequired
   },
 
   clickHandler(e) {
@@ -28,7 +26,7 @@ var TodoItem = React.createClass({
       <li>{this.props.label}
         <button onClick={this.clickHandler}>x</button>
       </li>
-    )
+    );
   }
 
 });

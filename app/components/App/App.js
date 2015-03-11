@@ -3,7 +3,6 @@
 import './app.less';
 import React from 'react';
 import Router from 'react-router';
-import TodoApp from '../todo-app/todo-app';
 
 let { RouteHandler, Link  } = Router;
 
