@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var AUTOPREFIXER_LOADER = 'autoprefixer-loader?{browsers:[' +
     '"Android 2.3", "Android >= 4", "Chrome >= 20", "Firefox >= 24", ' +
@@ -40,7 +41,7 @@ module.exports = {
             },
             {
                 test: /\.less/,
-                loader: 'style-loader!css-loader!' + AUTOPREFIXER_LOADER + '!less-loader'
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!' + AUTOPREFIXER_LOADER + '!less-loader')
             },
             {
                 test: /\.png/,
@@ -51,14 +52,15 @@ module.exports = {
                 loader: 'url-loader?limit=10000&mimetype=image/jpg'
             },
             {
-                test: /\.svg/,
-                loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
+                test: /\.(otf|eot|svg|ttf|woff)$/,
+                loader: 'url-loader?limit=8192'
             }
         ]
     },
 
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin()
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new ExtractTextPlugin('bundle.css')
     ]
 
 };

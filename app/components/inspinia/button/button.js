@@ -43,8 +43,8 @@ export default React.createClass({
         onMouseDown: PropTypes.func,
         onMouseUp: PropTypes.func,
 
-        size: PropTypes.oneOf(_.values(SIZES)),
-        theme: PropTypes.oneOf(_.values(THEMES)),
+        size: PropTypes.oneOf(_.keys(SIZES)),
+        theme: PropTypes.oneOf(_.keys(THEMES)),
         minWidth: PropTypes.oneOfType([
             PropTypes.bool,
             PropTypes.number
@@ -88,8 +88,6 @@ export default React.createClass({
         props.onMouseLeave = this.handleMouseLeave.bind(this, props);
         props.onMouseDown = this.handleMouseDown.bind(this, props);
         props.onMouseUp = this.handleMouseUp.bind(this, props);
-
-        console.log(props);
 
         return props;
     },

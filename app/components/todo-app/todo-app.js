@@ -5,7 +5,7 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 import TodoStore from '../../stores/todo-store';
 import TodoActions from '../../actions/todo-actions';
-import { Button } from '../inspinia';
+import { Button, Icon } from '../inspinia';
 
 let { PureRenderMixin, LinkedStateMixin } = React.addons;
 
@@ -25,8 +25,14 @@ var TodoItem = React.createClass({
 
     render() {
         return (
-            <li>{this.props.label}
-                <Button theme='danger' size='xsmall' onClick={this.clickHandler}>x</Button>
+            <li>
+                {this.props.label}
+                &nbsp;
+                <Button theme='danger' size='xsmall' onClick={this.clickHandler}>
+                    <Icon name='remove' />
+                    &nbsp;
+                    Remove
+                </Button>
             </li>
         );
     }
@@ -83,7 +89,11 @@ export default React.createClass({
                 <TodoList items={this.state.items} />
                 <input valueLink={this.linkState('text')} />
                 <Button {...buttonProps} >Click me!</Button>
-                <Button theme='danger' dim={true} size='large'></Button>
+                <Button theme='danger'>
+                    <Icon name='heart' />
+                    &nbsp;
+                    Love me tender!
+                </Button>
             </div>
         );
     }
