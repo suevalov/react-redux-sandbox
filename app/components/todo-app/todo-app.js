@@ -1,17 +1,17 @@
 'use strict';
 
 
-import React from 'react';
+import React from 'react/addons';
 import Reflux from 'reflux';
-import { PureRenderMixin } from 'react/addons';
 import TodoStore from '../../stores/todo-store';
 import TodoActions from '../../actions/todo-actions';
 import { Button } from '../inspinia';
 
+let { PureRenderMixin, LinkedStateMixin } = React.addons;
 
 var TodoItem = React.createClass({
 
-    mixins: [PureRenderMixin],
+    mixins: [ PureRenderMixin ],
 
     propTypes: {
         id: React.PropTypes.number.isRequired,
@@ -26,7 +26,7 @@ var TodoItem = React.createClass({
     render() {
         return (
             <li>{this.props.label}
-                <Button onClick={this.clickHandler}>x</Button>
+                <Button theme='danger' size='xsmall' onClick={this.clickHandler}>x</Button>
             </li>
         );
     }
@@ -49,29 +49,41 @@ export default React.createClass({
 
     mixins: [
         Reflux.connect(TodoStore, 'items'),
-        PureRenderMixin
+        PureRenderMixin,
+        LinkedStateMixin
     ],
 
-    onInputChange(e) {
-        var text = e.target.value;
-        if (e.which === 13 && text) {
+    onClickHandler() {
+        var text = this.state.text;
+        if (text) {
             TodoActions.addItem(text);
-            e.target.value = '';
-        } else if (e.which === 27) {
-            e.target.value = '';
+            this.setState({
+                text: ''
+            });
         }
     },
 
-    onClickHandler() {
-        alert('You have clicked the button!');
+    getInitialState() {
+        return {
+            text: ''
+        };
     },
 
     render() {
+
+        let buttonProps = {
+            theme: 'warning',
+            size: 'small',
+            rounded: true,
+            onClick: this.onClickHandler
+        };
+
         return (
             <div>
                 <TodoList items={this.state.items} />
-                <input onKeyUp={this.onInputChange} />
-                <Button theme='default' size='small' onClick={this.onClickHandler}>Click me!</Button>
+                <input valueLink={this.linkState('text')} />
+                <Button {...buttonProps} >Click me!</Button>
+                <Button theme='danger' dim={true} size='large'></Button>
             </div>
         );
     }

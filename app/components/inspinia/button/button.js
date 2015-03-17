@@ -1,17 +1,15 @@
 'use strict';
 
-import React from 'react';
-import { PureRenderMixin, PropTypes } from 'react/addons';
+import React from 'react/addons';
+import { PropTypes } from 'react/addons';
 import joinClasses from '../utils/joinClasses';
-import classSet from '../utils/classSet';
-import assign from 'object-assign';
 import _ from 'lodash';
 
 require('./button.less');
 
-function emptyFn() {}
+const { PureRenderMixin, classSet } = React.addons;
 
-let THEMES = {
+const THEMES = {
     'default': 'default',
     'primary': 'primary',
     'success': 'success',
@@ -25,7 +23,7 @@ let THEMES = {
 let SIZES = {
     'xsmall': 'xs',
     'small': 'sm',
-    'default': '',
+    'normal': 'normal',
     'large': 'lg'
 };
 
@@ -33,7 +31,7 @@ export default React.createClass({
 
     displayName: 'Button',
 
-    mixins: [PureRenderMixin],
+    mixins: [ PureRenderMixin ],
 
     propTypes: {
 
@@ -45,8 +43,18 @@ export default React.createClass({
         onMouseDown: PropTypes.func,
         onMouseUp: PropTypes.func,
 
-        size: PropTypes.oneOf(_.keys(SIZES)),
-        theme: PropTypes.oneOf(_.keys(THEMES)),
+        size: PropTypes.oneOf(_.values(SIZES)),
+        theme: PropTypes.oneOf(_.values(THEMES)),
+        minWidth: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.number
+        ]),
+        outline: PropTypes.bool,
+        block: PropTypes.bool,
+        circle: PropTypes.bool,
+        rounded: PropTypes.bool,
+        dim: PropTypes.bool,
+
         active: PropTypes.bool,
         disabled: PropTypes.bool,
         href: PropTypes.string,
@@ -58,38 +66,63 @@ export default React.createClass({
         return {
             active: false,
             disabled: false,
-            size: SIZES.default,
+            minWidth: false,
+            outline: false,
+            block: false,
+            circle: false,
+            rounded: false,
+            dim: false,
+            size: SIZES.normal,
             theme: THEMES.default
         };
     },
 
     prepareProps(thisProps) {
 
-        let props = {};
+        let props = _.extend({}, thisProps);
 
-        assign(props, thisProps);
-
-        props.onClick      = this.handleClick.bind(this, props);
-        props.onFocus      = this.handleFocus.bind(this, props);
-        props.onBlur       = this.handleBlur.bind(this, props);
+        props.onClick = this.handleClick.bind(this, props);
+        props.onFocus = this.handleFocus.bind(this, props);
+        props.onBlur = this.handleBlur.bind(this, props);
         props.onMouseEnter = this.handleMouseEnter.bind(this, props);
         props.onMouseLeave = this.handleMouseLeave.bind(this, props);
-        props.onMouseDown  = this.handleMouseDown.bind(this, props);
-        props.onMouseUp    = this.handleMouseUp.bind(this, props);
+        props.onMouseDown = this.handleMouseDown.bind(this, props);
+        props.onMouseUp = this.handleMouseUp.bind(this, props);
+
+        console.log(props);
 
         return props;
     },
 
     prepareClasses(props) {
+
         let classes = {};
 
         classes['btn'] = true;
-        classes['btn--' + THEMES[props.theme]] = true;
-        classes['btn--' + SIZES[props.size]] = props.size !== SIZES.default;
+        classes['btn--theme-' + THEMES[props.theme]] = true;
+        classes['btn--size-' + SIZES[props.size]] = props.size !== SIZES.normal;
+        classes['btn--min-width'] = props.minWidth === true;
+        classes['btn--outline'] = props.outline === true;
+        classes['btn--block'] = props.block === true;
+        classes['btn--circle'] = props.circle === true;
+        classes['btn--rounded'] = props.rounded === true;
+        classes['btn--dim'] = props.dim === true;
 
         classes['active'] = props.active;
         classes['disabled'] = props.disabled;
+
         return classes;
+    },
+
+    prepareStyles(props) {
+
+        let styles = {};
+
+        if (_.isNumber(props.minWidth)) {
+            styles['min-width'] = `${props.minWidth}px`;
+        }
+
+        return styles;
     },
 
     handleClick(props, event) {
@@ -101,7 +134,7 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onClick || emptyFn)(event);
+        (this.props.onClick || _.noop)(event);
     },
 
     handleFocus(props, event) {
@@ -109,7 +142,7 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onFocus || emptyFn)(event);
+        (this.props.onFocus || _.noop)(event);
     },
 
     handleBlur(props, event) {
@@ -117,7 +150,7 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onBlur || emptyFn)(event);
+        (this.props.onBlur || _.noop)(event);
     },
 
     handleMouseEnter(props, event) {
@@ -125,7 +158,7 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onMouseEnter || emptyFn)(event);
+        (this.props.onMouseEnter || _.noop)(event);
     },
 
     handleMouseLeave(props, event) {
@@ -133,7 +166,7 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onMouseLeave || emptyFn)(event);
+        (this.props.onMouseLeave || _.noop)(event);
     },
 
     handleMouseDown(props, event) {
@@ -141,7 +174,7 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onMouseDown || emptyFn)(event);
+        (this.props.onMouseDown || _.noop)(event);
     },
 
     handleMouseUp(props, event) {
@@ -149,27 +182,29 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onMouseUp || emptyFn)(event);
+        (this.props.onMouseUp || _.noop)(event);
     },
 
     render() {
 
         let props = this.prepareProps(this.props);
         let classes = this.prepareClasses(props);
+        let styles = this.prepareStyles(props);
 
         let renderFuncName = props.href || props.target ? 'renderAnchor' : 'renderButton';
 
-        return this[renderFuncName](classes, props);
+        return this[renderFuncName](classes, props, styles);
 
     },
 
-    renderAnchor(classes, props) {
+    renderAnchor(classes, props, styles) {
         var Component = props.componentClass || 'a';
         var href = props.href || '#';
         return (
             <Component
                 {...props}
                 href={href}
+                style={styles}
                 className={joinClasses(classSet(classes), this.props.className)}
                 role='button'>
                 {props.children}
@@ -177,11 +212,12 @@ export default React.createClass({
         );
     },
 
-    renderButton(classes, props) {
+    renderButton(classes, props, styles) {
         var Component = props.componentClass || 'button';
         return (
             <Component
                 {...props}
+                style={styles}
                 className={joinClasses(classSet(classes), this.props.className)}>
                 {props.children}
             </Component>
