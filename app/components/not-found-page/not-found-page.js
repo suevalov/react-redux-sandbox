@@ -1,6 +1,5 @@
 'use strict';
 
-import './not-found-page.less';
 import React from 'react';
 
 export default React.createClass({

@@ -1,0 +1,123 @@
+@import '../variables.less';
+
+.btn {
+
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+
+    /**
+        SIZES
+    */
+
+    &--sm {
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+
+    &--xs {
+        padding: 1px 5px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+
+    &--lg {
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 6px;
+    }
+
+    /**
+        THEMES
+    */
+
+    &--default {
+
+        background-color: @dark-gray;
+        border-color: @dark-gray;
+        color: #ffffff;
+
+        &:hover, &:focus, &:active, &.active {
+            background-color: darken(@dark-gray, 3%);
+            border-color: darken(@dark-gray, 3%);
+            color: #ffffff;
+        }
+
+        &.active, &:active {
+            background-image: none;
+        }
+
+        &.disabled, &[disabled] {
+            &, &:hover, &:focus, &:active, &.active {
+                background-color: lighten(@dark-gray, 4%);
+                border-color: lighten(@dark-gray, 4%);
+            }
+        }
+
+    }
+
+    &--primary {
+
+        background-color: @navy;
+        border-color: @navy;
+        color: #ffffff;
+
+        &:hover, &:focus, &:active, &.active {
+            background-color: darken(@navy, 3%);
+            border-color: darken(@navy, 3%);
+            color: #ffffff;
+        }
+
+        &.active, &:active {
+            background-image: none;
+        }
+
+        &.disabled, &[disabled] {
+            &, &:hover, &:focus, &:active, &.active {
+                background-color: lighten(@navy, 4%);
+                border-color: lighten(@navy, 4%);
+            }
+        }
+
+    }
+
+    &--success {
+
+        background-color: @blue;
+        border-color: @blue;
+        color: #ffffff;
+
+        &:hover, &:focus, &:active, &.active {
+            background-color: darken(@blue, 3%);
+            border-color: darken(@blue, 3%);
+            color: #ffffff;
+        }
+
+        &.active, &:active {
+            background-image: none;
+        }
+
+        &.disabled, &[disabled] {
+            &, &:hover, &:focus, &:active, &.active {
+                background-color: lighten(@blue, 4%);
+                border-color: lighten(@blue, 4%);
+            }
+        }
+    }
+
+}

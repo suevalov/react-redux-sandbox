@@ -18,6 +18,7 @@
     "trailing": true,
     "smarttabs": true,
     "white": true,
+    "sub": true,
     "globals": {
         "document": true,
         "window": true
