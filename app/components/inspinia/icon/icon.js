@@ -1,11 +1,11 @@
 'use strict';
 
-require('./font-awesome/font-awesome.less');
+require('./icon.less');
 
 import React from 'react';
 let PropTypes = React.PropTypes;
 
-module.exports = React.createClass({
+export default React.createClass({
 
     propTypes: {
         name: PropTypes.string.isRequired,

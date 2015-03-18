@@ -1,11 +1,11 @@
 'use strict';
 
+require('./button.less');
+
 import React from 'react/addons';
 import { PropTypes } from 'react/addons';
 import joinClasses from '../utils/joinClasses';
 import _ from 'lodash';
-
-require('./button.less');
 
 const { PureRenderMixin, classSet } = React.addons;
 
@@ -97,14 +97,14 @@ export default React.createClass({
         let classes = {};
 
         classes['btn'] = true;
-        classes['btn--theme-' + THEMES[props.theme]] = true;
-        classes['btn--size-' + SIZES[props.size]] = props.size !== SIZES.normal;
-        classes['btn--min-width'] = props.minWidth === true;
-        classes['btn--outline'] = props.outline === true;
-        classes['btn--block'] = props.block === true;
-        classes['btn--circle'] = props.circle === true;
-        classes['btn--rounded'] = props.rounded === true;
-        classes['btn--dim'] = props.dim === true;
+        classes['btn-' + THEMES[props.theme]] = true;
+        classes['btn-' + SIZES[props.size]] = props.size !== SIZES.normal;
+        classes['btn-min-width'] = props.minWidth === true;
+        classes['btn-outline'] = props.outline === true;
+        classes['btn-block'] = props.block === true;
+        classes['btn-circle'] = props.circle === true;
+        classes['btn-rounded'] = props.rounded === true;
+        classes['btn-dim'] = props.dim === true;
 
         classes['active'] = props.active;
         classes['disabled'] = props.disabled;

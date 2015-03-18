@@ -1,55 +1,11 @@
 @import '../variables.less';
+@import '~bootstrap/less/mixins';
+@import '~bootstrap/less/buttons';
 
 .btn {
 
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    outline: none;
-
-    /**
-        SIZES
-    */
-
-    &--size-sm {
-        padding: 5px 10px;
-        font-size: 12px;
-        line-height: 1.5;
-        border-radius: 3px;
-    }
-
-    &--size-xs {
-        padding: 1px 5px;
-        font-size: 12px;
-        line-height: 1.5;
-        border-radius: 3px;
-    }
-
-    &--size-lg {
-        padding: 10px 16px;
-        font-size: 18px;
-        line-height: 1.33;
-        border-radius: 6px;
-    }
-
-    &--min-width {
+    &-min-width {
         min-width: 120px;
-    }
-
-    &--block {
-        display: block;
-        width: 100%;
     }
 
     /**
@@ -58,35 +14,14 @@
 
     .button-theme-mixin(@color) {
 
-        background-color: @color;
-        border-color: @color;
-        color: #ffffff;
-
-        &:hover, &:focus, &:active, &.active {
-            background-color: darken(@color, 3%);
-            border-color: darken(@color, 3%);
-            color: #ffffff;
-        }
-
-        &.active, &:active {
-            background-image: none;
-        }
-
-        &.disabled, &[disabled] {
-            &, &:hover, &:focus, &:active, &.active {
-                background-color: lighten(@color, 4%);
-                border-color: lighten(@color, 4%);
-            }
-        }
-
-        &.btn--outline {
+        &.btn-outline {
             color: @color;
             &:hover {
                 color: #ffffff;
             }
         }
 
-        &.btn--dim {
+        &.btn-dim {
             box-shadow: inset 0px 0px 0px darken(@color, 6%), 0px 5px 0px 0px darken(@color, 6%), 0px 10px 5px #999;
             &:active {
                 box-shadow: inset 0px 0px 0px darken(@color, 6%), 0px 2px 0px 0px darken(@color, 6%), 0px 5px 3px #999;
@@ -95,34 +30,42 @@
 
     }
 
-    &--theme-default {
-        .button-theme-mixin(@dark-gray);
+    &-primary {
+        .button-theme-mixin(@brand-primary);
     }
 
-    &--theme-primary {
-        .button-theme-mixin(@navy);
+    &-success {
+        .button-theme-mixin(@brand-success);
     }
 
-    &--theme-success {
-        .button-theme-mixin(@blue);
+    &-info {
+        .button-theme-mixin(@brand-info);
     }
 
-    &--theme-info {
-        .button-theme-mixin(@lazur);
+    &-warning {
+        .button-theme-mixin(@brand-warning);
     }
 
-    &--theme-warning {
-        .button-theme-mixin(@yellow);
+    &-danger {
+        .button-theme-mixin(@brand-danger);
     }
 
-    &--theme-danger {
-        .button-theme-mixin(@red);
+    &-default {
+
+        color: #ffffff;
+
+        &:hover, &:focus, &:active, &.active {
+            color: #ffffff;
+        }
+
+        .button-theme-mixin(@brand-default);
+
     }
 
-    &--theme-white {
+    &-white {
 
         background-color: white;
-        border: 1px solid @border-color;
+        border: 1px solid #e7eaec;
         color: inherit;
 
         &:hover, &:focus, &:active, &.active {
@@ -143,37 +86,17 @@
 
     }
 
-    &--theme-link {
-
-        color: inherit;
-
-        &:hover, &:focus, &:active, &.active {
-            color: @blue;
-        }
-
-        &.active, &:active {
-            background-image: none;
-        }
-
-        &.disabled, &[disabled] {
-            &, &:hover, &:focus, &:active, &.active {
-                color: #cacaca;
-            }
-        }
-
-    }
-
-    &--outline {
+    &-outline {
         color: inherit;
         background-color: transparent;
         transition: all .5s;
     }
 
-    &--rounded {
+    &-rounded {
         border-radius: 50px;
     }
 
-    &--circle {
+    &-circle {
 
         width: 30px;
         height: 30px;
@@ -183,7 +106,7 @@
         font-size: 12px;
         line-height: 1.428571429;
 
-        &.btn--size-lg {
+        &.btn-lg {
             width: 50px;
             height: 50px;
             padding: 10px 16px;
@@ -193,7 +116,9 @@
         }
     }
 
-    &--dim {
+    &-dim {
+
+        outline: none;
         display: inline-block;
         color: #fff;
         text-decoration: none;
