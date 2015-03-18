@@ -5,7 +5,12 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 import TodoStore from '../../stores/todo-store';
 import TodoActions from '../../actions/todo-actions';
-import { Button, ButtonGroup, Icon } from '../inspinia';
+import {
+    Button,
+    ButtonGroup,
+    DropdownButton,
+    Icon
+} from '../inspinia';
 
 let { PureRenderMixin, LinkedStateMixin } = React.addons;
 
@@ -97,6 +102,9 @@ export default React.createClass({
                         <Button>Second</Button>
                         <Button theme='warning'>Third</Button>
                     </ButtonGroup>
+                </div>
+                <div>
+                    <DropdownButton title='Dropdown' />
                 </div>
             </div>
         );

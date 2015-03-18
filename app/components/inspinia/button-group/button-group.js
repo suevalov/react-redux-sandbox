@@ -4,7 +4,6 @@ require('./button-group.less');
 
 import React from 'react/addons';
 import joinClasses from '../utils/joinClasses';
-import _ from 'lodash';
 
 let { PropTypes } = React;
 let { classSet } = React.addons;
@@ -20,7 +19,7 @@ export default React.createClass({
         return {
             vertical: false,
             justified: false
-        }
+        };
     },
 
     render() {

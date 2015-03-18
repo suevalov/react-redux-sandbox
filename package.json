@@ -5,6 +5,7 @@
   "main": "app/main.js",
   "dependencies": {
     "babel": "4.7.1",
+    "bootstrap": "^3.3.4",
     "chai": "^2.1.1",
     "eventemitter3": "^0.1.6",
     "express": "4.12.2",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "autoprefixer-core": "^5.1.7",
+    "autoprefixer-loader": "^1.2.0",
     "babel-core": "^4.7.3",
     "babel-loader": "^4.1.0",
     "browser-sync": "^2.2.3",
