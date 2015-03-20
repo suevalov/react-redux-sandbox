@@ -105,6 +105,7 @@ export default React.createClass({
                 </div>
                 <div>
                     <DropdownButton title='Dropdown' />
+                    <DropdownButton title='Another Dropdown' />
                 </div>
             </div>
         );

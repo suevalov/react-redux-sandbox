@@ -3,7 +3,7 @@
 require('./button-group.less');
 
 import React from 'react/addons';
-import joinClasses from '../utils/joinClasses';
+import joinClasses from '../utils/join-classes';
 
 let { PropTypes } = React;
 let { classSet } = React.addons;

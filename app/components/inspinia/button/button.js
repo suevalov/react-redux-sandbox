@@ -4,7 +4,7 @@ require('./button.less');
 
 import React from 'react/addons';
 import { PropTypes } from 'react/addons';
-import joinClasses from '../utils/joinClasses';
+import joinClasses from '../utils/join-classes';
 import _ from 'lodash';
 
 const { PureRenderMixin, classSet } = React.addons;

@@ -2,42 +2,52 @@
 
 require('./dropdown-button.less');
 
-import React from 'react';
+import React from 'react/addons';
 import Button from '../button/button';
+import ButtonGroup from '../button-group/button-group';
+import DropdownMenu from '../dropdown-menu/dropdown-menu';
+import DropdownStateMixin from '../mixins/dropdown-state-mixin';
 
-let { PropTypes } = React;
+let { classSet } = React.addons;
 
 export default React.createClass({
 
+    mixins: [ DropdownStateMixin ],
+
     propTypes: {
-        pullRight: PropTypes.bool,
-        dropup: PropTypes.bool,
-        title: PropTypes.node,
-        href: PropTypes.string,
-        onClick: PropTypes.func,
-        onSelect: PropTypes.func,
-        noCaret: PropTypes.bool
+        pullRight: React.PropTypes.bool,
+        dropup: React.PropTypes.bool,
+        title: React.PropTypes.node,
+        href: React.PropTypes.string,
+        onSelect: React.PropTypes.func,
+        noCaret: React.PropTypes.bool
     },
 
-    handleDropdownClick() {
-        alert('click on dropdown');
+    handleDropdownClick(e) {
+        e.preventDefault();
+        this.setDropdownState(!this.state.open);
     },
 
     render() {
 
-        var caret = this.props.noCaret ?
+        let caret = this.props.noCaret ?
             null : (<span className='caret' />);
 
+        let classes = {
+            'open': this.state.open
+        };
+
         return (
-            <Button
-                {...this.props}
-                ref='dropdownButton'
-                className='dropdown-toggle'
-                onClick={this.handleDropdownClick}>
-                {this.props.title}
-                &nbsp;
-                {caret}
-            </Button>
+            <ButtonGroup className={classSet(classes)}>
+                <Button {...this.props} className='dropdown-toggle'
+                    onClick={this.handleDropdownClick}>
+                    {this.props.title}
+                    &nbsp;
+                    &nbsp;
+                    {caret}
+                </Button>
+                <DropdownMenu></DropdownMenu>
+            </ButtonGroup>
         );
     }
 
