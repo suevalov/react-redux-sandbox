@@ -42,12 +42,18 @@ module.exports = {
 
     },
 
+    /**
+     * @param {Event} e
+     */
     handleDocumentKeyUp(e) {
         if (e.keyCode === 27) {
             this.setDropdownState(false);
         }
     },
 
+    /**
+     * @param {Event} e
+     */
     handleDocumentClick(e) {
         // If the click originated from within this component
         // don't do anything.

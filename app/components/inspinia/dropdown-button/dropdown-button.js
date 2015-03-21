@@ -7,8 +7,10 @@ import Button from '../button/button';
 import ButtonGroup from '../button-group/button-group';
 import DropdownMenu from '../dropdown-menu/dropdown-menu';
 import DropdownStateMixin from '../mixins/dropdown-state-mixin';
+import ValidComponentChildren from '../utils/valid-component-children';
+import createChainedFunction from '../utils/create-chained-function';
 
-let { classSet } = React.addons;
+let { classSet, cloneWithProps } = React.addons;
 
 export default React.createClass({
 
@@ -19,6 +21,7 @@ export default React.createClass({
         dropup: React.PropTypes.bool,
         title: React.PropTypes.node,
         href: React.PropTypes.string,
+        onClick:   React.PropTypes.func,
         onSelect: React.PropTypes.func,
         noCaret: React.PropTypes.bool
     },
@@ -28,13 +31,21 @@ export default React.createClass({
         this.setDropdownState(!this.state.open);
     },
 
+    handleOptionSelect(key) {
+        if (this.props.onSelect) {
+            this.props.onSelect(key);
+        }
+        this.setDropdownState(false);
+    },
+
     render() {
 
         let caret = this.props.noCaret ?
             null : (<span className='caret' />);
 
         let classes = {
-            'open': this.state.open
+            'open': this.state.open,
+            'dropup': this.props.dropup
         };
 
         return (
@@ -46,9 +57,32 @@ export default React.createClass({
                     &nbsp;
                     {caret}
                 </Button>
-                <DropdownMenu></DropdownMenu>
+                <DropdownMenu
+                    ref='menu'
+                    aria-labelledby={this.props.id}
+                    pullRight={this.props.pullRight}
+                    key={1}
+                    >
+                    {ValidComponentChildren.map(this.props.children, this.renderMenuItem)}
+                </DropdownMenu>
             </ButtonGroup>
         );
+    },
+
+    renderMenuItem(child, index) {
+
+        let handleOptionSelect = this.props.onSelect || child.props.onSelect ?
+            this.handleOptionSelect : null;
+
+        return cloneWithProps(
+            child,
+            {
+                onSelect: createChainedFunction(child.props.onSelect, handleOptionSelect),
+                key: child.key ? child.key : index,
+                ref: child.ref
+            }
+        );
+
     }
 
 });

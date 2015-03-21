@@ -9,6 +9,7 @@ import {
     Button,
     ButtonGroup,
     DropdownButton,
+    MenuItem,
     Icon
 } from '../inspinia';
 
@@ -104,7 +105,11 @@ export default React.createClass({
                     </ButtonGroup>
                 </div>
                 <div>
-                    <DropdownButton title='Dropdown' />
+                    <DropdownButton title='Dropdown'>
+                        <MenuItem eventKey='1'>MenuItem 1</MenuItem>
+                        <MenuItem divider />
+                        <MenuItem eventKey='2'>MenuItem 2</MenuItem>
+                    </DropdownButton>
                     <DropdownButton title='Another Dropdown' />
                 </div>
             </div>
