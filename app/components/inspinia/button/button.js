@@ -59,7 +59,8 @@ export default React.createClass({
         disabled: PropTypes.bool,
         href: PropTypes.string,
         target: PropTypes.string,
-        componentClass: PropTypes.string
+        componentClass: PropTypes.string,
+        type: PropTypes.string
     },
 
     getDefaultProps() {
@@ -73,7 +74,8 @@ export default React.createClass({
             rounded: false,
             dim: false,
             size: SIZES.normal,
-            theme: THEMES.default
+            theme: THEMES.default,
+            type: 'button'
         };
     },
 
@@ -117,7 +119,7 @@ export default React.createClass({
         let styles = {};
 
         if (_.isNumber(props.minWidth)) {
-            styles['min-width'] = `${props.minWidth}px`;
+            styles['minWidth'] = `${props.minWidth}px`;
         }
 
         return styles;
