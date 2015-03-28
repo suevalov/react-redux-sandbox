@@ -15,6 +15,8 @@ import CalendarPage from './components/calendar-page/calendar-page';
 import DashboardPage from './components/dashboard-page/dashboard-page';
 import NotFoundPage from './components/not-found-page/not-found-page';
 
+import ButtonsTestsPage from './components/inspinia/button/__tests__/buttons-tests-page';
+
 /**
  * Routes Configuration
  */
@@ -22,12 +24,13 @@ import NotFoundPage from './components/not-found-page/not-found-page';
 let { Route, DefaultRoute, NotFoundRoute } = Router;
 
 let routes = (
-  <Route name="app" path="/" handler={App}>
-    <Route name="inbox" handler={InboxPage}/>
-    <Route name="calendar" handler={CalendarPage}/>
-    <DefaultRoute handler={DashboardPage}/>
-    <NotFoundRoute handler={NotFoundPage}/>
-  </Route>
+    <Route name="app" path="/" handler={App}>
+        <Route name="inbox" handler={InboxPage}/>
+        <Route name="calendar" handler={CalendarPage}/>
+        <Route name="buttons" handler={ButtonsTestsPage} />
+        <DefaultRoute handler={DashboardPage}/>
+        <NotFoundRoute handler={NotFoundPage}/>
+    </Route>
 );
 
 /**
@@ -35,15 +38,15 @@ let routes = (
  */
 
 Promise.all([
-  new Promise((resolve) => {
-    if (window.addEventListener) {
-      window.addEventListener('DOMContentLoaded', resolve);
-    } else {
-      window.attachEvent('onload', resolve);
-    }
-  })
+    new Promise((resolve) => {
+        if (window.addEventListener) {
+            window.addEventListener('DOMContentLoaded', resolve);
+        } else {
+            window.attachEvent('onload', resolve);
+        }
+    })
 ]).then(() => {
-  Router.run(routes, Router.HistoryLocation, Handler => {
-    React.render(React.createElement(Handler), document.body);
-  });
+    Router.run(routes, Router.HistoryLocation, Handler => {
+        React.render(React.createElement(Handler), document.body);
+    });
 });

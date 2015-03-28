@@ -16,6 +16,7 @@ export default React.createClass({
             <li><Link to="app">Dashboard</Link></li>
             <li><Link to="inbox">Inbox</Link></li>
             <li><Link to="calendar">Calendar</Link></li>
+            <li><Link to="buttons">Buttons</Link></li>
           </ul>
           Logged as Jane
         </header>
