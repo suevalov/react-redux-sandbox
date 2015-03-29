@@ -2,11 +2,10 @@
 
 require('./button-group.less');
 
-import React from 'react/addons';
-import joinClasses from '../utils/join-classes';
+import React from 'react';
+import classSet from 'classnames';
 
 let { PropTypes } = React;
-let { classSet } = React.addons;
 
 export default React.createClass({
 
@@ -33,7 +32,7 @@ export default React.createClass({
         return (
             <div
                 {...this.props}
-                className={joinClasses(this.props.className, classSet(classes))}>
+                className={classSet(classes, this.props.className)}>
                 {this.props.children}
             </div>
         );

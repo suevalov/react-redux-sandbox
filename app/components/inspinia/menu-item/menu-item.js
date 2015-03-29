@@ -1,9 +1,7 @@
 'use strict';
 
-import React from 'react/addons';
-import joinClasses from '../utils/join-classes';
-
-let { classSet } = React.addons;
+import React from 'react';
+import classSet from 'classnames';
 
 export default React.createClass({
 
@@ -55,7 +53,7 @@ export default React.createClass({
 
         return (
             <li {...this.props} role="presentation" title={null} href={null}
-                className={joinClasses(this.props.className, classSet(classes))}>
+                className={classSet(classes, this.props.className)}>
                 {children}
             </li>
         );

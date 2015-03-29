@@ -3,11 +3,11 @@
 require('./dropdown-menu.less');
 
 import React from 'react/addons';
-import joinClasses from '../utils/join-classes';
 import createChainedFunction from '../utils/create-chained-function';
 import ValidComponentChildren from '../utils/valid-component-children';
+import classSet from 'classnames';
 
-let { classSet, cloneWithProps } = React.addons;
+let { cloneWithProps } = React.addons;
 
 export default React.createClass({
 
@@ -26,7 +26,7 @@ export default React.createClass({
         return (
             <ul
                 {...this.props}
-                className={joinClasses(this.props.className, classSet(classes))}
+                className={classSet(this.props.className, classes)}
                 role='menu'>
             {ValidComponentChildren.map(this.props.children, this.renderMenuItem)}
             </ul>

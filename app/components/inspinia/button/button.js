@@ -4,10 +4,10 @@ require('./button.less');
 
 import React from 'react/addons';
 import { PropTypes } from 'react/addons';
-import joinClasses from '../utils/join-classes';
 import _ from 'lodash';
+import classSet from 'classnames';
 
-const { PureRenderMixin, classSet } = React.addons;
+const { PureRenderMixin } = React.addons;
 
 const THEMES = {
     'default': 'default',
@@ -205,7 +205,7 @@ export default React.createClass({
                 {...props}
                 href={href}
                 style={styles}
-                className={joinClasses(classSet(classes), this.props.className)}
+                className={classSet(classes, this.props.className)}
                 role='button'>
                 {props.children}
             </Component>
@@ -218,7 +218,7 @@ export default React.createClass({
             <Component
                 {...props}
                 style={styles}
-                className={joinClasses(classSet(classes), this.props.className)}>
+                className={classSet(classes, this.props.className)}>
                 {props.children}
             </Component>
         );

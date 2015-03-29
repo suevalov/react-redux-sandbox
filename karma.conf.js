@@ -8,6 +8,8 @@ module.exports = function(config) {
         files: [
             'test/tests.webpack.js'
         ],
+        captureTimeout: 60000,
+        browserNoActivityTimeout: 100000,
         preprocessors: {
             'test/tests.webpack.js': [ 'webpack', 'sourcemap' ] //preprocess with webpack and our sourcemap loader
         },
