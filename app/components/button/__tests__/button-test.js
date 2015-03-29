@@ -3,7 +3,7 @@
 /*global describe, it */
 
 import React from 'react';
-import ReactTestUtils from 'react/lib/ReactTestUtils';
+import ReactTestUtils from '../../../../node_modules/react/lib/ReactTestUtils';
 import expect from 'expect';
 import Button from '../button';
 

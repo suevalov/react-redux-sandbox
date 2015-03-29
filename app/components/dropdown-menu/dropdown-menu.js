@@ -2,7 +2,7 @@
 
 require('./dropdown-menu.less');
 
-import React from 'react/addons';
+import React from '../../../node_modules/react/addons';
 import createChainedFunction from '../utils/create-chained-function';
 import ValidComponentChildren from '../utils/valid-component-children';
 import classSet from 'classnames';

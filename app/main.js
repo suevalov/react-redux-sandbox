@@ -12,7 +12,7 @@ import Router from 'react-router';
 import Layout from './pages/layout';
 import TodoPage from './pages/todo-app/todo-app';
 import NotFoundPage from './pages/not-found-page/not-found-page';
-import ButtonsTestsPage from './components/inspinia/button/__tests__/buttons-tests-page';
+import ButtonsTestsPage from './components/button/__tests__/buttons-tests-page';
 
 /**
  * Routes Configuration

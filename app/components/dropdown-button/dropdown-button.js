@@ -2,7 +2,7 @@
 
 require('./dropdown-button.less');
 
-import React from 'react/addons';
+import React from '../../../node_modules/react/addons';
 import Button from '../button/button';
 import ButtonGroup from '../button-group/button-group';
 import DropdownMenu from '../dropdown-menu/dropdown-menu';

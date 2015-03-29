@@ -2,8 +2,8 @@
 
 require('./button.less');
 
-import React from 'react/addons';
-import { PropTypes } from 'react/addons';
+import React from '../../../node_modules/react/addons';
+import { PropTypes } from '../../../node_modules/react/addons';
 import _ from 'lodash';
 import classSet from 'classnames';
 
