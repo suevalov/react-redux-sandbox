@@ -9,12 +9,9 @@ import Router from 'react-router';
  * Components
  */
 
-import App from './components/app/app';
-import InboxPage from './components/inbox-page/inbox-page';
-import CalendarPage from './components/calendar-page/calendar-page';
-import DashboardPage from './components/dashboard-page/dashboard-page';
-import NotFoundPage from './components/not-found-page/not-found-page';
-
+import Layout from './pages/layout';
+import TodoPage from './pages/todo-app/todo-app';
+import NotFoundPage from './pages/not-found-page/not-found-page';
 import ButtonsTestsPage from './components/inspinia/button/__tests__/buttons-tests-page';
 
 /**
@@ -24,11 +21,9 @@ import ButtonsTestsPage from './components/inspinia/button/__tests__/buttons-tes
 let { Route, DefaultRoute, NotFoundRoute } = Router;
 
 let routes = (
-    <Route name="app" path="/" handler={App}>
-        <Route name="inbox" handler={InboxPage}/>
-        <Route name="calendar" handler={CalendarPage}/>
+    <Route name="app" path="/" handler={Layout}>
         <Route name="buttons" handler={ButtonsTestsPage} />
-        <DefaultRoute handler={DashboardPage}/>
+        <DefaultRoute handler={TodoPage}/>
         <NotFoundRoute handler={NotFoundPage}/>
     </Route>
 );

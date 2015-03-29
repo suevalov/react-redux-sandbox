@@ -13,7 +13,7 @@ import {
     DropdownButton,
     MenuItem,
     Icon
-    } from '../inspinia';
+    } from '../../components/inspinia';
 
 let { PureRenderMixin, LinkedStateMixin } = React.addons;
 

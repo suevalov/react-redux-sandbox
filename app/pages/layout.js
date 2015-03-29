@@ -1,6 +1,6 @@
 'use strict';
 
-import './app.less';
+import './layout.less';
 import React from 'react';
 import Router from 'react-router';
 
@@ -13,9 +13,7 @@ export default React.createClass({
       <div className='app-component'>
         <header>
           <ul>
-            <li><Link to="app">Dashboard</Link></li>
-            <li><Link to="inbox">Inbox</Link></li>
-            <li><Link to="calendar">Calendar</Link></li>
+            <li><Link to="app">Planner</Link></li>
             <li><Link to="buttons">Buttons</Link></li>
           </ul>
           Logged as Jane
