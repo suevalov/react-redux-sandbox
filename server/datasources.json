@@ -4,7 +4,7 @@
     "connector": "memory"
   },
   "mongodb": {
-    "name": "sandbox-js-database",
+    "name": "mongodb",
     "connector": "mongodb"
   }
 }

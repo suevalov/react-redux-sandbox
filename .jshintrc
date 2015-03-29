@@ -21,6 +21,7 @@
     "sub": true,
     "globals": {
         "document": true,
-        "window": true
+        "window": true,
+        "sessionStorage": true
     }
 }

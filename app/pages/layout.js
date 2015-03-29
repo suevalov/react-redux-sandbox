@@ -3,6 +3,7 @@
 import './layout.less';
 import React from 'react';
 import Router from 'react-router';
+import Reflux from 'reflux';
 import AuthStore from '../stores/auth-store';
 import AuthActions from '../actions/auth-actions';
 
@@ -10,22 +11,27 @@ let { RouteHandler, Link  } = Router;
 
 export default React.createClass({
 
+    mixins: [
+        Reflux.listenTo(AuthStore, 'onAuthChange')
+    ],
+
     contextTypes: {
         router: React.PropTypes.func
     },
 
-    getInitialState() {
-        return {
-            loggedIn: AuthStore.isLoggedIn()
-        };
+    onAuthChange: function(state) {
+        if (state.loggedOut) {
+            this.context.router.transitionTo('login');
+        }
     },
 
     logoutClickHandler() {
-        AuthActions.logout();
+        AuthActions.logout(AuthStore.getToken());
     },
 
     render() {
 
+        var loggedIn = AuthStore.isLoggedIn();
         var currentPath = this.context.router.getCurrentPath();
 
         if (currentPath === '/login') {
@@ -43,7 +49,7 @@ export default React.createClass({
                             <ul>
                                 <li><Link to="app">Planner</Link></li>
                                 <li><Link to="buttons">Buttons</Link></li>
-                                { this.state.loggedIn ? (
+                                { loggedIn ? (
                                     <li><a onClick={this.logoutClickHandler}>Logout</a></li>
                                 ) : (
                                     ''

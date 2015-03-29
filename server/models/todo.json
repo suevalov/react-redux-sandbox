@@ -1,19 +1,26 @@
 {
-    "name": "todo",
-    "plural": "todos",
-    "base": "PersistedModel",
-    "mongodb": {
-        "collection": "TodosCollection"
-    },
-    "idInjection": true,
-    "properties": {
-        "text": {
-            "type": "string",
-            "required": true
-        }
-    },
-    "validations": [],
-    "relations": {},
-    "acls": [],
-    "methods": []
+  "name": "todo",
+  "plural": "todos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "mongodb": {
+    "collection": "TodosCollection"
+  },
+  "properties": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": []
 }

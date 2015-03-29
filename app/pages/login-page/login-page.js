@@ -3,18 +3,29 @@
 require('./login-page.less');
 
 import React from 'react/addons';
+import Reflux from 'reflux';
 import Button from '../../components/button/button';
+import AuthActions from '../../actions/auth-actions';
+import AuthStore from '../../stores/auth-store';
 let { LinkedStateMixin } = React.addons;
-
 
 export default React.createClass({
 
     mixins: [
-        LinkedStateMixin
+        LinkedStateMixin,
+        Reflux.listenTo(AuthStore, 'onAuthResponse')
     ],
 
     contextTypes: {
         router: React.PropTypes.func
+    },
+
+    statics: {
+        willTransitionTo(transition) {
+            if (AuthStore.isLoggedIn()) {
+                transition.redirect('/', {});
+            }
+        }
     },
 
     getInitialState() {
@@ -32,8 +43,17 @@ export default React.createClass({
         document.body.className = '';
     },
 
+    onAuthResponse(state) {
+        if (state.loggedIn) {
+            this.context.router.transitionTo('app');
+        } else {
+            alert('Wrong');
+        }
+    },
+
     handleSubmit(e) {
-        alert('submit')
+        e.preventDefault();
+        AuthActions.login(this.state.email, this.state.password);
     },
 
     render() {

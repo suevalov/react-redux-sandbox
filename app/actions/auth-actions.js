@@ -5,7 +5,7 @@ import axios from 'axios';
 import Config from '../constants/config';
 import { assert } from 'chai';
 
-const AuthApi = Config.getApiEndpoint() + '/users/';
+const AuthApi = Config.getApiEndpoint() + '/users';
 
 let AuthActions = Reflux.createActions({
 
@@ -24,11 +24,9 @@ AuthActions.login.listen(function(email, password) {
     assert.isString(email);
     assert.isString(password);
 
-    axios.post(AuthApi + 'login', {
-        credentials: {
-            email: email,
-            password: password
-        }
+    axios.post(AuthApi + '/login?include=user', {
+        email: email,
+        password: password
     })
         .then((response) => {
             this.completed(response.data);
@@ -39,9 +37,9 @@ AuthActions.login.listen(function(email, password) {
 
 });
 
-AuthActions.logout.listen(function() {
+AuthActions.logout.listen(function(token) {
 
-    axios.post(AuthApi + 'logout')
+    axios.post(`${AuthApi}/logout?access_token=${token}`)
         .then(() => {
             this.completed();
         })
