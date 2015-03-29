@@ -4,6 +4,7 @@
   "author": "Alexander Suevalov",
   "main": "app/main.js",
   "dependencies": {
+    "animate.css": "^3.2.5",
     "axios": "^0.5.2",
     "babel": "4.7.1",
     "bootstrap": "^3.3.4",

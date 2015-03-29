@@ -8,19 +8,21 @@ let { RouteHandler, Link  } = Router;
 
 export default React.createClass({
 
-  render() {
-    return (
-      <div className='app-component'>
-        <header>
-          <ul>
-            <li><Link to="app">Planner</Link></li>
-            <li><Link to="buttons">Buttons</Link></li>
-          </ul>
-          Logged as Jane
-        </header>
-        <RouteHandler />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className='layout'>
+                <div className='layout__nav'></div>
+                <div className='layout__content'>
+                    <header>
+                        <ul>
+                            <li><Link to="app">Planner</Link></li>
+                            <li><Link to="buttons">Buttons</Link></li>
+                        </ul>
+                    </header>
+                    <RouteHandler />
+                </div>
+            </div>
+        );
+    }
 
 });

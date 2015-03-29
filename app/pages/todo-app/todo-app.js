@@ -9,11 +9,8 @@ import TodoActions from '../../actions/todo-actions';
 import Spinner from 'react-spinkit';
 import {
     Button,
-    ButtonGroup,
-    DropdownButton,
-    MenuItem,
     Icon
-    } from '../../components/index';
+} from '../../components/index';
 
 let { PureRenderMixin, LinkedStateMixin } = React.addons;
 
@@ -122,37 +119,14 @@ export default React.createClass({
 
     render() {
 
-        let buttonProps = {
-            theme: 'info',
-            onClick: this.onClickHandler
-        };
-
         return (
             <div>
                 <TodoList items={this.state.items} spinner={this.state.fetching}/>
                 <input valueLink={this.linkState('text')}/>
-                <Button {...buttonProps} >Click me!</Button>
-                <Button theme='danger' circle={true} size='large' dim={true}>
-                    <Icon name='heart'/>
-                </Button>
-
-                <div>
-                    <ButtonGroup>
-                        <Button>First</Button>
-                        <Button>Second</Button>
-                        <Button theme='warning'>Third</Button>
-                    </ButtonGroup>
-                </div>
-                <div>
-                    <DropdownButton title='Dropdown'>
-                        <MenuItem eventKey='1'>MenuItem 1</MenuItem>
-                        <MenuItem divider/>
-                        <MenuItem eventKey='2'>MenuItem 2</MenuItem>
-                    </DropdownButton>
-                    <DropdownButton title='Another Dropdown'/>
-                </div>
+                <Button theme='info' onClick={this.onClickHandler} >Click me!</Button>
             </div>
         );
+
     }
 
 });
