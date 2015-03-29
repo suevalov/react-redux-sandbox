@@ -57,7 +57,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node index.js",
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
     "test-watch": "./node_modules/karma/bin/karma start karma.conf.js --singleRun=false"
   }
