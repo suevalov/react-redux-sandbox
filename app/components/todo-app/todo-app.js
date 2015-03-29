@@ -3,39 +3,41 @@
 
 import React from 'react/addons';
 import Reflux from 'reflux';
+import Immutable from 'immutable';
 import TodoStore from '../../stores/todo-store';
 import TodoActions from '../../actions/todo-actions';
+import Spinner from 'react-spinkit';
 import {
     Button,
     ButtonGroup,
     DropdownButton,
     MenuItem,
     Icon
-} from '../inspinia';
+    } from '../inspinia';
 
 let { PureRenderMixin, LinkedStateMixin } = React.addons;
 
 var TodoItem = React.createClass({
 
-    mixins: [ PureRenderMixin ],
+    mixins: [PureRenderMixin],
 
     propTypes: {
-        id: React.PropTypes.number.isRequired,
-        label: React.PropTypes.string.isRequired
+        id: React.PropTypes.string.isRequired,
+        text: React.PropTypes.string.isRequired
     },
 
     clickHandler(e) {
         e.preventDefault();
-        TodoActions.removeItem(this.props.id);
+        TodoActions.removeTodo(this.props.id);
     },
 
     render() {
         return (
             <li>
-                {this.props.label}
+                {this.props.text}
                 &nbsp;
                 <Button theme='danger' size='xsmall' onClick={this.clickHandler}>
-                    <Icon name='remove' />
+                    <Icon name='remove'/>
                     &nbsp;
                     Remove
                 </Button>
@@ -47,12 +49,33 @@ var TodoItem = React.createClass({
 
 var TodoList = React.createClass({
 
+    propTypes: {
+        items: React.PropTypes.instanceOf(Immutable.Map),
+        spinner: React.PropTypes.bool.isRequired
+    },
+
     render() {
-        return <ul>{this.props.items.map((item) => {
+        if (this.props.spinner) {
             return (
-                <TodoItem label={item.label} id={item.id} />
+                <Spinner spinnerName='three-bounce' />
             );
-        }).toJS()}</ul>;
+        } else {
+            if (this.props.items.count()) {
+                return (
+                    <ul>
+                        {this.props.items.map((item) => {
+                            return (
+                                <TodoItem {...item.toJS()} />
+                            );
+                        })}
+                    </ul>
+                );
+            } else {
+                return (
+                    <div>Todo list is empty</div>
+                );
+            }
+        }
     }
 
 });
@@ -60,15 +83,29 @@ var TodoList = React.createClass({
 export default React.createClass({
 
     mixins: [
-        Reflux.connect(TodoStore, 'items'),
+        Reflux.listenTo(TodoStore, 'onTodoStoreChange'),
         PureRenderMixin,
         LinkedStateMixin
     ],
 
+    componentDidMount() {
+        TodoActions.fetchTodos();
+        this.setState({
+            fetching: true
+        });
+    },
+
+    onTodoStoreChange(items) {
+        this.setState({
+            items: items,
+            fetching: false
+        });
+    },
+
     onClickHandler() {
         var text = this.state.text;
         if (text) {
-            TodoActions.addItem(text);
+            TodoActions.addTodo(text);
             this.setState({
                 text: ''
             });
@@ -77,6 +114,8 @@ export default React.createClass({
 
     getInitialState() {
         return {
+            items: TodoStore.getInitialState(),
+            fetching: false,
             text: ''
         };
     },
@@ -90,11 +129,11 @@ export default React.createClass({
 
         return (
             <div>
-                <TodoList items={this.state.items} />
-                <input valueLink={this.linkState('text')} />
+                <TodoList items={this.state.items} spinner={this.state.fetching}/>
+                <input valueLink={this.linkState('text')}/>
                 <Button {...buttonProps} >Click me!</Button>
                 <Button theme='danger' circle={true} size='large' dim={true}>
-                    <Icon name='heart' />
+                    <Icon name='heart'/>
                 </Button>
 
                 <div>
@@ -107,10 +146,10 @@ export default React.createClass({
                 <div>
                     <DropdownButton title='Dropdown'>
                         <MenuItem eventKey='1'>MenuItem 1</MenuItem>
-                        <MenuItem divider />
+                        <MenuItem divider/>
                         <MenuItem eventKey='2'>MenuItem 2</MenuItem>
                     </DropdownButton>
-                    <DropdownButton title='Another Dropdown' />
+                    <DropdownButton title='Another Dropdown'/>
                 </div>
             </div>
         );

@@ -4,8 +4,10 @@
   "author": "Alexander Suevalov",
   "main": "app/main.js",
   "dependencies": {
+    "axios": "^0.5.2",
     "babel": "4.7.1",
     "bootstrap": "^3.3.4",
+    "chai": "^2.2.0",
     "classnames": "^1.2.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
@@ -22,6 +24,7 @@
     "loopback-datasource-juggler": "^2.19.0",
     "react": "^0.13.0",
     "react-router": "^0.13.1",
+    "react-spinkit": "^1.0.2",
     "reflux": "^0.2.7",
     "serve-favicon": "^2.0.1",
     "superagent": "^0.21.0"
@@ -69,6 +72,7 @@
   },
   "scripts": {
     "start": "node index.js",
+    "server": "node server/server.js",
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
     "test-watch": "./node_modules/karma/bin/karma start karma.conf.js --singleRun=false"
   }

@@ -2,35 +2,55 @@
 
 import Reflux from 'reflux';
 import TodoActions from '../actions/todo-actions';
-import { OrderedMap } from 'immutable';
+import Immutable from 'immutable';
+import { assert } from 'chai';
 
-var itemsCount = 0;
+let TodoRecord = Immutable.Record({
+    id: null,
+    text: null
+});
 
 let TodoStore = Reflux.createStore({
 
-  listenables: TodoActions,
+    listenables: TodoActions,
 
-  init() {
-    this._items = new OrderedMap();
-  },
+    init() {
+        this._items = Immutable.Map();
+    },
 
-  getInitialState: function () {
-    return this._items;
-  },
+    getInitialState() {
+        return this._items;
+    },
 
-  onRemoveItem: function(id) {
-    this._items = this._items.remove(id);
-    this.trigger(this._items);
-  },
+    onRemoveTodoCompleted(id) {
+        assert.isString(id);
 
-  onAddItem: function (label) {
-    let id = itemsCount++;
-    this._items = this._items.set(id, {
-      id: id,
-      label: label
-    });
-    this.trigger(this._items);
-  }
+        this._items = this._items.delete(id);
+        this.trigger(this._items);
+    },
+
+    onFetchTodosCompleted(todos) {
+
+        assert.isArray(todos);
+
+        let todosMap = Immutable.Map();
+
+        for (let todo of todos) {
+            todosMap = todosMap.set(todo.id, new TodoRecord(todo));
+        }
+
+        this._items = todosMap;
+        this.trigger(this._items);
+
+    },
+
+    onAddTodoCompleted(todo) {
+
+        assert.isObject(todo);
+
+        this._items = this._items.set(todo.id, new TodoRecord(todo));
+        this.trigger(this._items);
+    }
 
 });
 

@@ -18,7 +18,8 @@ module.exports = {
     output: {
         path: '/build/',
         publicPath: "http://localhost:8081/assets/",
-        filename: 'app.js'
+        filename: 'app.js',
+        sourceMapFilename: 'app.map'
     },
 
     stats: {
@@ -40,7 +41,7 @@ module.exports = {
                 loader: 'babel-loader?experimental'
             },
             {
-                test: /\.less/,
+                test: /\.(less|css)$/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader!' + AUTOPREFIXER_LOADER + '!less-loader')
             },
             {
