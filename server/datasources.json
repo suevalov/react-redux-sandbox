@@ -1,0 +1,10 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongodb": {
+    "name": "sandbox-js-database",
+    "connector": "mongodb"
+  }
+}
