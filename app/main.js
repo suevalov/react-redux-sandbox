@@ -10,20 +10,22 @@ import Router from 'react-router';
  */
 
 import Layout from './pages/layout';
+import LoginPage from './pages/login-page/login-page';
 import TodoPage from './pages/todo-app/todo-app';
 import NotFoundPage from './pages/not-found-page/not-found-page';
 import ButtonsTestsPage from './components/button/__tests__/buttons-tests-page';
 
 /**
- * Routes Configuration
+ * Routes Configurations
  */
 
 let { Route, DefaultRoute, NotFoundRoute } = Router;
 
 let routes = (
     <Route name="app" path="/" handler={Layout}>
-        <Route name="buttons" handler={ButtonsTestsPage} />
         <DefaultRoute handler={TodoPage}/>
+        <Route name='login' handler={LoginPage} />
+        <Route name="buttons" handler={ButtonsTestsPage} />
         <NotFoundRoute handler={NotFoundPage}/>
     </Route>
 );

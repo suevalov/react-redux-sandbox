@@ -5,6 +5,7 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
 import TodoStore from '../../stores/todo-store';
+import AuthStore from '../../stores/auth-store';
 import TodoActions from '../../actions/todo-actions';
 import Spinner from 'react-spinkit';
 import {
@@ -84,6 +85,18 @@ export default React.createClass({
         PureRenderMixin,
         LinkedStateMixin
     ],
+
+    statics: {
+        willTransitionTo(transition) {
+            if (!AuthStore.isLoggedIn()) {
+                let options = {};
+                if (transition.path !== '' && transition.path !== '/') {
+                    options.nextPath = transition.path;
+                }
+                transition.redirect('/login', {}, options);
+            }
+        }
+    },
 
     componentDidMount() {
         TodoActions.fetchTodos();

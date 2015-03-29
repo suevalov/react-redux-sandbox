@@ -126,11 +126,8 @@ export default React.createClass({
     },
 
     handleClick(props, event) {
-        if (!props.href || props.disabled) {
-            event.preventDefault();
-        }
-
         if (props.disabled) {
+            event.preventDefault();
             return;
         }
 
