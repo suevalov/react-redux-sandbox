@@ -11,7 +11,6 @@ module.exports = function(app) {
             password: 'opensesame' },
         function(err, user) {
 
-
             Role.create({
                 name: 'admin'
             }, function(err, role) {

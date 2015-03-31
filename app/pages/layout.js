@@ -7,9 +7,9 @@ import Reflux from 'reflux';
 import AuthStore from '../stores/auth-store';
 import AuthActions from '../actions/auth-actions';
 
-let { RouteHandler, Link  } = Router;
+let { RouteHandler, Link } = Router;
 
-export default React.createClass({
+let Navigation = React.createClass({
 
     mixins: [
         Reflux.listenTo(AuthStore, 'onAuthChange')
@@ -29,9 +29,36 @@ export default React.createClass({
         AuthActions.logout(AuthStore.getToken());
     },
 
-    render() {
+    render: function() {
 
         var loggedIn = AuthStore.isLoggedIn();
+
+        return (
+            <header>
+                <ul>
+                    <li><Link to="app">Planner</Link></li>
+                    <li><Link to="components">Components</Link></li>
+                    { loggedIn ? (
+                        <li><a onClick={this.logoutClickHandler}>Logout</a></li>
+                    ) : (
+                        ''
+                    )}
+                </ul>
+            </header>
+        );
+
+    }
+
+});
+
+export default React.createClass({
+
+    contextTypes: {
+        router: React.PropTypes.func
+    },
+
+    render() {
+
         var currentPath = this.context.router.getCurrentPath();
 
         if (currentPath === '/login') {
@@ -45,24 +72,12 @@ export default React.createClass({
                 <div className='layout'>
                     <div className='layout__nav'></div>
                     <div className='layout__content'>
-                        <header>
-                            <ul>
-                                <li><Link to="app">Planner</Link></li>
-                                <li><Link to="buttons">Buttons</Link></li>
-                                { loggedIn ? (
-                                    <li><a onClick={this.logoutClickHandler}>Logout</a></li>
-                                ) : (
-                                    ''
-                                )}
-                            </ul>
-                        </header>
+                        <Navigation />
                         <RouteHandler />
                     </div>
                 </div>
             );
         }
-
-
 
     }
 
