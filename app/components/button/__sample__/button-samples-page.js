@@ -1,8 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Button from '../button';
-import { Grid, Row } from 'react-bootstrap';
+import { Grid, Row, Button } from '../../../components';
 
 require('./button-samples-page.less');
 

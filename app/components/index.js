@@ -8,6 +8,9 @@ import DropdownButton from './dropdown-button/dropdown-button';
 import DropdownMenu from './dropdown-menu/dropdown-menu';
 import MenuItem from './menu-item/menu-item';
 import Icon from './icon/icon';
+import Grid from './grid/grid';
+import Row from './row/row';
+import Col from './col/col';
 
 module.exports = {
     Button: Button,
@@ -15,5 +18,8 @@ module.exports = {
     DropdownButton: DropdownButton,
     DropdownMenu: DropdownMenu,
     MenuItem: MenuItem,
-    Icon: Icon
+    Icon: Icon,
+    Grid: Grid,
+    Row: Row,
+    Col: Col
 };
