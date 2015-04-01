@@ -1,9 +1,9 @@
 'use strict';
 
-require('./dropdown-button.less');
-
 import React from 'react/addons';
 import BootstrapDropdownButton from 'react-bootstrap/lib/DropdownButton';
+
+require('./dropdown-button.less');
 
 class DropdownButton extends React.Component {
 

@@ -1,19 +1,18 @@
 'use strict';
 
-require('./icon.less');
-
 import React from 'react';
-let PropTypes = React.PropTypes;
+
+require('./icon.less');
 
 export default React.createClass({
 
     propTypes: {
-        name: PropTypes.string.isRequired,
-        size: PropTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
-        rotate: PropTypes.oneOf(['90', '180', '270']),
-        flip: PropTypes.oneOf(['horizontal', 'vertical']),
-        fixedWidth: PropTypes.bool,
-        spin: PropTypes.bool
+        name: React.PropTypes.string.isRequired,
+        size: React.PropTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
+        rotate: React.PropTypes.oneOf(['90', '180', '270']),
+        flip: React.PropTypes.oneOf(['horizontal', 'vertical']),
+        fixedWidth: React.PropTypes.bool,
+        spin: React.PropTypes.bool
     },
 
     render() {

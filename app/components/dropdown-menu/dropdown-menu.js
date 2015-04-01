@@ -1,9 +1,9 @@
 'use strict';
 
-require('./dropdown-menu.less');
-
 import React from 'react/addons';
 import BootstrapDropdownMenu from 'react-bootstrap/lib/DropdownMenu';
+
+require('./dropdown-menu.less');
 
 class DropdownMenu extends React.Component {
 

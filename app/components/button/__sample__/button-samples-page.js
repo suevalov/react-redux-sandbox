@@ -1,10 +1,10 @@
 'use strict';
 
-require('./button-samples-page.less');
-
 import React from 'react';
 import Button from '../button';
 import { Grid, Row } from 'react-bootstrap';
+
+require('./button-samples-page.less');
 
 export default React.createClass({
 
@@ -24,9 +24,9 @@ export default React.createClass({
                 </Row>
                 <Row>
                     <h4>Different sizes</h4>
-                    <Button bsSize='xsmall'>Xsmall</Button>
-                    <Button bsSize='small'>Small</Button>
-                    <Button bsSize='large'>Large</Button>
+                    <Button size='xsmall'>Xsmall</Button>
+                    <Button size='small'>Small</Button>
+                    <Button size='large'>Large</Button>
                 </Row>
                 <Row>
                     <h4>Outline buttons</h4>

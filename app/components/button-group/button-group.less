@@ -1,4 +1,13 @@
 @import '../variables.less';
 @import '~bootstrap/less/mixins';
-@import '~bootstrap/less/buttons.less';
 @import '~bootstrap/less/button-groups.less';
+
+.btn-group-xs > .btn {
+    .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+}
+.btn-group-sm > .btn {
+    .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+}
+.btn-group-lg > .btn {
+    .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+}

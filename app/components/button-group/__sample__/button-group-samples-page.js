@@ -1,12 +1,12 @@
 'use strict';
 
-require('./button-group-samples-page.less');
-
 import React from 'react';
 import Button from '../../button/button';
 import Icon from '../../icon/icon';
 import ButtonGroup from '../button-group';
 import { Grid, Row } from 'react-bootstrap';
+
+require('./button-group-samples-page.less');
 
 export default React.createClass({
 
