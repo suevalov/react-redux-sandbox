@@ -6,7 +6,7 @@ import React from 'react';
 import Button from '../button';
 import { Grid, Row } from 'react-bootstrap';
 
-let ButtonSamplesPage = React.createClass({
+export default React.createClass({
 
     render() {
         return (
@@ -89,5 +89,3 @@ let ButtonSamplesPage = React.createClass({
     }
 
 });
-
-export default ButtonSamplesPage;

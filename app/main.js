@@ -15,6 +15,7 @@ import TodoPage from './pages/todo-app/todo-app';
 import NotFoundPage from './pages/not-found-page/not-found-page';
 import ComponentsPage from './pages/components-page/components-page';
 import ButtonSamplesPage from './components/button/__sample__/button-samples-page';
+import ButtonGroupSamplesPage from './components/button-group/__sample__/button-group-samples-page';
 
 /**
  * Routes Configurations
@@ -28,6 +29,7 @@ let routes = (
         <Route name='login' handler={LoginPage} />
         <Route name='components' handler={ComponentsPage}>
             <Route name='buttons' handler={ButtonSamplesPage} />
+            <Route name='button-groups' handler={ButtonGroupSamplesPage} />
         </Route>
         <NotFoundRoute handler={NotFoundPage}/>
     </Route>

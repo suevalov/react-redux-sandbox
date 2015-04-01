@@ -3,39 +3,18 @@
 require('./button-group.less');
 
 import React from 'react';
-import classSet from 'classnames';
+import BootstrapButtonGroup from 'react-bootstrap/lib/ButtonGroup';
 
-let { PropTypes } = React;
-
-export default React.createClass({
-
-    propTypes: {
-        vertical: PropTypes.bool,
-        justified: PropTypes.bool
-    },
-
-    getDefaultProps() {
-        return {
-            vertical: false,
-            justified: false
-        };
-    },
+class ButtonGroup extends React.Component {
 
     render() {
-
-        let classes = {
-            'btn-group': !this.props.vertical,
-            'btn-group-vertical': this.props.vertical,
-            'btn-group-justified': this.props.justified
-        };
-
         return (
-            <div
-                {...this.props}
-                className={classSet(classes, this.props.className)}>
+            <BootstrapButtonGroup {...this.props}>
                 {this.props.children}
-            </div>
+            </BootstrapButtonGroup>
         );
     }
 
-});
+}
+
+export default ButtonGroup;

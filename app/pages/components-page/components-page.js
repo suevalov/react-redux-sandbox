@@ -9,6 +9,7 @@ let ComponentsNavigation = React.createClass({
         return (
             <ul>
                 <li><Link to='buttons'>Buttons</Link></li>
+                <li><Link to='button-groups'>Button groups</Link></li>
             </ul>
         );
     }
