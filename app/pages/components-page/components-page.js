@@ -5,6 +5,8 @@ import { RouteHandler, Link } from 'react-router';
 
 let ComponentsNavigation = React.createClass({
 
+    displayName: 'ComponentsNavigation',
+
     render() {
         return (
             <ul>
@@ -18,6 +20,9 @@ let ComponentsNavigation = React.createClass({
 });
 
 export default React.createClass({
+
+    displayName: 'ComponentsPage',
+
     render() {
         return (
             <div>

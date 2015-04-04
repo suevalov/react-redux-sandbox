@@ -7,9 +7,7 @@ class Grid extends React.Component {
 
     render() {
         return (
-            <BootstrapGrid {...this.props}>
-                {this.props.children}
-            </BootstrapGrid>
+            <BootstrapGrid {...this.props} />
         );
     }
 

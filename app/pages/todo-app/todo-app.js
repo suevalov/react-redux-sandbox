@@ -17,7 +17,11 @@ let { PureRenderMixin, LinkedStateMixin } = React.addons;
 
 var TodoItem = React.createClass({
 
-    mixins: [PureRenderMixin],
+    displayName: 'TodoItem',
+
+    mixins: [
+        PureRenderMixin
+    ],
 
     propTypes: {
         id: React.PropTypes.string.isRequired,
@@ -80,6 +84,8 @@ var TodoList = React.createClass({
 
 export default React.createClass({
 
+    displayName: 'TodoApp',
+
     mixins: [
         Reflux.listenTo(TodoStore, 'onTodoStoreChange'),
         PureRenderMixin,
@@ -100,9 +106,6 @@ export default React.createClass({
 
     componentDidMount() {
         TodoActions.fetchTodos();
-        this.setState({
-            fetching: true
-        });
     },
 
     onTodoStoreChange(items) {
@@ -125,7 +128,7 @@ export default React.createClass({
     getInitialState() {
         return {
             items: TodoStore.getInitialState(),
-            fetching: false,
+            fetching: true,
             text: ''
         };
     },

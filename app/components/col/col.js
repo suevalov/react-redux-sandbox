@@ -7,9 +7,7 @@ class Row extends React.Component {
 
     render() {
         return (
-            <BootstrapCol {...this.props}>
-                {this.props.children}
-            </BootstrapCol>
+            <BootstrapCol {...this.props} />
         );
     }
 

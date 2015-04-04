@@ -11,6 +11,8 @@ require('./dropdown-button-samples-page.less');
 
 export default React.createClass({
 
+    displayName: 'DropdownButtonSamplesPage',
+
     render() {
 
         var props = [
@@ -48,7 +50,7 @@ export default React.createClass({
                                     <MenuItem>Item 1</MenuItem>
                                     <MenuItem>Item 2</MenuItem>
                                     <MenuItem>Item 3</MenuItem>
-                                    <MenuItem divider></MenuItem>
+                                    <MenuItem divider />
                                     <MenuItem header>Header</MenuItem>
                                     <MenuItem>Item 4</MenuItem>
                                     <MenuItem>Item 5</MenuItem>

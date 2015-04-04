@@ -25,7 +25,7 @@ import DropdownButtonSamplesPage from './components/dropdown-button/__sample__/d
 let { Route, DefaultRoute, NotFoundRoute } = Router;
 
 let routes = (
-    <Route name="app" path="/" handler={Layout}>
+    <Route name='app' path='/' handler={Layout}>
         <DefaultRoute handler={TodoPage}/>
         <Route name='login' handler={LoginPage} />
         <Route name='components' handler={ComponentsPage}>

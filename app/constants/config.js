@@ -3,7 +3,7 @@
 import Immutable from 'immutable';
 
 const config = Immutable.fromJS({
-    'apiendpoint': 'http://localhost:3000/api'
+    apiendpoint: 'http://localhost:3000/api'
 });
 
 module.exports = {

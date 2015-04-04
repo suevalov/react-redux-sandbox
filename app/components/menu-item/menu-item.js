@@ -7,9 +7,7 @@ class MenuItem extends React.Component {
 
     render() {
         return (
-            <BootstrapMenuItem {...this.props}>
-                {this.props.children}
-            </BootstrapMenuItem>
+            <BootstrapMenuItem {...this.props} />
         );
     }
 

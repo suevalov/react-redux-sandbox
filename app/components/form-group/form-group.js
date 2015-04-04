@@ -9,9 +9,7 @@ class FormGroup extends React.Component {
 
     render() {
         return (
-            <BootstrapFormGroup {...this.props}>
-                {this.props.children}
-            </BootstrapFormGroup>
+            <BootstrapFormGroup {...this.props} />
         );
     }
 

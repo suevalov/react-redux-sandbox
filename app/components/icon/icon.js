@@ -12,7 +12,8 @@ export default React.createClass({
         rotate: React.PropTypes.oneOf(['90', '180', '270']),
         flip: React.PropTypes.oneOf(['horizontal', 'vertical']),
         fixedWidth: React.PropTypes.bool,
-        spin: React.PropTypes.bool
+        spin: React.PropTypes.bool,
+        className: React.PropTypes.string
     },
 
     render() {

@@ -210,7 +210,7 @@ export default React.createClass({
     },
 
     renderButton(classes, props, styles) {
-        var Component = props.componentClass || 'button';
+        let Component = props.componentClass || 'button';
         return (
             <Component
                 {...props}

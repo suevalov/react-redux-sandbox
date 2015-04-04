@@ -14,6 +14,8 @@ require('./button-group-samples-page.less');
 
 export default React.createClass({
 
+    displayName: 'ButtonGroupSamplesPage',
+
     render() {
         return (
             <Grid fluid className='button-group-samples-page'>

@@ -10,9 +10,7 @@ class ButtonGroup extends React.Component {
 
     render() {
         return (
-            <BootstrapButtonGroup {...this.props}>
-                {this.props.children}
-            </BootstrapButtonGroup>
+            <BootstrapButtonGroup {...this.props} />
         );
     }
 

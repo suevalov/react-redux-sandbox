@@ -9,9 +9,7 @@ class DropdownButton extends React.Component {
 
     render() {
         return (
-            <BootstrapDropdownButton {...this.props}>
-                {this.props.children}
-            </BootstrapDropdownButton>
+            <BootstrapDropdownButton {...this.props} />
         );
     }
 

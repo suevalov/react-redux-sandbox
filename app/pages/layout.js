@@ -11,6 +11,8 @@ let { RouteHandler, Link } = Router;
 
 let Navigation = React.createClass({
 
+    displayName: 'Navigation',
+
     mixins: [
         Reflux.listenTo(AuthStore, 'onAuthChange')
     ],
@@ -36,8 +38,8 @@ let Navigation = React.createClass({
         return (
             <header>
                 <ul>
-                    <li><Link to="app">Planner</Link></li>
-                    <li><Link to="components">Components</Link></li>
+                    <li><Link to='app'>Planner</Link></li>
+                    <li><Link to='components'>Components</Link></li>
                     { loggedIn ? (
                         <li><a onClick={this.logoutClickHandler}>Logout</a></li>
                     ) : (

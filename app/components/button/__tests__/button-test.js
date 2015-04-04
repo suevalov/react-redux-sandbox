@@ -255,7 +255,7 @@ describe('Button', () => {
             </Button>
         );
         expect(instance.getDOMNode().className).toExclude('btn-min-width');
-        expect(instance.getDOMNode().getAttribute('style')).toInclude(`min-width:${width}px;`)
+        expect(instance.getDOMNode().getAttribute('style')).toInclude(`min-width:${width}px;`);
     });
 
 });

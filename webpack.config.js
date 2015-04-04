@@ -26,12 +26,17 @@ module.exports = {
         colors: true
     },
 
+    eslint: {
+        formatter: require("eslint-friendly-formatter"),
+        configFile: '.eslintrc'
+    },
+
     module: {
         preLoaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'jsxhint'
+                loader: 'eslint-loader'
             }
         ],
         loaders: [

@@ -9,11 +9,12 @@ import AuthStore from '../../stores/auth-store';
 import {
     Button,
     Input
-} from '../../components/index';
+    } from '../../components/index';
 
 let { LinkedStateMixin } = React.addons;
 
 export default React.createClass({
+    displayName: 'LoginPage',
 
     mixins: [
         LinkedStateMixin,
@@ -50,8 +51,6 @@ export default React.createClass({
     onAuthResponse(state) {
         if (state.loggedIn) {
             this.context.router.transitionTo('app');
-        } else {
-            alert('Wrong');
         }
     },
 
@@ -64,9 +63,11 @@ export default React.createClass({
         return (
             <div className='loginPage'>
                 <h2>Please, login</h2>
+
                 <form onSubmit={this.handleSubmit}>
-                    <Input type='email' placeholder='Email' valueLink={this.linkState('email')} />
-                    <Input type='password' placeholder='Password' valueLink={this.linkState('password')} />
+                    <Input type='email' placeholder='Email' valueLink={this.linkState('email')}/>
+                    <Input type='password' placeholder='Password' valueLink={this.linkState('password')}/>
+
                     <div>
                         <Button type='submit' theme='primary' block>Log in</Button>
                     </div>

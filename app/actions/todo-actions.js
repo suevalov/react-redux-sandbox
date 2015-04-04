@@ -8,10 +8,10 @@ import Config from '../constants/config';
 const TodoApiPath = Config.getApiEndpoint() + '/todos/';
 
 let TodoActions = Reflux.createActions({
-    addTodo : {
+    addTodo: {
         asyncResult: true
     },
-    removeTodo : {
+    removeTodo: {
         asyncResult: true
     },
     fetchTodos: {
@@ -53,5 +53,3 @@ TodoActions.fetchTodos.listen(function() {
 });
 
 module.exports = TodoActions;
-
-
