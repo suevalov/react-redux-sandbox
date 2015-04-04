@@ -1,0 +1,46 @@
+@import '../variables.less';
+@import '~bootstrap/less/mixins';
+@import '~bootstrap/less/forms';
+
+.form-control, .single-line {
+    background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #e5e6e7;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+    font-size:14px
+}
+
+.form-control:focus, .single-line:focus {
+    box-shadow: none;
+    border-color: @brand-primary;
+}
+
+.has-success .form-control {
+    border-color: @brand-primary;
+}
+
+.has-warning .form-control {
+    border-color: @brand-warning;
+}
+
+.has-error .form-control {
+    border-color: @brand-danger;
+}
+
+.has-success .control-label {
+    color: @brand-primary;
+}
+
+.has-warning .control-label {
+    color: @brand-warning;
+}
+
+.has-error .control-label {
+    color: @brand-danger;
+}
+

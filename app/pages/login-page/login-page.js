@@ -4,9 +4,13 @@ require('./login-page.less');
 
 import React from 'react/addons';
 import Reflux from 'reflux';
-import Button from '../../components/button/button';
 import AuthActions from '../../actions/auth-actions';
 import AuthStore from '../../stores/auth-store';
+import {
+    Button,
+    Input
+} from '../../components/index';
+
 let { LinkedStateMixin } = React.addons;
 
 export default React.createClass({
@@ -61,8 +65,8 @@ export default React.createClass({
             <div className='loginPage'>
                 <h2>Please, login</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <input type='email' placeholder='Email' valueLink={this.linkState('email')} />
-                    <input type='password' placeholder='Password' valueLink={this.linkState('password')} />
+                    <Input type='email' placeholder='Email' valueLink={this.linkState('email')} />
+                    <Input type='password' placeholder='Password' valueLink={this.linkState('password')} />
                     <div>
                         <Button type='submit' theme='primary' block>Log in</Button>
                     </div>
