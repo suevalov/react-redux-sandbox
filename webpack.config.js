@@ -1,6 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -17,7 +16,7 @@ module.exports = {
 
     output: {
         path: '/build/',
-        publicPath: "http://localhost:8081/assets/",
+        publicPath: 'http://localhost:8081/assets/',
         filename: 'app.js',
         sourceMapFilename: 'app.map'
     },
@@ -27,7 +26,7 @@ module.exports = {
     },
 
     eslint: {
-        formatter: require("eslint-friendly-formatter"),
+        formatter: require('eslint-friendly-formatter'),
         configFile: '.eslintrc'
     },
 
