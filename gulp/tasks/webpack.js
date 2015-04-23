@@ -69,18 +69,6 @@ gulp.task('webpack', function(cb) {
                     test: /\.(less|css)$/,
                     loader: ExtractTextPlugin.extract('style-loader', 'css-loader!' + AUTOPREFIXER_LOADER + '!less-loader')
                 }
-                //{
-                //    test: /\.png/,
-                //    loader: 'url-loader?limit=10000&mimetype=image/png'
-                //},
-                //{
-                //    test: /\.jpg/,
-                //    loader: 'url-loader?limit=10000&mimetype=image/jpg'
-                //},
-                //{
-                //    test: /\.(otf|eot|svg|ttf|woff)$/,
-                //    loader: 'url-loader?limit=8192'
-                //}
             ]
         }
 

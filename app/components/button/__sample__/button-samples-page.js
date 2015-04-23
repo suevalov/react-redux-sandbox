@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { Grid, Row, Button } from '../../../components';
+import { Grid, Row, Button, Icon } from '../../../components';
 
 require('./button-samples-page.less');
 
@@ -79,10 +79,18 @@ export default React.createClass({
                 <Row>
                     <h4>3D buttons</h4>
                     <Button dim>D</Button>
-                    <Button dim theme='primary'>P</Button>
-                    <Button dim theme='success'>S</Button>
-                    <Button dim theme='info'>I</Button>
-                    <Button dim theme='warning'>W</Button>
+                    <Button dim theme='primary'>
+                        <Icon name='user'/>
+                    </Button>
+                    <Button dim theme='success'>
+                        <Icon name='bar-chart'/>
+                    </Button>
+                    <Button dim theme='info'>
+                        <Icon name='bell'/>
+                    </Button>
+                    <Button dim theme='warning'>
+                        <Icon name='beer'/>
+                    </Button>
                     <Button dim theme='danger'>D</Button>
                 </Row>
             </Grid>
