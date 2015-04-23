@@ -131,7 +131,9 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onClick || _.noop)(event);
+        if (this.props.onClick) {
+            this.props.onClick(event);
+        }
     },
 
     handleFocus(props, event) {
@@ -139,7 +141,9 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onFocus || _.noop)(event);
+        if (this.props.onFocus) {
+            this.props.onFocus(event);
+        }
     },
 
     handleBlur(props, event) {
@@ -147,7 +151,9 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onBlur || _.noop)(event);
+        if (this.props.onBlur) {
+            this.props.onBlur(event);
+        }
     },
 
     handleMouseEnter(props, event) {
@@ -155,7 +161,9 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onMouseEnter || _.noop)(event);
+        if (this.props.onMouseEnter) {
+            this.props.onMouseEnter(event);
+        }
     },
 
     handleMouseLeave(props, event) {
@@ -163,7 +171,9 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onMouseLeave || _.noop)(event);
+        if (this.props.onMouseLeave) {
+            this.props.onMouseLeave(event);
+        }
     },
 
     handleMouseDown(props, event) {
@@ -171,7 +181,9 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onMouseDown || _.noop)(event);
+        if (this.props.onMouseDown) {
+            this.props.onMouseDown(event);
+        }
     },
 
     handleMouseUp(props, event) {
@@ -179,7 +191,9 @@ export default React.createClass({
             return;
         }
 
-        (this.props.onMouseUp || _.noop)(event);
+        if (this.props.onMouseUp) {
+            this.props.onMouseUp(event);
+        }
     },
 
     render() {

@@ -6,6 +6,7 @@ module.exports = function(config) {
         singleRun: true, //just run once by default
         frameworks: [ 'mocha' ], //use the mocha test framework
         files: [
+            'test/sinon-1.14.1.js',
             'test/tests.webpack.js'
         ],
         captureTimeout: 60000,

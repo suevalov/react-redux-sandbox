@@ -1,4 +1,4 @@
-/*global wallaby:false*/
+/*global wallaby*/
 
 'use strict';
 
@@ -27,6 +27,7 @@ module.exports = function() {
 
         files: [
             { pattern: 'node_modules/react-tools/src/test/phantomjs-shims.js', instrument: false },
+            { pattern: 'test/sinon-1.14.1.js', load: true },
             { pattern: 'app/**/*.js', load: false },
             { pattern: 'app/**/*.less', load: false },
             { pattern: 'app/**/__tests__/*-test.js', ignore: true }

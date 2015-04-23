@@ -1,10 +1,10 @@
 'use strict';
 
-/*global describe, it */
+/* global describe, it, sinon */
 
 import React from 'react';
 import ReactTestUtils from 'react/lib/ReactTestUtils';
-import expect from 'expect';
+import { expect } from 'chai';
 import Button from '../button';
 
 describe('Button', () => {
@@ -15,8 +15,8 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().nodeName).toEqual('BUTTON');
-        expect(1).toEqual(1);
+        expect(instance.getDOMNode().nodeName).to.equal('BUTTON');
+        expect(1).to.equal(1);
     });
 
     it('should output a component with button classes', () => {
@@ -25,8 +25,8 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().nodeName).toEqual('INPUT');
-        expect(instance.getDOMNode().getAttribute('class')).toEqual('btn btn-default');
+        expect(instance.getDOMNode().nodeName).to.equal('INPUT');
+        expect(instance.getDOMNode().getAttribute('class')).to.equal('btn btn-default');
     });
 
     it('should have type="button" by default', () => {
@@ -35,7 +35,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().getAttribute('type')).toEqual('button');
+        expect(instance.getDOMNode().getAttribute('type')).to.equal('button');
     });
 
     it('should override type if it is passed', () => {
@@ -44,7 +44,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().getAttribute('type')).toEqual('submit');
+        expect(instance.getDOMNode().getAttribute('type')).to.equal('submit');
     });
 
     it('should output an anchor if called with a href', () => {
@@ -54,8 +54,8 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().nodeName).toEqual('A');
-        expect(instance.getDOMNode().getAttribute('href')).toEqual(href);
+        expect(instance.getDOMNode().nodeName).to.equal('A');
+        expect(instance.getDOMNode().getAttribute('href')).to.equal(href);
     });
 
     it('should output an input if called with a href and an input component', () => {
@@ -65,8 +65,8 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().nodeName).toEqual('INPUT');
-        expect(instance.getDOMNode().getAttribute('href')).toEqual(href);
+        expect(instance.getDOMNode().nodeName).to.equal('INPUT');
+        expect(instance.getDOMNode().getAttribute('href')).to.equal(href);
     });
 
     it('should output an anchor if called with a target', () => {
@@ -76,8 +76,8 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().nodeName).toEqual('A');
-        expect(instance.getDOMNode().getAttribute('target')).toEqual(target);
+        expect(instance.getDOMNode().nodeName).to.equal('A');
+        expect(instance.getDOMNode().getAttribute('target')).to.equal(target);
     });
 
     it('should be disabled', () => {
@@ -86,7 +86,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().disabled).toBe(true);
+        expect(instance.getDOMNode().disabled).to.equal(true);
     });
 
     it('should be disabled link', () => {
@@ -95,7 +95,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toInclude('disabled');
+        expect(instance.getDOMNode().className).to.contain('disabled');
     });
 
     it('should have block class', () => {
@@ -104,7 +104,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toInclude('btn-block');
+        expect(instance.getDOMNode().className).to.contain('btn-block');
     });
 
     it('should have passed theme', () => {
@@ -113,8 +113,8 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toInclude('btn-danger');
-        expect(instance.getDOMNode().className).toExclude('btn-default');
+        expect(instance.getDOMNode().className).to.contain('btn-danger');
+        expect(instance.getDOMNode().className).to.not.contain('btn-default');
     });
 
     it('should honour additional classes', () => {
@@ -123,9 +123,9 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toInclude('btn');
-        expect(instance.getDOMNode().className).toInclude('btn-warning');
-        expect(instance.getDOMNode().className).toInclude('someAdditionalClass');
+        expect(instance.getDOMNode().className).to.contain('btn');
+        expect(instance.getDOMNode().className).to.contain('btn-warning');
+        expect(instance.getDOMNode().className).to.contain('someAdditionalClass');
     });
 
     it('should have passed size', () => {
@@ -142,7 +142,7 @@ describe('Button', () => {
                     Title
                 </Button>
             );
-            expect(instance.getDOMNode().className).toInclude(`btn-${item[1]}`);
+            expect(instance.getDOMNode().className).to.contain(`btn-${item[1]}`);
         });
 
     });
@@ -153,7 +153,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toInclude('active');
+        expect(instance.getDOMNode().className).to.contain('active');
     });
 
     it('should be outline', () => {
@@ -162,7 +162,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toInclude('btn-outline');
+        expect(instance.getDOMNode().className).to.contain('btn-outline');
     });
 
     it('should be circle', () => {
@@ -171,7 +171,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toInclude('btn-circle');
+        expect(instance.getDOMNode().className).to.contain('btn-circle');
     });
 
     it('should be rounded', () => {
@@ -180,7 +180,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toInclude('btn-rounded');
+        expect(instance.getDOMNode().className).to.contain('btn-rounded');
     });
 
 
@@ -194,6 +194,18 @@ describe('Button', () => {
             </Button>
         );
         ReactTestUtils.Simulate.click(instance.getDOMNode());
+    });
+
+    it('should not call onClick callback if button is disabled', () => {
+        let doneCallback = sinon.spy();
+        let instance = ReactTestUtils.renderIntoDocument(
+            <Button href='#' disabled onClick={doneCallback}>
+                Title
+            </Button>
+        );
+
+        ReactTestUtils.Simulate.click(instance.getDOMNode());
+        expect(doneCallback.called).to.equal(false);
     });
 
     it('should call onFocus callback', (done) => {
@@ -212,8 +224,23 @@ describe('Button', () => {
 
     });
 
-    it('should call onBlur callback', (done) => {
+    it('should not call onFocus callback if button is disabled', () => {
 
+        let doneCallback = sinon.spy();
+
+        let instance = ReactTestUtils.renderIntoDocument(
+            <Button disabled onFocus={doneCallback}>
+                Title
+            </Button>
+        );
+
+        ReactTestUtils.Simulate.focus(instance.getDOMNode());
+
+        expect(doneCallback.called).to.equal(false);
+
+    });
+
+    it('should call onBlur callback', (done) => {
         let doneCallback = () => {
             done();
         };
@@ -225,7 +252,73 @@ describe('Button', () => {
         );
 
         ReactTestUtils.Simulate.blur(instance.getDOMNode());
+    });
 
+    it('should not call onBlur callback if button is disabled', () => {
+        let doneCallback = sinon.spy();
+
+        let instance = ReactTestUtils.renderIntoDocument(
+            <Button disabled onBlur={doneCallback}>
+                Title
+            </Button>
+        );
+
+        ReactTestUtils.Simulate.blur(instance.getDOMNode());
+        expect(doneCallback.called).to.equal(false);
+    });
+
+    it('should call onMouseUp callback', (done) => {
+        let doneCallback = () => {
+            done();
+        };
+
+        let instance = ReactTestUtils.renderIntoDocument(
+            <Button onMouseUp={doneCallback}>
+                Title
+            </Button>
+        );
+
+        ReactTestUtils.Simulate.mouseUp(instance.getDOMNode());
+    });
+
+    it('should not call onMouseUp callback if button is disabled', () => {
+        let doneCallback = sinon.spy();
+
+        let instance = ReactTestUtils.renderIntoDocument(
+            <Button href='#' disabled onMouseUp={doneCallback}>
+                Title
+            </Button>
+        );
+
+        ReactTestUtils.Simulate.mouseUp(instance.getDOMNode());
+        expect(doneCallback.called).to.equal(false);
+    });
+
+    it('should call onMouseDown callback', (done) => {
+        let doneCallback = () => {
+            done();
+        };
+
+        let instance = ReactTestUtils.renderIntoDocument(
+            <Button onMouseDown={doneCallback}>
+                Title
+            </Button>
+        );
+
+        ReactTestUtils.Simulate.mouseDown(instance.getDOMNode());
+    });
+
+    it('should not call onMouseDown callback if button is disabled', () => {
+        let doneCallback = sinon.spy();
+
+        let instance = ReactTestUtils.renderIntoDocument(
+            <Button href='#' disabled onMouseDown={doneCallback}>
+                Title
+            </Button>
+        );
+
+        ReactTestUtils.Simulate.mouseDown(instance.getDOMNode());
+        expect(doneCallback.called).to.equal(false);
     });
 
     it('should be 3d-dim', () => {
@@ -234,7 +327,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toInclude('btn-dim');
+        expect(instance.getDOMNode().className).to.contain('btn-dim');
     });
 
     it('should be min-width', () => {
@@ -243,7 +336,7 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toInclude('btn-min-width');
+        expect(instance.getDOMNode().className).to.contain('btn-min-width');
     });
 
     it('should be min-width style with exactly width', () => {
@@ -254,8 +347,8 @@ describe('Button', () => {
                 Title
             </Button>
         );
-        expect(instance.getDOMNode().className).toExclude('btn-min-width');
-        expect(instance.getDOMNode().getAttribute('style')).toInclude(`min-width:${width}px;`);
+        expect(instance.getDOMNode().className).to.not.contain('btn-min-width');
+        expect(instance.getDOMNode().getAttribute('style')).to.contain(`min-width:${width}px;`);
     });
 
 });
