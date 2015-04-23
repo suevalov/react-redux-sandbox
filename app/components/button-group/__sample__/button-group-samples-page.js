@@ -8,7 +8,7 @@ import {
     Icon,
     Grid,
     Row
-} from '../../../components';
+} from '../../../components/index';
 
 require('./button-group-samples-page.less');
 

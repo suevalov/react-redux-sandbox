@@ -1,13 +1,13 @@
 'use strict';
 
-import React from '../../../node_modules/react/addons';
-import { PropTypes } from '../../../node_modules/react/addons';
+import React from 'react/addons';
 import _ from 'lodash';
 import classSet from 'classnames';
 
 require('./button.less');
 
 const { PureRenderMixin } = React.addons;
+const { PropTypes } = React;
 
 const THEMES = {
     'default': 'default',

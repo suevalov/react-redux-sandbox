@@ -66,15 +66,18 @@
     "less": "^2.4.0",
     "less-loader": "^2.1.0",
     "lodash": "^3.4.0",
+    "mocha": "^2.2.4",
     "morgan": "^1.5.2",
     "null-loader": "^0.1.1",
     "postcss": "^4.0.6",
     "postcss-loader": "^0.3.0",
     "postcss-nested": "^0.2.2",
+    "react-tools": "^0.13.2",
     "run-sequence": "^1.0.2",
     "style-loader": "~0.8.0",
     "url": "^0.10.3",
     "url-loader": "~0.5.5",
+    "wallaby-webpack": "0.0.4",
     "webpack": "^1.7.2"
   },
   "engines": {
@@ -85,7 +88,6 @@
     "prod": "gulp prod",
     "prod-build": "gulp prod-build",
     "server": "node server/server.js",
-    "test": "./node_modules/karma/bin/karma start karma.conf.js",
-    "test-watch": "./node_modules/karma/bin/karma start karma.conf.js --singleRun=false"
+    "test": "./node_modules/karma/bin/karma start karma.conf.js"
   }
 }
