@@ -23,6 +23,14 @@ export default React.createClass({
 
     displayName: 'ComponentsPage',
 
+    componentDidMount() {
+        document.body.className = 'grey';
+    },
+
+    componentWillUnmount() {
+        document.body.className = '';
+    },
+
     render() {
         return (
             <div>

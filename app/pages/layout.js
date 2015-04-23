@@ -39,7 +39,6 @@ let Navigation = React.createClass({
             <header>
                 <ul>
                     <li><Link to='app'>Planner</Link></li>
-                    <li><Link to='components'>Components</Link></li>
                     { loggedIn ? (
                         <li><a onClick={this.logoutClickHandler}>Logout</a></li>
                     ) : (
@@ -65,21 +64,32 @@ export default React.createClass({
 
         if (currentPath === '/login') {
             return (
-                <div className='layout'>
+                <div className='layout--login'>
                     <RouteHandler />
                 </div>
             );
         } else {
-            return (
-                <div className='layout'>
-                    <div className='layout__nav'></div>
-                    <div className='layout__content'>
-                        <Navigation />
+
+            if (currentPath.indexOf('/components') === 0) {
+                return (
+                    <div className='layout--components'>
                         <RouteHandler />
                     </div>
-                </div>
-            );
+                );
+            } else {
+                return (
+                    <div className='layout'>
+                        <div className='layout__nav'></div>
+                        <div className='layout__content'>
+                            <Navigation />
+                            <RouteHandler />
+                        </div>
+                    </div>
+                );
+            }
+
         }
+
 
     }
 

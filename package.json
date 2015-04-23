@@ -47,6 +47,7 @@
     "eslint-plugin-react": "^2.0.2",
     "express": "^4.12.2",
     "extract-text-webpack-plugin": "^0.3.8",
+    "gemini": "^0.11.2",
     "gulp": "^3.8.11",
     "gulp-changed": "^1.2.1",
     "gulp-eslint": "^0.9.0",
@@ -85,6 +86,9 @@
     "prod": "gulp prod",
     "prod-build": "gulp prod-build",
     "server": "node server/server.js",
-    "test": "./node_modules/karma/bin/karma start karma.conf.js"
+    "test": "./node_modules/karma/bin/karma start karma.conf.js",
+    "gemini-gather": "gemini gather",
+    "gemini-test": "gemini test --reporter flat",
+    "gemini-test-report": "gemini test --reporter html --reporter flat"
   }
 }

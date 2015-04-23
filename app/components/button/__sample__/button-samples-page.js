@@ -12,7 +12,7 @@ export default React.createClass({
     render() {
         return (
             <Grid fluid className='button-samples-page'>
-                <Row>
+                <Row className='button-samples-page__normal'>
                     <h4>Normal Buttons</h4>
                     <Button minWidth>Default</Button>
                     <Button theme='primary' minWidth>Primary</Button>
@@ -23,13 +23,13 @@ export default React.createClass({
                     <Button theme='white' minWidth>White</Button>
                     <Button theme='link' minWidth>Link</Button>
                 </Row>
-                <Row>
+                <Row className='button-samples-page__sizes'>
                     <h4>Different sizes</h4>
                     <Button size='xsmall'>Xsmall</Button>
                     <Button size='small'>Small</Button>
                     <Button size='large'>Large</Button>
                 </Row>
-                <Row>
+                <Row className='button-samples-page__outline'>
                     <h4>Outline buttons</h4>
                     <Button outline>Default</Button>
                     <Button outline theme='primary'>Primary</Button>
