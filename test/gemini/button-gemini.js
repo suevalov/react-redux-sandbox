@@ -4,7 +4,6 @@ var gemini = require('gemini');
 var _ = require('lodash');
 
 var tests = [
-
     // Normal Buttons
     [ 'button:default', '.button-samples-page__normal .btn.btn-default' ],
     [ 'button:primary', '.button-samples-page__normal .btn.btn-primary' ],
@@ -39,7 +38,6 @@ var tests = [
     [ 'button:disabled:danger', '.button-samples-page__disabled .btn.disabled.btn-danger' ],
     [ 'button:disabled:white', '.button-samples-page__disabled .btn.disabled.btn-white' ],
     [ 'button:disabled:link', '.button-samples-page__disabled .btn.disabled.btn-link' ]
-
 ];
 
 
