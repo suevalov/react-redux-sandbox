@@ -16,17 +16,20 @@ let TodoStore = Reflux.createStore({
 
     init() {
         this._items = Immutable.Map();
+        this._fetched = false;
     },
 
     getInitialState() {
-        return this._items;
+        return {
+            items: this._items,
+            fetched: this._fetched
+        };
     },
 
     onRemoveTodoCompleted(id) {
         assert.isString(id);
-
         this._items = this._items.delete(id);
-        this.trigger(this._items);
+        this.trigger(this.getInitialState());
     },
 
     onFetchTodosCompleted(todos) {
@@ -40,7 +43,8 @@ let TodoStore = Reflux.createStore({
         }
 
         this._items = todosMap;
-        this.trigger(this._items);
+        this._fetched = true;
+        this.trigger(this.getInitialState());
 
     },
 
@@ -49,7 +53,7 @@ let TodoStore = Reflux.createStore({
         assert.isObject(todo);
 
         this._items = this._items.set(todo.id, new TodoRecord(todo));
-        this.trigger(this._items);
+        this.trigger(this.getInitialState());
     }
 
 });

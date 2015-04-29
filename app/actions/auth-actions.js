@@ -2,10 +2,10 @@
 
 import Reflux from 'reflux';
 import axios from 'axios';
-import Config from '../constants/config';
+import Config from '../utils/config';
 import { assert } from 'chai';
 
-const AuthApi = Config.getApiEndpoint() + '/users';
+const AuthApi = Config.getApiEndpoint('/users');
 
 let AuthActions = Reflux.createActions({
 
@@ -49,4 +49,4 @@ AuthActions.logout.listen(function(token) {
 
 });
 
-module.exports = AuthActions;
+export default AuthActions;

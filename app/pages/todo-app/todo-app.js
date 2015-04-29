@@ -19,14 +19,14 @@ var TodoItem = React.createClass({
 
     displayName: 'TodoItem',
 
-    mixins: [
-        PureRenderMixin
-    ],
-
     propTypes: {
         id: React.PropTypes.string.isRequired,
         text: React.PropTypes.string.isRequired
     },
+
+    mixins: [
+        PureRenderMixin
+    ],
 
     clickHandler(e) {
         e.preventDefault();
@@ -56,10 +56,14 @@ var TodoList = React.createClass({
         spinner: React.PropTypes.bool.isRequired
     },
 
+    mixins: [
+        PureRenderMixin
+    ],
+
     render() {
         if (this.props.spinner) {
             return (
-                <Spinner spinnerName='three-bounce' />
+                <Spinner spinnerName='three-bounce'/>
             );
         } else {
             if (this.props.items.count()) {
@@ -87,8 +91,7 @@ export default React.createClass({
     displayName: 'TodoApp',
 
     mixins: [
-        Reflux.listenTo(TodoStore, 'onTodoStoreChange'),
-        PureRenderMixin,
+        Reflux.connect(TodoStore),
         LinkedStateMixin
     ],
 
@@ -108,13 +111,6 @@ export default React.createClass({
         TodoActions.fetchTodos();
     },
 
-    onTodoStoreChange(items) {
-        this.setState({
-            items: items,
-            fetching: false
-        });
-    },
-
     onClickHandler() {
         var text = this.state.text;
         if (text) {
@@ -127,22 +123,18 @@ export default React.createClass({
 
     getInitialState() {
         return {
-            items: TodoStore.getInitialState(),
-            fetching: true,
             text: ''
         };
     },
 
     render() {
-
         return (
             <div>
-                <TodoList items={this.state.items} spinner={this.state.fetching}/>
+                <TodoList items={this.state.items} spinner={!this.state.fetched}/>
                 <input valueLink={this.linkState('text')}/>
-                <Button theme='info' onClick={this.onClickHandler} >Click me!</Button>
+                <Button theme='info' onClick={this.onClickHandler}>Click me!</Button>
             </div>
         );
-
     }
 
 });

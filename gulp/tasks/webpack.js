@@ -69,7 +69,7 @@ gulp.task('webpack', function(cb) {
                 {
                     test: /\.js$/,
                     exclude: /node_modules/,
-                    loader: 'babel-loader'
+                    loader: 'babel-loader?stage=1'
                 },
                 {
                     test: /\.(less|css)$/,

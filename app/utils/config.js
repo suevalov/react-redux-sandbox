@@ -8,8 +8,9 @@ const config = Immutable.fromJS({
 
 module.exports = {
 
-    getApiEndpoint() {
-        return config.get('apiendpoint');
+    getApiEndpoint(path) {
+        path = path || '';
+        return config.get('apiendpoint') + path;
     }
 
 };
