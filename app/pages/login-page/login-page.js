@@ -6,10 +6,11 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 import AuthActions from '../../actions/auth-actions';
 import AuthStore from '../../stores/auth-store';
+import RedirectWhenLoggedInMixin from '../../mixins/redirect-when-logged-in-mixin';
 import {
     Button,
     Input
-    } from '../../components/index';
+} from '../../components/index';
 
 let { LinkedStateMixin } = React.addons;
 
@@ -17,20 +18,13 @@ export default React.createClass({
     displayName: 'LoginPage',
 
     mixins: [
+        Reflux.listenTo(AuthStore, 'onAuthResponse'),
         LinkedStateMixin,
-        Reflux.listenTo(AuthStore, 'onAuthResponse')
+        RedirectWhenLoggedInMixin
     ],
 
     contextTypes: {
         router: React.PropTypes.func
-    },
-
-    statics: {
-        willTransitionTo(transition) {
-            if (AuthStore.isLoggedIn()) {
-                transition.redirect('/', {});
-            }
-        }
     },
 
     getInitialState() {

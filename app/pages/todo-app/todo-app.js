@@ -5,13 +5,13 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
 import TodoStore from '../../stores/todo-store';
-import AuthStore from '../../stores/auth-store';
 import TodoActions from '../../actions/todo-actions';
+import AuthenticationMixin from '../../mixins/authentication-mixin';
 import Spinner from 'react-spinkit';
 import {
     Button,
     Icon
-} from '../../components/index';
+    } from '../../components/index';
 
 let { PureRenderMixin, LinkedStateMixin } = React.addons;
 
@@ -92,19 +92,14 @@ export default React.createClass({
 
     mixins: [
         Reflux.connect(TodoStore),
+        AuthenticationMixin,
         LinkedStateMixin
     ],
 
-    statics: {
-        willTransitionTo(transition) {
-            if (!AuthStore.isLoggedIn()) {
-                let options = {};
-                if (transition.path !== '' && transition.path !== '/') {
-                    options.nextPath = transition.path;
-                }
-                transition.redirect('/login', {}, options);
-            }
-        }
+    getInitialState() {
+        return {
+            text: ''
+        };
     },
 
     componentDidMount() {
@@ -119,12 +114,6 @@ export default React.createClass({
                 text: ''
             });
         }
-    },
-
-    getInitialState() {
-        return {
-            text: ''
-        };
     },
 
     render() {
