@@ -46,6 +46,12 @@ gulp.task('webpack', function(cb) {
 
             if (!DEBUG) {
 
+                plugins.push(new webpack.DefinePlugin({
+                    'process.env': {
+                        NODE_ENV: JSON.stringify('production')
+                    }
+                }));
+
                 plugins.push(new webpack.optimize.UglifyJsPlugin({
                     compress: {
                         warnings: false
@@ -63,7 +69,7 @@ gulp.task('webpack', function(cb) {
                 {
                     test: /\.js$/,
                     exclude: /node_modules/,
-                    loader: 'babel-loader?experimental'
+                    loader: 'babel-loader'
                 },
                 {
                     test: /\.(less|css)$/,
