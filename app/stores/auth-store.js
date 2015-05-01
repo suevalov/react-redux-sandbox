@@ -2,7 +2,6 @@
 
 import Reflux from 'reflux';
 import AuthActions from '../actions/auth-actions';
-import { assert } from 'chai';
 
 let AuthStore = Reflux.createStore({
 
@@ -13,6 +12,10 @@ let AuthStore = Reflux.createStore({
         this.user = JSON.parse(sessionStorage.getItem('authUser'));
     },
 
+    /**
+     * @param { String } token
+     * @param { Object } user
+     */
     setState(token, user) {
         sessionStorage.setItem('authToken', token);
         sessionStorage.setItem('authUser', JSON.stringify(user));
@@ -27,11 +30,12 @@ let AuthStore = Reflux.createStore({
         sessionStorage.removeItem('authUser');
     },
 
+    /**
+     * @param { Object } data
+     * @param { String } data.id
+     * @param { Object } data.user
+     */
     onLoginCompleted(data) {
-
-        assert.isString(data.id);
-        assert.isObject(data.user);
-
         this.setState(data.id, data.user);
         this.trigger({
             loggedIn: true

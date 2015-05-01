@@ -1,7 +1,6 @@
 'use strict';
 
 import Reflux from 'reflux';
-import { assert } from 'chai';
 import API from '../utils/api';
 
 let TodoActions = Reflux.createActions({
@@ -16,9 +15,10 @@ let TodoActions = Reflux.createActions({
     }
 });
 
+/**
+ * @param { String } todoText
+ */
 TodoActions.addTodo.listen(async function(todoText) {
-
-    assert.isString(todoText);
 
     try {
         var { data } = await API.todos().add(todoText);
@@ -29,9 +29,10 @@ TodoActions.addTodo.listen(async function(todoText) {
 
 });
 
+/**
+ * @param { String } id
+ */
 TodoActions.removeTodo.listen(async function(id) {
-
-    assert.isString(id);
 
     try {
         await API.todos().remove(id);

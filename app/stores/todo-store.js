@@ -3,7 +3,6 @@
 import Reflux from 'reflux';
 import TodoActions from '../actions/todo-actions';
 import Immutable from 'immutable';
-import { assert } from 'chai';
 
 let TodoRecord = Immutable.Record({
     id: null,
@@ -26,15 +25,18 @@ let TodoStore = Reflux.createStore({
         };
     },
 
+    /**
+     * @param {String} id
+     */
     onRemoveTodoCompleted(id) {
-        assert.isString(id);
         this._items = this._items.delete(id);
         this.trigger(this.getInitialState());
     },
 
+    /**
+     * @param {Array<Object>} todos
+     */
     onFetchTodosCompleted(todos) {
-
-        assert.isArray(todos);
 
         let todosMap = Immutable.Map();
 
@@ -48,11 +50,12 @@ let TodoStore = Reflux.createStore({
 
     },
 
-    onAddTodoCompleted(todo) {
+    /**
+     * @param {Object} todoItem
+     */
+    onAddTodoCompleted(todoItem) {
 
-        assert.isObject(todo);
-
-        this._items = this._items.set(todo.id, new TodoRecord(todo));
+        this._items = this._items.set(todoItem.id, new TodoRecord(todoItem));
         this.trigger(this.getInitialState());
     }
 

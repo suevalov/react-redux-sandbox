@@ -1,7 +1,6 @@
 'use strict';
 
 import Reflux from 'reflux';
-import { assert } from 'chai';
 import API from '../utils/api';
 
 let AuthActions = Reflux.createActions({
@@ -16,10 +15,12 @@ let AuthActions = Reflux.createActions({
 
 });
 
+/**
+ * @param {String} email
+ * @param {String} password
+ */
 AuthActions.login.listen(async function(email, password) {
 
-    assert.isString(email);
-    assert.isString(password);
     try {
         let { data } = await API.auth().login(email, password);
         this.completed(data);
@@ -29,9 +30,11 @@ AuthActions.login.listen(async function(email, password) {
 
 });
 
+/**
+ * @param {String} token
+ */
 AuthActions.logout.listen(async function(token) {
 
-    assert.isString(token);
     try {
         await API.auth().logout(token);
         this.completed();
