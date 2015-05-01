@@ -19,45 +19,42 @@ let TodoActions = Reflux.createActions({
     }
 });
 
-TodoActions.addTodo.listen(function(todoText) {
+TodoActions.addTodo.listen(async function(todoText) {
 
     assert.isString(todoText);
 
-    axios.post(TodoApiPath, {
-        text: todoText
-    })
-        .then((response) => {
-            this.completed(response.data);
-        })
-        .catch((error) => {
-            this.failed(error);
+    try {
+        var { data } = await axios.post(TodoApiPath, {
+            text: todoText
         });
+        this.completed(data);
+    } catch (err) {
+        this.failed(err.data);
+    }
 
 });
 
-TodoActions.removeTodo.listen(function(id) {
+TodoActions.removeTodo.listen(async function(id) {
 
     assert.isString(id);
 
-    axios.delete(TodoApiPath + id)
-        .then(() => {
-            this.completed(id);
-        })
-        .catch((error) => {
-            this.failed(error);
-        });
+    try {
+        await axios.delete(TodoApiPath + id);
+        this.completed(id);
+    } catch (err) {
+        this.failed(err.data);
+    }
 
 });
 
-TodoActions.fetchTodos.listen(function() {
+TodoActions.fetchTodos.listen(async function() {
 
-    axios.get(TodoApiPath)
-        .then((response) => {
-            this.completed(response.data);
-        })
-        .catch((error) => {
-            this.failed(error);
-        });
+    try {
+        var { data } = await axios.get(TodoApiPath);
+        this.completed(data);
+    } catch (err) {
+        this.failed(err.data);
+    }
 
 });
 

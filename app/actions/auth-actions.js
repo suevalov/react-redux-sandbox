@@ -19,33 +19,31 @@ let AuthActions = Reflux.createActions({
 
 });
 
-AuthActions.login.listen(function(email, password) {
+AuthActions.login.listen(async function(email, password) {
 
     assert.isString(email);
     assert.isString(password);
-
-    axios.post(AuthApi + '/login?include=user', {
-        email: email,
-        password: password
-    })
-        .then((response) => {
-            this.completed(response.data);
-        })
-        .catch((response) => {
-            this.failed(response);
+    try {
+        let { data } = await axios.post(AuthApi + '/login?include=user', {
+            email: email,
+            password: password
         });
+        this.completed(data);
+    } catch (err) {
+        this.failed(err.data);
+    }
 
 });
 
-AuthActions.logout.listen(function(token) {
+AuthActions.logout.listen(async function(token) {
 
-    axios.post(`${AuthApi}/logout?access_token=${token}`)
-        .then(() => {
-            this.completed();
-        })
-        .catch(() => {
-            this.failed();
-        });
+    assert.isString(token);
+    try {
+        await axios.post(`${AuthApi}/logout?access_token=${token}`);
+        this.completed();
+    } catch (err) {
+        this.failed();
+    }
 
 });
 
