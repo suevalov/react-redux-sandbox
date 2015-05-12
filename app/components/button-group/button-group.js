@@ -1,8 +1,7 @@
 'use strict';
 
-
 import React from 'react';
-import BootstrapButtonGroup from 'react-bootstrap/lib/ButtonGroup';
+import { ButtonGroup as BootstrapButtonGroup } from 'react-bootstrap';
 
 require('./button-group.less');
 

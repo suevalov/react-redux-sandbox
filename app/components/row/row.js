@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import BootstrapRow from 'react-bootstrap/lib/Row';
+import { Row as BootstrapRow } from 'react-bootstrap';
 
 class Row extends React.Component {
 

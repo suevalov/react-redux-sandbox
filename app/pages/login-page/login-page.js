@@ -4,13 +4,13 @@ require('./login-page.less');
 
 import React from 'react/addons';
 import Reflux from 'reflux';
-import AuthActions from '../../actions/auth-actions';
-import AuthStore from '../../stores/auth-store';
-import RedirectWhenLoggedInMixin from '../../mixins/redirect-when-logged-in-mixin';
+import AuthActions from 'actions/auth-actions';
+import AuthStore from 'stores/auth-store';
+import RedirectWhenLoggedInMixin from 'mixins/redirect-when-logged-in-mixin';
 import {
     Button,
     Input
-} from '../../components/index';
+} from 'components/index';
 
 let { LinkedStateMixin } = React.addons;
 

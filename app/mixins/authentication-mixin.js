@@ -1,6 +1,6 @@
 'use strict';
 
-import AuthStore from '../stores/auth-store';
+import AuthStore from 'stores/auth-store';
 
 export default {
 

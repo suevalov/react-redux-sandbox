@@ -64,6 +64,11 @@ gulp.task('webpack', function(cb) {
 
         }()),
 
+        resolve: {
+            modulesDirectories: [ 'node_modules', './app' ],
+            extensions: [ '', '.js' ]
+        },
+
         module: {
             loaders: [
                 {

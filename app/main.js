@@ -5,7 +5,7 @@ import 'react-tools/src/test/phantomjs-shims';
 
 import React from 'react';
 import Router from 'react-router';
-import routes from './routes';
+import routes from 'routes';
 
 /**
  * Start application

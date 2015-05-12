@@ -4,7 +4,7 @@ import React from 'react/addons';
 import {
     Grid, Row,
     DropdownButton, MenuItem
-    } from '../../../components/index';
+    } from 'components/index';
 
 require('./dropdown-button-samples-page.less');
 

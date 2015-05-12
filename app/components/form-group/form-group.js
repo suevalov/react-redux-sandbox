@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import BootstrapFormGroup from 'react-bootstrap/lib/FormGroup';
+import { FormGroup as BootstrapFormGroup }from 'react-bootstrap';
 
 require('./form-group.less');
 

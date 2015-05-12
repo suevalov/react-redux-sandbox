@@ -28,6 +28,10 @@ module.exports = function(config) {
                         loader: 'null-loader'
                     }
                 ]
+            },
+            resolve: {
+                modulesDirectories: [ 'node_modules', './app' ],
+                extensions: [ '', '.js' ]
             }
         },
         webpackServer: {

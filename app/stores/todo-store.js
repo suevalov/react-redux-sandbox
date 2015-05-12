@@ -1,7 +1,7 @@
 'use strict';
 
 import Reflux from 'reflux';
-import TodoActions from '../actions/todo-actions';
+import TodoActions from 'actions/todo-actions';
 import Immutable from 'immutable';
 
 let TodoRecord = Immutable.Record({

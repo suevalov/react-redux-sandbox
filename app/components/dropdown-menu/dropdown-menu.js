@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react/addons';
-import BootstrapDropdownMenu from 'react-bootstrap/lib/DropdownMenu';
+import { DropdownMenu as BootstrapDropdownMenu } from 'react-bootstrap';
 
 require('./dropdown-menu.less');
 

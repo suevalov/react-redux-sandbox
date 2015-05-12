@@ -1,7 +1,7 @@
 'use strict';
 
 import Reflux from 'reflux';
-import API from '../utils/api';
+import API from 'utils/api';
 
 let TodoActions = Reflux.createActions({
     addTodo: {

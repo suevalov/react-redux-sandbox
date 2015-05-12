@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import BootstrapGrid from 'react-bootstrap/lib/Grid';
+import { Grid as BootstrapGrid } from 'react-bootstrap';
 
 class Grid extends React.Component {
 

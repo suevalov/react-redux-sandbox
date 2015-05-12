@@ -18,6 +18,10 @@ var wallabyPostprocessor = wallabyWebpack({
                 loader: 'null-loader'
             }
         ]
+    },
+    resolve: {
+        modulesDirectories: [ 'node_modules', './app' ],
+        extensions: [ '', '.js' ]
     }
 });
 

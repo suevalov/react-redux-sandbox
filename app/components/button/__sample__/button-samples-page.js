@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { Grid, Row, Button, Icon } from '../../../components';
+import { Grid, Row, Button, Icon } from 'components/index';
 
 require('./button-samples-page.less');
 

@@ -5,7 +5,7 @@
 import React from 'react';
 import ReactTestUtils from 'react/lib/ReactTestUtils';
 import { expect } from 'chai';
-import Button from '../button';
+import { Button } from 'components/index';
 
 describe('Button', () => {
 

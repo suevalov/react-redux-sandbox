@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react/addons';
-import BootstrapDropdownButton from 'react-bootstrap/lib/DropdownButton';
+import { DropdownButton as BootstrapDropdownButton } from 'react-bootstrap';
 
 require('./dropdown-button.less');
 

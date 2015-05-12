@@ -1,6 +1,6 @@
 'use strict';
 
-import Config from './config';
+import Config from 'utils/config';
 import axios from 'axios';
 
 export default {

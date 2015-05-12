@@ -1,7 +1,7 @@
 'use strict';
 
 import Reflux from 'reflux';
-import AuthActions from '../actions/auth-actions';
+import AuthActions from 'actions/auth-actions';
 
 let AuthStore = Reflux.createStore({
 

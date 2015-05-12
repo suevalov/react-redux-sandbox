@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import BootstrapMenuItem from 'react-bootstrap/lib/MenuItem';
+import { MenuItem as BootstrapMenuItem } from 'react-bootstrap';
 
 class MenuItem extends React.Component {
 
