@@ -12,8 +12,7 @@ import DropdownMenu from './dropdown-menu/dropdown-menu';
 import MenuItem from './menu-item/menu-item';
 import Icon from './icon/icon';
 import FormGroup from './form-group/form-group';
-// todo: replace input
-import Input from 'react-bootstrap/lib/Input';
+import Input from './input/input';
 
 module.exports = {
     Button: Button,
