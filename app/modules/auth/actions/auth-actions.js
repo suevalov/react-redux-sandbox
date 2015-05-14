@@ -1,7 +1,7 @@
 'use strict';
 
 import Reflux from 'reflux';
-import API from 'utils/api';
+import AuthApiService from 'modules/auth/services/auth-api-service';
 
 let AuthActions = Reflux.createActions({
 
@@ -22,7 +22,7 @@ let AuthActions = Reflux.createActions({
 AuthActions.login.listen(async function(email, password) {
 
     try {
-        let { data } = await API.auth().login(email, password);
+        let { data } = await AuthApiService.login(email, password);
         this.completed(data);
     } catch (err) {
         this.failed(err.data);
@@ -36,7 +36,7 @@ AuthActions.login.listen(async function(email, password) {
 AuthActions.logout.listen(async function(token) {
 
     try {
-        await API.auth().logout(token);
+        await AuthApiService.logout(token);
         this.completed();
     } catch (err) {
         this.failed();
