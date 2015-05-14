@@ -65,8 +65,8 @@ gulp.task('webpack', function(cb) {
         }()),
 
         resolve: {
-            modulesDirectories: [ 'node_modules', './app' ],
-            extensions: [ '', '.js' ]
+            modulesDirectories: ['node_modules', './app'],
+            extensions: ['', '.js']
         },
 
         module: {
@@ -79,6 +79,10 @@ gulp.task('webpack', function(cb) {
                 {
                     test: /\.(less|css)$/,
                     loader: ExtractTextPlugin.extract('style-loader', 'css-loader!' + AUTOPREFIXER_LOADER + '!less-loader')
+                },
+                {
+                    test: /\.(png|jpeg|jpg|otf|eot|svg|ttf|woff|woff2)$/,
+                    loader: 'url-loader?limit=100000'
                 }
             ]
         }

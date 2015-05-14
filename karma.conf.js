@@ -26,6 +26,10 @@ module.exports = function(config) {
                     {
                         test: /\.less/,
                         loader: 'null-loader'
+                    },
+                    {
+                        test: /\.(png|jpeg|jpg|otf|eot|svg|ttf|woff|woff2)$/,
+                        loader: 'null-loader'
                     }
                 ]
             },

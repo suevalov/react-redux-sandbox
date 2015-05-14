@@ -73,7 +73,7 @@
     "run-sequence": "^1.1.0",
     "style-loader": "~0.12.2",
     "url": "^0.10.3",
-    "url-loader": "~0.5.5",
+    "url-loader": "^0.5.5",
     "wallaby-webpack": "0.0.5",
     "webpack": "^1.9.4"
   },
