@@ -4,8 +4,8 @@ import './layout.less';
 import React from 'react';
 import Router from 'react-router';
 import Reflux from 'reflux';
-import AuthStore from 'stores/auth-store';
-import AuthActions from 'actions/auth-actions';
+import AuthStore from 'modules/auth/stores/auth-store';
+import AuthActions from 'modules/auth/actions/auth-actions';
 
 let { RouteHandler, Link } = Router;
 

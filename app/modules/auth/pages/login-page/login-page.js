@@ -4,9 +4,9 @@ require('./login-page.less');
 
 import React from 'react/addons';
 import Reflux from 'reflux';
-import AuthActions from 'actions/auth-actions';
-import AuthStore from 'stores/auth-store';
-import RedirectWhenLoggedInMixin from 'mixins/redirect-when-logged-in-mixin';
+import AuthActions from 'modules/auth/actions/auth-actions';
+import AuthStore from 'modules/auth/stores/auth-store';
+import RedirectWhenLoggedInMixin from 'modules/auth/mixins/redirect-when-logged-in-mixin';
 import {
     Button,
     Input

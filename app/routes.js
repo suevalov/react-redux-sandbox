@@ -4,7 +4,7 @@ import React from 'react';
 import Router from 'react-router';
 
 import Layout from './pages/layout';
-import LoginPage from './pages/login-page/login-page';
+import { LoginPage } from 'modules/auth';
 import { TodoPage } from 'modules/todo';
 import NotFoundPage from './pages/not-found-page/not-found-page';
 import ComponentsPage from './pages/components-page/components-page';

@@ -17,7 +17,7 @@ export default {
             },
 
             async logout(token) {
-                return axios.delete(Config.getApiEndpoint(`/users/logout?access_token=${token}`));
+                return axios.post(Config.getApiEndpoint(`/users/logout?access_token=${token}`));
             }
 
         };
