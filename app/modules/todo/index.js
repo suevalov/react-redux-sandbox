@@ -4,8 +4,8 @@
 import React from 'react/addons';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
-import TodoStore from 'stores/todo-store';
-import TodoActions from 'actions/todo-actions';
+import TodoStore from './stores/todo-store';
+import TodoActions from './actions/todo-actions';
 import AuthenticationMixin from 'mixins/authentication-mixin';
 import Spinner from 'react-spinkit';
 import {
@@ -86,44 +86,48 @@ var TodoList = React.createClass({
 
 });
 
-export default React.createClass({
+export default {
 
-    displayName: 'TodoApp',
+    TodoPage: React.createClass({
 
-    mixins: [
-        Reflux.connect(TodoStore),
-        AuthenticationMixin,
-        LinkedStateMixin
-    ],
+        displayName: 'TodoApp',
 
-    getInitialState() {
-        return {
-            text: ''
-        };
-    },
+        mixins: [
+            Reflux.connect(TodoStore),
+            AuthenticationMixin,
+            LinkedStateMixin
+        ],
 
-    componentDidMount() {
-        TodoActions.fetchTodos();
-    },
-
-    onClickHandler() {
-        var text = this.state.text;
-        if (text) {
-            TodoActions.addTodo(text);
-            this.setState({
+        getInitialState() {
+            return {
                 text: ''
-            });
+            };
+        },
+
+        componentDidMount() {
+            TodoActions.fetchTodos();
+        },
+
+        onClickHandler() {
+            var text = this.state.text;
+            if (text) {
+                TodoActions.addTodo(text);
+                this.setState({
+                    text: ''
+                });
+            }
+        },
+
+        render() {
+            return (
+                <div>
+                    <TodoList items={this.state.items} spinner={!this.state.fetched}/>
+                    <input valueLink={this.linkState('text')}/>
+                    <Button theme='info' onClick={this.onClickHandler}>Click me!</Button>
+                </div>
+            );
         }
-    },
 
-    render() {
-        return (
-            <div>
-                <TodoList items={this.state.items} spinner={!this.state.fetched}/>
-                <input valueLink={this.linkState('text')}/>
-                <Button theme='info' onClick={this.onClickHandler}>Click me!</Button>
-            </div>
-        );
-    }
+    })
 
-});
+};

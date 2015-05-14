@@ -5,7 +5,7 @@ import Router from 'react-router';
 
 import Layout from './pages/layout';
 import LoginPage from './pages/login-page/login-page';
-import TodoPage from './pages/todo-app/todo-app';
+import { TodoPage } from 'modules/todo';
 import NotFoundPage from './pages/not-found-page/not-found-page';
 import ComponentsPage from './pages/components-page/components-page';
 import ButtonSamplesPage from './components/button/__sample__/button-samples-page';
