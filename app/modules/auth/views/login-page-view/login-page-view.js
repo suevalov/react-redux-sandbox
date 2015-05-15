@@ -6,7 +6,7 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 import AuthActions from 'modules/auth/actions/auth-actions';
 import AuthStore from 'modules/auth/stores/auth-store';
-import RedirectWhenLoggedInMixin from 'modules/auth/mixins/redirect-when-logged-in-mixin';
+import { redirectWhenLoggedIn } from 'modules/auth';
 import {
     Button,
     Input
@@ -19,9 +19,12 @@ export default React.createClass({
 
     mixins: [
         Reflux.listenTo(AuthStore, 'onAuthResponse'),
-        LinkedStateMixin,
-        RedirectWhenLoggedInMixin
+        LinkedStateMixin
     ],
+
+    statics: {
+        willTransitionTo: redirectWhenLoggedIn
+    },
 
     contextTypes: {
         router: React.PropTypes.func

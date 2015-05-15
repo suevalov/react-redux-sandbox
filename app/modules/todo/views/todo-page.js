@@ -4,9 +4,9 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 import TodoStore from '../stores/todo-store';
 import TodoActions from '../actions/todo-actions';
-import AuthenticationMixin from 'modules/auth/mixins/authentication-mixin';
 import { Button } from 'components/index';
 import TodoList from './todo-list';
+import { authRequired } from 'modules/auth';
 
 let { LinkedStateMixin } = React.addons;
 
@@ -16,9 +16,12 @@ export default React.createClass({
 
     mixins: [
         Reflux.connect(TodoStore),
-        AuthenticationMixin,
         LinkedStateMixin
     ],
+
+    statics: {
+        willTransitionTo: authRequired
+    },
 
     getInitialState() {
         return {
