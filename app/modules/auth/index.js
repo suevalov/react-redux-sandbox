@@ -1,6 +1,6 @@
 'use strict';
 
-import LoginPage from './pages/login-page/login-page';
+import LoginPage from './views/login-page-view/login-page-view';
 
 export default {
     LoginPage: LoginPage

@@ -1,6 +1,6 @@
 'use strict';
 
-require('./login-page.less');
+require('./login-page-view.less');
 
 import React from 'react/addons';
 import Reflux from 'reflux';
