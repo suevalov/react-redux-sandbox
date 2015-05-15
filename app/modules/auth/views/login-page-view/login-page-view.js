@@ -12,15 +12,15 @@ import {
     Input
 } from 'components/index';
 
-let { LinkedStateMixin } = React.addons;
-
 export default React.createClass({
+
     displayName: 'LoginPage',
 
     mixins: [
-        Reflux.listenTo(AuthStore, 'onAuthResponse'),
-        LinkedStateMixin
+        Reflux.listenTo(AuthStore, 'onAuthResponse')
     ],
+
+    linkState: React.addons.LinkedStateMixin.linkState,
 
     statics: {
         willTransitionTo: redirectWhenLoggedIn

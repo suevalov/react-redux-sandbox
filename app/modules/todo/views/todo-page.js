@@ -8,20 +8,19 @@ import { Button } from 'components/index';
 import TodoList from './todo-list';
 import { authRequired } from 'modules/auth';
 
-let { LinkedStateMixin } = React.addons;
-
 export default React.createClass({
 
     displayName: 'TodoApp',
 
     mixins: [
-        Reflux.connect(TodoStore),
-        LinkedStateMixin
+        Reflux.connect(TodoStore)
     ],
 
     statics: {
         willTransitionTo: authRequired
     },
+
+    linkState: React.addons.LinkedStateMixin.linkState,
 
     getInitialState() {
         return {
