@@ -1,22 +1,12 @@
 'use strict';
 
-import React from 'react/addons';
+import React from 'react';
 import Immutable from 'immutable';
 import Spinner from 'react-spinkit';
 import TodoItem from './todo-item';
+import PureComponent from 'react-pure-render/component';
 
-let { PureRenderMixin } = React.addons;
-
-export default React.createClass({
-
-    propTypes: {
-        items: React.PropTypes.instanceOf(Immutable.Map),
-        spinner: React.PropTypes.bool.isRequired
-    },
-
-    mixins: [
-        PureRenderMixin
-    ],
+class TodoList extends PureComponent {
 
     render() {
         if (this.props.spinner) {
@@ -42,4 +32,11 @@ export default React.createClass({
         }
     }
 
-});
+}
+
+TodoList.propTypes = {
+    items: React.PropTypes.instanceOf(Immutable.Map),
+    spinner: React.PropTypes.bool.isRequired
+};
+
+export default TodoList;

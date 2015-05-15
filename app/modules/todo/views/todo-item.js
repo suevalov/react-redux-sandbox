@@ -1,29 +1,24 @@
 'use strict';
 
-import React from 'react/addons';
+import React from 'react';
 import TodoActions from '../actions/todo-actions';
 import {
     Button,
     Icon
 } from 'components/index';
+import PureComponent from 'react-pure-render/component';
 
-export default React.createClass({
+class TodoItem extends PureComponent {
 
-    displayName: 'TodoItem',
-
-    propTypes: {
-        id: React.PropTypes.string.isRequired,
-        text: React.PropTypes.string.isRequired
-    },
-
-    mixins: [
-        React.addons.PureRenderMixin
-    ],
+    constructor() {
+        super();
+        this.clickHandler = this.clickHandler.bind(this);
+    }
 
     clickHandler(e) {
         e.preventDefault();
         TodoActions.removeTodo(this.props.id);
-    },
+    }
 
     render() {
         return (
@@ -39,4 +34,11 @@ export default React.createClass({
         );
     }
 
-});
+}
+
+TodoItem.propTypes = {
+    id: React.PropTypes.string.isRequired,
+    text: React.PropTypes.string.isRequired
+};
+
+export default TodoItem;

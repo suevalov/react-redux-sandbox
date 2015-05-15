@@ -11,7 +11,7 @@ var wallabyPostprocessor = wallabyWebpack({
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader?stage=0'
             },
             {
                 test: /\.less/,

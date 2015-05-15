@@ -21,7 +21,7 @@ module.exports = function(config) {
                     {
                         test: /\.js$/,
                         exclude: /node_modules/,
-                        loader: 'babel-loader'
+                        loader: 'babel-loader?stage=0'
                     },
                     {
                         test: /\.less/,
