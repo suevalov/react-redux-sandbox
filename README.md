@@ -11,5 +11,5 @@ opensesame
 
 * PostCSS instead of LESS for components
 * Rx.js and functional programming
-* Nuclear.js and global Immutable object
+* Global Immutable object
 * State paste and copy, do/undo, saving steps and replay steps

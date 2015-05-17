@@ -3,9 +3,7 @@
 import React from 'react';
 import { RouteHandler, Link } from 'react-router';
 
-let ComponentsNavigation = React.createClass({
-
-    displayName: 'ComponentsNavigation',
+class ComponentsNavigation extends React.Component {
 
     render() {
         return (
@@ -17,19 +15,17 @@ let ComponentsNavigation = React.createClass({
         );
     }
 
-});
+}
 
-export default React.createClass({
-
-    displayName: 'ComponentsPage',
+export default class ComponentsHandler extends React.Component {
 
     componentDidMount() {
         document.body.className = 'grey';
-    },
+    }
 
     componentWillUnmount() {
         document.body.className = '';
-    },
+    }
 
     render() {
         return (
@@ -39,4 +35,5 @@ export default React.createClass({
             </div>
         );
     }
-});
+
+}

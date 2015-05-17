@@ -2,9 +2,7 @@
 
 import React from 'react';
 
-export default React.createClass({
-
-    displayName: 'NotFoundPage',
+export default class extends React.Component {
 
     render() {
         return (
@@ -16,4 +14,4 @@ export default React.createClass({
         );
     }
 
-});
+}

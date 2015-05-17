@@ -3,38 +3,33 @@
 import './layout.less';
 import React from 'react';
 import Router from 'react-router';
-import Reflux from 'reflux';
 import AuthStore from 'modules/auth/stores/auth-store';
 import AuthActions from 'modules/auth/actions/auth-actions';
-import { authRequired } from 'modules/auth';
+import bindAll from 'utils/bind-all';
 
 let { RouteHandler, Link } = Router;
 
-let Navigation = React.createClass({
+class LayoutNavigation extends React.Component {
 
-    displayName: 'Navigation',
+    constructor() {
+        super();
+        bindAll(this, 'logoutClickHandler');
+    }
 
-    mixins: [
-        Reflux.listenTo(AuthStore, 'onAuthChange')
-    ],
+    componentDidMount() {
+        this.unsubscribe = AuthStore.listen('onAuthChange', this);
+    }
 
-    contextTypes: {
-        router: React.PropTypes.func
-    },
-
-    onAuthChange: function(state) {
-        if (state.loggedOut) {
-            this.context.router.transitionTo('login');
-        }
-    },
+    componentWillUnmount() {
+        this.unsubscribe();
+    }
 
     logoutClickHandler() {
         AuthActions.logout(AuthStore.getToken());
-    },
+    }
 
-    render: function() {
-
-        var loggedIn = AuthStore.isLoggedIn();
+    render() {
+        const loggedIn = AuthStore.isLoggedIn();
 
         return (
             <header>
@@ -48,16 +43,15 @@ let Navigation = React.createClass({
                 </ul>
             </header>
         );
-
     }
 
-});
+}
 
-export default React.createClass({
+LayoutNavigation.contextTypes = {
+    router: React.PropTypes.func
+};
 
-    contextTypes: {
-        router: React.PropTypes.func
-    },
+class LayoutHandler extends React.Component {
 
     render() {
 
@@ -82,7 +76,7 @@ export default React.createClass({
                     <div className='layout'>
                         <div className='layout__nav'></div>
                         <div className='layout__content'>
-                            <Navigation />
+                            <LayoutNavigation />
                             <RouteHandler />
                         </div>
                     </div>
@@ -94,4 +88,10 @@ export default React.createClass({
 
     }
 
-});
+}
+
+LayoutHandler.contextTypes = {
+    router: React.PropTypes.func
+};
+
+export default LayoutHandler;
