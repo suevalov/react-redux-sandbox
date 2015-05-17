@@ -1,9 +1,9 @@
 'use strict';
 
-import TodoPage from './views/todo-page';
+import TodoHandler from './handlers/todo-handler';
 
 export default {
 
-    TodoPage: TodoPage
+    TodoHandler: TodoHandler
 
 };

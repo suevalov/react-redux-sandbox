@@ -1,10 +1,10 @@
 'use strict';
 
-import LoginPage from './views/login-page-view/login-page-view';
+import LoginHandler from './views/login-page-view/login-page-view';
 import AuthStore from 'modules/auth/stores/auth-store';
 
 export default {
-    LoginPage: LoginPage,
+    LoginHandler: LoginHandler,
     authRequired: (transition) => {
         if (!AuthStore.isLoggedIn()) {
             let options = {};

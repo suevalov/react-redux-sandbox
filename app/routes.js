@@ -4,8 +4,8 @@ import React from 'react';
 import Router from 'react-router';
 
 import Layout from './pages/layout';
-import { LoginPage } from 'modules/auth';
-import { TodoPage } from 'modules/todo';
+import { LoginHandler } from 'modules/auth';
+import { TodoHandler } from 'modules/todo';
 import NotFoundPage from './pages/not-found-page/not-found-page';
 import ComponentsPage from './pages/components-page/components-page';
 import ButtonSamplesPage from './components/button/__sample__/button-samples-page';
@@ -20,8 +20,8 @@ let { Route, DefaultRoute, NotFoundRoute } = Router;
 
 module.exports = (
     <Route name='app' path='/' handler={Layout}>
-        <DefaultRoute handler={TodoPage}/>
-        <Route name='login' handler={LoginPage} />
+        <DefaultRoute handler={TodoHandler}/>
+        <Route name='login' handler={LoginHandler} />
         <Route name='components' handler={ComponentsPage}>
             <Route name='buttons' handler={ButtonSamplesPage} />
             <Route name='button-groups' handler={ButtonGroupSamplesPage} />
