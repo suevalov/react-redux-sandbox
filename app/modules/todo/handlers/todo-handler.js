@@ -14,8 +14,6 @@ import {
 
 class TodoHandler extends React.Component {
 
-    static willTransitionTo = authRequired;
-
     linkState = React.addons.LinkedStateMixin.linkState;
 
     constructor() {
@@ -57,9 +55,15 @@ TodoHandler.propTypes = {
 
 export default class extends React.Component {
 
+    static willTransitionTo = authRequired;
+
     constructor() {
         super();
         this.state = TodoStore.getInitialState();
+
+    }
+
+    componentDidMount() {
         this.unsubscribe = TodoStore.listen(this.setState, this);
         TodoActions.fetchTodos();
     }

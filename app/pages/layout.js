@@ -6,6 +6,7 @@ import Router from 'react-router';
 import Reflux from 'reflux';
 import AuthStore from 'modules/auth/stores/auth-store';
 import AuthActions from 'modules/auth/actions/auth-actions';
+import { authRequired } from 'modules/auth';
 
 let { RouteHandler, Link } = Router;
 

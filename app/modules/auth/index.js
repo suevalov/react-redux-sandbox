@@ -1,7 +1,9 @@
 'use strict';
 
-import LoginHandler from './views/login-page-view/login-page-view';
+import LoginHandler from './handlers/login-handler';
 import AuthStore from 'modules/auth/stores/auth-store';
+
+require('./login-page.less');
 
 export default {
     LoginHandler: LoginHandler,
@@ -12,11 +14,6 @@ export default {
                 options.nextPath = transition.path;
             }
             transition.redirect('/login', {}, options);
-        }
-    },
-    redirectWhenLoggedIn: (transition) => {
-        if (AuthStore.isLoggedIn()) {
-            transition.redirect('/', {});
         }
     }
 };

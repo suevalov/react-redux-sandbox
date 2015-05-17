@@ -1,60 +1,40 @@
 'use strict';
 
-require('./login-page-view.less');
-
 import React from 'react/addons';
-import Reflux from 'reflux';
 import AuthActions from 'modules/auth/actions/auth-actions';
-import AuthStore from 'modules/auth/stores/auth-store';
-import { redirectWhenLoggedIn } from 'modules/auth';
 import {
     Button,
     Input
 } from 'components/index';
+import bindAll from 'utils/bind-all';
 
-export default React.createClass({
+class LoginForm extends React.Component {
 
-    displayName: 'LoginPage',
+    linkState = React.addons.LinkedStateMixin.linkState;
 
-    mixins: [
-        Reflux.listenTo(AuthStore, 'onAuthResponse')
-    ],
+    constructor() {
+        super();
 
-    linkState: React.addons.LinkedStateMixin.linkState,
+        bindAll(this, 'handleSubmit');
 
-    statics: {
-        willTransitionTo: redirectWhenLoggedIn
-    },
-
-    contextTypes: {
-        router: React.PropTypes.func
-    },
-
-    getInitialState() {
-        return {
+        this.state = {
             email: '',
             password: ''
         };
-    },
+    }
 
     componentDidMount() {
         document.body.className = 'grey';
-    },
+    }
 
     componentWillUnmount() {
         document.body.className = '';
-    },
-
-    onAuthResponse(state) {
-        if (state.loggedIn) {
-            this.context.router.transitionTo('app');
-        }
-    },
+    }
 
     handleSubmit(e) {
         e.preventDefault();
         AuthActions.login(this.state.email, this.state.password);
-    },
+    }
 
     render() {
         return (
@@ -72,4 +52,7 @@ export default React.createClass({
             </div>
         );
     }
-});
+
+}
+
+export default LoginForm;
