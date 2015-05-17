@@ -9,7 +9,6 @@ opensesame
 
 #### TODO List
 
-* PostCSS instead of LESS for components
 * Rx.js and functional programming
 * Global Immutable object
 * State paste and copy, do/undo, saving steps and replay steps

@@ -17,7 +17,7 @@ class LayoutNavigation extends React.Component {
     }
 
     componentDidMount() {
-        this.unsubscribe = AuthStore.listen('onAuthChange', this);
+        this.unsubscribe = AuthStore.listen(this.onAuthChange, this);
     }
 
     componentWillUnmount() {
@@ -26,6 +26,12 @@ class LayoutNavigation extends React.Component {
 
     logoutClickHandler() {
         AuthActions.logout(AuthStore.getToken());
+    }
+
+    onAuthChange(state) {
+        if (state.loggedOut) {
+            this.context.router.transitionTo('login');
+        }
     }
 
     render() {
@@ -59,7 +65,7 @@ class LayoutHandler extends React.Component {
 
         if (currentPath === '/login') {
             return (
-                <div className='layout--login'>
+                <div className='layout-handler layout-handler--grey'>
                     <RouteHandler />
                 </div>
             );
@@ -67,15 +73,17 @@ class LayoutHandler extends React.Component {
 
             if (currentPath.indexOf('/components') === 0) {
                 return (
-                    <div className='layout--components'>
-                        <RouteHandler />
+                    <div className='layout-handler'>
+                        <div className='layout-handler__components'>
+                            <RouteHandler />
+                        </div>
                     </div>
                 );
             } else {
                 return (
-                    <div className='layout'>
-                        <div className='layout__nav'></div>
-                        <div className='layout__content'>
+                    <div className='layout-handler'>
+                        <div className='layout-handler__nav'></div>
+                        <div className='layout-handler__content'>
                             <LayoutNavigation />
                             <RouteHandler />
                         </div>

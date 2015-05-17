@@ -23,14 +23,6 @@ class LoginForm extends React.Component {
         };
     }
 
-    componentDidMount() {
-        document.body.className = 'grey';
-    }
-
-    componentWillUnmount() {
-        document.body.className = '';
-    }
-
     handleSubmit(e) {
         e.preventDefault();
         AuthActions.login(this.state.email, this.state.password);

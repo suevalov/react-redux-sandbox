@@ -1,17 +1,22 @@
 @import '~animate.css/animate.css';
 
-body {
-    overflow-x: hidden;
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
-body.grey {
-    background-color: #f3f3f4;
-}
-
-.layout {
+.layout-handler {
 
     width: 100%;
+    height: 100%;
     overflow-x: hidden;
+
+    &--grey {
+        background-color: #f3f3f4;
+
+    }
 
     &__nav {
         z-index: 101;
@@ -26,7 +31,7 @@ body.grey {
         padding: 30px;
     }
 
-    &--components {
+    &__components {
         padding: 30px;
     }
 
