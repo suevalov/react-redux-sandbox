@@ -6,8 +6,12 @@ import Router from 'react-router';
 import AuthStore from 'modules/auth/stores/auth-store';
 import AuthActions from 'modules/auth/actions/auth-actions';
 import bindAll from 'utils/bind-all';
+import ContentArea from 'modules/layout/components/content-area/content-area';
+import SidebarArea from 'modules/layout/components/sidebar-area/sidebar-area';
 
-let { RouteHandler, Link } = Router;
+let {
+    RouteHandler, Link
+} = Router;
 
 class LayoutNavigation extends React.Component {
 
@@ -40,14 +44,14 @@ class LayoutNavigation extends React.Component {
         return (
             <header>
                 <ul>
-                    <li><Link to='app'>Planner</Link></li>
-                    { loggedIn ? (
-                        <li><a onClick={this.logoutClickHandler}>Logout</a></li>
-                    ) : (
-                        ''
-                    )}
-                </ul>
-            </header>
+                <li>
+                    <Link to = 'app' > Planner </Link>
+                </li>
+                {
+                    loggedIn ? ( <li> <a onClick = {this.logoutClickHandler}> Logout </a></li> ) : ( '' )
+                }
+                < /ul>
+            < /header>
         );
     }
 
@@ -64,32 +68,26 @@ class LayoutHandler extends React.Component {
         var currentPath = this.context.router.getCurrentPath();
 
         if (currentPath === '/login') {
+
             return (
                 <div className='layout-handler layout-handler--grey'>
                     <RouteHandler />
                 </div>
             );
+
         } else {
 
-            if (currentPath.indexOf('/components') === 0) {
-                return (
-                    <div className='layout-handler'>
-                        <div className='layout-handler__components'>
-                            <RouteHandler />
-                        </div>
-                    </div>
-                );
-            } else {
-                return (
-                    <div className='layout-handler'>
-                        <div className='layout-handler__nav'></div>
-                        <div className='layout-handler__content'>
-                            <LayoutNavigation />
-                            <RouteHandler />
-                        </div>
-                    </div>
-                );
-            }
+            return (
+                <div className = 'layout-handler'>
+                    <SidebarArea className='layout-handler__nav'>
+                        SidebarArea Component
+                    </SidebarArea>
+                    <ContentArea className='layout-handler__content'>
+                        <LayoutNavigation />
+                        <RouteHandler />
+                    </ContentArea>
+                </div>
+            );
 
         }
 

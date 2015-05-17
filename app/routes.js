@@ -5,7 +5,7 @@ import Router from 'react-router';
 
 import { LoginHandler } from 'modules/auth';
 import { TodoHandler } from 'modules/todo';
-import LayoutHandler from './handlers/layout-handler';
+import { LayoutHandler } from 'modules/layout';
 import NotFoundHandler from './handlers/not-found-handler';
 import ComponentsHandler from './handlers/components-handler';
 import ButtonSamplesPage from './components/button/__sample__/button-samples-page';
