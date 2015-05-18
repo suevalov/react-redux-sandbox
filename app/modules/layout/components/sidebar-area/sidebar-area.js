@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import SidebarMenuHeader from 'modules/layout/components/sidebar-area/sidebar-menu-header';
 import SidebarMenuItem from 'modules/layout/components/sidebar-area/sidebar-menu-item';
 
 require('./sidebar-area.less');
@@ -39,6 +40,7 @@ class SidebarArea extends React.Component {
         return (
             <div className='sidebar-area'>
                 <ul className='sidebar-area__menu'>
+                    <SidebarMenuHeader />
                     {this.state.menuItems.map((item) => {
                         return (
                             <SidebarMenuItem {...item} />
@@ -50,10 +52,5 @@ class SidebarArea extends React.Component {
     }
 
 }
-
-SidebarArea.propsTypes = {
-    children: React.PropTypes.arrayOf(SidebarMenuItem)
-};
-
 
 export default SidebarArea;

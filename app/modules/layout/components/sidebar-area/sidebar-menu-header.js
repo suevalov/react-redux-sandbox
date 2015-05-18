@@ -6,7 +6,8 @@ class SidebarMenuHeader extends React.Component {
 
     render() {
         return (
-            <div {...this.props}></div>
+            <li className='sidebar-area__menu-header'>
+            </li>
         );
     }
 
