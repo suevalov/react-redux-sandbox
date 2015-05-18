@@ -6,7 +6,7 @@ class ContentArea extends React.Component {
 
     render() {
         return (
-            <div {...this.props} >
+            <div>
                 { this.props.children }
             </div>
         );

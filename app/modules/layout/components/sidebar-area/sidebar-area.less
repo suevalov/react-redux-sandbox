@@ -1,0 +1,59 @@
+.sidebar-area {
+
+    &__menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__menu-header {
+
+    }
+
+    &__menu-item {
+
+        position: relative;
+        display: block;
+
+        a {
+            display: block;
+            color: #a7b1c2;
+            font-weight: 600;
+            padding: 14px 20px 14px 25px;
+
+            &:hover, &:focus {
+                background-color: #293846;
+                color: white;
+                text-decoration: none;
+            }
+
+            i.fa {
+                margin-right: 8px;
+            }
+
+        }
+
+        &--active {
+            border-left: 4px solid #19aa8d;
+            background: #293846;
+
+            a {
+                color: #ffffff;
+            }
+        }
+
+        &--special {
+
+            a {
+                background: #1ab394;
+                color: white;
+
+                &:hover, &:focus {
+                    background: #17987e;
+                }
+            }
+
+        }
+    }
+
+}

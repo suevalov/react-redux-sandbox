@@ -19,14 +19,6 @@ class ComponentsNavigation extends React.Component {
 
 export default class ComponentsHandler extends React.Component {
 
-    componentDidMount() {
-        document.body.className = 'grey';
-    }
-
-    componentWillUnmount() {
-        document.body.className = '';
-    }
-
     render() {
         return (
             <div>

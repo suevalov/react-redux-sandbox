@@ -45,7 +45,7 @@ class LayoutNavigation extends React.Component {
             <header>
                 <ul>
                 <li>
-                    <Link to = 'app' > Planner </Link>
+                    <Link to='app'>Planner</Link>
                 </li>
                 {
                     loggedIn ? ( <li> <a onClick = {this.logoutClickHandler}> Logout </a></li> ) : ( '' )
@@ -79,13 +79,15 @@ class LayoutHandler extends React.Component {
 
             return (
                 <div className = 'layout-handler'>
-                    <SidebarArea className='layout-handler__nav'>
-                        SidebarArea Component
-                    </SidebarArea>
-                    <ContentArea className='layout-handler__content'>
-                        <LayoutNavigation />
-                        <RouteHandler />
-                    </ContentArea>
+                    <div className='layout-handler__nav'>
+                        <SidebarArea />
+                    </div>
+                    <div className='layout-handler__content'>
+                        <ContentArea>
+                            <LayoutNavigation />
+                            <RouteHandler />
+                        </ContentArea>
+                    </div>
                 </div>
             );
 
