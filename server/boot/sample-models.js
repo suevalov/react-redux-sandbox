@@ -7,7 +7,7 @@ module.exports = function(app) {
     var RoleMapping = app.models.RoleMapping;
 
     User.create({
-            username: 'Admin',
+            username: 'Alexander Suevalov',
             email: 'admin@gmail.com',
             password: 'opensesame'
         },

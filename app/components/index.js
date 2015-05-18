@@ -13,6 +13,7 @@ import MenuItem from './menu-item/menu-item';
 import Icon from './icon/icon';
 import FormGroup from './form-group/form-group';
 import Input from './input/input';
+import ProfileWidget from './profile-widget/profile-widget';
 
 module.exports = {
     Button: Button,
@@ -25,5 +26,6 @@ module.exports = {
     Row: Row,
     Col: Col,
     FormGroup: FormGroup,
-    Input: Input
+    Input: Input,
+    ProfileWidget: ProfileWidget
 };

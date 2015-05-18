@@ -12,10 +12,6 @@ class LoginHandler extends React.Component {
         }
     }
 
-    constructor() {
-        super();
-    }
-
     componentDidMount() {
         this.unsubscribe = AuthStore.listen(this.onAuthResponse, this);
     }

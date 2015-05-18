@@ -3,6 +3,7 @@
 import React from 'react';
 import SidebarMenuHeader from 'modules/layout/components/sidebar-area/sidebar-menu-header';
 import SidebarMenuItem from 'modules/layout/components/sidebar-area/sidebar-menu-item';
+import { ProfileWidget } from 'components/index';
 
 require('./sidebar-area.less');
 
@@ -40,7 +41,9 @@ class SidebarArea extends React.Component {
         return (
             <div className='sidebar-area'>
                 <ul className='sidebar-area__menu'>
-                    <SidebarMenuHeader />
+                    <SidebarMenuHeader>
+                        <ProfileWidget />
+                    </SidebarMenuHeader>
                     {this.state.menuItems.map((item) => {
                         return (
                             <SidebarMenuItem {...item} />
