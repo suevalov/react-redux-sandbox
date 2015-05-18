@@ -15,26 +15,34 @@ class SidebarArea extends React.Component {
         this.state = {
             menuItems: [
                 {
-                    key: 'sidebar-home-page-menu-item',
                     label: 'Home Page',
                     to: 'app',
                     icon: 'th-large'
                 },
                 {
-                    key: 'sidebar-components-menu-item',
                     label: 'Components',
                     to: 'components',
                     icon: 'flask'
                 },
                 {
-                    key: 'sidebar-special-menu-item',
                     label: 'Special',
                     to: 'components',
                     icon: 'flask',
                     special: true
                 }
-            ]
+            ],
+            selected: 0
         };
+    }
+
+    handleItemClick(key) {
+        this.setState({
+            selected: key
+        });
+    }
+
+    getSelectedIndex() {
+        return this.state.selected;
     }
 
     render() {
@@ -44,9 +52,9 @@ class SidebarArea extends React.Component {
                     <SidebarMenuHeader>
                         <ProfileWidget />
                     </SidebarMenuHeader>
-                    {this.state.menuItems.map((item) => {
+                    {this.state.menuItems.map((item, index) => {
                         return (
-                            <SidebarMenuItem {...item} />
+                            <SidebarMenuItem {...item} key={index} active={index === this.getSelectedIndex()} onClick={this.handleItemClick.bind(this, index)}/>
                         );
                     })}
                 </ul>
