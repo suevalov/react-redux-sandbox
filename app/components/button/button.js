@@ -3,11 +3,9 @@
 import React from 'react/addons';
 import _ from 'lodash';
 import classSet from 'classnames';
+import pureShouldComponentUpdate from 'react-pure-render/function';
 
 require('./button.less');
-
-const { PureRenderMixin } = React.addons;
-const { PropTypes } = React;
 
 const THEMES = {
     'default': 'default',
@@ -27,57 +25,53 @@ let SIZES = {
     'large': 'lg'
 };
 
-export default React.createClass({
+export default class extends React.Component {
 
-    displayName: 'Button',
+    shouldComponentUpdate = pureShouldComponentUpdate;
 
-    mixins: [ PureRenderMixin ],
+    static propTypes = {
 
-    propTypes: {
+        onClick: React.PropTypes.func,
+        onFocus: React.PropTypes.func,
+        onBlur: React.PropTypes.func,
+        onMouseEnter: React.PropTypes.func,
+        onMouseLeave: React.PropTypes.func,
+        onMouseDown: React.PropTypes.func,
+        onMouseUp: React.PropTypes.func,
 
-        onClick: PropTypes.func,
-        onFocus: PropTypes.func,
-        onBlur: PropTypes.func,
-        onMouseEnter: PropTypes.func,
-        onMouseLeave: PropTypes.func,
-        onMouseDown: PropTypes.func,
-        onMouseUp: PropTypes.func,
-
-        size: PropTypes.oneOf(_.keys(SIZES)),
-        theme: PropTypes.oneOf(_.keys(THEMES)),
-        minWidth: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.number
+        size: React.PropTypes.oneOf(_.keys(SIZES)),
+        theme: React.PropTypes.oneOf(_.keys(THEMES)),
+        minWidth: React.PropTypes.oneOfType([
+            React.PropTypes.bool,
+            React.PropTypes.number
         ]),
-        outline: PropTypes.bool,
-        block: PropTypes.bool,
-        circle: PropTypes.bool,
-        rounded: PropTypes.bool,
-        dim: PropTypes.bool,
+        outline: React.PropTypes.bool,
+        block: React.PropTypes.bool,
+        circle: React.PropTypes.bool,
+        rounded: React.PropTypes.bool,
+        dim: React.PropTypes.bool,
 
-        active: PropTypes.bool,
-        disabled: PropTypes.bool,
-        href: PropTypes.string,
-        target: PropTypes.string,
-        componentClass: PropTypes.string,
-        type: PropTypes.string
-    },
+        active: React.PropTypes.bool,
+        disabled: React.PropTypes.bool,
+        href: React.PropTypes.string,
+        target: React.PropTypes.string,
+        componentClass: React.PropTypes.string,
+        type: React.PropTypes.string
+    };
 
-    getDefaultProps() {
-        return {
-            active: false,
-            disabled: false,
-            minWidth: false,
-            outline: false,
-            block: false,
-            circle: false,
-            rounded: false,
-            dim: false,
-            size: SIZES.normal,
-            theme: THEMES.default,
-            type: 'button'
-        };
-    },
+    static defaultProps = {
+        active: false,
+        disabled: false,
+        minWidth: false,
+        outline: false,
+        block: false,
+        circle: false,
+        rounded: false,
+        dim: false,
+        size: SIZES.normal,
+        theme: THEMES.default,
+        type: 'button'
+    };
 
     prepareProps(thisProps) {
 
@@ -92,7 +86,7 @@ export default React.createClass({
         props.onMouseUp = this.handleMouseUp.bind(this, props);
 
         return props;
-    },
+    }
 
     prepareClasses(props) {
 
@@ -112,7 +106,7 @@ export default React.createClass({
         classes['disabled'] = props.disabled;
 
         return classes;
-    },
+    }
 
     prepareStyles(props) {
 
@@ -123,7 +117,7 @@ export default React.createClass({
         }
 
         return styles;
-    },
+    }
 
     handleClick(props, event) {
         if (props.disabled) {
@@ -134,7 +128,7 @@ export default React.createClass({
         if (this.props.onClick) {
             this.props.onClick(event);
         }
-    },
+    }
 
     handleFocus(props, event) {
         if (props.disabled) {
@@ -144,7 +138,7 @@ export default React.createClass({
         if (this.props.onFocus) {
             this.props.onFocus(event);
         }
-    },
+    }
 
     handleBlur(props, event) {
         if (props.disabled) {
@@ -154,7 +148,7 @@ export default React.createClass({
         if (this.props.onBlur) {
             this.props.onBlur(event);
         }
-    },
+    }
 
     handleMouseEnter(props, event) {
         if (props.disabled) {
@@ -164,7 +158,7 @@ export default React.createClass({
         if (this.props.onMouseEnter) {
             this.props.onMouseEnter(event);
         }
-    },
+    }
 
     handleMouseLeave(props, event) {
         if (props.disabled) {
@@ -174,7 +168,7 @@ export default React.createClass({
         if (this.props.onMouseLeave) {
             this.props.onMouseLeave(event);
         }
-    },
+    }
 
     handleMouseDown(props, event) {
         if (props.disabled) {
@@ -184,7 +178,7 @@ export default React.createClass({
         if (this.props.onMouseDown) {
             this.props.onMouseDown(event);
         }
-    },
+    }
 
     handleMouseUp(props, event) {
         if (props.disabled) {
@@ -194,7 +188,7 @@ export default React.createClass({
         if (this.props.onMouseUp) {
             this.props.onMouseUp(event);
         }
-    },
+    }
 
     render() {
 
@@ -206,7 +200,7 @@ export default React.createClass({
 
         return this[renderFuncName](classes, props, styles);
 
-    },
+    }
 
     renderAnchor(classes, props, styles) {
         var Component = props.componentClass || 'a';
@@ -221,7 +215,7 @@ export default React.createClass({
                 {props.children}
             </Component>
         );
-    },
+    }
 
     renderButton(classes, props, styles) {
         let Component = props.componentClass || 'button';
@@ -235,4 +229,4 @@ export default React.createClass({
         );
     }
 
-});
+}

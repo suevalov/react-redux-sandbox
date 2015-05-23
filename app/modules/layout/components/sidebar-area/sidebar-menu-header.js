@@ -5,7 +5,7 @@ import React from 'react';
 class SidebarMenuHeader extends React.Component {
 
     static propTypes = {
-        children: React.PropTypes.array
+        children: React.PropTypes.object
     };
 
     render() {
