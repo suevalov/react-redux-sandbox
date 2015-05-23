@@ -4,6 +4,10 @@ import React from 'react';
 
 class ContentArea extends React.Component {
 
+    static propTypes = {
+        children: React.PropTypes.array
+    };
+
     render() {
         return (
             <div>
@@ -13,10 +17,5 @@ class ContentArea extends React.Component {
     }
 
 }
-
-ContentArea.propTypes = {
-    className: React.PropTypes.string,
-    children: React.PropTypes.array
-};
 
 export default ContentArea;

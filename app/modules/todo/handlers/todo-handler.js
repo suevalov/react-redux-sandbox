@@ -14,6 +14,11 @@ import {
 
 class TodoHandler extends React.Component {
 
+    static propTypes = {
+        items: React.PropTypes.instanceOf(ImmutableMap),
+        fetched: React.PropTypes.bool
+    };
+
     linkState = React.addons.LinkedStateMixin.linkState;
 
     constructor() {
@@ -47,11 +52,6 @@ class TodoHandler extends React.Component {
     }
 
 }
-
-TodoHandler.propTypes = {
-    items: React.PropTypes.instanceOf(ImmutableMap),
-    fetched: React.PropTypes.bool
-};
 
 export default class extends React.Component {
 

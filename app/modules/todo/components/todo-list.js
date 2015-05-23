@@ -8,6 +8,11 @@ import PureComponent from 'react-pure-render/component';
 
 class TodoList extends PureComponent {
 
+    static propTypes = {
+        items: React.PropTypes.instanceOf(Immutable.Map),
+        spinner: React.PropTypes.bool.isRequired
+    };
+
     render() {
         if (this.props.spinner) {
             return (
@@ -33,10 +38,5 @@ class TodoList extends PureComponent {
     }
 
 }
-
-TodoList.propTypes = {
-    items: React.PropTypes.instanceOf(Immutable.Map),
-    spinner: React.PropTypes.bool.isRequired
-};
 
 export default TodoList;

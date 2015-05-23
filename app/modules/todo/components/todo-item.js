@@ -10,6 +10,11 @@ import PureComponent from 'react-pure-render/component';
 
 class TodoItem extends PureComponent {
 
+    static propTypes = {
+        id: React.PropTypes.string.isRequired,
+        text: React.PropTypes.string.isRequired
+    };
+
     constructor() {
         super();
         this.clickHandler = this.clickHandler.bind(this);
@@ -35,10 +40,5 @@ class TodoItem extends PureComponent {
     }
 
 }
-
-TodoItem.propTypes = {
-    id: React.PropTypes.string.isRequired,
-    text: React.PropTypes.string.isRequired
-};
 
 export default TodoItem;

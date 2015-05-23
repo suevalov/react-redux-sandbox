@@ -9,6 +9,14 @@ import {
 
 class SidebarMenuItem extends React.Component {
 
+    static propTypes = {
+        icon: React.PropTypes.string,
+        active: React.PropTypes.bool,
+        special: React.PropTypes.bool,
+        to: React.PropTypes.string.isRequired,
+        label: React.PropTypes.string.isRequired
+    };
+
     render() {
 
         let classes = {
@@ -30,13 +38,5 @@ class SidebarMenuItem extends React.Component {
     }
 
 }
-
-SidebarMenuItem.propTypes = {
-    icon: React.PropTypes.string,
-    active: React.PropTypes.bool,
-    special: React.PropTypes.bool,
-    to: React.PropTypes.string.isRequired,
-    label: React.PropTypes.string.isRequired
-};
 
 export default SidebarMenuItem;

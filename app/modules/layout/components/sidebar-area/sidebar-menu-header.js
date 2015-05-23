@@ -4,6 +4,10 @@ import React from 'react';
 
 class SidebarMenuHeader extends React.Component {
 
+    static propTypes = {
+        children: React.PropTypes.array
+    };
+
     render() {
         return (
             <li className='sidebar-area__menu-header'>

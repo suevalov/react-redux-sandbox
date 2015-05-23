@@ -15,6 +15,10 @@ let {
 
 class LayoutNavigation extends React.Component {
 
+    static contextTypes = {
+        router: React.PropTypes.func
+    };
+
     constructor() {
         super();
         bindAll(this, 'logoutClickHandler');
@@ -50,18 +54,18 @@ class LayoutNavigation extends React.Component {
                 {
                     loggedIn ? ( <li> <a onClick = {this.logoutClickHandler}> Logout </a></li> ) : ( '' )
                 }
-                < /ul>
-            < /header>
+                </ul>
+            </header>
         );
     }
 
 }
 
-LayoutNavigation.contextTypes = {
-    router: React.PropTypes.func
-};
-
 class LayoutHandler extends React.Component {
+
+    static contextTypes = {
+        router: React.PropTypes.func
+    };
 
     render() {
 
@@ -97,9 +101,5 @@ class LayoutHandler extends React.Component {
     }
 
 }
-
-LayoutHandler.contextTypes = {
-    router: React.PropTypes.func
-};
 
 export default LayoutHandler;

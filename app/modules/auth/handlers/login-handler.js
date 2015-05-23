@@ -6,6 +6,10 @@ import LoginForm from 'modules/auth/components/login-form';
 
 class LoginHandler extends React.Component {
 
+    static contextTypes = {
+        router: React.PropTypes.func
+    };
+
     static willTransitionTo(transition) {
         if (AuthStore.isLoggedIn()) {
             transition.redirect('/', {});
@@ -33,9 +37,5 @@ class LoginHandler extends React.Component {
     }
 
 }
-
-LoginHandler.contextTypes = {
-    router: React.PropTypes.func
-};
 
 export default LoginHandler;

@@ -4,9 +4,9 @@ import React from 'react';
 
 require('./icon.less');
 
-export default React.createClass({
+export default class extends React.Component {
 
-    propTypes: {
+    static propTypes = {
         name: React.PropTypes.string.isRequired,
         size: React.PropTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
         rotate: React.PropTypes.oneOf(['90', '180', '270']),
@@ -14,7 +14,7 @@ export default React.createClass({
         fixedWidth: React.PropTypes.bool,
         spin: React.PropTypes.bool,
         className: React.PropTypes.string
-    },
+    };
 
     render() {
         let { name, size, rotate, flip, spin, fixedWidth, className } = this.props;
@@ -48,4 +48,4 @@ export default React.createClass({
         return <i {...this.props} className={classNames} />;
     }
 
-});
+}

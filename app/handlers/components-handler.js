@@ -17,7 +17,7 @@ class ComponentsNavigation extends React.Component {
 
 }
 
-export default class ComponentsHandler extends React.Component {
+export default class extends React.Component {
 
     render() {
         return (

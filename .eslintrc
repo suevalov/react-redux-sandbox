@@ -29,6 +29,7 @@
         "node": true
     },
     "rules": {
+        "no-trailing-spaces": 0,
         "comma-dangle": 2,
         "no-cond-assign": 2,
         "no-console": 1,
