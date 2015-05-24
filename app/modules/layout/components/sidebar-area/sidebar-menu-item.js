@@ -14,7 +14,8 @@ class SidebarMenuItem extends React.Component {
         active: React.PropTypes.bool,
         special: React.PropTypes.bool,
         to: React.PropTypes.string.isRequired,
-        label: React.PropTypes.string.isRequired
+        label: React.PropTypes.string.isRequired,
+        onClick: React.PropTypes.func
     };
 
     render() {

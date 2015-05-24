@@ -10,7 +10,7 @@ class ContentArea extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='content-area'>
                 { this.props.children }
             </div>
         );

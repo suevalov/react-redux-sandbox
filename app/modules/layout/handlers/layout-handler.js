@@ -9,7 +9,7 @@ import bindAll from 'utils/bind-all';
 import ContentArea from 'modules/layout/components/content-area/content-area';
 import SidebarArea from 'modules/layout/components/sidebar-area/sidebar-area';
 
-let {
+const {
     RouteHandler, Link
 } = Router;
 
@@ -69,7 +69,7 @@ class LayoutHandler extends React.Component {
 
     render() {
 
-        var currentPath = this.context.router.getCurrentPath();
+        const currentPath = this.context.router.getCurrentPath();
 
         if (currentPath === '/login') {
 
@@ -82,7 +82,7 @@ class LayoutHandler extends React.Component {
         } else {
 
             return (
-                <div className = 'layout-handler'>
+                <div className='layout-handler'>
                     <div className='layout-handler__nav'>
                         <SidebarArea />
                     </div>

@@ -5,7 +5,7 @@ import { Map as ImmutableMap } from 'immutable';
 import TodoStore from '../stores/todo-store';
 import TodoActions from '../actions/todo-actions';
 import TodoList from '../components/todo-list';
-import { authRequired } from 'modules/auth';
+import { AuthRequired } from 'modules/auth';
 import bindAll from 'utils/bind-all';
 import {
     Button,
@@ -53,9 +53,8 @@ class TodoHandler extends React.Component {
 
 }
 
+@AuthRequired
 export default class extends React.Component {
-
-    static willTransitionTo = authRequired;
 
     constructor() {
         super();
