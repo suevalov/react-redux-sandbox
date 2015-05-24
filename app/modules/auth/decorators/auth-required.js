@@ -2,23 +2,34 @@
 
 import React from 'react';
 import AuthStore from 'modules/auth/stores/auth-store';
-import getProps from 'utils/decorator-get-props';
+import getProps from 'utils/get-props';
 
-export default Component => class AuthRequiredDecorator extends React.Component {
+export default function(DecoratedComponent) {
 
-    static willTransitionTo = (transition) => {
-        if (!AuthStore.isLoggedIn()) {
-            let options = {};
-            if (transition.path !== '' && transition.path !== '/') {
-                options.nextPath = transition.path;
+    const displayName =
+      DecoratedComponent.displayName ||
+      DecoratedComponent.name ||
+      'Component';
+
+    return class AuthRequiredDecorator extends React.Component {
+
+        static displayName = `authRequired(${displayName})`;
+
+        static willTransitionTo = (transition) => {
+            if (!AuthStore.isLoggedIn()) {
+                let options = {};
+                if (transition.path !== '' && transition.path !== '/') {
+                    options.nextPath = transition.path;
+                }
+                transition.redirect('/login', {}, options);
             }
-            transition.redirect('/login', {}, options);
+        };
+
+        render() {
+            const props = getProps.call(this);
+            return <DecoratedComponent {...props} />;
         }
+
     };
 
-    render() {
-        const props = getProps.call(this);
-        return <Component {...props} />;
-    }
-
-};
+}

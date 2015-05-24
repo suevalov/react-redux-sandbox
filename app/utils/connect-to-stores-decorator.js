@@ -1,39 +1,49 @@
 'use strict';
 
 import React from 'react';
-import getProps from 'utils/decorator-get-props';
-import _ from 'lodash';
+import getProps from 'utils/get-props';
+import { map, each } from 'lodash';
 
-export default function(stores) {
+export default function(stores, getState) {
 
-    const HOC = Component => class ConnectToStoresDecorator extends React.Component {
+    return (DecoratedComponent) => {
 
-        constructor() {
-            super();
-            this.state = _.extend(...(stores.map(store => {
-                return store.getInitialState ? store.getInitialState() : {};
-            })));
-            this.listeners = [];
-        }
+        const displayName =
+          DecoratedComponent.displayName ||
+          DecoratedComponent.name ||
+          'Component';
 
-        componentDidMount() {
-            this.listeners = _.map(stores, store => {
-                return store.listen(this.setState, this);
-            });
-        }
+        return class ConnectToStoresDecorator extends React.Component {
 
-        componentWillUnmount() {
-            _.each(this.listeners, unsubscribe => unsubscribe());
-            this.listeners = [];
-        }
+            static displayName = `connectToStores(${displayName})`;
 
-        render() {
-            const props = getProps.call(this);
-            return <Component {...props} />;
-        }
+            constructor(props) {
+                super(props);
+                this.state = getState(props);
+                this.listeners = [];
+            }
 
+            componentDidMount() {
+                this.listeners = map(stores, store => {
+                    return store.listen(this.handleStoreChange, this);
+                });
+            }
+
+            componentWillUnmount() {
+                each(this.listeners, unsubscribe => unsubscribe());
+                this.listeners = [];
+            }
+
+            handleStoreChange() {
+                this.setState(getState(this.props));
+            }
+
+            render() {
+                const props = getProps.call(this);
+                return <DecoratedComponent {...props} />;
+            }
+
+        };
     };
-
-    return HOC;
 
 }

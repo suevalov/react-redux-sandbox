@@ -13,11 +13,19 @@ import {
     Input
 } from 'components/index';
 
+function getState() {
+
+    return {
+        items: TodoStore.getItems(),
+        fetched: TodoStore.isFetched()
+    };
+
+}
 
 @AuthRequired
 @ConnectToStores([
     TodoStore
-])
+], getState)
 export default class TodoHandler extends React.Component {
 
     static propTypes = {

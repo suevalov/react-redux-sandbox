@@ -18,7 +18,7 @@ let TodoStore = Reflux.createStore({
         this._fetched = false;
     },
 
-    getInitialState() {
+    getState() {
         return {
             items: this._items,
             fetched: this._fetched
@@ -30,7 +30,7 @@ let TodoStore = Reflux.createStore({
      */
     onRemoveTodoCompleted(id) {
         this._items = this._items.delete(id);
-        this.trigger(this.getInitialState());
+        this.trigger(this.getState());
     },
 
     /**
@@ -46,7 +46,7 @@ let TodoStore = Reflux.createStore({
 
         this._items = todosMap;
         this._fetched = true;
-        this.trigger(this.getInitialState());
+        this.trigger(this.getState());
 
     },
 
@@ -56,7 +56,15 @@ let TodoStore = Reflux.createStore({
     onAddTodoCompleted(todoItem) {
 
         this._items = this._items.set(todoItem.id, new TodoRecord(todoItem));
-        this.trigger(this.getInitialState());
+        this.trigger(this.getState());
+    },
+
+    getItems() {
+        return this._items;
+    },
+
+    isFetched() {
+        return this._fetched;
     }
 
 });
