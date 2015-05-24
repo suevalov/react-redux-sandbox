@@ -1,22 +1,28 @@
 'use strict';
 
-import React from 'react/addons';
+import React, { PropTypes } from 'react/addons';
 import { Map as ImmutableMap } from 'immutable';
 import TodoStore from '../stores/todo-store';
 import TodoActions from '../actions/todo-actions';
 import TodoList from '../components/todo-list';
 import { AuthRequired } from 'modules/auth';
 import bindAll from 'utils/bind-all';
+import ConnectToStores from 'utils/connect-to-stores-decorator';
 import {
     Button,
     Input
 } from 'components/index';
 
-class TodoHandler extends React.Component {
+
+@AuthRequired
+@ConnectToStores([
+    TodoStore
+])
+export default class TodoHandler extends React.Component {
 
     static propTypes = {
-        items: React.PropTypes.instanceOf(ImmutableMap),
-        fetched: React.PropTypes.bool
+        items: PropTypes.instanceOf(ImmutableMap),
+        fetched: PropTypes.bool
     };
 
     linkState = React.addons.LinkedStateMixin.linkState;
@@ -29,6 +35,10 @@ class TodoHandler extends React.Component {
         this.state = {
             text: ''
         };
+    }
+
+    componentDidMount() {
+        TodoActions.fetchTodos();
     }
 
     onClickHandler() {
@@ -48,32 +58,6 @@ class TodoHandler extends React.Component {
                 <Input type='text' valueLink={this.linkState('text')}/>
                 <Button theme='info' onClick={this.onClickHandler}>Click me!</Button>
             </div>
-        );
-    }
-
-}
-
-@AuthRequired
-export default class extends React.Component {
-
-    constructor() {
-        super();
-        this.state = TodoStore.getInitialState();
-
-    }
-
-    componentDidMount() {
-        this.unsubscribe = TodoStore.listen(this.setState, this);
-        TodoActions.fetchTodos();
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
-    render() {
-        return (
-            <TodoHandler items={this.state.items} fetched={this.state.fetched}/>
         );
     }
 

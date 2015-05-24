@@ -1,7 +1,7 @@
 'use strict';
 
 import './layout.less';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Router from 'react-router';
 import AuthStore from 'modules/auth/stores/auth-store';
 import AuthActions from 'modules/auth/actions/auth-actions';
@@ -16,7 +16,7 @@ const {
 class LayoutNavigation extends React.Component {
 
     static contextTypes = {
-        router: React.PropTypes.func
+        router: PropTypes.func
     };
 
     constructor() {
@@ -64,7 +64,7 @@ class LayoutNavigation extends React.Component {
 class LayoutHandler extends React.Component {
 
     static contextTypes = {
-        router: React.PropTypes.func
+        router: PropTypes.func
     };
 
     render() {

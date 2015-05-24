@@ -1,13 +1,13 @@
 'use strict';
 
-import React from 'react/addons';
+import React, { PropTypes } from 'react/addons';
 import AuthStore from 'modules/auth/stores/auth-store';
 import LoginForm from 'modules/auth/components/login-form';
 
 class LoginHandler extends React.Component {
 
     static contextTypes = {
-        router: React.PropTypes.func
+        router: PropTypes.func
     };
 
     static willTransitionTo(transition) {

@@ -1,11 +1,11 @@
 'use strict';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 class SidebarMenuHeader extends React.Component {
 
     static propTypes = {
-        children: React.PropTypes.object
+        children: PropTypes.object
     };
 
     render() {

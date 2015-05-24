@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react/addons';
+import React, { PropTypes } from 'react/addons';
 import _ from 'lodash';
 import classSet from 'classnames';
 import pureShouldComponentUpdate from 'react-pure-render/function';
@@ -31,32 +31,32 @@ export default class extends React.Component {
 
     static propTypes = {
 
-        onClick: React.PropTypes.func,
-        onFocus: React.PropTypes.func,
-        onBlur: React.PropTypes.func,
-        onMouseEnter: React.PropTypes.func,
-        onMouseLeave: React.PropTypes.func,
-        onMouseDown: React.PropTypes.func,
-        onMouseUp: React.PropTypes.func,
+        onClick: PropTypes.func,
+        onFocus: PropTypes.func,
+        onBlur: PropTypes.func,
+        onMouseEnter: PropTypes.func,
+        onMouseLeave: PropTypes.func,
+        onMouseDown: PropTypes.func,
+        onMouseUp: PropTypes.func,
 
-        size: React.PropTypes.oneOf(_.keys(SIZES)),
-        theme: React.PropTypes.oneOf(_.keys(THEMES)),
-        minWidth: React.PropTypes.oneOfType([
-            React.PropTypes.bool,
-            React.PropTypes.number
+        size: PropTypes.oneOf(_.keys(SIZES)),
+        theme: PropTypes.oneOf(_.keys(THEMES)),
+        minWidth: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.number
         ]),
-        outline: React.PropTypes.bool,
-        block: React.PropTypes.bool,
-        circle: React.PropTypes.bool,
-        rounded: React.PropTypes.bool,
-        dim: React.PropTypes.bool,
+        outline: PropTypes.bool,
+        block: PropTypes.bool,
+        circle: PropTypes.bool,
+        rounded: PropTypes.bool,
+        dim: PropTypes.bool,
 
-        active: React.PropTypes.bool,
-        disabled: React.PropTypes.bool,
-        href: React.PropTypes.string,
-        target: React.PropTypes.string,
-        componentClass: React.PropTypes.string,
-        type: React.PropTypes.string
+        active: PropTypes.bool,
+        disabled: PropTypes.bool,
+        href: PropTypes.string,
+        target: PropTypes.string,
+        componentClass: PropTypes.string,
+        type: PropTypes.string
     };
 
     static defaultProps = {

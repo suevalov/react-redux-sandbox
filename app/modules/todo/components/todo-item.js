@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import TodoActions from '../actions/todo-actions';
 import {
     Button,
@@ -11,8 +11,8 @@ import PureComponent from 'react-pure-render/component';
 class TodoItem extends PureComponent {
 
     static propTypes = {
-        id: React.PropTypes.string.isRequired,
-        text: React.PropTypes.string.isRequired
+        id: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired
     };
 
     constructor() {

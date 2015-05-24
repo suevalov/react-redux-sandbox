@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
 import Spinner from 'react-spinkit';
 import TodoItem from './todo-item';
@@ -9,8 +9,8 @@ import PureComponent from 'react-pure-render/component';
 class TodoList extends PureComponent {
 
     static propTypes = {
-        items: React.PropTypes.instanceOf(Immutable.Map),
-        spinner: React.PropTypes.bool.isRequired
+        items: PropTypes.instanceOf(Immutable.Map),
+        spinner: PropTypes.bool.isRequired
     };
 
     render() {

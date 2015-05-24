@@ -1,19 +1,19 @@
 'use strict';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 require('./icon.less');
 
 export default class extends React.Component {
 
     static propTypes = {
-        name: React.PropTypes.string.isRequired,
-        size: React.PropTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
-        rotate: React.PropTypes.oneOf(['90', '180', '270']),
-        flip: React.PropTypes.oneOf(['horizontal', 'vertical']),
-        fixedWidth: React.PropTypes.bool,
-        spin: React.PropTypes.bool,
-        className: React.PropTypes.string
+        name: PropTypes.string.isRequired,
+        size: PropTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
+        rotate: PropTypes.oneOf(['90', '180', '270']),
+        flip: PropTypes.oneOf(['horizontal', 'vertical']),
+        fixedWidth: PropTypes.bool,
+        spin: PropTypes.bool,
+        className: PropTypes.string
     };
 
     render() {

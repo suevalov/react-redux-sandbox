@@ -1,11 +1,11 @@
 'use strict';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 class ContentArea extends React.Component {
 
     static propTypes = {
-        children: React.PropTypes.array
+        children: PropTypes.array
     };
 
     render() {
