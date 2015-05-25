@@ -2,6 +2,8 @@
 
 import React, { PropTypes } from 'react';
 
+require('./content-area.less');
+
 class ContentArea extends React.Component {
 
     static propTypes = {

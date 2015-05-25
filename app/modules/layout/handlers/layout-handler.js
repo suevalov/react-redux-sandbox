@@ -1,23 +1,16 @@
 'use strict';
 
 import './layout.less';
-import React, { PropTypes } from 'react';
-import Router from 'react-router';
+import React from 'react';
+import { RouteHandler, Link } from 'react-router';
+import { RouteActions, RouteStore } from 'router';
 import AuthStore from 'modules/auth/stores/auth-store';
 import AuthActions from 'modules/auth/actions/auth-actions';
 import bindAll from 'utils/bind-all';
 import ContentArea from 'modules/layout/components/content-area/content-area';
 import SidebarArea from 'modules/layout/components/sidebar-area/sidebar-area';
 
-const {
-    RouteHandler, Link
-} = Router;
-
 class LayoutNavigation extends React.Component {
-
-    static contextTypes = {
-        router: PropTypes.func
-    };
 
     constructor() {
         super();
@@ -38,7 +31,7 @@ class LayoutNavigation extends React.Component {
 
     onAuthChange(state) {
         if (state.loggedOut) {
-            this.context.router.transitionTo('login');
+            RouteActions.transitionTo('/login');
         }
     }
 
@@ -63,15 +56,9 @@ class LayoutNavigation extends React.Component {
 
 class LayoutHandler extends React.Component {
 
-    static contextTypes = {
-        router: PropTypes.func
-    };
-
     render() {
 
-        const currentPath = this.context.router.getCurrentPath();
-
-        if (currentPath === '/login') {
+        if (RouteStore.isCurrentPath('/login')) {
 
             return (
                 <div className='layout-handler layout-handler--grey'>

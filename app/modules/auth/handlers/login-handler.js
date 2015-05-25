@@ -1,18 +1,15 @@
 'use strict';
 
-import React, { PropTypes } from 'react/addons';
+import React from 'react/addons';
 import AuthStore from 'modules/auth/stores/auth-store';
+import { RouteActions } from 'router';
 import LoginForm from 'modules/auth/components/login-form';
 
 class LoginHandler extends React.Component {
 
-    static contextTypes = {
-        router: PropTypes.func
-    };
-
     static willTransitionTo(transition) {
         if (AuthStore.isLoggedIn()) {
-            transition.redirect('/', {});
+            transition.redirect('/');
         }
     }
 
@@ -26,7 +23,7 @@ class LoginHandler extends React.Component {
 
     onAuthResponse(state) {
         if (state.loggedIn) {
-            this.context.router.transitionTo('app');
+            RouteActions.transitionTo('/');
         }
     }
 
