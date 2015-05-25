@@ -10,6 +10,16 @@ gulp.task('dev', ['clean'], function(callback) {
 
     global.isProd = false;
 
+    runSequence(['images', 'fonts', 'views', 'webpack'], 'watch-browser-sync', callback);
+
+});
+
+gulp.task('dev-no-sync', ['clean'], function(callback) {
+
+    callback = callback || _.noop;
+
+    global.isProd = false;
+
     runSequence(['images', 'fonts', 'views', 'webpack'], 'watch', callback);
 
 });

@@ -82,13 +82,14 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "dev": "gulp dev",
-    "prod": "gulp prod",
-    "prod-build": "gulp prod-build",
+    "dev": "./node_modules/gulp/bin/gulp.js dev",
+    "dev-no-sync": "./node_modules/gulp/bin/gulp.js dev-no-sync",
+    "prod": "./node_modules/gulp/bin/gulp.js prod",
+    "prod-build": "./node_modules/gulp/bin/gulp.js prod-build",
     "server": "node server/server.js",
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
-    "gemini-gather": "gemini gather",
-    "gemini-test": "gemini test --reporter flat",
-    "gemini-test-report": "gemini test --reporter html --reporter flat"
+    "gemini-gather": "./node_modules/gemini/bin/gemini gather",
+    "gemini-test": "./node_modules/gemini/bin/gemini test --reporter flat",
+    "gemini-test-report": "./node_modules/gemini/bin/gemini test --reporter html --reporter flat"
   }
 }
