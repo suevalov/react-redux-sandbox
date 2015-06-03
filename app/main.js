@@ -1,5 +1,3 @@
-'use strict';
-
 import 'babel-core/polyfill';
 import 'react-tools/src/test/phantomjs-shims';
 

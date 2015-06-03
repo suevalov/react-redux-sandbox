@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
 import Spinner from 'react-spinkit';
@@ -18,23 +16,21 @@ class TodoList extends PureComponent {
             return (
                 <Spinner spinnerName='three-bounce'/>
             );
-        } else {
-            if (this.props.items.count()) {
-                return (
-                    <ul>
-                        {this.props.items.map((item) => {
-                            return (
-                                <TodoItem {...item.toJS()} />
-                            );
-                        })}
-                    </ul>
-                );
-            } else {
-                return (
-                    <div>List is empty</div>
-                );
-            }
         }
+        if (this.props.items.count()) {
+            return (
+                <ul>
+                    {this.props.items.map((item) => {
+                        return (
+                            <TodoItem {...item.toJS()} />
+                        );
+                    })}
+                </ul>
+            );
+        }
+        return (
+            <div>List is empty</div>
+        );
     }
 
 }

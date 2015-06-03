@@ -1,5 +1,3 @@
-'use strict';
-
 import TodoHandler from './handlers/todo-handler';
 
 export default {

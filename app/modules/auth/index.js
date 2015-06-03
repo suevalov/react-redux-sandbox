@@ -1,5 +1,3 @@
-'use strict';
-
 import LoginHandler from './handlers/login-handler';
 import AuthRequired from 'modules/auth/decorators/auth-required';
 

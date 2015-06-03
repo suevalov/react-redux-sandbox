@@ -1,5 +1,3 @@
-'use strict';
-
 import Config from 'utils/config';
 import axios from 'axios';
 

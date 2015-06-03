@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react/addons';
 import AuthStore from 'modules/auth/stores/auth-store';
 import { RouteActions } from 'router';

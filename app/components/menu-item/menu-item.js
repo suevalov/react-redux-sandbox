@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import { MenuItem as BootstrapMenuItem } from 'react-bootstrap';
 

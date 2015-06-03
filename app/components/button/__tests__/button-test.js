@@ -1,5 +1,3 @@
-'use strict';
-
 /* global describe, it, sinon */
 
 import React from 'react';

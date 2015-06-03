@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Gets the `props` and `state` to be passed to the component (as `props`).
  * Functions are bound to the higher-order component.
@@ -7,10 +5,10 @@
  * @return {Object}
  * @api private
  */
-export default function () {
+export default function() {
     const props = {};
 
-    [this.props, this.state].forEach(function (obj) {
+    [this.props, this.state].forEach(function iterator(obj) {
         if (obj) {
             for (let key in obj) {
                 let value = obj[key];

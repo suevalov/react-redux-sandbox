@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import AuthStore from 'modules/auth/stores/auth-store';
 import getProps from 'utils/get-props';
@@ -11,7 +9,7 @@ export default function(DecoratedComponent) {
       DecoratedComponent.name ||
       'Component';
 
-    return class AuthRequiredDecorator extends React.Component {
+    return class extends React.Component {
 
         static displayName = `authRequired(${displayName})`;
 

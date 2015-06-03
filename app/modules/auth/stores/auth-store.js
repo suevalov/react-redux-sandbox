@@ -1,5 +1,3 @@
-'use strict';
-
 import Reflux from 'reflux';
 import AuthActions from 'modules/auth/actions/auth-actions';
 
@@ -70,9 +68,8 @@ let AuthStore = Reflux.createStore({
     getUser() {
         if (this.isLoggedIn()) {
             return this.user;
-        } else {
-            return null;
         }
+        return null;
     },
 
     getToken() {

@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import getProps from 'utils/get-props';
 import { map, each } from 'lodash';
@@ -13,7 +11,7 @@ export default function(stores, getState) {
           DecoratedComponent.name ||
           'Component';
 
-        return class ConnectToStoresDecorator extends React.Component {
+        return class extends React.Component {
 
             static displayName = `connectToStores(${displayName})`;
 

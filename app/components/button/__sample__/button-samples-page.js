@@ -1,13 +1,9 @@
-'use strict';
-
 import React from 'react';
 import { Grid, Row, Button, Icon } from 'components/index';
 
 require('./button-samples-page.less');
 
-export default React.createClass({
-
-    displayName: 'ButtonSamplesPage',
+export default class extends React.Component {
 
     render() {
         return (
@@ -103,4 +99,4 @@ export default React.createClass({
         );
     }
 
-});
+}

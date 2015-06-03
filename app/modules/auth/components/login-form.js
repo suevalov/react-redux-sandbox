@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react/addons';
 import AuthActions from 'modules/auth/actions/auth-actions';
 import {
@@ -15,7 +13,7 @@ class LoginForm extends React.Component {
     constructor() {
         super();
 
-        bindAll(this, 'handleSubmit');
+        bindAll(this, 'onSubmit');
 
         this.state = {
             email: '',
@@ -23,7 +21,7 @@ class LoginForm extends React.Component {
         };
     }
 
-    handleSubmit(e) {
+    onSubmit(e) {
         e.preventDefault();
         AuthActions.login(this.state.email, this.state.password);
     }
@@ -33,7 +31,7 @@ class LoginForm extends React.Component {
             <div className='loginPage'>
                 <h2>Please, login</h2>
 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.onSubmit}>
                     <Input type='email' placeholder='Email' valueLink={this.linkState('email')}/>
                     <Input type='password' placeholder='Password' valueLink={this.linkState('password')}/>
 

@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import { FormGroup as BootstrapFormGroup }from 'react-bootstrap';
 

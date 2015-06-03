@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import { Input as BootstrapInput } from 'react-bootstrap';
 

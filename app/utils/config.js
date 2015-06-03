@@ -1,5 +1,3 @@
-'use strict';
-
 import Immutable from 'immutable';
 
 const config = Immutable.fromJS({
@@ -8,8 +6,7 @@ const config = Immutable.fromJS({
 
 module.exports = {
 
-    getApiEndpoint(path) {
-        path = path || '';
+    getApiEndpoint(path = '') {
         return config.get('apiendpoint') + path;
     }
 

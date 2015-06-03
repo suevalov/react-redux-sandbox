@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 
 import {
@@ -12,9 +10,7 @@ import {
 
 require('./button-group-samples-page.less');
 
-export default React.createClass({
-
-    displayName: 'ButtonGroupSamplesPage',
+export default class extends React.Component {
 
     render() {
         return (
@@ -78,4 +74,4 @@ export default React.createClass({
         );
     }
 
-});
+}

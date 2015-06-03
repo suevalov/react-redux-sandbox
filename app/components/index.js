@@ -1,5 +1,3 @@
-'use strict';
-
 require('./index.less');
 
 import Grid from './grid/grid';

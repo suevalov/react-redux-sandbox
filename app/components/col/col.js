@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import { Col as BootstrapCol } from 'react-bootstrap';
 

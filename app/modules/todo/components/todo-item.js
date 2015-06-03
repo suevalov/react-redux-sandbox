@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { PropTypes } from 'react';
 import TodoActions from '../actions/todo-actions';
 import {
@@ -17,10 +15,10 @@ class TodoItem extends PureComponent {
 
     constructor() {
         super();
-        this.clickHandler = this.clickHandler.bind(this);
+        this.onClickHandler = this.onClickHandler.bind(this);
     }
 
-    clickHandler(e) {
+    onClickHandler(e) {
         e.preventDefault();
         TodoActions.removeTodo(this.props.id);
     }
@@ -30,7 +28,7 @@ class TodoItem extends PureComponent {
             <li>
                 {this.props.text}
                 &nbsp;
-                <Button theme='danger' size='xsmall' onClick={this.clickHandler}>
+                <Button theme='danger' size='xsmall' onClick={this.onClickHandler}>
                     <Icon name='remove'/>
                     &nbsp;
                     Remove

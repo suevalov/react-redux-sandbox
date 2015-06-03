@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react/addons';
 import { DropdownMenu as BootstrapDropdownMenu } from 'react-bootstrap';
 

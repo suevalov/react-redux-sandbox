@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { PropTypes } from 'react';
 
 require('./icon.less');
@@ -19,7 +17,7 @@ export default class extends React.Component {
     render() {
         let { name, size, rotate, flip, spin, fixedWidth, className } = this.props;
 
-        var classNames = `fa fa-${name}`;
+        let classNames = `fa fa-${name}`;
 
         if (size) {
             classNames += ` fa-${size}`;

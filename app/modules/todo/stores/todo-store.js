@@ -1,10 +1,8 @@
-'use strict';
-
 import Reflux from 'reflux';
 import TodoActions from '../actions/todo-actions';
-import Immutable from 'immutable';
+import { Record, Map } from 'immutable';
 
-let TodoRecord = Immutable.Record({
+let TodoRecord = Record({
     id: null,
     text: null
 });
@@ -14,7 +12,7 @@ let TodoStore = Reflux.createStore({
     listenables: TodoActions,
 
     init() {
-        this._items = Immutable.Map();
+        this._items = Map();
         this._fetched = false;
     },
 
@@ -38,7 +36,7 @@ let TodoStore = Reflux.createStore({
      */
     onFetchTodosCompleted(todos) {
 
-        let todosMap = Immutable.Map();
+        let todosMap = Map();
 
         for (let todo of todos) {
             todosMap = todosMap.set(todo.id, new TodoRecord(todo));

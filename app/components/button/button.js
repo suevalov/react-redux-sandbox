@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { PropTypes } from 'react/addons';
 import _ from 'lodash';
 import classSet from 'classnames';
@@ -88,6 +86,7 @@ export default class extends React.Component {
         return props;
     }
 
+    /*eslint-disable dot-notation */
     prepareClasses(props) {
 
         let classes = {};
@@ -118,6 +117,7 @@ export default class extends React.Component {
 
         return styles;
     }
+    /*eslint-enable dot-notation */
 
     handleClick(props, event) {
         if (props.disabled) {
@@ -203,8 +203,8 @@ export default class extends React.Component {
     }
 
     renderAnchor(classes, props, styles) {
-        var Component = props.componentClass || 'a';
-        var href = props.href || '#';
+        let Component = props.componentClass || 'a';
+        let href = props.href || '#';
         return (
             <Component
                 {...props}

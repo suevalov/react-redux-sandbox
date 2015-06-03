@@ -1,5 +1,3 @@
-'use strict';
-
 import Reflux from 'reflux';
 import TodoApiService from 'modules/todo/services/todo-api-service';
 
@@ -18,10 +16,10 @@ let TodoActions = Reflux.createActions({
 /**
  * @param { String } todoText
  */
-TodoActions.addTodo.listen(async function(todoText) {
+TodoActions.addTodo.listen(async function addTodoAsyncHandler(todoText) {
 
     try {
-        var { data } = await TodoApiService.addTodo(todoText);
+        let { data } = await TodoApiService.addTodo(todoText);
         this.completed(data);
     } catch (err) {
         this.failed(err.data);
@@ -32,7 +30,7 @@ TodoActions.addTodo.listen(async function(todoText) {
 /**
  * @param { String } id
  */
-TodoActions.removeTodo.listen(async function(id) {
+TodoActions.removeTodo.listen(async function removeTodoAsyncHandler(id) {
 
     try {
         await TodoApiService.removeTodo(id);
@@ -43,10 +41,10 @@ TodoActions.removeTodo.listen(async function(id) {
 
 });
 
-TodoActions.fetchTodos.listen(async function() {
+TodoActions.fetchTodos.listen(async function fetchTodosAsyncHandler() {
 
     try {
-        var { data } = await TodoApiService.fetchTodos();
+        let { data } = await TodoApiService.fetchTodos();
         this.completed(data);
     } catch (err) {
         this.failed(err.data);

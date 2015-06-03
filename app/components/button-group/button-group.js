@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import { ButtonGroup as BootstrapButtonGroup } from 'react-bootstrap';
 

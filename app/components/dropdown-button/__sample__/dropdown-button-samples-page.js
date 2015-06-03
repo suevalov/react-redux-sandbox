@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react/addons';
 import {
     Grid, Row,
@@ -9,13 +7,11 @@ import {
 require('./dropdown-button-samples-page.less');
 
 
-export default React.createClass({
-
-    displayName: 'DropdownButtonSamplesPage',
+export default class extends React.Component {
 
     render() {
 
-        var props = [
+        let props = [
             {
                 key: 1,
                 title: 'Dropdown 1',
@@ -63,4 +59,4 @@ export default React.createClass({
         );
     }
 
-});
+}

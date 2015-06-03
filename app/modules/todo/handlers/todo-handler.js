@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { PropTypes } from 'react/addons';
 import { Map as ImmutableMap } from 'immutable';
 import TodoStore from '../stores/todo-store';
@@ -50,7 +48,7 @@ export default class TodoHandler extends React.Component {
     }
 
     onClickHandler() {
-        var text = this.state.text;
+        let text = this.state.text;
         if (text) {
             TodoActions.addTodo(text);
             this.setState({

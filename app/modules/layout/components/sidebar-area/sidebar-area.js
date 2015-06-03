@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import SidebarMenuHeader from 'modules/layout/components/sidebar-area/sidebar-menu-header';
 import SidebarMenuItem from 'modules/layout/components/sidebar-area/sidebar-menu-item';
@@ -35,7 +33,7 @@ class SidebarArea extends React.Component {
         };
     }
 
-    handleItemClick(key) {
+    onItemClick(key) {
         this.setState({
             selected: key
         });
@@ -54,7 +52,7 @@ class SidebarArea extends React.Component {
                     </SidebarMenuHeader>
                     {this.state.menuItems.map((item, index) => {
                         return (
-                            <SidebarMenuItem {...item} key={index} active={index === this.getSelectedIndex()} onClick={this.handleItemClick.bind(this, index)}/>
+                            <SidebarMenuItem {...item} key={index} active={index === this.getSelectedIndex()} onClick={this.onItemClick.bind(this, index)}/>
                         );
                     })}
                 </ul>
