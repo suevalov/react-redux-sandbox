@@ -1,5 +1,3 @@
-'use strict';
-
 var gulp = require('gulp');
 var webpack = require('webpack');
 var path = require('path');
@@ -11,7 +9,7 @@ var AUTOPREFIXER_LOADER = 'autoprefixer-loader?{browsers:[' +
     '"Android 2.3", "Android >= 4", "Chrome >= 20", "Firefox >= 24", ' +
     '"Explorer >= 8", "iOS >= 6", "Opera >= 12", "Safari >= 6"]}';
 
-gulp.task('webpack', function(cb) {
+gulp.task('webpack', function webpackTask(cb) {
 
     var DEBUG = !global.isProd;
     var watch = DEBUG;
@@ -36,7 +34,7 @@ gulp.task('webpack', function(cb) {
             reasons: DEBUG
         },
 
-        plugins: (function() {
+        plugins: (function pluginsCollector() {
 
             var plugins = [];
 
@@ -97,12 +95,11 @@ gulp.task('webpack', function(cb) {
 
         if (!started) {
             started = true;
-
             return cb();
-        } else {
-            if (watch && browserSync.active) {
-                browserSync.reload({once: true});
-            }
+        }
+
+        if (watch && browserSync.active) {
+            browserSync.reload({once: true});
         }
     }
 

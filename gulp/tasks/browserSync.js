@@ -1,10 +1,8 @@
-'use strict';
+var config = require('../config');
+var browserSync = require('browser-sync');
+var gulp = require('gulp');
 
-var config = require('../config'),
-    browserSync = require('browser-sync'),
-    gulp = require('gulp');
-
-gulp.task('browserSync', function() {
+gulp.task('browserSync', function browserSyncTask() {
 
     browserSync({
         proxy: 'localhost:' + config.serverport

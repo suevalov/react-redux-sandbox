@@ -1,12 +1,12 @@
-'use strict';
-
 var notify = require('gulp-notify');
 
-module.exports = function(error) {
+/* eslint-disable no-console, no-process-exit */
+module.exports = function handleErrors(error) {
 
-    if( !global.isProd ) {
+    var args = Array.prototype.slice.call(arguments);
 
-        var args = Array.prototype.slice.call(arguments);
+    if ( !global.isProd ) {
+
 
         // Send error to notification center with gulp-notify
         notify.onError({
@@ -25,3 +25,4 @@ module.exports = function(error) {
     }
 
 };
+/* eslint-enable no-console, no-process-exit */

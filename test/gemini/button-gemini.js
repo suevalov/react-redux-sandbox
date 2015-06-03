@@ -1,5 +1,3 @@
-'use strict';
-
 var gemini = require('gemini');
 var _ = require('lodash');
 
@@ -52,7 +50,7 @@ _.each(tests, function(test) {
             .capture('plain')
             .capture('hovered', function(actions) {
                 actions.mouseMove(this.button);
-                if(test[0].indexOf('outline') !== -1) {
+                if (test[0].indexOf('outline') !== -1) {
                     actions.wait(600);
                 }
             })

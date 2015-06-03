@@ -1,9 +1,7 @@
-'use strict';
-
 var config = require('../config');
 var gulp = require('gulp');
 
-gulp.task('watch', ['server'], function() {
+gulp.task('watch', ['server'], function watchTask() {
 
     gulp.watch(config.scripts.src, ['lint']);
     gulp.watch(config.images.src, ['images']);
@@ -11,7 +9,7 @@ gulp.task('watch', ['server'], function() {
 
 });
 
-gulp.task('watch-browser-sync', ['browserSync', 'server'], function() {
+gulp.task('watch-browser-sync', ['browserSync', 'server'], function watchBrowserSyncTask() {
 
     gulp.watch(config.scripts.src, ['lint']);
     gulp.watch(config.images.src, ['images']);

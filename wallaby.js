@@ -1,11 +1,8 @@
-/*global wallaby*/
-
-'use strict';
-
+/* eslint-disable */
 var wallabyWebpack = require('wallaby-webpack');
 
 var wallabyPostprocessor = wallabyWebpack({
-    devtool: 'inline-source-map', //just do inline source maps instead of the default
+    devtool: 'inline-source-map', // just do inline source maps instead of the default
     module: {
         loaders: [
             {
@@ -58,3 +55,4 @@ module.exports = function() {
     };
 
 };
+/* eslint-enable */

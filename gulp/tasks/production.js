@@ -1,10 +1,8 @@
-'use strict';
-
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var _ = require('lodash');
 
-gulp.task('prod-build', ['clean'], function(callback) {
+gulp.task('prod-build', ['clean'], function prodBuildTask(callback) {
 
     callback = callback || _.noop;
 
@@ -14,7 +12,7 @@ gulp.task('prod-build', ['clean'], function(callback) {
 
 });
 
-gulp.task('prod', ['clean'], function(callback) {
+gulp.task('prod', ['clean'], function prodTask(callback) {
 
     callback = callback || _.noop;
 
