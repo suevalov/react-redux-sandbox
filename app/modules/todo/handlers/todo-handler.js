@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import LinkedStateMixin from 'react/lib/LinkedStateMixin';
 import { Map as ImmutableMap } from 'immutable';
 import TodoStore from '../stores/todo-store';
 import TodoActions from '../actions/todo-actions';
@@ -31,7 +32,7 @@ export default class TodoHandler extends React.Component {
         fetched: PropTypes.bool
     };
 
-    linkState = React.addons.LinkedStateMixin.linkState;
+    linkState = LinkedStateMixin.linkState;
 
     constructor() {
         super();

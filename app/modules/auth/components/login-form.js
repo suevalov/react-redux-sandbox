@@ -1,4 +1,5 @@
 import React from 'react';
+import LinkedStateMixin from 'react/lib/LinkedStateMixin';
 import AuthActions from 'modules/auth/actions/auth-actions';
 import {
     Button,
@@ -8,7 +9,7 @@ import bindAll from 'utils/bind-all';
 
 class LoginForm extends React.Component {
 
-    linkState = React.addons.LinkedStateMixin.linkState;
+    linkState = LinkedStateMixin.linkState;
 
     constructor() {
         super();
