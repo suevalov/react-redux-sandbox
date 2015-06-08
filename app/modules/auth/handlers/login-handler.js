@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 import AuthStore from 'modules/auth/stores/auth-store';
 import { RouteActions } from 'router';
 import LoginForm from 'modules/auth/components/login-form';

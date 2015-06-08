@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react/addons';
+import React, { PropTypes } from 'react';
 import { Map as ImmutableMap } from 'immutable';
 import TodoStore from '../stores/todo-store';
 import TodoActions from '../actions/todo-actions';

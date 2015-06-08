@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react/addons';
+import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import classSet from 'classnames';
 import pureShouldComponentUpdate from 'react-pure-render/function';

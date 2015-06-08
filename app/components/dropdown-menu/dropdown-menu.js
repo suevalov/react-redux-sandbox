@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 import { DropdownMenu as BootstrapDropdownMenu } from 'react-bootstrap';
 
 require('./dropdown-menu.less');
