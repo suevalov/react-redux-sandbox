@@ -1,6 +1,6 @@
 import React from 'react';
 import getProps from 'utils/get-props';
-import { map, each } from 'lodash';
+import { map, each } from 'lodash/collection';
 
 export default function(stores, getState) {
 

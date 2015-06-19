@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import _ from 'lodash';
+import { keys, extend } from 'lodash/object';
+import { isNumber } from 'lodash/lang';
 import classSet from 'classnames';
 import pureShouldComponentUpdate from 'react-pure-render/function';
 
@@ -37,8 +38,8 @@ export default class extends React.Component {
         onMouseDown: PropTypes.func,
         onMouseUp: PropTypes.func,
 
-        size: PropTypes.oneOf(_.keys(SIZES)),
-        theme: PropTypes.oneOf(_.keys(THEMES)),
+        size: PropTypes.oneOf(keys(SIZES)),
+        theme: PropTypes.oneOf(keys(THEMES)),
         minWidth: PropTypes.oneOfType([
             PropTypes.bool,
             PropTypes.number
@@ -73,7 +74,7 @@ export default class extends React.Component {
 
     prepareProps(thisProps) {
 
-        let props = _.extend({}, thisProps);
+        let props = extend({}, thisProps);
 
         props.onClick = this.handleClick.bind(this, props);
         props.onFocus = this.handleFocus.bind(this, props);
@@ -111,7 +112,7 @@ export default class extends React.Component {
 
         let styles = {};
 
-        if (_.isNumber(props.minWidth)) {
+        if (isNumber(props.minWidth)) {
             styles['minWidth'] = `${props.minWidth}px`;
         }
 
