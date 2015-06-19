@@ -14,4 +14,3 @@ opensesame
 * Trine [https://github.com/jussi-kalliokoski/trine]
 * Migrate to React.Router 1.0
 * PurifyCSS [https://github.com/purifycss/purifycss]
-* Babel Typecheck [https://github.com/codemix/babel-plugin-typecheck]
