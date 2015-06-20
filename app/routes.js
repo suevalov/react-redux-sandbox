@@ -2,7 +2,7 @@ import React from 'react';
 import Router from 'react-router';
 
 import { LoginHandler } from 'modules/auth';
-import { TodoHandler } from 'modules/todo-redux';
+import { TodoHandler } from 'modules/todo';
 import { LayoutHandler } from 'modules/layout';
 import NotFoundHandler from './handlers/not-found-handler';
 import ComponentsHandler from './handlers/components-handler';
