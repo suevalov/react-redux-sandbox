@@ -8,7 +8,7 @@ import PureComponent from 'react-pure-render/component';
 export default class TodoItem extends PureComponent {
 
     static propTypes = {
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
         text: PropTypes.string.isRequired,
         actions: PropTypes.object.isRequired
     };
@@ -20,6 +20,7 @@ export default class TodoItem extends PureComponent {
 
     onClickHandler(e) {
         e.preventDefault();
+        this.props.actions.removeTodo(this.props.id);
     }
 
     render() {

@@ -4,6 +4,7 @@ import Router from 'react-router';
 import { LoginHandler } from 'modules/auth';
 import { TodoHandler } from 'modules/todo';
 import { LayoutHandler } from 'modules/layout';
+import TodoReduxHandler from 'modules/todo-redux';
 import NotFoundHandler from './handlers/not-found-handler';
 import ComponentsHandler from './handlers/components-handler';
 import ButtonSamplesPage from './components/button/__sample__/button-samples-page';
@@ -19,6 +20,7 @@ let { Route, DefaultRoute, NotFoundRoute } = Router;
 module.exports = (
     <Route name='app' path='/' handler={LayoutHandler}>
         <DefaultRoute handler={TodoHandler}/>
+        <Route name='redux' handler={TodoReduxHandler} />
         <Route name='login' handler={LoginHandler} />
         <Route name='components' handler={ComponentsHandler}>
             <Route name='buttons' handler={ButtonSamplesPage} />

@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
-import { Connector } from 'redux/react';
+import { connect } from 'redux/react';
 import * as TodoActions from '../actions/todo-actions';
 import TodosList from '../components/todos-list';
+import TodosHeader from '../components/todos-header';
 
-export default class TodoApp {
+@connect(state => ({
+    todos: state.todos
+}))
+export default class TodoHandler {
 
-    renderChild({ todos, dispatch }) {
-        const actions = bindActionCreators(TodoActions, dispatch);
-        return (
-          <div>
-            <TodosList todos={todos} actions={actions} />
-          </div>
-        );
-    }
+    static propTypes = {
+        todos: PropTypes.array.isRequired,
+        dispatch: PropTypes.func.isRequired
+    };
 
     render() {
+        const { todos, dispatch } = this.props;
+        const actions = bindActionCreators(TodoActions, dispatch);
         return (
-          <Connector select={state => ({ todos: state.todos })}>
-            {this.renderChild}
-          </Connector>
+            <div>
+                <TodosHeader actions={actions} />
+                <TodosList todos={todos} actions={actions} />
+            </div>
         );
     }
 
