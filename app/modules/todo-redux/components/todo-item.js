@@ -8,7 +8,7 @@ import PureComponent from 'react-pure-render/component';
 export default class TodoItem extends PureComponent {
 
     static propTypes = {
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired,
         actions: PropTypes.object.isRequired
     };

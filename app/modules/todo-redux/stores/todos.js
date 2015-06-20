@@ -1,29 +1,27 @@
-import { ADD_TODO, REMOVE_TODO } from '../constants/action-types';
+import { ADD_TODO, REMOVE_TODO, FETCH_TODOS } from '../constants/action-types';
 
-const initialState = [
-    {
-        id: 1,
-        text: 'Sample Todo'
+const initialState = [];
+
+const handlers = {
+
+    [ADD_TODO]: function addTodoHandler(state, action) {
+        return [
+            action.todo,
+            ...state
+        ];
+    },
+
+    [REMOVE_TODO]: function removeTodoHandler(state, action) {
+        return state.filter(todo => {
+            return todo.id !== action.id;
+        });
+    },
+
+    [FETCH_TODOS]: function fetchTodosHandler(state, action) {
+        return action.todos;
     }
-];
+};
 
 export default function todos(state = initialState, action) {
-    switch (action.type) {
-        case ADD_TODO:
-            return [
-                {
-                    id: (state.length === 0) ? 0 : state.length + 1,
-                    text: action.text
-                },
-                ...state
-            ];
-        case REMOVE_TODO:
-            return state.filter(todo => {
-                return todo.id !== action.id;
-            });
-        default:
-            return state;
-
-    }
-
+    return handlers[action.type] ? handlers[action.type](state, action) : state;
 }

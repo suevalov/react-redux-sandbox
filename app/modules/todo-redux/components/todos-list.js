@@ -8,6 +8,10 @@ export default class TodosList extends React.Component {
         actions: PropTypes.object.isRequired
     };
 
+    componentDidMount() {
+        this.props.actions.fetchTodos();
+    }
+
     render() {
         return (
             <ul>
