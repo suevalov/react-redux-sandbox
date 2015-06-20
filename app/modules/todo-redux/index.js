@@ -8,7 +8,7 @@ import { AuthRequired } from 'modules/auth';
 const redux = createRedux(stores);
 
 @AuthRequired
-export default class App extends React.Component {
+class TodoApp extends React.Component {
     render() {
         return (
           <Provider redux={redux}>
@@ -17,3 +17,7 @@ export default class App extends React.Component {
         );
     }
 }
+
+export default {
+    TodoHandler: TodoApp
+};

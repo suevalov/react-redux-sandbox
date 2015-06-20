@@ -1,5 +1,5 @@
-import todos from './todos';
+import todosStore from './todos';
 
 export {
-    todos
+    todosStore
 };

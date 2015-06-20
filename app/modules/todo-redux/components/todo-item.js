@@ -4,13 +4,15 @@ import {
     Icon
 } from 'components/index';
 import PureComponent from 'react-pure-render/component';
+import classNames from 'classnames';
 
 export default class TodoItem extends PureComponent {
 
     static propTypes = {
         id: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired,
-        actions: PropTypes.object.isRequired
+        actions: PropTypes.object.isRequired,
+        className: PropTypes.string
     };
 
     constructor() {
@@ -25,7 +27,7 @@ export default class TodoItem extends PureComponent {
 
     render() {
         return (
-            <li>
+            <li className={classNames(this.props.className)}>
                 {this.props.text}
                 &nbsp;
                 <Button theme='danger' size='xsmall' onClick={this.onClickHandler}>

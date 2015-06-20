@@ -1,5 +1,5 @@
 import { ADD_TODO, REMOVE_TODO, FETCH_TODOS } from '../constants/action-types';
-import TodoApiService from 'modules/todo/services/todo-api-service';
+import TodoApiService from '../services/todo-api-service';
 
 export function addTodo(text) {
     return async (dispatch) => {

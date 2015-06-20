@@ -5,9 +5,10 @@ import {
     Button,
     Input
 } from 'components/index';
+import PureComponent from 'react-pure-render/component';
 import bindAll from 'utils/bind-all';
 
-export default class TodosList extends React.Component {
+export default class TodosList extends PureComponent {
 
     static propTypes = {
         actions: PropTypes.object.isRequired
