@@ -2,7 +2,7 @@ import './layout.less';
 import React, { PropTypes } from 'react';
 import { RouteHandler } from 'react-router';
 import { RouteStore } from 'router';
-import redux from '../../auth/redux';
+import redux from 'app-redux';
 import { connect, provide } from 'redux/react';
 import { bindActionCreators } from 'redux';
 import ContentArea from 'modules/layout/components/content-area/content-area';
@@ -12,12 +12,16 @@ import * as AuthActions from '../../auth/actions/auth-redux-actions';
 
 @provide(redux)
 @connect(({ authState }) => ({
-    authState
+    loggedIn: authState.loggedIn,
+    user: authState.user,
+    authToken: authState.authToken
 }))
 class LayoutHandler extends React.Component {
 
     static propTypes = {
-        authState: PropTypes.object.isRequired,
+        loggedIn: PropTypes.bool.isRequired,
+        user: PropTypes.object,
+        authToken: PropTypes.string,
         dispatch: PropTypes.func.isRequired
     };
 
@@ -34,18 +38,17 @@ class LayoutHandler extends React.Component {
         }
 
         let actions = bindActionCreators(AuthActions, this.props.dispatch);
-        let authState = this.props.authState;
 
         return (
             <div className='layout-handler'>
                 <div className='layout-handler__nav'>
-                    <SidebarArea user={authState.user} />
+                    <SidebarArea user={this.props.user} />
                 </div>
                 <div className='layout-handler__content'>
                     <ContentArea>
                         <LayoutNavigation actions={actions}
-                                          loggedIn={authState.loggedIn}
-                                          authToken={authState.authToken} />
+                                          loggedIn={this.props.loggedIn}
+                                          authToken={this.props.authToken} />
                         <RouteHandler />
                     </ContentArea>
                 </div>

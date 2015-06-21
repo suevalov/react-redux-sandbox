@@ -6,9 +6,9 @@ import TodosList from '../components/todos-list';
 import TodosHeader from '../components/todos-header';
 import PureComponent from 'react-pure-render/component';
 
-@connect(state => ({
-    todos: state.todosStore.todos,
-    fetched: state.todosStore.fetched
+@connect(({ todosState }) => ({
+    todos: todosState.todos,
+    fetched: todosState.fetched
 }))
 export default class TodoHandler extends PureComponent {
 

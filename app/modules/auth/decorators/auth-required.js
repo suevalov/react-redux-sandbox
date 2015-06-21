@@ -1,6 +1,6 @@
 import React from 'react';
 import getProps from 'utils/get-props';
-import redux from '../redux';
+import redux from 'app-redux';
 
 export default function(DecoratedComponent) {
 
