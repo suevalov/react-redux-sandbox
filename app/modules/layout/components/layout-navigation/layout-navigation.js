@@ -24,11 +24,9 @@ export default class LayoutNavigation extends React.Component {
             <header>
                 <ul>
                 <li>
-                    <Link to='app'>Planner</Link>
+                    <Link to='/'>Planner</Link>
                 </li>
-                {
-                    this.props.loggedIn ? ( <li> <a onClick = {this.onLogoutClick}> Logout </a></li> ) : ( '' )
-                }
+                <li> <a onClick = {this.onLogoutClick}> Logout </a></li>
                 </ul>
             </header>
         );

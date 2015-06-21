@@ -18,17 +18,17 @@ class SidebarArea extends React.Component {
             menuItems: [
                 {
                     label: 'Home Page',
-                    to: 'app',
+                    to: '/',
                     icon: 'th-large'
                 },
                 {
                     label: 'Components',
-                    to: 'components',
+                    to: '/components',
                     icon: 'flask'
                 },
                 {
                     label: 'Special',
-                    to: 'components',
+                    to: '/components',
                     icon: 'flask',
                     special: true
                 }

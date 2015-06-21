@@ -4,7 +4,6 @@ import { connect, provide } from 'redux/react';
 import { bindActionCreators } from 'redux';
 import LoginForm from 'modules/auth/components/login-form';
 import * as AuthActions from 'modules/auth/actions/auth-actions';
-import AuthRequired from 'modules/auth/decorators/auth-required';
 
 require('./login-page.less');
 
@@ -29,6 +28,5 @@ class LoginHandler extends React.Component {
 }
 
 export default {
-    LoginHandler: LoginHandler,
-    AuthRequired: AuthRequired
+    LoginHandler: LoginHandler
 };
