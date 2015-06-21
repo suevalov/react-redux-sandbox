@@ -1,11 +1,11 @@
 /* global describe, fdescribe, fit, it, sinon, expect, beforeEach, afterEach */
 
-import authReduxStore from '../auth-redux-store';
+import authReduxStore from '../auth-store';
 import { LOGIN, LOGOUT, FLUSH_STATE } from '../../constants/action-types';
 
 import { createRedux } from 'redux';
 
-describe('Auth Redux Store', () => {
+describe('Auth Store', () => {
 
     let redux = createRedux({
         authState: authReduxStore

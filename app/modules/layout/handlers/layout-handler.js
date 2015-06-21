@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import ContentArea from 'modules/layout/components/content-area/content-area';
 import SidebarArea from 'modules/layout/components/sidebar-area/sidebar-area';
 import LayoutNavigation from 'modules/layout/components/layout-navigation/layout-navigation';
-import * as AuthActions from '../../auth/actions/auth-redux-actions';
+import * as AuthActions from 'modules/auth/actions/auth-actions';
 
 @provide(redux)
 @connect(({ authState }) => ({

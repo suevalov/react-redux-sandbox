@@ -3,7 +3,7 @@ import redux from 'app-redux';
 import { connect, provide } from 'redux/react';
 import { bindActionCreators } from 'redux';
 import LoginForm from 'modules/auth/components/login-form';
-import * as AuthActions from '../actions/auth-redux-actions';
+import * as AuthActions from '../actions/auth-actions';
 
 @provide(redux)
 @connect(({ authState }) => ({
