@@ -91,7 +91,8 @@
     "prod": "./node_modules/.bin/gulp prod",
     "prod-build": "./node_modules/.bin/gulp prod-build",
     "server": "node server/server.js",
-    "test": "./node_modules/.bin/karma start karma.conf.js",
+    "test": "./node_modules/.bin/karma start karma.conf.js --single-run",
+    "test-watch": "./node_modules/.bin/karma start karma.conf.js",
     "gemini-gather": "./node_modules/.bin/gemini gather",
     "gemini-test": "./node_modules/.bin/gemini test --reporter flat",
     "gemini-test-report": "./node_modules/.bin/gemini test --reporter html --reporter flat"

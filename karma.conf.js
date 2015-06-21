@@ -3,7 +3,7 @@ module.exports = function karmaConfigBuilder(config) {
     config.set({
 
         browsers: [ 'PhantomJS' ],
-        singleRun: true, // just run once by default
+        singleRun: false,
         frameworks: [ 'mocha' ], // use the mocha test framework
         files: [
             'test/sinon-1.14.1.js',
@@ -21,7 +21,7 @@ module.exports = function karmaConfigBuilder(config) {
                     {
                         test: /\.js$/,
                         exclude: /node_modules/,
-                        loader: 'babel-loader?stage=0'
+                        loader: 'babel-loader'
                     },
                     {
                         test: /\.less/,
