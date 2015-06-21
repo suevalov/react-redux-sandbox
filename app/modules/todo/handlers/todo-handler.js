@@ -10,7 +10,7 @@ import PureComponent from 'react-pure-render/component';
     todos: todosState.todos,
     fetched: todosState.fetched
 }))
-export default class TodoHandler extends PureComponent {
+class TodoHandler extends PureComponent {
 
     static propTypes = {
         todos: PropTypes.array.isRequired,
@@ -30,3 +30,5 @@ export default class TodoHandler extends PureComponent {
     }
 
 }
+
+export default TodoHandler;

@@ -1,7 +1,6 @@
 import './layout.less';
 import React, { PropTypes } from 'react';
 import { RouteHandler } from 'react-router';
-import { RouteStore } from 'router';
 import redux from 'app-redux';
 import { connect, provide } from 'redux/react';
 import { bindActionCreators } from 'redux';
@@ -27,14 +26,13 @@ class LayoutHandler extends React.Component {
 
     render() {
 
-        if (RouteStore.isCurrentPath('/login')) {
-
+        // todo: use router information for this
+        if (window.location.pathname === '/login') {
             return (
                 <div className='layout-handler layout-handler--grey'>
                     <RouteHandler />
                 </div>
             );
-
         }
 
         let actions = bindActionCreators(AuthActions, this.props.dispatch);
