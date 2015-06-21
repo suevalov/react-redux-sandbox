@@ -1,6 +1,6 @@
 import React from 'react';
-import AuthStore from 'modules/auth/stores/auth-store';
 import getProps from 'utils/get-props';
+import redux from '../redux';
 
 export default function(DecoratedComponent) {
 
@@ -14,7 +14,8 @@ export default function(DecoratedComponent) {
         static displayName = `authRequired(${displayName})`;
 
         static willTransitionTo = (transition) => {
-            if (!AuthStore.isLoggedIn()) {
+            let { authState } = redux.getState();
+            if (!authState.loggedIn) {
                 let options = {};
                 if (transition.path !== '' && transition.path !== '/') {
                     options.nextPath = transition.path;

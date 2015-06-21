@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import LinkedStateMixin from 'react/lib/LinkedStateMixin';
-import AuthActions from 'modules/auth/actions/auth-actions';
 import {
     Button,
     Input
@@ -8,6 +7,10 @@ import {
 import bindAll from 'utils/bind-all';
 
 class LoginForm extends React.Component {
+
+    static propTypes = {
+        actions: PropTypes.object.isRequired
+    };
 
     linkState = LinkedStateMixin.linkState;
 
@@ -24,7 +27,7 @@ class LoginForm extends React.Component {
 
     onSubmit(e) {
         e.preventDefault();
-        AuthActions.login(this.state.email, this.state.password);
+        this.props.actions.login(this.state.email, this.state.password);
     }
 
     render() {

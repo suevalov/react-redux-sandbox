@@ -1,33 +1,25 @@
-import React from 'react';
-import AuthStore from 'modules/auth/stores/auth-store';
-import { RouteActions } from 'router';
+import React, { PropTypes } from 'react';
+import redux from '../redux';
+import { connect, provide } from 'redux/react';
+import { bindActionCreators } from 'redux';
 import LoginForm from 'modules/auth/components/login-form';
+import * as AuthActions from '../actions/auth-redux-actions';
 
+@provide(redux)
+@connect(({ authState }) => ({
+    loggedIn: authState.loggedIn
+}))
 class LoginHandler extends React.Component {
 
-    static willTransitionTo(transition) {
-        if (AuthStore.isLoggedIn()) {
-            transition.redirect('/');
-        }
-    }
-
-    componentDidMount() {
-        this.unsubscribe = AuthStore.listen(this.onAuthResponse, this);
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
-    onAuthResponse(state) {
-        if (state.loggedIn) {
-            RouteActions.transitionTo('/');
-        }
-    }
+    static propTypes = {
+        loggedIn: PropTypes.bool.isRequired,
+        dispatch: PropTypes.func.isRequired
+    };
 
     render() {
+        let actions = bindActionCreators(AuthActions, this.props.dispatch);
         return (
-            <LoginForm />
+            <LoginForm actions={actions} />
         );
     }
 

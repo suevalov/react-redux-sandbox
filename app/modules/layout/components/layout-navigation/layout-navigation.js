@@ -1,38 +1,25 @@
-import React from 'react';
+import React, { PropTypes }from 'react';
 import { Link } from 'react-router';
-import { RouteActions } from 'router';
-import AuthStore from 'modules/auth/stores/auth-store';
-import AuthActions from 'modules/auth/actions/auth-actions';
 import bindAll from 'utils/bind-all';
 
 export default class LayoutNavigation extends React.Component {
+
+    static propTypes = {
+        actions: PropTypes.object.isRequired,
+        loggedIn: PropTypes.bool.isRequired,
+        authToken: PropTypes.string
+    };
 
     constructor() {
         super();
         bindAll(this, 'onLogoutClick');
     }
 
-    componentDidMount() {
-        this.unsubscribe = AuthStore.listen(this.onAuthChange, this);
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
     onLogoutClick() {
-        AuthActions.logout(AuthStore.getToken());
-    }
-
-    onAuthChange(state) {
-        if (state.loggedOut) {
-            RouteActions.transitionTo('/login');
-        }
+        this.props.actions.logout(this.props.authToken);
     }
 
     render() {
-        const loggedIn = AuthStore.isLoggedIn();
-
         return (
             <header>
                 <ul>
@@ -40,7 +27,7 @@ export default class LayoutNavigation extends React.Component {
                     <Link to='app'>Planner</Link>
                 </li>
                 {
-                    loggedIn ? ( <li> <a onClick = {this.onLogoutClick}> Logout </a></li> ) : ( '' )
+                    this.props.loggedIn ? ( <li> <a onClick = {this.onLogoutClick}> Logout </a></li> ) : ( '' )
                 }
                 </ul>
             </header>

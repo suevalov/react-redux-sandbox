@@ -117,7 +117,4 @@ describe('Auth Redux Store', () => {
 
     });
 
-
-
-
 });
