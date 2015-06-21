@@ -1,7 +1,7 @@
 /* global describe, fdescribe, fit, it, sinon, expect, beforeEach, afterEach */
 
 import authReduxStore from '../auth-redux-store';
-import { LOGIN, FLUSH_STATE } from '../../constants/action-types';
+import { LOGIN, LOGOUT, FLUSH_STATE } from '../../constants/action-types';
 
 import { createRedux } from 'redux';
 
@@ -11,7 +11,7 @@ describe('Auth Redux Store', () => {
         authState: authReduxStore
     });
 
-    beforeEach(() => {
+    afterEach(() => {
         redux.dispatch({
             type: FLUSH_STATE
         });
@@ -66,5 +66,58 @@ describe('Auth Redux Store', () => {
         expect(authState.loggedIn).toBeFalsy();
 
     });
+
+    describe('when user is logged in', () => {
+
+
+        beforeEach(() => {
+            redux.dispatch({
+                type: LOGIN,
+                success: true,
+                data: {
+                    id: '123123',
+                    user: {
+                        username: 'foobar'
+                    }
+                }
+            });
+
+            expect(redux.getState().authState.loggedIn).toBeTruthy();
+        });
+
+        it('should be logged out after success LOGOUT action', () => {
+
+            redux.dispatch({
+                type: LOGOUT,
+                success: true
+            });
+
+            let { authState } = redux.getState();
+
+            expect(authState.loggedIn).toBeFalsy();
+            expect(authState.user).toBeNull();
+            expect(authState.authToken).toBeNull();
+
+        });
+
+        it('should not be logged out after failed LOGOUT action', () => {
+
+            redux.dispatch({
+                type: LOGOUT,
+                success: false
+            });
+
+            let { authState } = redux.getState();
+
+            expect(authState.loggedIn).toBeTruthy();
+            expect(authState.user).not.toBeNull();
+            expect(authState.authToken).not.toBeNull();
+
+        });
+
+    });
+
+
+
 
 });

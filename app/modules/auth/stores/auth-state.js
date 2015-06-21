@@ -13,8 +13,13 @@ export default class AuthState {
     }
 
     set user(value) {
-        sessionStorage.setItem('authUser', JSON.stringify(value));
-        this._user = value;
+        if (value) {
+            sessionStorage.setItem('authUser', JSON.stringify(value));
+            this._user = value;
+        } else {
+            sessionStorage.removeItem('authUser');
+            this._user = null;
+        }
     }
 
     get authToken() {
@@ -22,8 +27,13 @@ export default class AuthState {
     }
 
     set authToken(value) {
-        sessionStorage.setItem('authToken', value);
-        this._authToken = value;
+        if (value) {
+            sessionStorage.setItem('authToken', value);
+            this._authToken = value;
+        } else {
+            sessionStorage.removeItem('authToken');
+            this._authToken = null;
+        }
     }
 
     get loggedIn() {
@@ -35,9 +45,9 @@ export default class AuthState {
         this.authToken = null;
     }
 
-    setState({ token, user }) {
+    setState({ authToken, user }) {
         this.user = user;
-        this.authToken = token;
+        this.authToken = authToken;
     }
 
 }

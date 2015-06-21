@@ -9,7 +9,7 @@ const handlers = {
         if (action.success) {
             state.setState({
                 user: action.data.user,
-                token: action.data.id
+                authToken: action.data.id
             });
         } else {
             state.clearState();
@@ -31,7 +31,7 @@ const handlers = {
 
 };
 
-export default function todos(state = initialState, action) {
+export default function todos(state = initialState, action = null) {
     if (!action) {
         return state;
     }
