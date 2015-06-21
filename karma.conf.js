@@ -4,7 +4,7 @@ module.exports = function karmaConfigBuilder(config) {
 
         browsers: [ 'PhantomJS' ],
         singleRun: false,
-        frameworks: [ 'mocha' ], // use the mocha test framework
+        frameworks: [ 'jasmine' ], // use the mocha test framework
         files: [
             'test/sinon-1.14.1.js',
             'test/tests.webpack.js'
