@@ -2,7 +2,7 @@ import React from 'react';
 import loginHandlerDecorator from 'modules/auth/decorators/login-handler-decorator';
 
 @loginHandlerDecorator
-class SignedOff extends React.Component {
+class LoginLayout extends React.Component {
 
     render() {
         return (
@@ -14,4 +14,4 @@ class SignedOff extends React.Component {
 
 }
 
-export default SignedOff;
+export default LoginLayout;

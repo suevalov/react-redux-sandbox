@@ -22,15 +22,15 @@ class SidebarArea extends React.Component {
                     icon: 'th-large'
                 },
                 {
+                    label: 'Special',
+                    to: '/',
+                    icon: 'flask',
+                    special: true
+                },
+                {
                     label: 'Components',
                     to: '/components',
                     icon: 'flask'
-                },
-                {
-                    label: 'Special',
-                    to: '/components',
-                    icon: 'flask',
-                    special: true
                 }
             ],
             selected: 0

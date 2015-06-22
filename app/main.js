@@ -7,10 +7,10 @@ import BrowserHistory from 'react-router/lib/BrowserHistory';
 import appRedux from 'app-redux';
 import { Provider } from 'redux/react';
 
-import { LoginHandler } from 'modules/auth';
+import { LoginHandler, LoginLayout } from 'modules/auth';
 import { TodoHandler } from 'modules/todo';
-import { SignedIn, SignedOff } from 'modules/layout';
-import ComponentsHandler from './handlers/components-handler';
+import { SignedIn } from 'modules/layout';
+import { DemoComponentsLayout } from 'modules/demo-components';
 import ButtonSamplesPage from './components/button/__sample__/button-samples-page';
 import ButtonGroupSamplesPage from './components/button-group/__sample__/button-group-samples-page';
 import DropdownButtonSamplesPage from './components/dropdown-button/__sample__/dropdown-button-samples-page';
@@ -37,13 +37,13 @@ React.render((
             <Router history={new BrowserHistory()}>
                 <Route component={SignedIn} onEnter={requireAuth}>
                     <Route path='/' component={TodoHandler} />
-                    <Route path='components' component={ComponentsHandler}>
-                        <Route path='buttons' component={ButtonSamplesPage} />
-                        <Route path='button-groups' component={ButtonGroupSamplesPage} />
-                        <Route path='dropdown-buttons' component={DropdownButtonSamplesPage} />
-                    </Route>
                 </Route>
-                <Route component={SignedOff} onEnter={redirectIfSignedIn}>
+                <Route path='components' component={DemoComponentsLayout}>
+                    <Route path='buttons' component={ButtonSamplesPage} />
+                    <Route path='button-groups' component={ButtonGroupSamplesPage} />
+                    <Route path='dropdown-buttons' component={DropdownButtonSamplesPage} />
+                </Route>
+                <Route component={LoginLayout} onEnter={redirectIfSignedIn}>
                     <Route path='login' component={LoginHandler} />
                 </Route>
             </Router>
