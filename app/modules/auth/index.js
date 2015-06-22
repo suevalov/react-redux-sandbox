@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { connect, provide } from 'redux/react';
+import { connect } from 'redux/react';
 import { bindActionCreators } from 'redux';
 import LoginForm from 'modules/auth/components/login-form';
 import * as AuthActions from 'modules/auth/actions/auth-actions';

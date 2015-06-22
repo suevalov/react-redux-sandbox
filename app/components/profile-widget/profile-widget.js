@@ -5,7 +5,7 @@ require('./profile-widget.less');
 class ProfileWidget extends React.Component {
 
     static propTypes = {
-        user: PropTypes.object
+        user: PropTypes.object.isRequired
     };
 
     render() {
@@ -14,7 +14,7 @@ class ProfileWidget extends React.Component {
             <div className='profile-widget'>
                 <span className='profile-widget__image'></span>
                 <span className='profile-widget__name'>
-                    { this.props.user ? this.props.user.username : '' }
+                    { this.props.user.username }
                 </span>
             </div>
         );

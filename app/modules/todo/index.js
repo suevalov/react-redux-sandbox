@@ -1,7 +1,7 @@
 
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
-import { connect, provide } from 'redux/react';
+import { connect } from 'redux/react';
 import * as TodoActions from 'modules/todo/actions/todo-actions';
 import TodosList from 'modules/todo/components/todos-list';
 import TodosHeader from 'modules/todo/components/todos-header';

@@ -6,8 +6,7 @@ export default class LayoutNavigation extends React.Component {
 
     static propTypes = {
         actions: PropTypes.object.isRequired,
-        loggedIn: PropTypes.bool.isRequired,
-        authToken: PropTypes.string
+        authToken: PropTypes.string.isRequired
     };
 
     constructor() {

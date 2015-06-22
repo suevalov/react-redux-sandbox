@@ -8,7 +8,7 @@ require('./sidebar-area.less');
 class SidebarArea extends React.Component {
 
     static propTypes = {
-        user: PropTypes.object
+        user: PropTypes.object.isRequired
     };
 
     constructor() {
