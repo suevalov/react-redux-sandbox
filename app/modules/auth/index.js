@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import redux from 'app-redux';
 import { connect, provide } from 'redux/react';
 import { bindActionCreators } from 'redux';
 import LoginForm from 'modules/auth/components/login-form';
@@ -7,7 +6,6 @@ import * as AuthActions from 'modules/auth/actions/auth-actions';
 
 require('./login-page.less');
 
-@provide(redux)
 @connect(({ authState }) => ({
     loggedIn: authState.loggedIn
 }))

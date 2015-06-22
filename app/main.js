@@ -4,6 +4,8 @@ import 'react-tools/src/test/phantomjs-shims';
 import React from 'react';
 import { Router, Route } from 'react-router';
 import BrowserHistory from 'react-router/lib/BrowserHistory';
+import appRedux from 'app-redux';
+import { Provider } from 'redux/react';
 
 import { LoginHandler } from 'modules/auth';
 import { TodoHandler } from 'modules/todo';
@@ -30,17 +32,21 @@ function redirectIfSignedIn(nextState, transition) {
 }
 
 React.render((
-    <Router history={new BrowserHistory()}>
-        <Route component={SignedIn} onEnter={requireAuth}>
-            <Route path='/' component={TodoHandler} />
-            <Route path='components' component={ComponentsHandler}>
-                <Route path='buttons' component={ButtonSamplesPage} />
-                <Route path='button-groups' component={ButtonGroupSamplesPage} />
-                <Route path='dropdown-buttons' component={DropdownButtonSamplesPage} />
-            </Route>
-        </Route>
-        <Route component={SignedOff} onEnter={redirectIfSignedIn}>
-            <Route path='login' component={LoginHandler} />
-        </Route>
-    </Router>
+    <Provider redux={appRedux}>
+        {() =>
+            <Router history={new BrowserHistory()}>
+                <Route component={SignedIn} onEnter={requireAuth}>
+                    <Route path='/' component={TodoHandler} />
+                    <Route path='components' component={ComponentsHandler}>
+                        <Route path='buttons' component={ButtonSamplesPage} />
+                        <Route path='button-groups' component={ButtonGroupSamplesPage} />
+                        <Route path='dropdown-buttons' component={DropdownButtonSamplesPage} />
+                    </Route>
+                </Route>
+                <Route component={SignedOff} onEnter={redirectIfSignedIn}>
+                    <Route path='login' component={LoginHandler} />
+                </Route>
+            </Router>
+        }
+    </Provider>
 ), document.getElementById('application'));

@@ -11,11 +11,13 @@ export function login(email, password) {
                 data
             });
         } catch (err) {
-            dispatch({
-                type: LOGIN,
-                success: false,
-                data: err.data
-            });
+            if (err.status && err.statusText) {
+                dispatch({
+                    type: LOGIN,
+                    success: false,
+                    data: err.data
+                });
+            }
         }
     };
 }
@@ -29,10 +31,12 @@ export function logout(token) {
                 success: true
             });
         } catch (err) {
-            dispatch({
-                type: LOGOUT,
-                success: false
-            });
+            if (err.status && err.statusText) {
+                dispatch({
+                    type: LOGOUT,
+                    success: false
+                });
+            }
         }
     };
 }

@@ -2,12 +2,10 @@
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect, provide } from 'redux/react';
-import redux from 'app-redux';
 import * as TodoActions from 'modules/todo/actions/todo-actions';
 import TodosList from 'modules/todo/components/todos-list';
 import TodosHeader from 'modules/todo/components/todos-header';
 
-@provide(redux)
 @connect(({ todosState }) => ({
     todos: todosState.todos,
     fetched: todosState.fetched

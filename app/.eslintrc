@@ -191,6 +191,9 @@
     "react/wrap-multilines": 2,
     "react/sort-comp": [2, {
       "order": [
+        "displayName",
+        "mixins",
+        "contextTypes",
         "propTypes",
         "willTransitionTo",
         "linkState",
