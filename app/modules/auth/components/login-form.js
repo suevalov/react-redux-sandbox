@@ -6,6 +6,8 @@ import {
 } from 'components/index';
 import bindAll from 'utils/bind-all';
 
+require('./login-form.less');
+
 class LoginForm extends React.Component {
 
     static propTypes = {
@@ -32,7 +34,7 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className='loginPage'>
+            <div className='login-form'>
                 <h2>Please, login</h2>
 
                 <form onSubmit={this.onSubmit}>

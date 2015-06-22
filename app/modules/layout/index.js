@@ -1,7 +1,7 @@
 import './layout.less';
 
-import SignedIn from 'modules/layout/components/signed-in-layout';
+import MainLayout from './components/main-layout';
 
 export default {
-    SignedIn
+    MainLayout
 };

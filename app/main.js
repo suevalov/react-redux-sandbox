@@ -1,15 +1,17 @@
 import 'babel-core/polyfill';
 import 'react-tools/src/test/phantomjs-shims';
 
+require('./main.less');
+
 import React from 'react';
 import { Router, Route } from 'react-router';
 import BrowserHistory from 'react-router/lib/BrowserHistory';
 import appRedux from 'app-redux';
 import { Provider } from 'redux/react';
 
-import { LoginHandler, LoginLayout } from 'modules/auth';
-import { TodoHandler } from 'modules/todo';
-import { SignedIn } from 'modules/layout';
+import { LoginPage } from 'modules/auth';
+import { TodoPage } from 'modules/todo';
+import { MainLayout } from 'modules/layout';
 import { DemoComponentsLayout } from 'modules/demo-components';
 import ButtonSamplesPage from './components/button/__sample__/button-samples-page';
 import ButtonGroupSamplesPage from './components/button-group/__sample__/button-group-samples-page';
@@ -35,16 +37,14 @@ React.render((
     <Provider redux={appRedux}>
         {() =>
             <Router history={new BrowserHistory()}>
-                <Route component={SignedIn} onEnter={requireAuth}>
-                    <Route path='/' component={TodoHandler} />
+                <Route path='login' component={LoginPage} onEnter={redirectIfSignedIn} />
+                <Route component={MainLayout} onEnter={requireAuth}>
+                    <Route path='/' component={TodoPage} />
                 </Route>
                 <Route path='components' component={DemoComponentsLayout}>
                     <Route path='buttons' component={ButtonSamplesPage} />
                     <Route path='button-groups' component={ButtonGroupSamplesPage} />
                     <Route path='dropdown-buttons' component={DropdownButtonSamplesPage} />
-                </Route>
-                <Route component={LoginLayout} onEnter={redirectIfSignedIn}>
-                    <Route path='login' component={LoginHandler} />
                 </Route>
             </Router>
         }

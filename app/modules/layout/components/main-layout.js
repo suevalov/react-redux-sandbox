@@ -8,12 +8,14 @@ import LayoutNavigation from 'modules/layout/components/layout-navigation/layout
 import * as AuthActions from 'modules/auth/actions/auth-actions';
 import logoutHandlerDecorator from 'modules/auth/decorators/logout-handler-decorator';
 
+require('./main-layout.less');
+
 @logoutHandlerDecorator
 @connect(({ authState }) => ({
     user: authState.user,
     authToken: authState.authToken
 }))
-class SignedIn extends React.Component {
+class MainLayout extends React.Component {
 
     static contextTypes = {
         redux: PropTypes.object.isRequired
@@ -29,11 +31,11 @@ class SignedIn extends React.Component {
         let actions = bindActionCreators(AuthActions, this.props.dispatch);
 
         return (
-            <div className='layout-handler'>
-                <div className='layout-handler__nav'>
+            <div className='main-layout'>
+                <div className='main-layout__nav'>
                     <SidebarArea user={this.props.user} />
                 </div>
-                <div className='layout-handler__content'>
+                <div className='main-layout__content'>
                     <ContentArea>
                         <LayoutNavigation actions={actions}
                                           authToken={this.props.authToken} />
@@ -46,4 +48,4 @@ class SignedIn extends React.Component {
 
 }
 
-export default SignedIn;
+export default MainLayout;

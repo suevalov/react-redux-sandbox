@@ -10,7 +10,7 @@ import TodosHeader from 'modules/todo/components/todos-header';
     todos: todosState.todos,
     fetched: todosState.fetched
 }))
-class TodoHandler extends React.Component {
+class TodoPage extends React.Component {
 
     static propTypes = {
         todos: PropTypes.array.isRequired,
@@ -32,5 +32,5 @@ class TodoHandler extends React.Component {
 }
 
 export default {
-    TodoHandler: TodoHandler
+    TodoPage
 };

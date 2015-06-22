@@ -10,7 +10,6 @@ export function login(email, password) {
                 success: true,
                 data
             });
-
         } catch (err) {
             if (err instanceof Error) {
                 throw err;
