@@ -3,9 +3,12 @@ export default class AuthState {
     _authToken;
     _user;
 
-    constructor() {
-        this._authToken = sessionStorage.getItem('authToken');
-        this._user = JSON.parse(sessionStorage.getItem('authUser'));
+    constructor(
+        user = JSON.parse(sessionStorage.getItem('authUser')),
+        authToken = sessionStorage.getItem('authToken')
+    ) {
+        this._authToken = authToken;
+        this._user = user;
     }
 
     get user() {
@@ -48,6 +51,14 @@ export default class AuthState {
     setState({ authToken, user }) {
         this.user = user;
         this.authToken = authToken;
+    }
+
+    toJSON() {
+        return {
+            user: this.user,
+            authToken: this.authToken,
+            loggedIn: this.loggedIn
+        };
     }
 
 }

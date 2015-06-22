@@ -1,32 +1,35 @@
 import { LOGIN, LOGOUT, FLUSH_STATE } from '../constants/action-types';
 import AuthState from './auth-state';
 
-const initialState = new AuthState();
+const initialState = (new AuthState()).toJSON();
 
 const handlers = {
 
     [LOGIN]: function loginHandler(state, action) {
+        let authState = new AuthState(state.user, state.authToken);
         if (action.success) {
-            state.setState({
+            authState.setState({
                 user: action.data.user,
                 authToken: action.data.id
             });
         } else {
-            state.clearState();
+            authState.clearState();
         }
-        return state;
+        return authState.toJSON();
     },
 
     [LOGOUT]: function logoutHandler(state, action) {
+        let authState = new AuthState(state.user, state.authToken);
         if (action.success) {
-            state.clearState();
+            authState.clearState();
         }
-        return state;
+        return authState.toJSON();
     },
 
     [FLUSH_STATE]: function flushHandler(state) {
-        state.clearState();
-        return state;
+        let authState = new AuthState(state.user, state.authToken);
+        authState.clearState();
+        return authState.toJSON();
     }
 
 };

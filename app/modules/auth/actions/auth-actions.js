@@ -17,6 +17,8 @@ export function login(email, password) {
                     success: false,
                     data: err.data
                 });
+            } else {
+                throw new Error(err);
             }
         }
     };
@@ -36,6 +38,8 @@ export function logout(token) {
                     type: LOGOUT,
                     success: false
                 });
+            } else {
+                throw new Error(err);
             }
         }
     };

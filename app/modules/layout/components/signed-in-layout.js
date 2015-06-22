@@ -20,8 +20,8 @@ class SignedIn extends React.Component {
     };
 
     static propTypes = {
-        user: PropTypes.object.isRequired,
-        authToken: PropTypes.string.isRequired,
+        user: PropTypes.object,
+        authToken: PropTypes.string,
         dispatch: PropTypes.func.isRequired
     };
 

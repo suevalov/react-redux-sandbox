@@ -58,6 +58,20 @@ describe('AuthState', () => {
 
     });
 
+    it('should not seek in sessionStorage if constructor is not empty', () => {
+
+        spyOn(sessionStorage, 'getItem');
+
+        let state1 = new AuthState({ username: 'username' }, '123123');
+        expect(sessionStorage.getItem).not.toHaveBeenCalled();
+        expect(typeof state1.toJSON()).toBe('object');
+
+        let state2 = new AuthState({ username: 'username'});
+        expect(sessionStorage.getItem).toHaveBeenCalledWith('authToken');
+        expect(typeof state2.toJSON()).toBe('object');
+
+    });
+
     it('should return loggedIn based on authToken', () => {
 
         let state = new AuthState();
@@ -71,6 +85,21 @@ describe('AuthState', () => {
         expect(state.loggedIn).toBeTruthy();
         state.clearState();
         expect(state.loggedIn).toBeFalsy();
+
+    });
+
+    it('toJSON should return object', () => {
+
+        let state = new AuthState({ username: 'username'}, '123123');
+
+        let serialized = state.toJSON();
+
+        expect(typeof serialized).toBe('object');
+        expect(serialized.authToken).toEqual('123123');
+        expect(serialized.user).toEqual({
+            username: 'username'
+        });
+        expect(serialized.loggedIn).toBeTruthy();
 
     });
 
