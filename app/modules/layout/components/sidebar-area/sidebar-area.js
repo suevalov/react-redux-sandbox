@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import SidebarMenuHeader from 'modules/layout/components/sidebar-area/sidebar-menu-header';
 import SidebarMenuItem from 'modules/layout/components/sidebar-area/sidebar-menu-item';
-import { ProfileWidget } from 'components/index';
+import ProfileWidget from 'modules/layout/components/profile-widget/profile-widget';
 
 require('./sidebar-area.less');
 
