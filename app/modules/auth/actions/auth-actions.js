@@ -10,15 +10,16 @@ export function login(email, password) {
                 success: true,
                 data
             });
+
         } catch (err) {
-            if (err.status && err.statusText) {
+            if (err instanceof Error) {
+                throw err;
+            } else {
                 dispatch({
                     type: LOGIN,
                     success: false,
                     data: err.data
                 });
-            } else {
-                throw new Error(err);
             }
         }
     };
@@ -33,13 +34,13 @@ export function logout(token) {
                 success: true
             });
         } catch (err) {
-            if (err.status && err.statusText) {
+            if (err instanceof Error) {
+                throw err;
+            } else {
                 dispatch({
                     type: LOGOUT,
                     success: false
                 });
-            } else {
-                throw new Error(err);
             }
         }
     };
