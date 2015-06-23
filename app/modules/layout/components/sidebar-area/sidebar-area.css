@@ -1,8 +1,8 @@
-.sidebar-area {
+.root {
     display: block;
 }
 
-.sidebar-area__menu {
+.menu {
     margin: 0;
     padding: 0;
     list-style: none;

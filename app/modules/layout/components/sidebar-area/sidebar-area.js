@@ -3,7 +3,7 @@ import SidebarMenuHeader from 'modules/layout/components/sidebar-area/sidebar-me
 import SidebarMenuItem from 'modules/layout/components/sidebar-area/sidebar-menu-item';
 import ProfileWidget from 'modules/layout/components/profile-widget/profile-widget';
 
-require('./sidebar-area.css');
+const styles = require('./sidebar-area.css');
 
 class SidebarArea extends React.Component {
 
@@ -37,8 +37,8 @@ class SidebarArea extends React.Component {
 
     render() {
         return (
-            <div className='sidebar-area'>
-                <ul className='sidebar-area__menu'>
+            <div className={styles.root}>
+                <ul className={styles.menu}>
                     <SidebarMenuHeader>
                         <ProfileWidget user={this.props.user} />
                     </SidebarMenuHeader>

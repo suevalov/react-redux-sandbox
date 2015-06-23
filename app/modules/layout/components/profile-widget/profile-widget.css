@@ -1,8 +1,8 @@
-.profile-widget {
+.root {
     display: block;
 }
 
-.profile-widget__image {
+.image {
     width: 48px;
     height: 48px;
     display: block;
@@ -10,7 +10,7 @@
     background: url('./images/profile-widget-small.jpg') no-repeat;
 }
 
-.profile-widget__name {
+.name {
     display: block;
     margin-top: 5px;
     font-weight: 500;

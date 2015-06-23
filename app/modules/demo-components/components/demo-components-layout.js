@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-require('./demo-components-layout.css');
+const styles = require('./demo-components-layout.css');
 
 export default class extends React.Component {
 
     render() {
         return (
-            <div className='demo-components-layout'>
+            <div className={styles.root}>
                 <ul>
                     <li><Link to='/'>Back to home</Link></li>
                     <li><Link to='/components/buttons'>Buttons</Link></li>

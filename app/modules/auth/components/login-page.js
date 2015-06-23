@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as AuthActions from 'modules/auth/actions/auth-actions';
 import LoginForm from 'modules/auth/components/login-form';
 
-require('./login-page.css');
+const styles = require('./login-page.css');
 
 @loginHandlerDecorator
 @connect(({ authState }) => ({
@@ -23,7 +23,7 @@ class LoginPage extends React.Component {
         let actions = bindActionCreators(AuthActions, this.props.dispatch);
 
         return (
-            <div className='login-page'>
+            <div className={styles.root}>
                 <LoginForm actions={actions} />
             </div>
         );

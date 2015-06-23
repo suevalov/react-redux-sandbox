@@ -1,4 +1,4 @@
-@keyframes todoItemFadeIn {
+@keyframes :global(todoItemFadeIn) {
     0% {
         opacity: 0;
         transform: translate3d(-20px, 0, 0);
@@ -9,7 +9,7 @@
     }
 }
 
-@keyframes todoItemFadeOut {
+@keyframes :global(todoItemFadeOut) {
     0% {
         opacity: 1;
     }
@@ -19,12 +19,17 @@
     }
 }
 
-.todo-item-transition-enter {
-    animation-name: todoItemFadeIn;
-    animation-duration: 0.2s;
-}
+:global {
 
-.todo-item-transition-leave {
-    animation-name: todoItemFadeOut;
-    animation-duration: 0.2s;
+    .todo-item-transition {
+        &-enter {
+            animation-name: todoItemFadeIn;
+            animation-duration: 0.2s;
+        }
+        &-leave {
+            animation-name: todoItemFadeOut;
+            animation-duration: 0.2s;
+        }
+    }
+
 }

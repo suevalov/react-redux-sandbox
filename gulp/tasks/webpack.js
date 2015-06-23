@@ -75,15 +75,21 @@ gulp.task('webpack', function webpackTask(cb) {
                     test: /\.(css)$/,
                     loader: ExtractTextPlugin.extract('style-loader', [
                         'css-loader',
-                        'postcss-loader'
-                    ].join('!'))
+                        (function cssModules() {
+                            if (DEBUG) {
+                                return '?sourceMap&module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]';
+                            }
+                            return '?sourceMap&module&importLoaders=1&localIdentName=[hash:base64:7]';
+                        }()),
+                        '!postcss-loader'
+                    ].join(''))
                 },
                 {
                     test: /\.(less)$/,
                     loader: ExtractTextPlugin.extract('style-loader', [
                         'css-loader',
-                        'less-loader'
-                    ].join('!'))
+                        '!less-loader'
+                    ].join(''))
                 },
                 {
                     test: /\.(png|jpeg|jpg|otf|eot|svg|ttf|woff|woff2)$/,

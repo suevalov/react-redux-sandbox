@@ -6,7 +6,7 @@ import {
 } from 'components/index';
 import bindAll from 'utils/bind-all';
 
-require('./login-form.css');
+const styles = require('./login-form.css');
 
 class LoginForm extends React.Component {
 
@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className='login-form'>
+            <div className={styles.root}>
                 <h2>Please, login</h2>
 
                 <form onSubmit={this.onSubmit}>

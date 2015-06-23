@@ -1,29 +1,30 @@
-.sidebar-menu-item {
+.root {
     position: relative;
     display: block;
 }
 
-.sidebar-menu-item__link {
+.icon {
+    margin-right: 8px;
+}
+
+.link {
     display: block;
     color: #a7b1c2;
     font-weight: 600;
     padding: 14px 20px 14px 25px;
     border-left: 4px solid #293846;
     background: #293846;
-}
 
-.sidebar-menu-item__link:hover,
-.sidebar-menu-item__link:focus {
-    background-color: #293846;
-    color: white;
-    text-decoration: none;
-}
+    &:hover,
+    &:focus {
+        background-color: #293846;
+        color: white;
+        text-decoration: none;
+    }
 
-.sidebar-menu-item__link.active {
-    border-left: 4px solid #19aa8d;
-    color: #ffffff;
-}
+    &:global(.active) {
+        border-left: 4px solid #19aa8d;
+        color: #ffffff;
+    }
 
-.sidebar-menu-item__link-icon {
-    margin-right: 8px;
 }

@@ -30,7 +30,7 @@ export default class TodosList extends PureComponent {
                 <CssTransitionGroup transitionName='todo-item-transition'>
                     {this.props.todos.map((todo) => {
                         return (
-                            <TodoItem className='todo-item' {...todo} actions={this.props.actions} key={todo.id} />
+                            <TodoItem {...todo} actions={this.props.actions} key={todo.id} />
                         );
                     })}
                 </CssTransitionGroup>

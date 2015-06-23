@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-require('./sidebar-menu-header.css');
+const styles = require('./sidebar-menu-header.css');
 
 class SidebarMenuHeader extends React.Component {
 
@@ -10,7 +10,7 @@ class SidebarMenuHeader extends React.Component {
 
     render() {
         return (
-            <li className='sidebar-menu-header'>
+            <li className={styles.root}>
                 {this.props.children}
             </li>
         );

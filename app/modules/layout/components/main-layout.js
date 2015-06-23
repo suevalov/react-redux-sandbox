@@ -2,13 +2,12 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'redux/react';
 import { bindActionCreators } from 'redux';
-import ContentArea from 'modules/layout/components/content-area/content-area';
 import SidebarArea from 'modules/layout/components/sidebar-area/sidebar-area';
 import LayoutNavigation from 'modules/layout/components/layout-navigation/layout-navigation';
 import * as AuthActions from 'modules/auth/actions/auth-actions';
 import logoutHandlerDecorator from 'modules/auth/decorators/logout-handler-decorator';
 
-require('./main-layout.css');
+const styles = require('./main-layout.css');
 
 @logoutHandlerDecorator
 @connect(({ authState }) => ({
@@ -31,16 +30,14 @@ class MainLayout extends React.Component {
         let actions = bindActionCreators(AuthActions, this.props.dispatch);
 
         return (
-            <div className='main-layout'>
-                <div className='main-layout__nav'>
+            <div className={styles.root}>
+                <div className={styles.navigation}>
                     <SidebarArea user={this.props.user} />
                 </div>
-                <div className='main-layout__content'>
-                    <ContentArea>
-                        <LayoutNavigation actions={actions}
-                                          authToken={this.props.authToken} />
-                        { this.props.children }
-                    </ContentArea>
+                <div className={styles.content}>
+                    <LayoutNavigation actions={actions}
+                                      authToken={this.props.authToken} />
+                    { this.props.children }
                 </div>
             </div>
         );

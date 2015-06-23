@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-require('./profile-widget.css');
+const styles = require('./profile-widget.css');
 
 class ProfileWidget extends React.Component {
 
@@ -11,9 +11,9 @@ class ProfileWidget extends React.Component {
     render() {
 
         return (
-            <div className='profile-widget'>
-                <span className='profile-widget__image'></span>
-                <span className='profile-widget__name'>
+            <div className={styles.root}>
+                <span className={styles.image}></span>
+                <span className={styles.name}>
                     { this.props.user ? this.props.user.username : '' }
                 </span>
             </div>

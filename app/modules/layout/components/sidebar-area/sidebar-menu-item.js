@@ -4,7 +4,7 @@ import {
     Icon
 } from 'components/index';
 
-require('./sidebar-menu-item.css');
+const styles = require('./sidebar-menu-item.css');
 
 class SidebarMenuItem extends React.Component {
 
@@ -17,10 +17,10 @@ class SidebarMenuItem extends React.Component {
 
     render() {
         return (
-            <li className='sidebar-menu-item' onClick={this.props.onClick}>
-                <Link className='sidebar-menu-item__link' to={this.props.to}>
-                    { this.props.icon ? ( <Icon className='sidebar-menu-item__link-icon' name={this.props.icon} /> ) : '' }
-                    <span className='sidebar-area__menu-item-label'>
+            <li className={styles.root} onClick={this.props.onClick}>
+                <Link className={styles.link} to={this.props.to}>
+                    { this.props.icon ? ( <Icon className={styles.icon} name={this.props.icon} /> ) : '' }
+                    <span>
                         {this.props.label}
                     </span>
                 </Link>
