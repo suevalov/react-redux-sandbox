@@ -100,6 +100,12 @@ gulp.task('webpack', function webpackTask(cb) {
 
         postcss: [
             require('postcss-nested'),
+            require('postcss-simple-vars'),
+            require('postcss-simple-extend'),
+            require('postcss-custom-selectors'),
+            require('postcss-discard-comments'),
+            require('postcss-discard-empty'),
+            require('postcss-media-minmax'),
             autoprefixer({
                 browsers: [
                     'last 2 versions'
