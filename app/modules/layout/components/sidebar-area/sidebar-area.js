@@ -23,28 +23,16 @@ class SidebarArea extends React.Component {
                 },
                 {
                     label: 'Special',
-                    to: '/',
-                    icon: 'flask',
-                    special: true
+                    to: '/special',
+                    icon: 'flask'
                 },
                 {
                     label: 'Components',
                     to: '/components',
                     icon: 'flask'
                 }
-            ],
-            selected: 0
+            ]
         };
-    }
-
-    onItemClick(key) {
-        this.setState({
-            selected: key
-        });
-    }
-
-    getSelectedIndex() {
-        return this.state.selected;
     }
 
     render() {
@@ -56,7 +44,7 @@ class SidebarArea extends React.Component {
                     </SidebarMenuHeader>
                     {this.state.menuItems.map((item, index) => {
                         return (
-                            <SidebarMenuItem {...item} key={index} active={index === this.getSelectedIndex()} onClick={this.onItemClick.bind(this, index)}/>
+                            <SidebarMenuItem {...item} key={index} />
                         );
                     })}
                 </ul>

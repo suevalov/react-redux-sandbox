@@ -19,16 +19,12 @@
     }
 }
 
-.todo-item-transition {
+.todo-item-transition-enter {
+    animation-name: todoItemFadeIn;
+    animation-duration: 0.2s;
+}
 
-    &-enter {
-        animation-name: todoItemFadeIn;
-        animation-duration: 0.2s;
-    }
-
-    &-leave {
-        animation-name: todoItemFadeOut;
-        animation-duration: 0.2s;
-    }
-
+.todo-item-transition-leave {
+    animation-name: todoItemFadeOut;
+    animation-duration: 0.2s;
 }
