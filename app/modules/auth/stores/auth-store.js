@@ -6,6 +6,7 @@ import {
     FLUSH_STATE
 } from '../constants/action-types';
 import AuthState from './auth-state';
+import AsyncStatus from 'utils/async-status';
 
 const initialState = (new AuthState()).toJSON();
 
@@ -13,7 +14,7 @@ const handlers = {
 
     [LOGIN_REQUEST]: function loginRequestReducer(state) {
         let authState = new AuthState(state.user, state.authToken);
-        authState.requestStatus = 'request';
+        authState.requestStatus = AsyncStatus.REQUEST;
         return authState.toJSON();
     },
 
@@ -23,14 +24,14 @@ const handlers = {
             user: action.result.user,
             authToken: action.result.id
         });
-        authState.requestStatus = 'success';
+        authState.requestStatus = AsyncStatus.SUCCESS;
         return authState.toJSON();
     },
 
     [LOGIN_FAILURE]: function loginFailureReducer(state) {
         let authState = new AuthState(state.user, state.authToken);
         authState.clearState();
-        authState.requestStatus = 'failure';
+        authState.requestStatus = AsyncStatus.FAILURE;
         return authState.toJSON();
     },
 

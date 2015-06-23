@@ -9,12 +9,12 @@ const styles = require('./login-page.css');
 
 @loginHandlerDecorator
 @connect(({ authState }) => ({
-    loggedIn: authState.loggedIn
+    requestStatus: authState.requestStatus
 }))
 class LoginPage extends React.Component {
 
     static propTypes = {
-        loggedIn: PropTypes.bool.isRequired,
+        requestStatus: PropTypes.string.isRequired,
         dispatch: PropTypes.func.isRequired
     };
 
@@ -24,7 +24,7 @@ class LoginPage extends React.Component {
 
         return (
             <div className={styles.root}>
-                <LoginForm actions={actions} />
+                <LoginForm actions={actions} status={this.props.requestStatus} />
             </div>
         );
     }

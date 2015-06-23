@@ -8,6 +8,7 @@ import {
     LOGOUT,
     FLUSH_STATE
 } from '../../constants/action-types';
+import AsyncStatus from 'utils/async-status';
 
 import { createRedux } from 'redux';
 
@@ -33,7 +34,7 @@ describe('Auth Store', () => {
         expect(authState.user).toBeNull();
         expect(authState.authToken).toBeNull();
         expect(authState.loggedIn).toBeFalsy();
-        expect(authState.requestStatus).toBe('');
+        expect(authState.requestStatus).toBe(AsyncStatus.NONE);
     });
 
     it('should change request status after LOGIN_REQUEST action', () => {
@@ -41,7 +42,7 @@ describe('Auth Store', () => {
             type: LOGIN_REQUEST
         });
         let { authState } = redux.getState();
-        expect(authState.requestStatus).toBe('request');
+        expect(authState.requestStatus).toBe(AsyncStatus.REQUEST);
     });
 
     it('should be logged in after success LOGIN action', () => {
@@ -63,7 +64,7 @@ describe('Auth Store', () => {
         });
         expect(authState.authToken).toEqual('123123');
         expect(authState.loggedIn).toBeTruthy();
-        expect(authState.requestStatus).toBe('success');
+        expect(authState.requestStatus).toBe(AsyncStatus.SUCCESS);
 
     });
 
@@ -78,7 +79,7 @@ describe('Auth Store', () => {
         expect(authState.user).toEqual(null);
         expect(authState.authToken).toEqual(null);
         expect(authState.loggedIn).toBeFalsy();
-        expect(authState.requestStatus).toBe('failure');
+        expect(authState.requestStatus).toBe(AsyncStatus.FAILURE);
 
     });
 
