@@ -11,17 +11,19 @@ import MenuItem from './menu-item/menu-item';
 import Icon from './icon/icon';
 import FormGroup from './form-group/form-group';
 import Input from './input/input';
+import RequestButton from './request-button/request-button';
 
 module.exports = {
-    Button: Button,
-    ButtonGroup: ButtonGroup,
-    DropdownButton: DropdownButton,
-    DropdownMenu: DropdownMenu,
-    MenuItem: MenuItem,
-    Icon: Icon,
-    Grid: Grid,
-    Row: Row,
-    Col: Col,
-    FormGroup: FormGroup,
-    Input: Input
+    Button,
+    RequestButton,
+    ButtonGroup,
+    DropdownButton,
+    DropdownMenu,
+    MenuItem,
+    Icon,
+    Grid,
+    Row,
+    Col,
+    FormGroup,
+    Input
 };

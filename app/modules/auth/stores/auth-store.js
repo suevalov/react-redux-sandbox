@@ -34,7 +34,7 @@ const handlers = {
 
 };
 
-export default function todos(state = initialState, action = null) {
+export default function authStore(state = initialState, action = null) {
     if (!action) {
         return state;
     }

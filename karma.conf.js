@@ -24,7 +24,7 @@ module.exports = function karmaConfigBuilder(config) {
                         loader: 'babel-loader'
                     },
                     {
-                        test: /\.less/,
+                        test: /\.(less|css)/,
                         loader: 'null-loader'
                     },
                     {

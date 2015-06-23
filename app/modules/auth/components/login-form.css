@@ -5,3 +5,8 @@
     height: 300px;
     width: 300px;
 }
+
+.submitButton {
+    display: block;
+    width: 100%;
+}

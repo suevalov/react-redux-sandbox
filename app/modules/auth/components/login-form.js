@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import LinkedStateMixin from 'react/lib/LinkedStateMixin';
 import {
-    Button,
+    RequestButton,
     Input
 } from 'components/index';
 import bindAll from 'utils/bind-all';
@@ -42,7 +42,7 @@ class LoginForm extends React.Component {
                     <Input type='password' placeholder='Password' valueLink={this.linkState('password')}/>
 
                     <div>
-                        <Button type='submit' theme='primary' block>Log in</Button>
+                        <RequestButton className={styles.submitButton} type='submit' theme='primary'>Log in</RequestButton>
                     </div>
                 </form>
             </div>
