@@ -2,7 +2,9 @@ import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
-    LOGOUT
+    LOGOUT_REQUEST,
+    LOGOUT_SUCCESS,
+    LOGOUT_FAILURE
 } from '../constants/action-types';
 import AuthApiService from '../services/auth-api-service';
 import promiseAxiosMiddleware from 'utils/promise-axios-middleware';
@@ -17,22 +19,10 @@ export function login(email, password) {
 }
 
 export function logout(token) {
-    return async (dispatch) => {
-        try {
-            await AuthApiService.logout(token);
-            dispatch({
-                type: LOGOUT,
-                success: true
-            });
-        } catch (err) {
-            if (err instanceof Error) {
-                throw err;
-            } else {
-                dispatch({
-                    type: LOGOUT,
-                    success: false
-                });
-            }
-        }
+    return (dispatch) => {
+        promiseAxiosMiddleware(dispatch)({
+            types: [ LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE ],
+            promise: AuthApiService.logout(token)
+        });
     };
 }

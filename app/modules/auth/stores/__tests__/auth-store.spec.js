@@ -5,7 +5,9 @@ import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
-    LOGOUT,
+    LOGOUT_REQUEST,
+    LOGOUT_SUCCESS,
+    LOGOUT_FAILURE,
     FLUSH_STATE
 } from '../../constants/action-types';
 import AsyncStatus from 'utils/async-status';
@@ -100,26 +102,10 @@ describe('Auth Store', () => {
             expect(redux.getState().authState.loggedIn).toBeTruthy();
         });
 
-        it('should be logged out after success LOGOUT action', () => {
+        it('should be change request state after success LOGOUT_REQUEST action', () => {
 
             redux.dispatch({
-                type: LOGOUT,
-                success: true
-            });
-
-            let { authState } = redux.getState();
-
-            expect(authState.loggedIn).toBeFalsy();
-            expect(authState.user).toBeNull();
-            expect(authState.authToken).toBeNull();
-
-        });
-
-        it('should not be logged out after failed LOGOUT action', () => {
-
-            redux.dispatch({
-                type: LOGOUT,
-                success: false
+                type: LOGOUT_REQUEST
             });
 
             let { authState } = redux.getState();
@@ -127,6 +113,37 @@ describe('Auth Store', () => {
             expect(authState.loggedIn).toBeTruthy();
             expect(authState.user).not.toBeNull();
             expect(authState.authToken).not.toBeNull();
+            expect(authState.requestStatus).toBe(AsyncStatus.REQUEST);
+
+        });
+
+        it('should be logged out after LOGOUT_SUCCESS action', () => {
+
+            redux.dispatch({
+                type: LOGOUT_SUCCESS
+            });
+
+            let { authState } = redux.getState();
+
+            expect(authState.loggedIn).toBeFalsy();
+            expect(authState.user).toBeNull();
+            expect(authState.authToken).toBeNull();
+            expect(authState.requestStatus).toBe(AsyncStatus.SUCCESS);
+
+        });
+
+        it('should not be logged out after failed LOGOUT_FAILURE action', () => {
+
+            redux.dispatch({
+                type: LOGOUT_FAILURE
+            });
+
+            let { authState } = redux.getState();
+
+            expect(authState.loggedIn).toBeTruthy();
+            expect(authState.user).not.toBeNull();
+            expect(authState.authToken).not.toBeNull();
+            expect(authState.requestStatus).toBe(AsyncStatus.FAILURE);
 
         });
 

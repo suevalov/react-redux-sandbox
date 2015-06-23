@@ -2,7 +2,9 @@ import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
-    LOGOUT,
+    LOGOUT_REQUEST,
+    LOGOUT_SUCCESS,
+    LOGOUT_FAILURE,
     FLUSH_STATE
 } from '../constants/action-types';
 import AuthState from './auth-state';
@@ -35,11 +37,22 @@ const handlers = {
         return authState.toJSON();
     },
 
-    [LOGOUT]: function logoutHandler(state, action) {
+    [LOGOUT_REQUEST]: function logoutRequestReducer(state) {
         let authState = new AuthState(state.user, state.authToken);
-        if (action.success) {
-            authState.clearState();
-        }
+        authState.requestStatus = AsyncStatus.REQUEST;
+        return authState.toJSON();
+    },
+
+    [LOGOUT_SUCCESS]: function logoutSuccessReducer(state) {
+        let authState = new AuthState(state.user, state.authToken);
+        authState.clearState();
+        authState.requestStatus = AsyncStatus.SUCCESS;
+        return authState.toJSON();
+    },
+
+    [LOGOUT_FAILURE]: function logoutFailureReducer(state) {
+        let authState = new AuthState(state.user, state.authToken);
+        authState.requestStatus = AsyncStatus.FAILURE;
         return authState.toJSON();
     },
 

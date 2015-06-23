@@ -10,8 +10,8 @@ export default {
         });
     },
 
-    async logout(token) {
-        return await axios.post(Config.getApiEndpoint(`/users/logout?access_token=${token}`));
+    logout(token) {
+        return axios.post(Config.getApiEndpoint(`/users/logout?access_token=${token}`));
     }
 
 };
