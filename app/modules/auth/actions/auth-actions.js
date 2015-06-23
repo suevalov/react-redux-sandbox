@@ -1,26 +1,18 @@
-import { LOGIN, LOGOUT } from '../constants/action-types';
+import {
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    LOGOUT
+} from '../constants/action-types';
 import AuthApiService from '../services/auth-api-service';
+import promiseAxiosMiddleware from 'utils/promise-axios-middleware';
 
 export function login(email, password) {
-    return async (dispatch) => {
-        try {
-            let { data } = await AuthApiService.login(email, password);
-            dispatch({
-                type: LOGIN,
-                success: true,
-                data
-            });
-        } catch (err) {
-            if (err instanceof Error) {
-                throw err;
-            } else {
-                dispatch({
-                    type: LOGIN,
-                    success: false,
-                    data: err.data
-                });
-            }
-        }
+    return (dispatch) => {
+        promiseAxiosMiddleware(dispatch)({
+            types: [ LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE ],
+            promise: AuthApiService.login(email, password)
+        });
     };
 }
 

@@ -1,20 +1,36 @@
-import { LOGIN, LOGOUT, FLUSH_STATE } from '../constants/action-types';
+import {
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    LOGOUT,
+    FLUSH_STATE
+} from '../constants/action-types';
 import AuthState from './auth-state';
 
 const initialState = (new AuthState()).toJSON();
 
 const handlers = {
 
-    [LOGIN]: function loginHandler(state, action) {
+    [LOGIN_REQUEST]: function loginRequestReducer(state) {
         let authState = new AuthState(state.user, state.authToken);
-        if (action.success) {
-            authState.setState({
-                user: action.data.user,
-                authToken: action.data.id
-            });
-        } else {
-            authState.clearState();
-        }
+        authState.requestStatus = 'request';
+        return authState.toJSON();
+    },
+
+    [LOGIN_SUCCESS]: function loginSuccessReducer(state, action) {
+        let authState = new AuthState(state.user, state.authToken);
+        authState.setState({
+            user: action.result.user,
+            authToken: action.result.id
+        });
+        authState.requestStatus = 'success';
+        return authState.toJSON();
+    },
+
+    [LOGIN_FAILURE]: function loginFailureReducer(state) {
+        let authState = new AuthState(state.user, state.authToken);
+        authState.clearState();
+        authState.requestStatus = 'failure';
         return authState.toJSON();
     },
 

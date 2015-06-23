@@ -3,8 +3,8 @@ import axios from 'axios';
 
 export default {
 
-    async login(email, password) {
-        return await axios.post(Config.getApiEndpoint('/users/login?include=user'), {
+    login(email, password) {
+        return axios.post(Config.getApiEndpoint('/users/login?include=user'), {
             email: email,
             password: password
         });

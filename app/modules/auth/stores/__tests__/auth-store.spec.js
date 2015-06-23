@@ -1,7 +1,13 @@
 /* global describe, fdescribe, fit, it, sinon, expect, beforeEach, afterEach */
 
 import authReduxStore from '../auth-store';
-import { LOGIN, LOGOUT, FLUSH_STATE } from '../../constants/action-types';
+import {
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    LOGOUT,
+    FLUSH_STATE
+} from '../../constants/action-types';
 
 import { createRedux } from 'redux';
 
@@ -27,14 +33,22 @@ describe('Auth Store', () => {
         expect(authState.user).toBeNull();
         expect(authState.authToken).toBeNull();
         expect(authState.loggedIn).toBeFalsy();
+        expect(authState.requestStatus).toBe('');
+    });
+
+    it('should change request status after LOGIN_REQUEST action', () => {
+        redux.dispatch({
+            type: LOGIN_REQUEST
+        });
+        let { authState } = redux.getState();
+        expect(authState.requestStatus).toBe('request');
     });
 
     it('should be logged in after success LOGIN action', () => {
 
         redux.dispatch({
-            type: LOGIN,
-            success: true,
-            data: {
+            type: LOGIN_SUCCESS,
+            result: {
                 id: '123123',
                 user: {
                     username: 'foobar'
@@ -49,14 +63,14 @@ describe('Auth Store', () => {
         });
         expect(authState.authToken).toEqual('123123');
         expect(authState.loggedIn).toBeTruthy();
+        expect(authState.requestStatus).toBe('success');
 
     });
 
     it('should not be logged in after failed LOGIN action', () => {
 
         redux.dispatch({
-            type: LOGIN,
-            success: false
+            type: LOGIN_FAILURE
         });
 
         let { authState } = redux.getState();
@@ -64,6 +78,7 @@ describe('Auth Store', () => {
         expect(authState.user).toEqual(null);
         expect(authState.authToken).toEqual(null);
         expect(authState.loggedIn).toBeFalsy();
+        expect(authState.requestStatus).toBe('failure');
 
     });
 
@@ -72,9 +87,8 @@ describe('Auth Store', () => {
 
         beforeEach(() => {
             redux.dispatch({
-                type: LOGIN,
-                success: true,
-                data: {
+                type: LOGIN_SUCCESS,
+                result: {
                     id: '123123',
                     user: {
                         username: 'foobar'

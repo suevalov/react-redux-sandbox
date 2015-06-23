@@ -2,6 +2,7 @@ export default class AuthState {
 
     _authToken;
     _user;
+    _requestStatus;
 
     constructor(
         user = JSON.parse(sessionStorage.getItem('authUser')),
@@ -9,6 +10,7 @@ export default class AuthState {
     ) {
         this._authToken = authToken;
         this._user = user;
+        this._requestStatus = '';
     }
 
     get user() {
@@ -39,6 +41,14 @@ export default class AuthState {
         }
     }
 
+    get requestStatus() {
+        return this._requestStatus;
+    }
+
+    set requestStatus(status) {
+        this._requestStatus = status;
+    }
+
     get loggedIn() {
         return !!this.authToken;
     }
@@ -46,6 +56,7 @@ export default class AuthState {
     clearState() {
         this.user = null;
         this.authToken = null;
+        this.requestStatus = '';
     }
 
     setState({ authToken, user }) {
@@ -57,7 +68,8 @@ export default class AuthState {
         return {
             user: this.user,
             authToken: this.authToken,
-            loggedIn: this.loggedIn
+            loggedIn: this.loggedIn,
+            requestStatus: this.requestStatus
         };
     }
 

@@ -14,6 +14,7 @@ describe('AuthState', () => {
         let state = new AuthState();
         expect(state.user).toBeNull();
         expect(state.authToken).toBeNull();
+        expect(state.requestStatus).toBe('');
 
         // put something in session storage
         sessionStorage.setItem('authUser', JSON.stringify({
