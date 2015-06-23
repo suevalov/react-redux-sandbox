@@ -5,6 +5,8 @@ import {
     Icon
 } from 'components/index';
 
+require('./sidebar-menu-item.less');
+
 class SidebarMenuItem extends React.Component {
 
     static propTypes = {
@@ -19,9 +21,9 @@ class SidebarMenuItem extends React.Component {
     render() {
 
         let classes = {
-            'sidebar-area__menu-item': true,
-            'sidebar-area__menu-item--active': this.props.active,
-            'sidebar-area__menu-item--special': this.props.special
+            'sidebar-menu-item': true,
+            'sidebar-menu-item--active': this.props.active,
+            'sidebar-menu-item--special': this.props.special
         };
 
         return (

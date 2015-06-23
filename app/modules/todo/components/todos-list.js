@@ -27,7 +27,7 @@ export default class TodosList extends PureComponent {
     renderItems() {
         return (
             <ul>
-                <CssTransitionGroup transitionName='todo-item'>
+                <CssTransitionGroup transitionName='todo-item-transition'>
                     {this.props.todos.map((todo) => {
                         return (
                             <TodoItem className='todo-item' {...todo} actions={this.props.actions} key={todo.id} />
