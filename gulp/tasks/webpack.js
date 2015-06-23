@@ -3,11 +3,8 @@ var webpack = require('webpack');
 var path = require('path');
 var browserSync = require('browser-sync');
 var appConfig = require('../config');
+var autoprefixer = require('autoprefixer-core');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-var AUTOPREFIXER_LOADER = 'autoprefixer-loader?{browsers:[' +
-    '"Android 2.3", "Android >= 4", "Chrome >= 20", "Firefox >= 24", ' +
-    '"Explorer >= 8", "iOS >= 6", "Opera >= 12", "Safari >= 6"]}';
 
 gulp.task('webpack', function webpackTask(cb) {
 
@@ -75,15 +72,34 @@ gulp.task('webpack', function webpackTask(cb) {
                     loader: 'babel-loader'
                 },
                 {
-                    test: /\.(less|css)$/,
-                    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!' + AUTOPREFIXER_LOADER + '!less-loader')
+                    test: /\.(css)$/,
+                    loader: ExtractTextPlugin.extract('style-loader', [
+                        'css-loader',
+                        'postcss-loader'
+                    ].join('!'))
+                },
+                {
+                    test: /\.(less)$/,
+                    loader: ExtractTextPlugin.extract('style-loader', [
+                        'css-loader',
+                        'less-loader'
+                    ].join('!'))
                 },
                 {
                     test: /\.(png|jpeg|jpg|otf|eot|svg|ttf|woff|woff2)$/,
                     loader: 'url-loader?limit=100000'
                 }
             ]
-        }
+        },
+
+        postcss: [
+            require('postcss-nested'),
+            autoprefixer({
+                browsers: [
+                    'last 2 versions'
+                ]
+            })
+        ]
 
     };
     var bundler = webpack(config);

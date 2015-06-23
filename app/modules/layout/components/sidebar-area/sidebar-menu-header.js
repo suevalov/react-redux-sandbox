@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-require('./sidebar-menu-header.less');
+require('./sidebar-menu-header.css');
 
 class SidebarMenuHeader extends React.Component {
 

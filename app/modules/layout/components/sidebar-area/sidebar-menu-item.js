@@ -5,7 +5,7 @@ import {
     Icon
 } from 'components/index';
 
-require('./sidebar-menu-item.less');
+require('./sidebar-menu-item.css');
 
 class SidebarMenuItem extends React.Component {
 

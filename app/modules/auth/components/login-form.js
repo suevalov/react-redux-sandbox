@@ -6,7 +6,7 @@ import {
 } from 'components/index';
 import bindAll from 'utils/bind-all';
 
-require('./login-form.less');
+require('./login-form.css');
 
 class LoginForm extends React.Component {
 

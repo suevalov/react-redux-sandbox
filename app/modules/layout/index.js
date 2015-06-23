@@ -1,4 +1,4 @@
-import './layout.less';
+import './layout.css';
 
 import MainLayout from './components/main-layout';
 

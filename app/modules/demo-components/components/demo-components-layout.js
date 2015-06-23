@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-require('./demo-components-layout.less');
+require('./demo-components-layout.css');
 
 export default class extends React.Component {
 

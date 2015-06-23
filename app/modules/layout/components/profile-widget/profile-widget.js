@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-require('./profile-widget.less');
+require('./profile-widget.css');
 
 class ProfileWidget extends React.Component {
 

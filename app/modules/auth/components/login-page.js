@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as AuthActions from 'modules/auth/actions/auth-actions';
 import LoginForm from 'modules/auth/components/login-form';
 
-require('./login-page.less');
+require('./login-page.css');
 
 @loginHandlerDecorator
 @connect(({ authState }) => ({

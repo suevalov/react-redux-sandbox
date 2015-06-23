@@ -4,7 +4,7 @@ import TodoItem from './todo-item';
 import PureComponent from 'react-pure-render/component';
 import CssTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 
-require('./todos-list.less');
+require('./todos-list.css');
 
 export default class TodosList extends PureComponent {
 

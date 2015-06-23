@@ -8,7 +8,7 @@ import LayoutNavigation from 'modules/layout/components/layout-navigation/layout
 import * as AuthActions from 'modules/auth/actions/auth-actions';
 import logoutHandlerDecorator from 'modules/auth/decorators/logout-handler-decorator';
 
-require('./main-layout.less');
+require('./main-layout.css');
 
 @logoutHandlerDecorator
 @connect(({ authState }) => ({

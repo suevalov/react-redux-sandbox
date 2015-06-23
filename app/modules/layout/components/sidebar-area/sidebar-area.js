@@ -3,7 +3,7 @@ import SidebarMenuHeader from 'modules/layout/components/sidebar-area/sidebar-me
 import SidebarMenuItem from 'modules/layout/components/sidebar-area/sidebar-menu-item';
 import ProfileWidget from 'modules/layout/components/profile-widget/profile-widget';
 
-require('./sidebar-area.less');
+require('./sidebar-area.css');
 
 class SidebarArea extends React.Component {
 
