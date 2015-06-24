@@ -7,59 +7,81 @@ import {
     LOGOUT_FAILURE,
     FLUSH_STATE
 } from '../constants/action-types';
-import AuthState from './auth-state';
 import AsyncStatus from 'utils/async-status';
 
-const initialState = (new AuthState()).toJSON();
+const initialState = (function getInitialState() {
+    let user = sessionStorage.getItem('authUser') ? JSON.parse(sessionStorage.getItem('authUser')) : null;
+    let authToken = sessionStorage.getItem('authToken') || null;
+
+    return {
+        user,
+        authToken,
+        loggedIn: !!authToken,
+        requestStatus: ''
+    };
+}());
 
 const handlers = {
 
     [LOGIN_REQUEST]: function loginRequestReducer(state) {
-        let authState = new AuthState(state.user, state.authToken);
-        authState.requestStatus = AsyncStatus.REQUEST;
-        return authState.toJSON();
+        return {
+            ...state,
+            requestStatus: AsyncStatus.REQUEST
+        };
     },
 
     [LOGIN_SUCCESS]: function loginSuccessReducer(state, action) {
-        let authState = new AuthState(state.user, state.authToken);
-        authState.setState({
+        sessionStorage.setItem('authUser', JSON.stringify(action.result.user));
+        sessionStorage.setItem('authToken', action.result.id);
+        return {
             user: action.result.user,
-            authToken: action.result.id
-        });
-        authState.requestStatus = AsyncStatus.SUCCESS;
-        return authState.toJSON();
+            authToken: action.result.id,
+            loggedIn: true,
+            requestStatus: AsyncStatus.SUCCESS
+        };
     },
 
     [LOGIN_FAILURE]: function loginFailureReducer(state) {
-        let authState = new AuthState(state.user, state.authToken);
-        authState.clearState();
-        authState.requestStatus = AsyncStatus.FAILURE;
-        return authState.toJSON();
+        return {
+            ...state,
+            requestStatus: AsyncStatus.FAILURE
+        };
     },
 
     [LOGOUT_REQUEST]: function logoutRequestReducer(state) {
-        let authState = new AuthState(state.user, state.authToken);
-        authState.requestStatus = AsyncStatus.REQUEST;
-        return authState.toJSON();
+        return {
+            ...state,
+            requestStatus: AsyncStatus.REQUEST
+        };
     },
 
-    [LOGOUT_SUCCESS]: function logoutSuccessReducer(state) {
-        let authState = new AuthState(state.user, state.authToken);
-        authState.clearState();
-        authState.requestStatus = AsyncStatus.SUCCESS;
-        return authState.toJSON();
+    [LOGOUT_SUCCESS]: function logoutSuccessReducer() {
+        sessionStorage.removeItem('authUser');
+        sessionStorage.removeItem('authToken');
+        return {
+            user: null,
+            authToken: null,
+            loggedIn: false,
+            requestStatus: AsyncStatus.SUCCESS
+        };
     },
 
     [LOGOUT_FAILURE]: function logoutFailureReducer(state) {
-        let authState = new AuthState(state.user, state.authToken);
-        authState.requestStatus = AsyncStatus.FAILURE;
-        return authState.toJSON();
+        return {
+            ...state,
+            requestStatus: AsyncStatus.FAILURE
+        };
     },
 
-    [FLUSH_STATE]: function flushHandler(state) {
-        let authState = new AuthState(state.user, state.authToken);
-        authState.clearState();
-        return authState.toJSON();
+    [FLUSH_STATE]: function flushHandler() {
+        sessionStorage.removeItem('authUser');
+        sessionStorage.removeItem('authToken');
+        return {
+            user: null,
+            authToken: null,
+            loggedIn: false,
+            requestStatus: AsyncStatus.NONE
+        };
     }
 
 };

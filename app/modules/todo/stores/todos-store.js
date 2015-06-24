@@ -16,10 +16,12 @@ const handlers = {
     },
 
     [REMOVE_TODO]: function removeTodoHandler(state, action) {
-        state.todos = state.todos.filter(todo => {
-            return todo.id !== action.id;
-        });
-        return state;
+        return {
+            ...state,
+            todos: state.todos.filter(todo => {
+                return todo.id !== action.id;
+            })
+        };
     },
 
     [FETCH_TODOS]: function fetchTodosHandler(state, action) {
@@ -30,6 +32,9 @@ const handlers = {
     }
 };
 
-export default function todos(state = initialState, action) {
+export default function todos(state = initialState, action = null) {
+    if (!action) {
+        return state;
+    }
     return handlers[action.type] ? handlers[action.type](state, action) : state;
 }

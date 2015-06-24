@@ -68,6 +68,11 @@ describe('Auth Store', () => {
         expect(authState.loggedIn).toBeTruthy();
         expect(authState.requestStatus).toBe(AsyncStatus.SUCCESS);
 
+        expect(sessionStorage.getItem('authUser')).toEqual(JSON.stringify({
+            username: 'foobar'
+        }));
+        expect(sessionStorage.getItem('authToken')).toEqual('123123');
+
     });
 
     it('should not be logged in after failed LOGIN action', () => {
@@ -82,6 +87,9 @@ describe('Auth Store', () => {
         expect(authState.authToken).toEqual(null);
         expect(authState.loggedIn).toBeFalsy();
         expect(authState.requestStatus).toBe(AsyncStatus.FAILURE);
+
+        expect(sessionStorage.getItem('authUser')).toBeNull();
+        expect(sessionStorage.getItem('authToken')).toBeNull();
 
     });
 
@@ -115,6 +123,9 @@ describe('Auth Store', () => {
             expect(authState.authToken).not.toBeNull();
             expect(authState.requestStatus).toBe(AsyncStatus.REQUEST);
 
+            expect(sessionStorage.getItem('authUser')).not.toBeNull();
+            expect(sessionStorage.getItem('authToken')).not.toBeNull();
+
         });
 
         it('should be logged out after LOGOUT_SUCCESS action', () => {
@@ -130,6 +141,9 @@ describe('Auth Store', () => {
             expect(authState.authToken).toBeNull();
             expect(authState.requestStatus).toBe(AsyncStatus.SUCCESS);
 
+            expect(sessionStorage.getItem('authUser')).toBeNull();
+            expect(sessionStorage.getItem('authToken')).toBeNull();
+
         });
 
         it('should not be logged out after failed LOGOUT_FAILURE action', () => {
@@ -144,6 +158,9 @@ describe('Auth Store', () => {
             expect(authState.user).not.toBeNull();
             expect(authState.authToken).not.toBeNull();
             expect(authState.requestStatus).toBe(AsyncStatus.FAILURE);
+
+            expect(sessionStorage.getItem('authUser')).not.toBeNull();
+            expect(sessionStorage.getItem('authToken')).not.toBeNull();
 
         });
 
