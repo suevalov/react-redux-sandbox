@@ -1,10 +1,10 @@
 import { createRedux } from 'redux';
-import authState from 'modules/auth/stores/auth-store';
-import todosState from 'modules/todo/stores/todos-store';
+import authReducers from 'modules/auth/reducers/auth-reducers';
+import todosReducers from 'modules/todo/reducers/todos-reducers';
 
 let redux = createRedux({
-    authState,
-    todosState
+    authState: authReducers,
+    todosState: todosReducers
 });
 
 export default redux;

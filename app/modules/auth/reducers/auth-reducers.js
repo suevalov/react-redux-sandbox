@@ -86,7 +86,7 @@ const handlers = {
 
 };
 
-export default function authStore(state = initialState, action = null) {
+export default function authReducers(state = initialState, action = null) {
     if (!action) {
         return state;
     }

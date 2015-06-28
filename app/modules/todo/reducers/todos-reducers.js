@@ -7,7 +7,7 @@ const initialState = {
 
 const handlers = {
 
-    [ADD_TODO]: function addTodoHandler(state, action) {
+    [ADD_TODO]: function addTodoReducer(state, action) {
         state.todos = [
             action.todo,
             ...state.todos
@@ -15,7 +15,7 @@ const handlers = {
         return state;
     },
 
-    [REMOVE_TODO]: function removeTodoHandler(state, action) {
+    [REMOVE_TODO]: function removeTodoReducer(state, action) {
         return {
             ...state,
             todos: state.todos.filter(todo => {
@@ -24,7 +24,7 @@ const handlers = {
         };
     },
 
-    [FETCH_TODOS]: function fetchTodosHandler(state, action) {
+    [FETCH_TODOS]: function fetchTodosReducer(state, action) {
         return {
             todos: action.todos,
             fetched: true

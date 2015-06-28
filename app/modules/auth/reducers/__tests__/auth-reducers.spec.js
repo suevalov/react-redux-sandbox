@@ -1,6 +1,6 @@
 /* global describe, fdescribe, fit, it, sinon, expect, beforeEach, afterEach */
 
-import authReduxStore from '../auth-store';
+import authReducers from '../auth-reducers';
 import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
@@ -14,10 +14,10 @@ import AsyncStatus from 'utils/async-status';
 
 import { createRedux } from 'redux';
 
-describe('Auth Store', () => {
+describe('Auth Reducers', () => {
 
     let redux = createRedux({
-        authState: authReduxStore
+        authState: authReducers
     });
 
     afterEach(() => {
@@ -27,7 +27,7 @@ describe('Auth Store', () => {
     });
 
     it('should be a function', () => {
-        expect(typeof authReduxStore).toBe('function');
+        expect(typeof authReducers).toBe('function');
     });
 
     it('should return initialState', () => {
