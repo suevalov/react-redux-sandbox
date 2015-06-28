@@ -14,7 +14,7 @@ export default function promiseAxiosMiddleware(next) {
                 if (error instanceof Error) {
                     throw error;
                 } else {
-                    next({ ...rest, type: FAILURE, error })
+                    next({ ...rest, type: FAILURE, error });
                 }
             }
         );

@@ -19,10 +19,14 @@
     }
 }
 
+.root {
+    display: block;
+}
+
 :global {
 
     .todo-item-transition {
-        &-enter {
+        &-enter, &-appear {
             animation-name: todoItemFadeIn;
             animation-duration: 0.2s;
         }

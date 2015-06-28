@@ -4,7 +4,7 @@ import TodoItem from './todo-item';
 import PureComponent from 'react-pure-render/component';
 import CssTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 
-require('./todos-list.css');
+let styles = require('./todos-list.css');
 
 export default class TodosList extends PureComponent {
 
@@ -27,7 +27,7 @@ export default class TodosList extends PureComponent {
     renderItems() {
         return (
             <ul>
-                <CssTransitionGroup transitionName='todo-item-transition'>
+                <CssTransitionGroup transitionName='todo-item-transition' transitionAppear={true}>
                     {this.props.todos.map((todo) => {
                         return (
                             <TodoItem {...todo} actions={this.props.actions} key={todo.id} />
@@ -45,13 +45,24 @@ export default class TodosList extends PureComponent {
     }
 
     render() {
+
+        let content;
+
         if (!this.props.fetched) {
-            return this.renderSpinner();
+            content = this.renderSpinner();
+        } else {
+            if (this.props.todos.length) {
+                content = this.renderItems();
+            } else {
+                content = this.renderEmptyMessage();
+            }
         }
-        if (this.props.todos.length) {
-            return this.renderItems();
-        }
-        return this.renderEmptyMessage();
+
+        return (
+            <div className={styles.root}>
+                { content }
+            </div>
+        );
     }
 
 }
