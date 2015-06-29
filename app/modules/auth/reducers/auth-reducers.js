@@ -6,8 +6,9 @@ import {
     LOGOUT_SUCCESS,
     LOGOUT_FAILURE,
     FLUSH_STATE
-} from '../constants/action-types';
+} from 'modules/auth/constants/action-types';
 import AsyncStatus from 'utils/async-status';
+import createReducer from 'utils/create-reducer';
 
 const initialState = (function getInitialState() {
     let user = sessionStorage.getItem('authUser') ? JSON.parse(sessionStorage.getItem('authUser')) : null;
@@ -86,9 +87,4 @@ const handlers = {
 
 };
 
-export default function authReducers(state = initialState, action = null) {
-    if (!action) {
-        return state;
-    }
-    return handlers[action.type] ? handlers[action.type](state, action) : state;
-}
+export default createReducer(initialState, handlers);

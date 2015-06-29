@@ -1,4 +1,5 @@
-import { ADD_TODO, REMOVE_TODO, FETCH_TODOS } from '../constants/action-types';
+import { ADD_TODO, REMOVE_TODO, FETCH_TODOS } from 'modules/todo/constants/action-types';
+import createReducer from 'utils/create-reducer';
 
 const initialState = {
     todos: [],
@@ -32,9 +33,4 @@ const handlers = {
     }
 };
 
-export default function todos(state = initialState, action = null) {
-    if (!action) {
-        return state;
-    }
-    return handlers[action.type] ? handlers[action.type](state, action) : state;
-}
+export default createReducer(initialState, handlers);
