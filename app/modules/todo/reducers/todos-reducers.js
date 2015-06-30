@@ -1,4 +1,6 @@
-import { ADD_TODO, REMOVE_TODO, FETCH_TODOS } from 'modules/todo/constants/action-types';
+import {
+    ADD_TODO, REMOVE_TODO, FETCH_TODOS, FLUSH_STATE
+} from 'modules/todo/constants/action-types';
 import createReducer from 'utils/create-reducer';
 
 const initialState = {
@@ -29,6 +31,13 @@ const handlers = {
         return {
             todos: action.todos,
             fetched: true
+        };
+    },
+
+    [FLUSH_STATE]: function flushStateReducer() {
+        return {
+            todos: [],
+            fetched: false
         };
     }
 };
