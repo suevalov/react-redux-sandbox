@@ -21,14 +21,14 @@ import redux from './app-redux';
 
 function requireAuth(nextState, transition) {
     let { authState } = redux.getState();
-    if (!authState.loggedIn) {
+    if (!authState.get('loggedIn')) {
         transition.to('/login', null, { nextPathname: nextState.location.pathname });
     }
 }
 
 function redirectIfSignedIn(nextState, transition) {
     let { authState } = redux.getState();
-    if (authState.loggedIn) {
+    if (authState.get('loggedIn')) {
         transition.to('/');
     }
 }

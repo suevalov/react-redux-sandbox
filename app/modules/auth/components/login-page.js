@@ -9,7 +9,7 @@ const styles = require('./login-page.css');
 
 @loginHandlerDecorator
 @connect(({ authState }) => ({
-    requestStatus: authState.requestStatus
+    requestStatus: authState.get('requestStatus')
 }))
 class LoginPage extends React.Component {
 

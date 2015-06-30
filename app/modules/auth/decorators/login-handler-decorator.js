@@ -26,7 +26,7 @@ export default function(DecoratedComponent) {
         componentDidMount() {
             this.unsubscribe = this.context.redux.subscribe(() => {
                 let { authState } = this.context.redux.getState();
-                if (authState.loggedIn) {
+                if (authState.get('loggedIn')) {
                     let { location } = this.props;
                     if (location.state && location.state.nextPathname) {
                         this.replaceWith(location.state.nextPathname);

@@ -9,12 +9,11 @@ class ProfileWidget extends React.Component {
     };
 
     render() {
-
         return (
             <div className={styles.root}>
                 <span className={styles.image}></span>
                 <span className={styles.name}>
-                    { this.props.user ? this.props.user.username : '' }
+                    { this.props.user ? this.props.user.get('username') : '' }
                 </span>
             </div>
         );
