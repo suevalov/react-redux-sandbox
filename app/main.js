@@ -5,7 +5,7 @@ require('./main.less');
 
 import React from 'react';
 import { Router, Route } from 'react-router';
-import BrowserHistory from 'react-router/lib/BrowserHistory';
+import { history } from 'react-router/lib/BrowserHistory';
 import appRedux from 'app-redux';
 import { Provider } from 'redux/react';
 
@@ -36,7 +36,7 @@ function redirectIfSignedIn(nextState, transition) {
 React.render((
     <Provider redux={appRedux}>
         {() =>
-            <Router history={new BrowserHistory()}>
+            <Router history={history}>
                 <Route path='login' component={LoginPage} onEnter={redirectIfSignedIn} />
                 <Route component={MainLayout} onEnter={requireAuth}>
                     <Route path='/' component={TodoPage} />
