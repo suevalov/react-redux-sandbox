@@ -42,9 +42,7 @@ class LoginForm extends React.Component {
                 <form onSubmit={this.onSubmit}>
                     <Input type='email' placeholder='Email' valueLink={this.linkState('email')}/>
                     <Input type='password' placeholder='Password' valueLink={this.linkState('password')}/>
-                    <div>
-                        <RequestButton status={this.props.status} className={styles.submitButton} type='submit' theme='primary'>Log in</RequestButton>
-                    </div>
+                    <RequestButton status={this.props.status} className={styles.submitButton} type='submit' theme='primary'>Log in</RequestButton>
                 </form>
             </div>
         );

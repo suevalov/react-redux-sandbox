@@ -8,7 +8,7 @@ gulp.task('prod-build', ['clean'], function prodBuildTask(callback) {
 
     global.isProd = true;
 
-    runSequence(['images', 'fonts', 'views', 'webpack'], 'gzip', callback);
+    runSequence(['images', 'fonts', 'views', 'webpack'], 'lint', 'gzip', callback);
 
 });
 
@@ -18,6 +18,6 @@ gulp.task('prod', ['clean'], function prodTask(callback) {
 
     global.isProd = true;
 
-    runSequence(['images', 'fonts', 'views', 'webpack'], 'gzip', 'watch', callback);
+    runSequence(['images', 'fonts', 'views', 'webpack'], 'lint', 'gzip', 'watch', callback);
 
 });

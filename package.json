@@ -1,6 +1,6 @@
 {
   "name": "react-sandbox",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "Alexander Suevalov",
   "main": "app/main.js",
   "dependencies": {
@@ -42,6 +42,7 @@
     "del": "^1.2.0",
     "eslint": "^0.24.0",
     "eslint-friendly-formatter": "^1.0.8",
+    "eslint-loader": "^0.14.1",
     "eslint-plugin-react": "2.5.2",
     "express": "^4.13.0",
     "extract-text-webpack-plugin": "^0.8.2",
@@ -77,21 +78,25 @@
     "postcss-nested": "^0.3.2",
     "postcss-simple-extend": "^0.3.1",
     "postcss-simple-vars": "^0.3.0",
+    "react-hot-loader": "^1.2.7",
     "react-tools": "^0.13.3",
     "run-sequence": "^1.1.1",
     "style-loader": "~0.12.3",
     "url": "^0.10.3",
     "url-loader": "^0.5.6",
-    "webpack": "^1.10.0"
+    "webpack": "^1.10.0",
+    "webpack-dev-server": "^1.10.1"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "uprun": "mongod --config /usr/local/etc/mongod.conf & npm run server & npm run dev",
-    "uprun-prod": "mongod --config /usr/local/etc/mongod.conf & npm run server & npm run prod",
+    "mongod": "mongod --config /usr/local/etc/mongod.conf",
+    "uprun": "npm run server & npm run dev",
+    "uprun-prod": "npm run server & npm run prod",
+    "uprun-hot": "npm run server & npm run hot",
+    "hot": "node gulp/hot/server.js",
     "dev": "./node_modules/.bin/gulp dev",
-    "dev-no-sync": "./node_modules/.bin/gulp dev-no-sync",
     "prod": "./node_modules/.bin/gulp prod",
     "prod-build": "./node_modules/.bin/gulp prod-build",
     "server": "node server/server.js",
