@@ -8,6 +8,6 @@ gulp.task('dev', ['clean'], function devTask(callback) {
 
     global.isProd = false;
 
-    runSequence(['images', 'fonts', 'views', 'webpack'], 'watch', callback);
+    runSequence(['images', 'fonts', 'views', 'webpack'], 'lint', 'watch', callback);
 
 });
