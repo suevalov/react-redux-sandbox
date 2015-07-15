@@ -11,3 +11,5 @@ A collection of different experiments with JS frameworks and libraries.
 * Redux Developer Tools
 * React 0.14.0
 * Move createReducers to app-redux.js
+* immutable-store
+* redux-router
