@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import loginHandlerDecorator from 'modules/auth/decorators/login-handler-decorator';
-import { connect } from 'redux/react';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AuthActions from 'modules/auth/actions/auth-actions';
 import LoginForm from 'modules/auth/components/login-form';

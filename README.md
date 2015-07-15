@@ -10,6 +10,5 @@ A collection of different experiments with JS frameworks and libraries.
 * State paste and copy, do/undo, saving steps and replay steps
 * Redux Developer Tools
 * React 0.14.0
-* Move createReducers to app-redux.js
 * immutable-store
 * redux-router

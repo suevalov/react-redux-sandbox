@@ -1,6 +1,6 @@
 
 import React, { PropTypes } from 'react';
-import { connect } from 'redux/react';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SidebarArea from 'modules/layout/components/sidebar-area/sidebar-area';
 import LayoutNavigation from 'modules/layout/components/layout-navigation/layout-navigation';

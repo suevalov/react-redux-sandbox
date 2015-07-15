@@ -6,9 +6,6 @@ require('./main.less');
 import React from 'react';
 import { Router, Route } from 'react-router';
 import { history } from 'react-router/lib/BrowserHistory';
-import appRedux from 'app-redux';
-import { Provider } from 'redux/react';
-
 import { LoginPage } from 'modules/auth';
 import { TodoPage } from 'modules/todo';
 import { MainLayout } from 'modules/layout';
@@ -17,24 +14,25 @@ import ButtonSamplesPage from './components/button/__sample__/button-samples-pag
 import ButtonGroupSamplesPage from './components/button-group/__sample__/button-group-samples-page';
 import DropdownButtonSamplesPage from './components/dropdown-button/__sample__/dropdown-button-samples-page';
 
-import redux from './app-redux';
+import store from './store';
+import { Provider } from 'react-redux';
 
 function requireAuth(nextState, transition) {
-    let { authState } = redux.getState();
+    let { authState } = store.getState();
     if (!authState.get('loggedIn')) {
         transition.to('/login', null, { nextPathname: nextState.location.pathname });
     }
 }
 
 function redirectIfSignedIn(nextState, transition) {
-    let { authState } = redux.getState();
+    let { authState } = store.getState();
     if (authState.get('loggedIn')) {
         transition.to('/');
     }
 }
 
 React.render((
-    <Provider redux={appRedux}>
+    <Provider store={store}>
         {() =>
             <Router history={history}>
                 <Route path='login' component={LoginPage} onEnter={redirectIfSignedIn} />
