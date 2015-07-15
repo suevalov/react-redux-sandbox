@@ -1,3 +1,5 @@
+/* global __DEVELOPMENT__ */
+
 import 'react-tools/src/test/phantomjs-shims';
 
 require('./main.less');
@@ -30,8 +32,8 @@ function redirectIfSignedIn(nextState, transition) {
     }
 }
 
-React.render((
-    <Provider store={store}>
+const elements = [
+    <Provider store={store} key='provider'>
         {() =>
             <Router history={history}>
                 <Route path='login' component={LoginPage} onEnter={redirectIfSignedIn} />
@@ -46,4 +48,19 @@ React.render((
             </Router>
         }
     </Provider>
+];
+
+// if (__DEVELOPMENT__) {
+//     const { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
+//     elements.push(
+//         <DebugPanel top right bottom key='debugPanel'>
+//             <DevTools store={store} monitor={LogMonitor} />
+//         </DebugPanel>
+//     );
+// }
+
+React.render((
+    <div id='application-container'>
+        { elements }
+    </div>
 ), document.getElementById('application'));

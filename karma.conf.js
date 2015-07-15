@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = function karmaConfigBuilder(config) {
 
     config.set({
@@ -39,6 +41,11 @@ module.exports = function karmaConfigBuilder(config) {
                     }
                 ]
             },
+            plugins: [
+                new webpack.DefinePlugin({
+                    __DEVELOPMENT__: false
+                })
+            ],
             resolve: {
                 modulesDirectories: [ 'node_modules', './app' ],
                 extensions: [ '', '.js' ]

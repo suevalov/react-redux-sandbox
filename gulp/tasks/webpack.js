@@ -39,12 +39,21 @@ gulp.task('webpack', function webpackTask(cb) {
 
             plugins.push(new ExtractTextPlugin('bundle.css'));
 
-            if (!DEBUG) {
+            if (DEBUG) {
+
+                plugins.push(
+                    new webpack.DefinePlugin({
+                        __DEVELOPMENT__: true
+                    })
+                );
+
+            } else {
 
                 plugins.push(new webpack.DefinePlugin({
                     'process.env': {
                         NODE_ENV: JSON.stringify('production')
-                    }
+                    },
+                    __DEVELOPMENT__: false
                 }));
 
                 plugins.push(new webpack.optimize.UglifyJsPlugin({
