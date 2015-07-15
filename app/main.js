@@ -1,4 +1,3 @@
-import 'babel-core/polyfill';
 import 'react-tools/src/test/phantomjs-shims';
 
 require('./main.less');
