@@ -1,9 +1,9 @@
 import { ADD_TODO, REMOVE_TODO, FETCH_TODOS } from '../constants/action-types';
-import TodoApiService from '../services/todo-api-service';
+import todoApiService from '../services/todo-api-service';
 
 export function addTodo(text) {
     return async (dispatch) => {
-        let { data } = await TodoApiService.addTodo(text);
+        let { data } = await todoApiService.addTodo(text);
         dispatch({
             type: ADD_TODO,
             todo: data
@@ -13,7 +13,7 @@ export function addTodo(text) {
 
 export function removeTodo(id) {
     return async (dispatch) => {
-        await TodoApiService.removeTodo(id);
+        await todoApiService.removeTodo(id);
         dispatch({
             type: REMOVE_TODO,
             id
@@ -23,7 +23,7 @@ export function removeTodo(id) {
 
 export function fetchTodos() {
     return async (dispatch) => {
-        let { data } = await TodoApiService.fetchTodos();
+        let { data } = await todoApiService.fetchTodos();
         dispatch({
             type: FETCH_TODOS,
             todos: data
