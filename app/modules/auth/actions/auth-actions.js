@@ -7,11 +7,11 @@ import {
     LOGOUT_FAILURE
 } from '../constants/action-types';
 import AuthApiService from '../services/auth-api-service';
-import promiseAxiosMiddleware from 'utils/promise-axios-middleware';
+import { promiseAxiosMiddleware } from 'utils/redux-middlewares';
 
 export function login(email, password) {
     return (dispatch) => {
-        promiseAxiosMiddleware(dispatch)({
+        return promiseAxiosMiddleware(dispatch)({
             types: [ LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE ],
             promise: AuthApiService.login(email, password)
         });

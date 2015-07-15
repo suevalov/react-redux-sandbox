@@ -16,10 +16,6 @@ const styles = require('./main-layout.css');
 }))
 class MainLayout extends React.Component {
 
-    static contextTypes = {
-        redux: PropTypes.object.isRequired
-    };
-
     static propTypes = {
         user: PropTypes.object,
         authToken: PropTypes.string,
