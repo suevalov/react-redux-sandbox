@@ -13,16 +13,16 @@ import {
 import Immutable from 'immutable';
 import AsyncStatus from 'utils/async-status';
 
-import { createRedux } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 describe('Auth Reducers', () => {
 
-    let redux = createRedux({
+    let store = createStore(combineReducers({
         authState: authReducers
-    });
+    }));
 
     afterEach(() => {
-        redux.dispatch({
+        store.dispatch({
             type: FLUSH_STATE
         });
     });
@@ -32,7 +32,7 @@ describe('Auth Reducers', () => {
     });
 
     it('should return initialState', () => {
-        let { authState } = redux.getState();
+        let { authState } = store.getState();
         expect(authState instanceof Immutable.Map).toBeTruthy();
         expect(authState.get('user')).toBeNull();
         expect(authState.get('authToken')).toBeNull();
@@ -41,16 +41,16 @@ describe('Auth Reducers', () => {
     });
 
     it('should change request status after LOGIN_REQUEST action', () => {
-        redux.dispatch({
+        store.dispatch({
             type: LOGIN_REQUEST
         });
-        let { authState } = redux.getState();
+        let { authState } = store.getState();
         expect(authState.get('requestStatus')).toBe(AsyncStatus.REQUEST);
     });
 
     it('should be logged in after success LOGIN action', () => {
 
-        redux.dispatch({
+        store.dispatch({
             type: LOGIN_SUCCESS,
             result: {
                 id: '123123',
@@ -60,7 +60,7 @@ describe('Auth Reducers', () => {
             }
         });
 
-        let { authState } = redux.getState();
+        let { authState } = store.getState();
 
         expect(authState.get('user').toJS()).toEqual({
             username: 'foobar'
@@ -78,11 +78,11 @@ describe('Auth Reducers', () => {
 
     it('should not be logged in after failed LOGIN action', () => {
 
-        redux.dispatch({
+        store.dispatch({
             type: LOGIN_FAILURE
         });
 
-        let { authState } = redux.getState();
+        let { authState } = store.getState();
 
         expect(authState.get('user')).toEqual(null);
         expect(authState.get('authToken')).toEqual(null);
@@ -98,7 +98,7 @@ describe('Auth Reducers', () => {
 
 
         beforeEach(() => {
-            redux.dispatch({
+            store.dispatch({
                 type: LOGIN_SUCCESS,
                 result: {
                     id: '123123',
@@ -108,16 +108,16 @@ describe('Auth Reducers', () => {
                 }
             });
 
-            expect(redux.getState().authState.get('loggedIn')).toBeTruthy();
+            expect(store.getState().authState.get('loggedIn')).toBeTruthy();
         });
 
         it('should be change request state after success LOGOUT_REQUEST action', () => {
 
-            redux.dispatch({
+            store.dispatch({
                 type: LOGOUT_REQUEST
             });
 
-            let { authState } = redux.getState();
+            let { authState } = store.getState();
 
             expect(authState.get('loggedIn')).toBeTruthy();
             expect(authState.get('user')).not.toBeNull();
@@ -131,11 +131,11 @@ describe('Auth Reducers', () => {
 
         it('should be logged out after LOGOUT_SUCCESS action', () => {
 
-            redux.dispatch({
+            store.dispatch({
                 type: LOGOUT_SUCCESS
             });
 
-            let { authState } = redux.getState();
+            let { authState } = store.getState();
 
             expect(authState.get('loggedIn')).toBeFalsy();
             expect(authState.get('user')).toBeNull();
@@ -149,11 +149,11 @@ describe('Auth Reducers', () => {
 
         it('should not be logged out after failed LOGOUT_FAILURE action', () => {
 
-            redux.dispatch({
+            store.dispatch({
                 type: LOGOUT_FAILURE
             });
 
-            let { authState } = redux.getState();
+            let { authState } = store.getState();
 
             expect(authState.get('loggedIn')).toBeTruthy();
             expect(authState.get('user')).not.toBeNull();

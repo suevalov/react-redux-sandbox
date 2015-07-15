@@ -9,16 +9,16 @@ import {
     FLUSH_STATE
 } from 'modules/todo/constants/action-types';
 
-import { createRedux } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 describe('Todos Reducers', () => {
 
-    let redux = createRedux({
+    let store = createStore(combineReducers({
         todoState: todosReducers
-    });
+    }));
 
     afterEach(() => {
-        redux.dispatch({
+        store.dispatch({
             type: FLUSH_STATE
         });
     });
@@ -28,7 +28,7 @@ describe('Todos Reducers', () => {
     });
 
     it('should return initialState', () => {
-        let { todoState } = redux.getState();
+        let { todoState } = store.getState();
         expect(todoState instanceof Immutable.Map).toBeTruthy();
         expect(todoState.get('todos') instanceof Immutable.List).toBeTruthy();
         expect(todoState.get('todos').count()).toBe(0);
@@ -38,7 +38,7 @@ describe('Todos Reducers', () => {
     describe('actions', () => {
 
         it('should handle FETCH_TODOS', () => {
-            redux.dispatch({
+            store.dispatch({
                 type: FETCH_TODOS,
                 todos: [
                     {
@@ -52,7 +52,7 @@ describe('Todos Reducers', () => {
                 ]
             });
 
-            let { todoState } = redux.getState();
+            let { todoState } = store.getState();
 
             expect(todoState.get('todos').count()).toEqual(2);
             expect(todoState.get('fetched')).toEqual(true);
@@ -60,7 +60,7 @@ describe('Todos Reducers', () => {
 
         it('should handle ADD_TODO', () => {
 
-            redux.dispatch({
+            store.dispatch({
                 type: ADD_TODO,
                 todo: {
                     id: '123',
@@ -68,7 +68,7 @@ describe('Todos Reducers', () => {
                 }
             });
 
-            let { todoState } = redux.getState();
+            let { todoState } = store.getState();
             expect(todoState.get('todos').count()).toEqual(1);
             expect(todoState.get('todos').toJS()).toEqual([
                 {
@@ -81,7 +81,7 @@ describe('Todos Reducers', () => {
 
         it('should handle REMOVE_TODO', () => {
 
-            redux.dispatch({
+            store.dispatch({
                 type: FETCH_TODOS,
                 todos: [
                     {
@@ -95,12 +95,12 @@ describe('Todos Reducers', () => {
                 ]
             });
 
-            redux.dispatch({
+            store.dispatch({
                 type: REMOVE_TODO,
                 id: '123'
             });
 
-            let { todoState } = redux.getState();
+            let { todoState } = store.getState();
             expect(todoState.get('todos').count()).toEqual(1);
             expect(todoState.get('todos').toJS()).toEqual([
                 {
