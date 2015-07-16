@@ -16,10 +16,13 @@ class SidebarMenuItem extends React.Component {
     };
 
     render() {
+
+        let icon = this.props.icon ? <Icon className={styles.icon} name={this.props.icon} /> : '';
+
         return (
             <li className={styles.root} onClick={this.props.onClick}>
                 <Link className={styles.link} to={this.props.to}>
-                    { this.props.icon ? ( <Icon className={styles.icon} name={this.props.icon} /> ) : '' }
+                    { icon }
                     <span>
                         {this.props.label}
                     </span>
