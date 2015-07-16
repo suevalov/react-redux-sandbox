@@ -37,7 +37,7 @@ describe('Todos Reducers', () => {
         it('should handle FETCH_TODOS_SUCCESS', () => {
             store.dispatch({
                 type: FETCH_TODOS_SUCCESS,
-                todos: [
+                result: [
                     {
                         id: '123',
                         text: 'todo 1'
@@ -59,7 +59,7 @@ describe('Todos Reducers', () => {
 
             store.dispatch({
                 type: ADD_TODO_SUCCESS,
-                todo: {
+                result: {
                     id: '123',
                     text: 'todo 1'
                 }
@@ -80,7 +80,7 @@ describe('Todos Reducers', () => {
 
             store.dispatch({
                 type: FETCH_TODOS_SUCCESS,
-                todos: [
+                result: [
                     {
                         id: '123',
                         text: 'todo 1'
