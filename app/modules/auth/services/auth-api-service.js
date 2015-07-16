@@ -3,15 +3,17 @@ import axios from 'axios';
 
 export default {
 
-    login(email, password) {
-        return axios.post(Config.getApiEndpoint('/users/login?include=user'), {
+    async login(email, password) {
+        let { data } = await axios.post(Config.getApiEndpoint('/users/login?include=user'), {
             email: email,
             password: password
         });
+        return data;
     },
 
-    logout(token) {
-        return axios.post(Config.getApiEndpoint(`/users/logout?access_token=${token}`));
+    async logout(token) {
+        let { data } = await axios.post(Config.getApiEndpoint(`/users/logout?access_token=${token}`));
+        return data;
     }
 
 };
