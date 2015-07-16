@@ -9,8 +9,12 @@
   "properties": {
     "text": {
       "type": "string",
-      "required": true
+      "required": true,
+      "doc": "Todo Text"
     }
+  },
+  "mixins": {
+      "TimeStamp" : true
   },
   "validations": [],
   "relations": {},

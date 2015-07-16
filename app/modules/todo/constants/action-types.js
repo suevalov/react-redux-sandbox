@@ -1,4 +1,10 @@
 export const ADD_TODO = 'ADD_TODO';
+export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS';
+export const ADD_TODO_FAIL = 'ADD_TODO_FAIL';
 export const REMOVE_TODO = 'REMOVE_TODO';
+export const REMOVE_TODO_SUCCESS = 'REMOVE_TODO_SUCCESS';
+export const REMOVE_TODO_FAIL = 'REMOVE_TODO_FAIL';
 export const FETCH_TODOS = 'FETCH_TODOS';
+export const FETCH_TODOS_SUCCESS = 'FETCH_TODOS_SUCCESS';
+export const FETCH_TODOS_FAIL = 'FETCH_TODOS_FAIL';
 export const FLUSH_STATE = 'FLUSH_STATE';

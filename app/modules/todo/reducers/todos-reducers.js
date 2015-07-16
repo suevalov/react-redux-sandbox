@@ -1,5 +1,8 @@
 import {
-    ADD_TODO, REMOVE_TODO, FETCH_TODOS, FLUSH_STATE
+    ADD_TODO_SUCCESS,
+    REMOVE_TODO_SUCCESS,
+    FETCH_TODOS_SUCCESS,
+    FLUSH_STATE
 } from 'modules/todo/constants/action-types';
 import ImmutableStore from 'immutable-store';
 import createReducer from 'utils/create-reducer';
@@ -11,19 +14,19 @@ const initialState = ImmutableStore({
 
 const handlers = {
 
-    [ADD_TODO]: function addTodoReducer(state, action) {
-        return state.todos.push(action.todo);
+    [ADD_TODO_SUCCESS]: function addTodoReducer(state, action) {
+        return state.todos.unshift(action.result);
     },
 
-    [REMOVE_TODO]: function removeTodoReducer(state, action) {
+    [REMOVE_TODO_SUCCESS]: function removeTodoReducer(state, action) {
         return state.set('todos', state.todos.filter(todo => {
             return todo.id !== action.id;
         }));
     },
 
-    [FETCH_TODOS]: function fetchTodosReducer(state, action) {
+    [FETCH_TODOS_SUCCESS]: function fetchTodosReducer(state, action) {
         return ImmutableStore({
-            todos: action.todos,
+            todos: action.result,
             fetched: true
         });
     },

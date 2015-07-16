@@ -4,6 +4,10 @@
       "loopback/common/models",
       "loopback/server/models",
       "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "../node_modules/loopback-ds-timestamp-mixin"
     ]
   },
   "User": {

@@ -2,9 +2,9 @@
 
 import todosReducers from 'modules/todo/reducers/todos-reducers';
 import {
-    ADD_TODO,
-    REMOVE_TODO,
-    FETCH_TODOS,
+    ADD_TODO_SUCCESS,
+    REMOVE_TODO_SUCCESS,
+    FETCH_TODOS_SUCCESS,
     FLUSH_STATE
 } from 'modules/todo/constants/action-types';
 
@@ -34,9 +34,9 @@ describe('Todos Reducers', () => {
 
     describe('actions', () => {
 
-        it('should handle FETCH_TODOS', () => {
+        it('should handle FETCH_TODOS_SUCCESS', () => {
             store.dispatch({
-                type: FETCH_TODOS,
+                type: FETCH_TODOS_SUCCESS,
                 todos: [
                     {
                         id: '123',
@@ -55,10 +55,10 @@ describe('Todos Reducers', () => {
             expect(todoState.fetched).toEqual(true);
         });
 
-        it('should handle ADD_TODO', () => {
+        it('should handle ADD_TODO_SUCCESS', () => {
 
             store.dispatch({
-                type: ADD_TODO,
+                type: ADD_TODO_SUCCESS,
                 todo: {
                     id: '123',
                     text: 'todo 1'
@@ -76,10 +76,10 @@ describe('Todos Reducers', () => {
 
         });
 
-        it('should handle REMOVE_TODO', () => {
+        it('should handle REMOVE_TODO_SUCCESS', () => {
 
             store.dispatch({
-                type: FETCH_TODOS,
+                type: FETCH_TODOS_SUCCESS,
                 todos: [
                     {
                         id: '123',
@@ -93,7 +93,7 @@ describe('Todos Reducers', () => {
             });
 
             store.dispatch({
-                type: REMOVE_TODO,
+                type: REMOVE_TODO_SUCCESS,
                 id: '123'
             });
 
