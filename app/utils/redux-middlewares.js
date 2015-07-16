@@ -13,10 +13,10 @@ export function thunk({ dispatch, getState }) {
     };
 }
 
-export function promiseMiddleware(next) {
-    return (action) => {
+export function promiseMiddleware() {
+    return (next) => (action) => {
         const { promise, types, ...rest } = action;
-        if (!promise) {
+        if (!promise || !types) {
             return next(action);
         }
         const [ REQUEST, SUCCESS, FAILURE ] = types;

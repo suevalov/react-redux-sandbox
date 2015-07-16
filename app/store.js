@@ -3,7 +3,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import authReducers from 'modules/auth/reducers/auth-reducers';
 import todosReducers from 'modules/todo/reducers/todos-reducers';
-import { logger, thunk } from 'utils/redux-middlewares';
+import { logger, thunk, promiseMiddleware } from 'utils/redux-middlewares';
 
 const reducer = combineReducers({
     authState: authReducers,
@@ -17,7 +17,7 @@ if (__DEVELOPMENT__) {
     let { devTools, persistState } = require('redux-devtools');
 
     finalCreateStore = compose(
-        applyMiddleware(thunk, logger),
+        applyMiddleware(thunk, promiseMiddleware, logger),
         devTools(),
         persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
         createStore
@@ -25,7 +25,7 @@ if (__DEVELOPMENT__) {
 
 } else {
 
-    finalCreateStore = applyMiddleware(thunk, logger)(createStore);
+    finalCreateStore = applyMiddleware(thunk, promiseMiddleware, logger)(createStore);
 
 }
 
