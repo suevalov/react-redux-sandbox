@@ -1,6 +1,5 @@
 
 import React, { PropTypes } from 'react';
-import Immutable from 'immutable';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as TodoActions from 'modules/todo/actions/todo-actions';
@@ -13,14 +12,13 @@ import TodosHeader from 'modules/todo/components/todos-header';
 class TodoPage extends React.Component {
 
     static propTypes = {
-        todosState: PropTypes.instanceOf(Immutable.Map).isRequired,
+        todosState: PropTypes.object.isRequired,
         dispatch: PropTypes.func.isRequired
     };
 
     render() {
         const actions = bindActionCreators(TodoActions, this.props.dispatch);
-        let todos = this.props.todosState.get('todos');
-        let fetched = this.props.todosState.get('fetched');
+        let { todos, fetched } = this.props.todosState;
 
         return (
             <div>

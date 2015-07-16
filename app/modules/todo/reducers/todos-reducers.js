@@ -1,10 +1,10 @@
 import {
     ADD_TODO, REMOVE_TODO, FETCH_TODOS, FLUSH_STATE
 } from 'modules/todo/constants/action-types';
-import Immutable from 'immutable';
+import ImmutableStore from 'immutable-store';
 import createReducer from 'utils/create-reducer';
 
-const initialState = Immutable.fromJS({
+const initialState = ImmutableStore({
     todos: [],
     fetched: false
 });
@@ -12,26 +12,24 @@ const initialState = Immutable.fromJS({
 const handlers = {
 
     [ADD_TODO]: function addTodoReducer(state, action) {
-        let newTodos = state.get('todos').push(Immutable.fromJS(action.todo));
-        return state.set('todos', newTodos);
+        return state.todos.push(action.todo);
     },
 
     [REMOVE_TODO]: function removeTodoReducer(state, action) {
-        let newTodos = state.get('todos').filter(todo => {
-            return todo.get('id') !== action.id;
-        });
-        return state.set('todos', newTodos);
+        return state.set('todos', state.todos.filter(todo => {
+            return todo.id !== action.id;
+        }));
     },
 
     [FETCH_TODOS]: function fetchTodosReducer(state, action) {
-        return Immutable.fromJS({
+        return ImmutableStore({
             todos: action.todos,
             fetched: true
         });
     },
 
     [FLUSH_STATE]: function flushStateReducer() {
-        return Immutable.fromJS({
+        return ImmutableStore({
             todos: [],
             fetched: false
         });

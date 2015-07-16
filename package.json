@@ -16,6 +16,7 @@
     "font-awesome": "^4.3.0",
     "front-matter": "^1.0.0",
     "immutable": "^3.7.4",
+    "immutable-store": "^0.4.2",
     "lodash": "3.9.3",
     "loopback": "^2.18.0",
     "loopback-boot": "^2.8.2",

@@ -10,7 +10,6 @@ import {
     LOGOUT_FAILURE,
     FLUSH_STATE
 } from 'modules/auth/constants/action-types';
-import Immutable from 'immutable';
 import AsyncStatus from 'utils/async-status';
 
 import { createStore, combineReducers } from 'redux';
@@ -33,11 +32,10 @@ describe('Auth Reducers', () => {
 
     it('should return initialState', () => {
         let { authState } = store.getState();
-        expect(authState instanceof Immutable.Map).toBeTruthy();
-        expect(authState.get('user')).toBeNull();
-        expect(authState.get('authToken')).toBeNull();
-        expect(authState.get('loggedIn')).toBeFalsy();
-        expect(authState.get('requestStatus')).toBe(AsyncStatus.NONE);
+        expect(authState.user).toBeNull();
+        expect(authState.authToken).toBeNull();
+        expect(authState.loggedIn).toBeFalsy();
+        expect(authState.requestStatus).toBe(AsyncStatus.NONE);
     });
 
     it('should change request status after LOGIN_REQUEST action', () => {
@@ -45,7 +43,7 @@ describe('Auth Reducers', () => {
             type: LOGIN_REQUEST
         });
         let { authState } = store.getState();
-        expect(authState.get('requestStatus')).toBe(AsyncStatus.REQUEST);
+        expect(authState.requestStatus).toBe(AsyncStatus.REQUEST);
     });
 
     it('should be logged in after success LOGIN action', () => {
@@ -62,17 +60,17 @@ describe('Auth Reducers', () => {
 
         let { authState } = store.getState();
 
-        expect(authState.get('user').toJS()).toEqual({
+        expect(authState.user).toEqual({
             username: 'foobar'
         });
-        expect(authState.get('authToken')).toEqual('123123');
-        expect(authState.get('loggedIn')).toBeTruthy();
-        expect(authState.get('requestStatus')).toBe(AsyncStatus.SUCCESS);
+        expect(authState.authToken).toEqual('123123');
+        expect(authState.loggedIn).toBeTruthy();
+        expect(authState.requestStatus).toBe(AsyncStatus.SUCCESS);
 
-        expect(sessionStorage.getItem('authUser')).toEqual(JSON.stringify({
+        expect(sessionStorage.authUser).toEqual(JSON.stringify({
             username: 'foobar'
         }));
-        expect(sessionStorage.getItem('authToken')).toEqual('123123');
+        expect(sessionStorage.authToken).toEqual('123123');
 
     });
 
@@ -84,10 +82,10 @@ describe('Auth Reducers', () => {
 
         let { authState } = store.getState();
 
-        expect(authState.get('user')).toEqual(null);
-        expect(authState.get('authToken')).toEqual(null);
-        expect(authState.get('loggedIn')).toBeFalsy();
-        expect(authState.get('requestStatus')).toBe(AsyncStatus.FAILURE);
+        expect(authState.user).toEqual(null);
+        expect(authState.authToken).toEqual(null);
+        expect(authState.loggedIn).toBeFalsy();
+        expect(authState.requestStatus).toBe(AsyncStatus.FAILURE);
 
         expect(sessionStorage.getItem('authUser')).toBeNull();
         expect(sessionStorage.getItem('authToken')).toBeNull();
@@ -108,7 +106,7 @@ describe('Auth Reducers', () => {
                 }
             });
 
-            expect(store.getState().authState.get('loggedIn')).toBeTruthy();
+            expect(store.getState().authState.loggedIn).toBeTruthy();
         });
 
         it('should be change request state after success LOGOUT_REQUEST action', () => {
@@ -119,10 +117,10 @@ describe('Auth Reducers', () => {
 
             let { authState } = store.getState();
 
-            expect(authState.get('loggedIn')).toBeTruthy();
-            expect(authState.get('user')).not.toBeNull();
-            expect(authState.get('authToken')).not.toBeNull();
-            expect(authState.get('requestStatus')).toBe(AsyncStatus.REQUEST);
+            expect(authState.loggedIn).toBeTruthy();
+            expect(authState.user).not.toBeNull();
+            expect(authState.authToken).not.toBeNull();
+            expect(authState.requestStatus).toBe(AsyncStatus.REQUEST);
 
             expect(sessionStorage.getItem('authUser')).not.toBeNull();
             expect(sessionStorage.getItem('authToken')).not.toBeNull();
@@ -137,10 +135,10 @@ describe('Auth Reducers', () => {
 
             let { authState } = store.getState();
 
-            expect(authState.get('loggedIn')).toBeFalsy();
-            expect(authState.get('user')).toBeNull();
-            expect(authState.get('authToken')).toBeNull();
-            expect(authState.get('requestStatus')).toBe(AsyncStatus.SUCCESS);
+            expect(authState.loggedIn).toBeFalsy();
+            expect(authState.user).toBeNull();
+            expect(authState.authToken).toBeNull();
+            expect(authState.requestStatus).toBe(AsyncStatus.SUCCESS);
 
             expect(sessionStorage.getItem('authUser')).toBeNull();
             expect(sessionStorage.getItem('authToken')).toBeNull();
@@ -155,10 +153,10 @@ describe('Auth Reducers', () => {
 
             let { authState } = store.getState();
 
-            expect(authState.get('loggedIn')).toBeTruthy();
-            expect(authState.get('user')).not.toBeNull();
-            expect(authState.get('authToken')).not.toBeNull();
-            expect(authState.get('requestStatus')).toBe(AsyncStatus.FAILURE);
+            expect(authState.loggedIn).toBeTruthy();
+            expect(authState.user).not.toBeNull();
+            expect(authState.authToken).not.toBeNull();
+            expect(authState.requestStatus).toBe(AsyncStatus.FAILURE);
 
             expect(sessionStorage.getItem('authUser')).not.toBeNull();
             expect(sessionStorage.getItem('authToken')).not.toBeNull();

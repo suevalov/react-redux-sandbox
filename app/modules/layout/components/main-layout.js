@@ -11,8 +11,8 @@ const styles = require('./main-layout.css');
 
 @logoutHandlerDecorator
 @connect(({ authState }) => ({
-    user: authState.get('user'),
-    authToken: authState.get('authToken')
+    user: authState.user,
+    authToken: authState.authToken
 }))
 class MainLayout extends React.Component {
 

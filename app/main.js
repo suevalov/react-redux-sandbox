@@ -20,14 +20,14 @@ import { Provider } from 'react-redux';
 
 function requireAuth(nextState, transition) {
     let { authState } = store.getState();
-    if (!authState.get('loggedIn')) {
+    if (!authState.loggedIn) {
         transition.to('/login', null, { nextPathname: nextState.location.pathname });
     }
 }
 
 function redirectIfSignedIn(nextState, transition) {
     let { authState } = store.getState();
-    if (authState.get('loggedIn')) {
+    if (authState.loggedIn) {
         transition.to('/');
     }
 }

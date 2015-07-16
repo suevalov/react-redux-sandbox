@@ -26,7 +26,7 @@ export default function(DecoratedComponent) {
         componentDidMount() {
             this.unsubscribe = this.context.store.subscribe(() => {
                 let { authState } = this.context.store.getState();
-                if (authState.get('loggedIn')) {
+                if (authState.loggedIn) {
                     let { location } = this.props;
                     if (location.state && location.state.nextPathname) {
                         this.replaceWith(location.state.nextPathname);

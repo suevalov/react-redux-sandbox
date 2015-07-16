@@ -1,7 +1,6 @@
 /* global describe, fdescribe, fit, it, sinon, expect, beforeEach, afterEach */
 
 import todosReducers from 'modules/todo/reducers/todos-reducers';
-import Immutable from 'immutable';
 import {
     ADD_TODO,
     REMOVE_TODO,
@@ -29,10 +28,8 @@ describe('Todos Reducers', () => {
 
     it('should return initialState', () => {
         let { todoState } = store.getState();
-        expect(todoState instanceof Immutable.Map).toBeTruthy();
-        expect(todoState.get('todos') instanceof Immutable.List).toBeTruthy();
-        expect(todoState.get('todos').count()).toBe(0);
-        expect(todoState.get('fetched')).toBe(false);
+        expect(todoState.todos.length).toBe(0);
+        expect(todoState.fetched).toBe(false);
     });
 
     describe('actions', () => {
@@ -54,8 +51,8 @@ describe('Todos Reducers', () => {
 
             let { todoState } = store.getState();
 
-            expect(todoState.get('todos').count()).toEqual(2);
-            expect(todoState.get('fetched')).toEqual(true);
+            expect(todoState.todos.length).toEqual(2);
+            expect(todoState.fetched).toEqual(true);
         });
 
         it('should handle ADD_TODO', () => {
@@ -69,8 +66,8 @@ describe('Todos Reducers', () => {
             });
 
             let { todoState } = store.getState();
-            expect(todoState.get('todos').count()).toEqual(1);
-            expect(todoState.get('todos').toJS()).toEqual([
+            expect(todoState.todos.length).toEqual(1);
+            expect(todoState.todos).toEqual([
                 {
                     id: '123',
                     text: 'todo 1'
@@ -101,8 +98,8 @@ describe('Todos Reducers', () => {
             });
 
             let { todoState } = store.getState();
-            expect(todoState.get('todos').count()).toEqual(1);
-            expect(todoState.get('todos').toJS()).toEqual([
+            expect(todoState.todos.length).toEqual(1);
+            expect(todoState.todos).toEqual([
                 {
                     id: '1234',
                     text: 'todo 2'

@@ -8,5 +8,4 @@ A collection of different experiments with JS frameworks and libraries.
 #### TODO List
 
 * React 0.14.0
-* immutable-store
 * redux-router

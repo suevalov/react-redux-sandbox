@@ -7,7 +7,7 @@ import {
     LOGOUT_FAILURE,
     FLUSH_STATE
 } from 'modules/auth/constants/action-types';
-import Immutable from 'immutable';
+import ImmutableStore from 'immutable-store';
 import AsyncStatus from 'utils/async-status';
 import createReducer from 'utils/create-reducer';
 
@@ -15,7 +15,7 @@ const initialState = (function getInitialState() {
     let user = sessionStorage.getItem('authUser') ? JSON.parse(sessionStorage.getItem('authUser')) : null;
     let authToken = sessionStorage.getItem('authToken') || null;
 
-    return Immutable.fromJS({
+    return ImmutableStore({
         user,
         authToken,
         loggedIn: !!authToken,
@@ -32,7 +32,7 @@ const handlers = {
     [LOGIN_SUCCESS]: function loginSuccessReducer(state, action) {
         sessionStorage.setItem('authUser', JSON.stringify(action.result.user));
         sessionStorage.setItem('authToken', action.result.id);
-        return Immutable.fromJS({
+        return ImmutableStore({
             user: action.result.user,
             authToken: action.result.id,
             loggedIn: true,
@@ -51,7 +51,7 @@ const handlers = {
     [LOGOUT_SUCCESS]: function logoutSuccessReducer() {
         sessionStorage.removeItem('authUser');
         sessionStorage.removeItem('authToken');
-        return Immutable.fromJS({
+        return ImmutableStore({
             user: null,
             authToken: null,
             loggedIn: false,
@@ -66,7 +66,7 @@ const handlers = {
     [FLUSH_STATE]: function flushHandler() {
         sessionStorage.removeItem('authUser');
         sessionStorage.removeItem('authToken');
-        return Immutable.fromJS({
+        return ImmutableStore({
             user: null,
             authToken: null,
             loggedIn: false,

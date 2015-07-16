@@ -22,7 +22,7 @@ export default function(DecoratedComponent) {
         componentDidMount() {
             this.unsubscribe = this.context.store.subscribe(() => {
                 let { authState } = this.context.store.getState();
-                if (!authState.get('loggedIn')) {
+                if (!authState.loggedIn) {
                     this.replaceWith('/login');
                 }
             });
