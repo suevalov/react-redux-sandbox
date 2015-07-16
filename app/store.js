@@ -4,12 +4,10 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import authReducers from 'modules/auth/reducers/auth-reducers';
 import todosReducers from 'modules/todo/reducers/todos-reducers';
 import { logger, thunk } from 'utils/redux-middlewares';
-import { routerStateReducer } from 'redux-react-router';
 
 const reducer = combineReducers({
     authState: authReducers,
-    todosState: todosReducers,
-    router: routerStateReducer
+    todosState: todosReducers
 });
 
 let finalCreateStore;

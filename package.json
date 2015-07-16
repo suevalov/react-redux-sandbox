@@ -30,7 +30,6 @@
     "react-spinkit": "^1.1.2",
     "redux": "1.0.0-rc",
     "redux-devtools": "0.1.1",
-    "redux-react-router": "^0.2.1",
     "serve-favicon": "^2.3.0"
   },
   "optionalDependencies": {
