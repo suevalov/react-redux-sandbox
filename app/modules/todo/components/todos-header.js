@@ -6,7 +6,6 @@ import {
     Input
 } from 'components/index';
 import PureComponent from 'react-pure-render/component';
-import bindAll from 'utils/bind-all';
 
 export default class TodosList extends PureComponent {
 
@@ -18,13 +17,12 @@ export default class TodosList extends PureComponent {
 
     constructor() {
         super();
-        bindAll(this, 'onClickHandler');
         this.state = {
             text: ''
         };
     }
 
-    onClickHandler() {
+    onClickHandler = () => {
         let text = this.state.text;
         if (text) {
             this.props.actions.addTodo(text);

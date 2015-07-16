@@ -4,7 +4,6 @@ import {
     RequestButton,
     Input
 } from 'components/index';
-import bindAll from 'utils/bind-all';
 
 const styles = require('./login-form.css');
 
@@ -20,15 +19,13 @@ class LoginForm extends React.Component {
     constructor() {
         super();
 
-        bindAll(this, 'onSubmit');
-
         this.state = {
             email: '',
             password: ''
         };
     }
 
-    onSubmit(e) {
+    onSubmit = (e) => {
         e.preventDefault();
         this.props.actions.login(this.state.email, this.state.password);
     }
