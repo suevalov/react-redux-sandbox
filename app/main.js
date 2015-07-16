@@ -7,6 +7,8 @@ require('./main.less');
 import React from 'react';
 import { Router, Route } from 'react-router';
 import { history } from 'react-router/lib/BrowserHistory';
+import { reduxRouteComponent } from 'redux-react-router';
+
 import { LoginPage } from 'modules/auth';
 import { TodoPage } from 'modules/todo';
 import { MainLayout } from 'modules/layout';
@@ -36,14 +38,16 @@ const elements = [
     <Provider store={store} key='provider'>
         {() =>
             <Router history={history}>
-                <Route path='login' component={LoginPage} onEnter={redirectIfSignedIn} />
-                <Route component={MainLayout} onEnter={requireAuth}>
-                    <Route path='/' component={TodoPage} />
-                </Route>
-                <Route path='components' component={DemoComponentsLayout}>
-                    <Route path='buttons' component={ButtonSamplesPage} />
-                    <Route path='button-groups' component={ButtonGroupSamplesPage} />
-                    <Route path='dropdown-buttons' component={DropdownButtonSamplesPage} />
+                <Route component={reduxRouteComponent(store)}>
+                    <Route path='login' component={LoginPage} onEnter={redirectIfSignedIn} />
+                    <Route component={MainLayout} onEnter={requireAuth}>
+                        <Route path='/' component={TodoPage} />
+                    </Route>
+                    <Route path='components' component={DemoComponentsLayout}>
+                        <Route path='buttons' component={ButtonSamplesPage} />
+                        <Route path='button-groups' component={ButtonGroupSamplesPage} />
+                        <Route path='dropdown-buttons' component={DropdownButtonSamplesPage} />
+                    </Route>
                 </Route>
             </Router>
         }
