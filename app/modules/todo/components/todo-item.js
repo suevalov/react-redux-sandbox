@@ -27,7 +27,7 @@ export default class TodoItem extends PureComponent {
 
     render() {
         return (
-            <li className={classNames(this.props.className)}>
+            <div className={classNames(this.props.className)}>
                 {this.props.text}
                 &nbsp;
                 <Button theme='danger' size='xsmall' onClick={this.onClickHandler}>
@@ -35,7 +35,7 @@ export default class TodoItem extends PureComponent {
                     &nbsp;
                     Remove
                 </Button>
-            </li>
+            </div>
         );
     }
 

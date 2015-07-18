@@ -26,7 +26,7 @@ export default class TodosList extends PureComponent {
 
     renderItems() {
         return (
-            <ul>
+            <div>
                 <CssTransitionGroup transitionName='todo-item-transition' transitionAppear={true}>
                     {this.props.todos.map((todo) => {
                         return (
@@ -34,7 +34,7 @@ export default class TodosList extends PureComponent {
                         );
                     })}
                 </CssTransitionGroup>
-            </ul>
+            </div>
         );
     }
 

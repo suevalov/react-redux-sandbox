@@ -2,7 +2,6 @@
 import React, { PropTypes } from 'react';
 import LinkedStateMixin from 'react/lib/LinkedStateMixin';
 import {
-    Button,
     Input
 } from 'components/index';
 import PureComponent from 'react-pure-render/component';
@@ -22,7 +21,7 @@ export default class TodosList extends PureComponent {
         };
     }
 
-    onClickHandler = () => {
+    onSubmitHandler = () => {
         let text = this.state.text;
         if (text) {
             this.props.actions.addTodo(text);
@@ -30,14 +29,16 @@ export default class TodosList extends PureComponent {
                 text: ''
             });
         }
+        return false;
     }
 
     render() {
         return (
-            <div>
-                <Input type='text' valueLink={this.linkState('text')}/>
-                <Button theme='info' onClick={this.onClickHandler}>Add</Button>
-            </div>
+            <form onSubmit={this.onSubmitHandler}>
+                <Input type='text'
+                       placeholder='What do you wanna do?'
+                       valueLink={this.linkState('text')}/>
+            </form>
         );
     }
 
