@@ -7,10 +7,12 @@ import {
 import ImmutableStore from 'immutable-store';
 import createReducer from 'utils/create-reducer';
 
-const initialState = ImmutableStore({
-    todos: [],
-    fetched: false
-});
+function getInitialState() {
+    return ImmutableStore({
+        todos: [],
+        fetched: false
+    });
+}
 
 const handlers = {
 
@@ -32,11 +34,8 @@ const handlers = {
     },
 
     [FLUSH_STATE]: function flushStateReducer() {
-        return ImmutableStore({
-            todos: [],
-            fetched: false
-        });
+        return getInitialState();
     }
 };
 
-export default createReducer(initialState, handlers);
+export default createReducer(getInitialState(), handlers);

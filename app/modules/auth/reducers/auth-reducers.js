@@ -10,18 +10,19 @@ import {
 import ImmutableStore from 'immutable-store';
 import AsyncStatus from 'utils/async-status';
 import createReducer from 'utils/create-reducer';
+import authSessionService from 'modules/auth/services/auth-session-service';
 
-const initialState = (function getInitialState() {
-    let user = sessionStorage.getItem('authUser') ? JSON.parse(sessionStorage.getItem('authUser')) : null;
-    let authToken = sessionStorage.getItem('authToken') || null;
+function getInitialState() {
+
+    const { user, authToken } = authSessionService.getSession();
 
     return ImmutableStore({
         user,
         authToken,
         loggedIn: !!authToken,
-        requestStatus: ''
+        requestStatus: AsyncStatus.NONE
     });
-}());
+}
 
 const handlers = {
 
@@ -30,11 +31,11 @@ const handlers = {
     },
 
     [LOGIN_SUCCESS]: function loginSuccessReducer(state, action) {
-        sessionStorage.setItem('authUser', JSON.stringify(action.result.user));
-        sessionStorage.setItem('authToken', action.result.id);
+        const { user, authToken } = action.result;
+        authSessionService.setSession({ user, authToken });
         return ImmutableStore({
-            user: action.result.user,
-            authToken: action.result.id,
+            user,
+            authToken,
             loggedIn: true,
             requestStatus: AsyncStatus.SUCCESS
         });
@@ -49,8 +50,7 @@ const handlers = {
     },
 
     [LOGOUT_SUCCESS]: function logoutSuccessReducer() {
-        sessionStorage.removeItem('authUser');
-        sessionStorage.removeItem('authToken');
+        authSessionService.clearSession();
         return ImmutableStore({
             user: null,
             authToken: null,
@@ -64,16 +64,10 @@ const handlers = {
     },
 
     [FLUSH_STATE]: function flushHandler() {
-        sessionStorage.removeItem('authUser');
-        sessionStorage.removeItem('authToken');
-        return ImmutableStore({
-            user: null,
-            authToken: null,
-            loggedIn: false,
-            requestStatus: AsyncStatus.NONE
-        });
+        authSessionService.clearSession();
+        return getInitialState();
     }
 
 };
 
-export default createReducer(initialState, handlers);
+export default createReducer(getInitialState(), handlers);

@@ -12,6 +12,12 @@ export function login(email, password) {
     return {
         types: [ LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE ],
         promise: authApiService.login(email, password)
+                    .then((result) => {
+                        return {
+                            user: result.user,
+                            authToken: result.id
+                        };
+                    })
     };
 }
 

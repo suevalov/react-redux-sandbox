@@ -51,7 +51,7 @@ describe('Auth Reducers', () => {
         store.dispatch({
             type: LOGIN_SUCCESS,
             result: {
-                id: '123123',
+                authToken: '123123',
                 user: {
                     username: 'foobar'
                 }
@@ -94,12 +94,11 @@ describe('Auth Reducers', () => {
 
     describe('when user is logged in', () => {
 
-
         beforeEach(() => {
             store.dispatch({
                 type: LOGIN_SUCCESS,
                 result: {
-                    id: '123123',
+                    authToken: '123123',
                     user: {
                         username: 'foobar'
                     }
