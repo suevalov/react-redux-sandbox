@@ -21,7 +21,8 @@ export default class TodosList extends PureComponent {
         };
     }
 
-    onSubmitHandler = () => {
+    onSubmitHandler = (e) => {
+        e.preventDefault();
         let text = this.state.text;
         if (text) {
             this.props.actions.addTodo(text);
@@ -29,7 +30,6 @@ export default class TodosList extends PureComponent {
                 text: ''
             });
         }
-        return false;
     }
 
     render() {
