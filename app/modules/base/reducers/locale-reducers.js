@@ -5,8 +5,8 @@ import {
 } from 'modules/base/constants/action-types';
 import ImmutableStore from 'immutable-store';
 import createReducer from 'utils/create-reducer';
-
-const DEFAULT_LOCALE = 'en';
+import localeSessionService from 'modules/base/services/locale-session-service';
+import { reloadTranslations } from 'i18n';
 
 export const getNewState = (params) => {
     return ImmutableStore(params);
@@ -14,19 +14,25 @@ export const getNewState = (params) => {
 
 export const getInitialState = () => {
     return getNewState({
-        locale: DEFAULT_LOCALE
+        locale: localeSessionService.getLocale()
     });
 };
 
 export default createReducer(getInitialState(), {
 
     [SET_LOCALE]: function setLocaleReducer(state, action) {
-        return state.set('locale', action.locale);
+        const { locale } = action;
+        localeSessionService.setLocale(locale);
+        reloadTranslations(locale);
+        return state.set('locale', locale);
     },
 
     /**
      * For tests
      */
-    [FLUSH_STATE]: getInitialState
+    [FLUSH_STATE]: function flushStateReducer() {
+        localeSessionService.resetLocale();
+        return getInitialState();
+    }
 
 });
