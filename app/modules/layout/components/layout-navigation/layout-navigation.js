@@ -1,5 +1,6 @@
 import React, { PropTypes }from 'react';
 import { Link } from 'react-router';
+import i18n from 'i18n';
 
 export default class LayoutNavigation extends React.Component {
 
@@ -17,9 +18,9 @@ export default class LayoutNavigation extends React.Component {
             <header>
                 <ul>
                 <li>
-                    <Link to='/'>Planner</Link>
+                    <Link to='/'>{i18n.t('layout.nav.planner')}</Link>
                 </li>
-                <li> <a onClick = {this.onLogoutClick}> Logout </a></li>
+                <li><a onClick = {this.onLogoutClick}>{i18n.t('layout.nav.logout')}</a></li>
                 </ul>
             </header>
         );

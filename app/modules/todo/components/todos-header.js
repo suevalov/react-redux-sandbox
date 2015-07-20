@@ -5,6 +5,7 @@ import {
     Input
 } from 'components/index';
 import PureComponent from 'react-pure-render/component';
+import i18n from 'i18n';
 
 export default class TodosList extends PureComponent {
 
@@ -36,7 +37,7 @@ export default class TodosList extends PureComponent {
         return (
             <form onSubmit={this.onSubmitHandler}>
                 <Input type='text'
-                       placeholder='What do you wanna do?'
+                       placeholder={i18n.t('todos.input-placeholder')}
                        valueLink={this.linkState('text')}/>
             </form>
         );

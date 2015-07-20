@@ -23,6 +23,7 @@
     "loopback-connector-mongodb": "^1.11.3",
     "loopback-datasource-juggler": "^2.33.1",
     "loopback-ds-timestamp-mixin": "^3.2.0",
+    "node-polyglot": "^0.4.3",
     "react": "^0.13.3",
     "react-bootstrap": "^0.23.7",
     "react-pure-render": "^1.0.2",

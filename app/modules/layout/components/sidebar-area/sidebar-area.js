@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import SidebarMenuHeader from 'modules/layout/components/sidebar-area/sidebar-menu-header';
 import SidebarMenuItem from 'modules/layout/components/sidebar-area/sidebar-menu-item';
 import ProfileWidget from 'modules/layout/components/profile-widget/profile-widget';
+import i18n from 'i18n';
 
 const styles = require('./sidebar-area.css');
 
@@ -17,17 +18,17 @@ class SidebarArea extends React.Component {
         this.state = {
             menuItems: [
                 {
-                    label: 'Home Page',
+                    label: i18n.t('layout.sidebar.nav.home'),
                     to: '/',
                     icon: 'th-large'
                 },
                 {
-                    label: 'Special',
+                    label: i18n.t('layout.sidebar.nav.special'),
                     to: '/special',
                     icon: 'flask'
                 },
                 {
-                    label: 'Components',
+                    label: i18n.t('layout.sidebar.nav.components'),
                     to: '/components',
                     icon: 'flask'
                 }

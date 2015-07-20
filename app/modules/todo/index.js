@@ -17,6 +17,7 @@ class TodoPage extends React.Component {
     };
 
     render() {
+
         const actions = bindActionCreators(TodoActions, this.props.dispatch);
         let { todos, fetched } = this.props.todosState;
 
