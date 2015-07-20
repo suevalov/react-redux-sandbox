@@ -18,9 +18,9 @@ export default class LayoutNavigation extends React.Component {
             <header>
                 <ul>
                 <li>
-                    <Link to='/'>{i18n.t('layout.nav.planner')}</Link>
+                    <Link to='/'>{i18n.t('base.nav.planner')}</Link>
                 </li>
-                <li><a onClick = {this.onLogoutClick}>{i18n.t('layout.nav.logout')}</a></li>
+                <li><a onClick = {this.onLogoutClick}>{i18n.t('base.nav.logout')}</a></li>
                 </ul>
             </header>
         );

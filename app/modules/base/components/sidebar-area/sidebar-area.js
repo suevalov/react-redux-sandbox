@@ -14,17 +14,17 @@ class SidebarArea extends React.Component {
     getItems() {
         return [
             {
-                label: 'layout.sidebar.nav.home',
+                label: 'base.sidebar.nav.home',
                 to: '/',
                 icon: 'th-large'
             },
             {
-                label: 'layout.sidebar.nav.special',
+                label: 'base.sidebar.nav.special',
                 to: '/special',
                 icon: 'flask'
             },
             {
-                label: 'layout.sidebar.nav.components',
+                label: 'base.sidebar.nav.components',
                 to: '/components',
                 icon: 'flask'
             }
