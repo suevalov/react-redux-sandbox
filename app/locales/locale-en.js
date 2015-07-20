@@ -1,4 +1,8 @@
 export default {
+    'locales': {
+        'en': 'English',
+        'ru': 'Russian'
+    },
     'auth': {
         'buttons': {
             'login': 'Log in'
