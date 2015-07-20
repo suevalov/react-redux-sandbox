@@ -11,13 +11,16 @@ import ImmutableStore from 'immutable-store';
 import AsyncStatus from 'utils/async-status';
 import createReducer from 'utils/create-reducer';
 import { getSession, setSession, clearSession } from 'modules/auth/services/auth-session-service';
-import curry from 'lodash/function/curry';
-import compose from 'lodash/function/compose';
+import flow from 'lodash/function/flow';
+
+export const getNewState = (params) => {
+    return ImmutableStore(params);
+};
 
 export const getInitialState = () => {
     const { user, authToken } = getSession();
 
-    return ImmutableStore({
+    return getNewState({
         user,
         authToken,
         loggedIn: !!authToken,
@@ -25,9 +28,11 @@ export const getInitialState = () => {
     });
 };
 
-export const setRequestReducer = curry((what, state) => {
-    return state.set('requestStatus', what);
-});
+export const setRequestReducer = (what) => {
+    return (state) => {
+        return state.set('requestStatus', what);
+    };
+};
 
 export default createReducer(getInitialState(), {
 
@@ -36,10 +41,10 @@ export default createReducer(getInitialState(), {
      */
     [LOGIN_REQUEST]: setRequestReducer(AsyncStatus.REQUEST),
 
-    [LOGIN_SUCCESS]: (state, action) => {
+    [LOGIN_SUCCESS]: function loginReducer(state, action) {
         const { user, authToken } = action.result;
         setSession({ user, authToken });
-        return ImmutableStore({
+        return getNewState({
             user,
             authToken,
             loggedIn: true,
@@ -54,9 +59,9 @@ export default createReducer(getInitialState(), {
      */
     [LOGOUT_REQUEST]: setRequestReducer(AsyncStatus.REQUEST),
 
-    [LOGOUT_SUCCESS]: () => {
+    [LOGOUT_SUCCESS]: function logoutReducer() {
         clearSession();
-        return ImmutableStore({
+        return getNewState({
             user: null,
             authToken: null,
             loggedIn: false,
@@ -69,6 +74,6 @@ export default createReducer(getInitialState(), {
     /**
      * For tests
      */
-    [FLUSH_STATE]: compose(getInitialState, clearSession)
+    [FLUSH_STATE]: flow(clearSession, getInitialState)
 
 });

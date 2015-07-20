@@ -7,12 +7,16 @@ import {
 import ImmutableStore from 'immutable-store';
 import createReducer from 'utils/create-reducer';
 
-function getInitialState() {
-    return ImmutableStore({
+export const getNewState = (params) => {
+    return ImmutableStore(params);
+};
+
+export const getInitialState = () => {
+    return getNewState({
         todos: [],
         fetched: false
     });
-}
+};
 
 const handlers = {
 
@@ -27,15 +31,14 @@ const handlers = {
     },
 
     [FETCH_TODOS_SUCCESS]: function fetchTodosReducer(state, action) {
-        return ImmutableStore({
+        return getNewState({
             todos: action.result,
             fetched: true
         });
     },
 
-    [FLUSH_STATE]: function flushStateReducer() {
-        return getInitialState();
-    }
+    [FLUSH_STATE]: getInitialState
+
 };
 
 export default createReducer(getInitialState(), handlers);

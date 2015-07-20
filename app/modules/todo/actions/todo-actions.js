@@ -32,7 +32,7 @@ export function fetchTodos() {
         types: [ FETCH_TODOS, FETCH_TODOS_SUCCESS, FETCH_TODOS_FAIL ],
         promise: todoApiService.fetchTodos()
                     .then(todos => {
-                        return sortByOrder(todos, [ 'createdAt' ], [ 'desc']);
+                        return sortByOrder(todos, [ 'createdAt' ], [ 'desc' ]);
                     })
     };
 }
