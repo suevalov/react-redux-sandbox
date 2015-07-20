@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import {
     Icon
 } from 'components/index';
+import i18n from 'i18n';
 
 const styles = require('./sidebar-menu-item.css');
 
@@ -16,12 +17,15 @@ class SidebarMenuItem extends React.Component {
     };
 
     render() {
+
+        let icon = this.props.icon ? <Icon className={styles.icon} name={this.props.icon} /> : '';
+
         return (
             <li className={styles.root} onClick={this.props.onClick}>
                 <Link className={styles.link} to={this.props.to}>
-                    { this.props.icon ? ( <Icon className={styles.icon} name={this.props.icon} /> ) : '' }
+                    { icon }
                     <span>
-                        {this.props.label}
+                        { i18n.t(this.props.label) }
                     </span>
                 </Link>
             </li>

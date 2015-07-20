@@ -5,6 +5,7 @@ import {
 } from 'components/index';
 import PureComponent from 'react-pure-render/component';
 import classNames from 'classnames';
+import i18n from 'i18n';
 
 export default class TodoItem extends PureComponent {
 
@@ -27,15 +28,15 @@ export default class TodoItem extends PureComponent {
 
     render() {
         return (
-            <li className={classNames(this.props.className)}>
+            <div className={classNames(this.props.className)}>
                 {this.props.text}
                 &nbsp;
                 <Button theme='danger' size='xsmall' onClick={this.onClickHandler}>
                     <Icon name='remove'/>
                     &nbsp;
-                    Remove
+                    { i18n.t('todos.buttons.remove') }
                 </Button>
-            </li>
+            </div>
         );
     }
 

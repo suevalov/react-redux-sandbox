@@ -2,11 +2,10 @@
 import React, { PropTypes } from 'react';
 import LinkedStateMixin from 'react/lib/LinkedStateMixin';
 import {
-    Button,
     Input
 } from 'components/index';
 import PureComponent from 'react-pure-render/component';
-import bindAll from 'utils/bind-all';
+import i18n from 'i18n';
 
 export default class TodosList extends PureComponent {
 
@@ -18,13 +17,13 @@ export default class TodosList extends PureComponent {
 
     constructor() {
         super();
-        bindAll(this, 'onClickHandler');
         this.state = {
             text: ''
         };
     }
 
-    onClickHandler() {
+    onSubmitHandler = (e) => {
+        e.preventDefault();
         let text = this.state.text;
         if (text) {
             this.props.actions.addTodo(text);
@@ -36,10 +35,11 @@ export default class TodosList extends PureComponent {
 
     render() {
         return (
-            <div>
-                <Input type='text' valueLink={this.linkState('text')}/>
-                <Button theme='info' onClick={this.onClickHandler}>Add</Button>
-            </div>
+            <form onSubmit={this.onSubmitHandler}>
+                <Input type='text'
+                       placeholder={i18n.t('todos.input-placeholder')}
+                       valueLink={this.linkState('text')}/>
+            </form>
         );
     }
 

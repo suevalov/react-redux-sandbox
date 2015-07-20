@@ -1,41 +1,44 @@
 import {
-    ADD_TODO, REMOVE_TODO, FETCH_TODOS, FLUSH_STATE
+    ADD_TODO_SUCCESS,
+    REMOVE_TODO_SUCCESS,
+    FETCH_TODOS_SUCCESS,
+    FLUSH_STATE
 } from 'modules/todo/constants/action-types';
-import Immutable from 'immutable';
+import ImmutableStore from 'immutable-store';
 import createReducer from 'utils/create-reducer';
 
-const initialState = Immutable.fromJS({
-    todos: [],
-    fetched: false
-});
+export const getNewState = (params) => {
+    return ImmutableStore(params);
+};
+
+export const getInitialState = () => {
+    return getNewState({
+        todos: [],
+        fetched: false
+    });
+};
 
 const handlers = {
 
-    [ADD_TODO]: function addTodoReducer(state, action) {
-        let newTodos = state.get('todos').push(Immutable.fromJS(action.todo));
-        return state.set('todos', newTodos);
+    [ADD_TODO_SUCCESS]: function addTodoReducer(state, action) {
+        return state.todos.unshift(action.result);
     },
 
-    [REMOVE_TODO]: function removeTodoReducer(state, action) {
-        let newTodos = state.get('todos').filter(todo => {
-            return todo.get('id') !== action.id;
-        });
-        return state.set('todos', newTodos);
+    [REMOVE_TODO_SUCCESS]: function removeTodoReducer(state, action) {
+        return state.set('todos', state.todos.filter(todo => {
+            return todo.id !== action.id;
+        }));
     },
 
-    [FETCH_TODOS]: function fetchTodosReducer(state, action) {
-        return Immutable.fromJS({
-            todos: action.todos,
+    [FETCH_TODOS_SUCCESS]: function fetchTodosReducer(state, action) {
+        return getNewState({
+            todos: action.result,
             fetched: true
         });
     },
 
-    [FLUSH_STATE]: function flushStateReducer() {
-        return Immutable.fromJS({
-            todos: [],
-            fetched: false
-        });
-    }
+    [FLUSH_STATE]: getInitialState
+
 };
 
-export default createReducer(initialState, handlers);
+export default createReducer(getInitialState(), handlers);

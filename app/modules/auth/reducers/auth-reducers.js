@@ -7,51 +7,61 @@ import {
     LOGOUT_FAILURE,
     FLUSH_STATE
 } from 'modules/auth/constants/action-types';
-import Immutable from 'immutable';
+import ImmutableStore from 'immutable-store';
 import AsyncStatus from 'utils/async-status';
 import createReducer from 'utils/create-reducer';
+import { getSession, setSession, clearSession } from 'modules/auth/services/auth-session-service';
+import flow from 'lodash/function/flow';
 
-const initialState = (function getInitialState() {
-    let user = sessionStorage.getItem('authUser') ? JSON.parse(sessionStorage.getItem('authUser')) : null;
-    let authToken = sessionStorage.getItem('authToken') || null;
+export const getNewState = (params) => {
+    return ImmutableStore(params);
+};
 
-    return Immutable.fromJS({
+export const getInitialState = () => {
+    const { user, authToken } = getSession();
+
+    return getNewState({
         user,
         authToken,
         loggedIn: !!authToken,
-        requestStatus: ''
+        requestStatus: AsyncStatus.NONE
     });
-}());
+};
 
-const handlers = {
+export const setRequestReducer = (what) => {
+    return (state) => {
+        return state.set('requestStatus', what);
+    };
+};
 
-    [LOGIN_REQUEST]: function loginRequestReducer(state) {
-        return state.set('requestStatus', AsyncStatus.REQUEST);
-    },
+export default createReducer(getInitialState(), {
 
-    [LOGIN_SUCCESS]: function loginSuccessReducer(state, action) {
-        sessionStorage.setItem('authUser', JSON.stringify(action.result.user));
-        sessionStorage.setItem('authToken', action.result.id);
-        return Immutable.fromJS({
-            user: action.result.user,
-            authToken: action.result.id,
+    /**
+     * Login
+     */
+    [LOGIN_REQUEST]: setRequestReducer(AsyncStatus.REQUEST),
+
+    [LOGIN_SUCCESS]: function loginReducer(state, action) {
+        const { user, authToken } = action.result;
+        setSession({ user, authToken });
+        return getNewState({
+            user,
+            authToken,
             loggedIn: true,
             requestStatus: AsyncStatus.SUCCESS
         });
     },
 
-    [LOGIN_FAILURE]: function loginFailureReducer(state) {
-        return state.set('requestStatus', AsyncStatus.FAILURE);
-    },
+    [LOGIN_FAILURE]: setRequestReducer(AsyncStatus.FAILURE),
 
-    [LOGOUT_REQUEST]: function logoutRequestReducer(state) {
-        return state.set('requestStatus', AsyncStatus.REQUEST);
-    },
+    /**
+     * Logout
+     */
+    [LOGOUT_REQUEST]: setRequestReducer(AsyncStatus.REQUEST),
 
-    [LOGOUT_SUCCESS]: function logoutSuccessReducer() {
-        sessionStorage.removeItem('authUser');
-        sessionStorage.removeItem('authToken');
-        return Immutable.fromJS({
+    [LOGOUT_SUCCESS]: function logoutReducer() {
+        clearSession();
+        return getNewState({
             user: null,
             authToken: null,
             loggedIn: false,
@@ -59,21 +69,11 @@ const handlers = {
         });
     },
 
-    [LOGOUT_FAILURE]: function logoutFailureReducer(state) {
-        return state.set('requestStatus', AsyncStatus.FAILURE);
-    },
+    [LOGOUT_FAILURE]: setRequestReducer(AsyncStatus.FAILURE),
 
-    [FLUSH_STATE]: function flushHandler() {
-        sessionStorage.removeItem('authUser');
-        sessionStorage.removeItem('authToken');
-        return Immutable.fromJS({
-            user: null,
-            authToken: null,
-            loggedIn: false,
-            requestStatus: AsyncStatus.NONE
-        });
-    }
+    /**
+     * For tests
+     */
+    [FLUSH_STATE]: flow(clearSession, getInitialState)
 
-};
-
-export default createReducer(initialState, handlers);
+});

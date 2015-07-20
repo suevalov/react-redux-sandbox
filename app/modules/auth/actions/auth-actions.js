@@ -6,23 +6,24 @@ import {
     LOGOUT_SUCCESS,
     LOGOUT_FAILURE
 } from '../constants/action-types';
-import AuthApiService from '../services/auth-api-service';
-import promiseAxiosMiddleware from 'utils/promise-axios-middleware';
+import authApiService from '../services/auth-api-service';
 
 export function login(email, password) {
-    return (dispatch) => {
-        promiseAxiosMiddleware(dispatch)({
-            types: [ LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE ],
-            promise: AuthApiService.login(email, password)
-        });
+    return {
+        types: [ LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE ],
+        promise: authApiService.login(email, password)
+                    .then((result) => {
+                        return {
+                            user: result.user,
+                            authToken: result.id
+                        };
+                    })
     };
 }
 
 export function logout(token) {
-    return (dispatch) => {
-        promiseAxiosMiddleware(dispatch)({
-            types: [ LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE ],
-            promise: AuthApiService.logout(token)
-        });
+    return {
+        types: [ LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE ],
+        promise: authApiService.logout(token)
     };
 }

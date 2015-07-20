@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import Immutable from 'immutable';
 import Spinner from 'react-spinkit';
 import TodoItem from './todo-item';
 import PureComponent from 'react-pure-render/component';
@@ -10,7 +9,7 @@ let styles = require('./todos-list.css');
 export default class TodosList extends PureComponent {
 
     static propTypes = {
-        todos: PropTypes.instanceOf(Immutable.List).isRequired,
+        todos: PropTypes.array.isRequired,
         fetched: PropTypes.bool.isRequired,
         actions: PropTypes.object.isRequired
     };
@@ -27,15 +26,15 @@ export default class TodosList extends PureComponent {
 
     renderItems() {
         return (
-            <ul>
+            <div>
                 <CssTransitionGroup transitionName='todo-item-transition' transitionAppear={true}>
-                    {this.props.todos.map((todo, index) => {
+                    {this.props.todos.map((todo) => {
                         return (
-                            <TodoItem {...todo.toJS()} actions={this.props.actions} key={index} />
+                            <TodoItem {...todo} actions={this.props.actions} key={todo.id} />
                         );
                     })}
                 </CssTransitionGroup>
-            </ul>
+            </div>
         );
     }
 
@@ -52,7 +51,7 @@ export default class TodosList extends PureComponent {
         if (!this.props.fetched) {
             content = this.renderSpinner();
         } else {
-            if (this.props.todos.count()) {
+            if (this.props.todos.length) {
                 content = this.renderItems();
             } else {
                 content = this.renderEmptyMessage();

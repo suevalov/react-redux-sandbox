@@ -1,6 +1,6 @@
 import React, { PropTypes }from 'react';
 import { Link } from 'react-router';
-import bindAll from 'utils/bind-all';
+import i18n from 'i18n';
 
 export default class LayoutNavigation extends React.Component {
 
@@ -9,12 +9,7 @@ export default class LayoutNavigation extends React.Component {
         authToken: PropTypes.string
     };
 
-    constructor() {
-        super();
-        bindAll(this, 'onLogoutClick');
-    }
-
-    onLogoutClick() {
+    onLogoutClick = () => {
         this.props.actions.logout(this.props.authToken);
     }
 
@@ -23,9 +18,9 @@ export default class LayoutNavigation extends React.Component {
             <header>
                 <ul>
                 <li>
-                    <Link to='/'>Planner</Link>
+                    <Link to='/'>{i18n.t('base.nav.planner')}</Link>
                 </li>
-                <li> <a onClick = {this.onLogoutClick}> Logout </a></li>
+                <li><a onClick = {this.onLogoutClick}>{i18n.t('base.nav.logout')}</a></li>
                 </ul>
             </header>
         );

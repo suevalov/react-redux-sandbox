@@ -1,24 +1,23 @@
 /* global describe, fdescribe, fit, it, sinon, expect, beforeEach, afterEach */
 
 import todosReducers from 'modules/todo/reducers/todos-reducers';
-import Immutable from 'immutable';
 import {
-    ADD_TODO,
-    REMOVE_TODO,
-    FETCH_TODOS,
+    ADD_TODO_SUCCESS,
+    REMOVE_TODO_SUCCESS,
+    FETCH_TODOS_SUCCESS,
     FLUSH_STATE
 } from 'modules/todo/constants/action-types';
 
-import { createRedux } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 describe('Todos Reducers', () => {
 
-    let redux = createRedux({
+    let store = createStore(combineReducers({
         todoState: todosReducers
-    });
+    }));
 
     afterEach(() => {
-        redux.dispatch({
+        store.dispatch({
             type: FLUSH_STATE
         });
     });
@@ -28,19 +27,17 @@ describe('Todos Reducers', () => {
     });
 
     it('should return initialState', () => {
-        let { todoState } = redux.getState();
-        expect(todoState instanceof Immutable.Map).toBeTruthy();
-        expect(todoState.get('todos') instanceof Immutable.List).toBeTruthy();
-        expect(todoState.get('todos').count()).toBe(0);
-        expect(todoState.get('fetched')).toBe(false);
+        let { todoState } = store.getState();
+        expect(todoState.todos.length).toBe(0);
+        expect(todoState.fetched).toBe(false);
     });
 
     describe('actions', () => {
 
-        it('should handle FETCH_TODOS', () => {
-            redux.dispatch({
-                type: FETCH_TODOS,
-                todos: [
+        it('should handle FETCH_TODOS_SUCCESS', () => {
+            store.dispatch({
+                type: FETCH_TODOS_SUCCESS,
+                result: [
                     {
                         id: '123',
                         text: 'todo 1'
@@ -52,25 +49,25 @@ describe('Todos Reducers', () => {
                 ]
             });
 
-            let { todoState } = redux.getState();
+            let { todoState } = store.getState();
 
-            expect(todoState.get('todos').count()).toEqual(2);
-            expect(todoState.get('fetched')).toEqual(true);
+            expect(todoState.todos.length).toEqual(2);
+            expect(todoState.fetched).toEqual(true);
         });
 
-        it('should handle ADD_TODO', () => {
+        it('should handle ADD_TODO_SUCCESS', () => {
 
-            redux.dispatch({
-                type: ADD_TODO,
-                todo: {
+            store.dispatch({
+                type: ADD_TODO_SUCCESS,
+                result: {
                     id: '123',
                     text: 'todo 1'
                 }
             });
 
-            let { todoState } = redux.getState();
-            expect(todoState.get('todos').count()).toEqual(1);
-            expect(todoState.get('todos').toJS()).toEqual([
+            let { todoState } = store.getState();
+            expect(todoState.todos.length).toEqual(1);
+            expect(todoState.todos).toEqual([
                 {
                     id: '123',
                     text: 'todo 1'
@@ -79,11 +76,11 @@ describe('Todos Reducers', () => {
 
         });
 
-        it('should handle REMOVE_TODO', () => {
+        it('should handle REMOVE_TODO_SUCCESS', () => {
 
-            redux.dispatch({
-                type: FETCH_TODOS,
-                todos: [
+            store.dispatch({
+                type: FETCH_TODOS_SUCCESS,
+                result: [
                     {
                         id: '123',
                         text: 'todo 1'
@@ -95,14 +92,14 @@ describe('Todos Reducers', () => {
                 ]
             });
 
-            redux.dispatch({
-                type: REMOVE_TODO,
+            store.dispatch({
+                type: REMOVE_TODO_SUCCESS,
                 id: '123'
             });
 
-            let { todoState } = redux.getState();
-            expect(todoState.get('todos').count()).toEqual(1);
-            expect(todoState.get('todos').toJS()).toEqual([
+            let { todoState } = store.getState();
+            expect(todoState.todos.length).toEqual(1);
+            expect(todoState.todos).toEqual([
                 {
                     id: '1234',
                     text: 'todo 2'

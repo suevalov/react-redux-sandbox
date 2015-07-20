@@ -4,7 +4,7 @@ import {
     RequestButton,
     Input
 } from 'components/index';
-import bindAll from 'utils/bind-all';
+import i18n from 'i18n';
 
 const styles = require('./login-form.css');
 
@@ -20,15 +20,13 @@ class LoginForm extends React.Component {
     constructor() {
         super();
 
-        bindAll(this, 'onSubmit');
-
         this.state = {
             email: '',
             password: ''
         };
     }
 
-    onSubmit(e) {
+    onSubmit = (e) => {
         e.preventDefault();
         this.props.actions.login(this.state.email, this.state.password);
     }
@@ -37,12 +35,14 @@ class LoginForm extends React.Component {
 
         return (
             <div className={styles.root}>
-                <h2>Please, login</h2>
+                <h2>{ i18n.t('auth.header')}</h2>
 
                 <form onSubmit={this.onSubmit}>
-                    <Input type='email' placeholder='Email' valueLink={this.linkState('email')}/>
-                    <Input type='password' placeholder='Password' valueLink={this.linkState('password')}/>
-                    <RequestButton status={this.props.status} className={styles.submitButton} type='submit' theme='primary'>Log in</RequestButton>
+                    <Input type='email' placeholder={ i18n.t('auth.placeholders.email') } valueLink={this.linkState('email')}/>
+                    <Input type='password' placeholder={ i18n.t('auth.placeholders.password')} valueLink={this.linkState('password')}/>
+                    <RequestButton status={this.props.status} className={styles.submitButton} type='submit' theme='primary'>
+                        { i18n.t('auth.buttons.login') }
+                    </RequestButton>
                 </form>
             </div>
         );

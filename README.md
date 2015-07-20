@@ -2,10 +2,11 @@
 
 A collection of different experiments with JS frameworks and libraries.
 
-admin@gmail.com
-opensesame
+* admin@gmail.com
+* opensesame
 
 #### TODO List
 
-* Global Immutable object
-* State paste and copy, do/undo, saving steps and replay steps
+* i18n select control, update language without reload
+* Sails instead of loopback
+* React 0.14.0 once it's done

@@ -16,7 +16,7 @@ export default function(DecoratedComponent) {
         mixins: [ Navigation ],
 
         contextTypes: {
-            redux: PropTypes.object.isRequired
+            store: PropTypes.object.isRequired
         },
 
         propTypes: {
@@ -24,9 +24,9 @@ export default function(DecoratedComponent) {
         },
 
         componentDidMount() {
-            this.unsubscribe = this.context.redux.subscribe(() => {
-                let { authState } = this.context.redux.getState();
-                if (authState.get('loggedIn')) {
+            this.unsubscribe = this.context.store.subscribe(() => {
+                let { authState } = this.context.store.getState();
+                if (authState.loggedIn) {
                     let { location } = this.props;
                     if (location.state && location.state.nextPathname) {
                         this.replaceWith(location.state.nextPathname);

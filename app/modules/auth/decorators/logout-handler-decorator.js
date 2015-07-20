@@ -16,13 +16,13 @@ export default function(DecoratedComponent) {
         mixins: [ Navigation ],
 
         contextTypes: {
-            redux: PropTypes.object.isRequired
+            store: PropTypes.object.isRequired
         },
 
         componentDidMount() {
-            this.unsubscribe = this.context.redux.subscribe(() => {
-                let { authState } = this.context.redux.getState();
-                if (!authState.get('loggedIn')) {
+            this.unsubscribe = this.context.store.subscribe(() => {
+                let { authState } = this.context.store.getState();
+                if (!authState.loggedIn) {
                     this.replaceWith('/login');
                 }
             });

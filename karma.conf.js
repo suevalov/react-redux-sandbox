@@ -1,12 +1,13 @@
+var webpack = require('webpack');
+
 module.exports = function karmaConfigBuilder(config) {
 
     config.set({
 
         browsers: [ 'PhantomJS' ],
         singleRun: false,
-        frameworks: [ 'jasmine' ], // use the mocha test framework
+        frameworks: [ 'jasmine', 'sinon' ], // use the mocha test framework
         files: [
-            'test/sinon-1.14.1.js',
             'test/tests.webpack.js'
         ],
         captureTimeout: 60000,
@@ -40,6 +41,11 @@ module.exports = function karmaConfigBuilder(config) {
                     }
                 ]
             },
+            plugins: [
+                new webpack.DefinePlugin({
+                    __DEVELOPMENT__: false
+                })
+            ],
             resolve: {
                 modulesDirectories: [ 'node_modules', './app' ],
                 extensions: [ '', '.js' ]
