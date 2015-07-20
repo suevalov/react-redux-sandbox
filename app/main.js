@@ -10,7 +10,7 @@ import { history } from 'react-router/lib/BrowserHistory';
 
 import { LoginPage } from 'modules/auth';
 import { TodoPage } from 'modules/todo';
-import { MainLayout } from 'modules/layout';
+import { MainLayout } from 'modules/base';
 import { DemoComponentsLayout } from 'modules/demo-components';
 import ButtonSamplesPage from './components/button/__sample__/button-samples-page';
 import ButtonGroupSamplesPage from './components/button-group/__sample__/button-group-samples-page';

@@ -2,8 +2,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import SidebarArea from 'modules/layout/components/sidebar-area/sidebar-area';
-import LayoutNavigation from 'modules/layout/components/layout-navigation/layout-navigation';
+import SidebarArea from 'modules/base/components/sidebar-area/sidebar-area';
+import LayoutNavigation from 'modules/base/components/layout-navigation/layout-navigation';
 import * as AuthActions from 'modules/auth/actions/auth-actions';
 import logoutHandlerDecorator from 'modules/auth/decorators/logout-handler-decorator';
 

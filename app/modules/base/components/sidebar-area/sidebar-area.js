@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import SidebarMenuHeader from 'modules/layout/components/sidebar-area/sidebar-menu-header';
-import SidebarMenuItem from 'modules/layout/components/sidebar-area/sidebar-menu-item';
-import ProfileWidget from 'modules/layout/components/profile-widget/profile-widget';
+import SidebarMenuHeader from 'modules/base/components/sidebar-area/sidebar-menu-header';
+import SidebarMenuItem from 'modules/base/components/sidebar-area/sidebar-menu-item';
+import ProfileWidget from 'modules/base/components/profile-widget/profile-widget';
 import i18n from 'i18n';
 
 const styles = require('./sidebar-area.css');
