@@ -7,7 +7,7 @@ export default {
         'sidebar': {
             'nav': {
                 'home': 'Home Page',
-                'special': 'Special',
+                'settings': 'Settings',
                 'components': 'Components'
             }
         }

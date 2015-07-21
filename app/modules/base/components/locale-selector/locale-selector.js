@@ -37,7 +37,7 @@ export default class LocaleSelector extends React.Component {
         let currentLocale = find(availableLocales, { code: this.props.locale });
 
         return (
-            <DropdownButton bsStyle='primary' title={ i18n.t(currentLocale.title) }>
+            <DropdownButton bsStyle='white' title={ i18n.t(currentLocale.title) }>
                 { this.renderOptions() }
             </DropdownButton>
         );

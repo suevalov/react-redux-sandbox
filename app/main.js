@@ -12,6 +12,7 @@ import { LoginPage } from 'modules/auth';
 import { TodoPage } from 'modules/todo';
 import { MainLayout } from 'modules/base';
 import { DemoComponentsLayout } from 'modules/demo-components';
+import { SettingsPage } from 'modules/settings';
 import ButtonSamplesPage from './components/button/__sample__/button-samples-page';
 import ButtonGroupSamplesPage from './components/button-group/__sample__/button-group-samples-page';
 import DropdownButtonSamplesPage from './components/dropdown-button/__sample__/dropdown-button-samples-page';
@@ -40,6 +41,7 @@ const elements = [
                 <Route path='login' component={LoginPage} onEnter={redirectIfSignedIn} />
                 <Route component={MainLayout} onEnter={requireAuth}>
                     <Route path='/' component={TodoPage} />
+                    <Route path='settings' component={SettingsPage} />
                 </Route>
                 <Route path='components' component={DemoComponentsLayout}>
                     <Route path='buttons' component={ButtonSamplesPage} />
@@ -50,12 +52,12 @@ const elements = [
         }
     </Provider>
 ];
-
+//
 // if (__DEVELOPMENT__) {
 //     const { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
 //     elements.push(
 //         <DebugPanel top right bottom key='debugPanel'>
-//             <DevTools store={store} monitor={LogMonitor} />
+//             <DevTools select={ state => state.todosState } store={store} monitor={LogMonitor} />
 //         </DebugPanel>
 //     );
 // }

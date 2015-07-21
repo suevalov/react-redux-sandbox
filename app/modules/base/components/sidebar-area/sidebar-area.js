@@ -8,28 +8,13 @@ const styles = require('./sidebar-area.css');
 class SidebarArea extends React.Component {
 
     static propTypes = {
-        user: PropTypes.object
+        user: PropTypes.object,
+        items: PropTypes.arrayOf(PropTypes.shape({
+            label: PropTypes.string.isRequired,
+            to: PropTypes.string.isRequired,
+            icon: PropTypes.string.isRequired
+        })).isRequired
     };
-
-    getItems() {
-        return [
-            {
-                label: 'base.sidebar.nav.home',
-                to: '/',
-                icon: 'th-large'
-            },
-            {
-                label: 'base.sidebar.nav.special',
-                to: '/special',
-                icon: 'flask'
-            },
-            {
-                label: 'base.sidebar.nav.components',
-                to: '/components',
-                icon: 'flask'
-            }
-        ];
-    }
 
     render() {
 
@@ -39,7 +24,7 @@ class SidebarArea extends React.Component {
                     <SidebarMenuHeader>
                         <ProfileWidget user={this.props.user} />
                     </SidebarMenuHeader>
-                    {this.getItems().map((item, index) => {
+                    {this.props.items.map((item, index) => {
                         return (
                             <SidebarMenuItem {...item} key={index} />
                         );
