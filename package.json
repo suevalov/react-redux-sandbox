@@ -94,7 +94,7 @@
     "dev": "./node_modules/.bin/gulp dev",
     "prod": "./node_modules/.bin/gulp prod",
     "prod-build": "./node_modules/.bin/gulp prod-build",
-    "server": "node sails/app.js",
+    "server": "node server/app.js",
     "test": "./node_modules/.bin/karma start karma.conf.js --single-run",
     "test-watch": "./node_modules/.bin/karma start karma.conf.js",
     "gemini-gather": "./node_modules/.bin/gemini gather",
