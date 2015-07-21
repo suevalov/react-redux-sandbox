@@ -4,12 +4,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import authReducers from 'modules/auth/reducers/auth-reducers';
 import todosReducers from 'modules/todo/reducers/todos-reducers';
 import localeReducers from 'modules/base/reducers/locale-reducers';
+import navigationReducers from 'modules/base/reducers/navigation-reducers';
 import { logger, thunk, promiseMiddleware } from 'utils/redux-middlewares';
 
 const reducer = combineReducers({
     authState: authReducers,
     todosState: todosReducers,
-    localeState: localeReducers
+    localeState: localeReducers,
+    navigationState: navigationReducers
 });
 
 let finalCreateStore;

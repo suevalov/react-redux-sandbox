@@ -3,6 +3,7 @@ export default {
         'input-placeholder': 'Чем будете заниматься?',
         'buttons': {
             'remove': 'Удалить'
-        }
+        },
+        'list-is-empty': 'Список пуст'
     }
 };

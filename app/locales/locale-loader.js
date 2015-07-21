@@ -1,5 +1,5 @@
 import { assign } from 'lodash/object';
-let modules = [ 'base', 'auth', 'demo-components', 'todo' ];
+let modules = [ 'base', 'auth', 'demo-components', 'todo', 'settings' ];
 
 export default function localesLoader(locale, phrases) {
     let locales = modules.map(module => {

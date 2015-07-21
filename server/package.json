@@ -1,0 +1,26 @@
+{
+  "name": "sails-sandbox",
+  "private": true,
+  "version": "0.0.0",
+  "description": "a Sails application",
+  "keywords": [],
+  "dependencies": {
+    "rc": "~0.5.0",
+    "sails": "~0.11.0",
+    "sails-disk": "~0.10.0",
+    "sails-mongo": "^0.11.2",
+    "waterlock": "^0.1.0",
+    "waterlock-local-auth": "0.0.6"
+  },
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/suevalov/sails.git"
+  },
+  "author": "suevalov",
+  "license": ""
+}

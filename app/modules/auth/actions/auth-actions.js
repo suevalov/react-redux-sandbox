@@ -14,7 +14,9 @@ export function login(email, password) {
         promise: authApiService.login(email, password)
                     .then((result) => {
                         return {
-                            user: result.user,
+                            user: {
+                                email: result.auth.email
+                            },
                             authToken: result.id
                         };
                     })

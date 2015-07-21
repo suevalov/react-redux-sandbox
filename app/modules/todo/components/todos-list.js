@@ -3,6 +3,7 @@ import Spinner from 'react-spinkit';
 import TodoItem from './todo-item';
 import PureComponent from 'react-pure-render/component';
 import CssTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
+import i18n from 'i18n';
 
 let styles = require('./todos-list.css');
 
@@ -40,7 +41,7 @@ export default class TodosList extends PureComponent {
 
     renderEmptyMessage() {
         return (
-            <div>List is empty</div>
+            <div>{ i18n.t('todos.list-is-empty') }</div>
         );
     }
 

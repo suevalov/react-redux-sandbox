@@ -1,19 +1,24 @@
-import Config from 'utils/config';
-import axios from 'axios';
+/* eslint-disable func-names */
+
+import { post } from 'utils/api-axios';
+
+const login = async function(email, password) {
+    let { data } = await post('/auth/login', {
+        withoutToken: true,
+        email: email,
+        password: password
+    });
+    return data;
+};
+
+const logout = async function() {
+    let { data } = await post('/auth/logout', {
+        withoutToken: true
+    });
+    return data;
+};
 
 export default {
-
-    async login(email, password) {
-        let { data } = await axios.post(Config.getApiEndpoint('/users/login?include=user'), {
-            email: email,
-            password: password
-        });
-        return data;
-    },
-
-    async logout(token) {
-        let { data } = await axios.post(Config.getApiEndpoint(`/users/logout?access_token=${token}`));
-        return data;
-    }
-
+    login,
+    logout
 };
