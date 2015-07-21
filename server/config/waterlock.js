@@ -22,27 +22,7 @@ module.exports.waterlock = {
     // of the local authentication method with password reset tokens disabled.
     authMethod: [{
         name: 'waterlock-local-auth',
-        passwordReset: {
-            tokens: false,
-            mail: {
-                protocol: 'SMTP',
-                options: {
-                    service: 'Gmail',
-                    auth: {
-                        user: 'gmail.user@gmail.com',
-                        pass: 'userpass'
-                    }
-                },
-                from: 'no-reply@domain.com',
-                subject: 'Your password reset!',
-                forwardUrl: 'http://localhost:1337'
-            },
-            template: {
-                file: '../views/email.jade',
-                vars: {}
-            }
-        },
-        createOnNotFound: true
+        createOnNotFound: false
     }],
 
     // JSON Web Tokens
@@ -58,7 +38,7 @@ module.exports.waterlock = {
             unit: 'days',
             length: '7'
         },
-        audience: 'app name',
+        audience: 'sandbox-js',
         subject: 'subject',
 
         // tracks jwt usage if set to true

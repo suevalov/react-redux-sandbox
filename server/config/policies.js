@@ -19,7 +19,10 @@
 
 module.exports.policies = {
 
-    '*': true
+    '*': true,
+
+    UserController: [ 'sessionAuth' ],
+    TodosController: [ 'hasJsonWebToken' ]
 
   /***************************************************************************
   *                                                                          *
