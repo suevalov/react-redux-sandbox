@@ -12,6 +12,9 @@ import Icon from './icon/icon';
 import FormGroup from './form-group/form-group';
 import Input from './input/input';
 import RequestButton from './request-button/request-button';
+import Panel from './panel/panel';
+import PanelTitle from './panel/panel-title';
+import PanelContent from './panel/panel-content';
 
 module.exports = {
     Button,
@@ -25,5 +28,8 @@ module.exports = {
     Row,
     Col,
     FormGroup,
-    Input
+    Input,
+    Panel,
+    PanelTitle,
+    PanelContent
 };

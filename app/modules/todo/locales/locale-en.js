@@ -1,5 +1,6 @@
 export default {
     'todos': {
+        'todo-list': 'Todo List',
         'input-placeholder': 'What do you wanna do?',
         'buttons': {
             'remove': 'Remove'
