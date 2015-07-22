@@ -8,6 +8,7 @@ const styles = require('./sidebar-area.css');
 class SidebarArea extends React.Component {
 
     static propTypes = {
+        actions: PropTypes.object.isRequired,
         user: PropTypes.object,
         items: PropTypes.arrayOf(PropTypes.shape({
             label: PropTypes.string.isRequired,
@@ -22,7 +23,7 @@ class SidebarArea extends React.Component {
             <div className={styles.root}>
                 <ul className={styles.menu}>
                     <SidebarMenuHeader>
-                        <ProfileWidget user={this.props.user} />
+                        <ProfileWidget actions={this.props.actions} user={this.props.user} />
                     </SidebarMenuHeader>
                     {this.props.items.map((item, index) => {
                         return (

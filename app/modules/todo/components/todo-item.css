@@ -1,0 +1,22 @@
+.root {
+    min-height: 40px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.text {
+    line-height: 40px;
+    float: left;
+    width: 60%;
+}
+
+.removeButton {
+    float: left;
+    width: 40%;
+
+    :global {
+        .btn {
+            float: right;
+        }
+    }
+}
