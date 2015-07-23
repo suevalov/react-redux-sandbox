@@ -5,7 +5,11 @@ import { bindActionCreators } from 'redux';
 import LocaleSelector from 'modules/base/components/locale-selector/locale-selector';
 import * as LocaleActions from 'modules/base/actions/locale-actions';
 import { Grid, Row, Col } from 'components/index';
+import metaTitle from 'decorators/meta-title-decorator';
 
+@metaTitle({
+    title: 'Settings'
+})
 @connect(({ localeState }) => ({
     locale: localeState.locale
 }))

@@ -4,9 +4,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AuthActions from 'modules/auth/actions/auth-actions';
 import LoginForm from 'modules/auth/components/login-form';
+import metaTitle from 'decorators/meta-title-decorator';
 
 const styles = require('./login-page.css');
 
+@metaTitle({
+    title: 'Login'
+})
 @loginHandlerDecorator
 @connect(({ authState }) => ({
     requestStatus: authState.requestStatus

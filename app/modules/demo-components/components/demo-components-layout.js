@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
 import i18n from 'i18n';
+import metaTitle from 'decorators/meta-title-decorator';
 
 const styles = require('./demo-components-layout.css');
 
-export default class extends React.Component {
+@metaTitle({
+    title: 'Components'
+})
+export default class DemoComponentsLayout extends React.Component {
 
     render() {
         return (
