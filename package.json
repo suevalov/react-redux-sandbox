@@ -64,6 +64,7 @@
     "morgan": "^1.6.1",
     "npm-check-updates": "^1.5.1",
     "null-loader": "^0.1.1",
+    "parallelshell": "^1.2.0",
     "postcss": "^4.1.16",
     "postcss-custom-selectors": "^2.3.0",
     "postcss-discard-comments": "^1.2.0",
