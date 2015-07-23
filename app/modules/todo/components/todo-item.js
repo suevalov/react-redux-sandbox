@@ -4,16 +4,16 @@ import {
     Icon
 } from 'components/index';
 import PureComponent from 'react-pure-render/component';
-import classNames from 'classnames';
 import i18n from 'i18n';
+
+const styles = require('./todo-item.css');
 
 export default class TodoItem extends PureComponent {
 
     static propTypes = {
         id: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired,
-        actions: PropTypes.object.isRequired,
-        className: PropTypes.string
+        actions: PropTypes.object.isRequired
     };
 
     constructor() {
@@ -28,14 +28,15 @@ export default class TodoItem extends PureComponent {
 
     render() {
         return (
-            <div className={classNames(this.props.className)}>
-                {this.props.text}
-                &nbsp;
-                <Button theme='danger' size='xsmall' onClick={this.onClickHandler}>
-                    <Icon name='remove'/>
-                    &nbsp;
-                    { i18n.t('todos.buttons.remove') }
-                </Button>
+            <div className={styles.root}>
+                <div className={styles.text}>{ this.props.text }</div>
+                <div className={styles.removeButton}>
+                    <Button theme='danger' size='xsmall' onClick={this.onClickHandler}>
+                        <Icon name='remove'/>
+                        &nbsp;
+                        { i18n.t('todos.buttons.remove') }
+                    </Button>
+                </div>
             </div>
         );
     }
