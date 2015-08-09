@@ -1,12 +1,10 @@
 import config from '../config';
 import http from 'http';
 import express from 'express';
-import gulp from 'gulp';
 import gutil from 'gulp-util';
 import morgan from 'morgan';
 
-gulp.task('server', () => {
-
+export default () => {
     const server = express();
 
     // log all requests to the console
@@ -29,5 +27,4 @@ gulp.task('server', () => {
     });
 
     s.listen(config.serverport);
-
-});
+};

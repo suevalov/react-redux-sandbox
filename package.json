@@ -6,10 +6,11 @@
   "private": true,
   "scripts": {
     "mongod": "mongod --config /usr/local/etc/mongod.conf",
-    "start": "./node_modules/.bin/gulp dev",
+    "start": "./node_modules/.bin/gulp",
     "start:hot": "node gulp/hot/server.js",
     "start:prod": "./node_modules/.bin/gulp prod",
-    "build:prod": "./node_modules/.bin/gulp prod-build",
+    "build": "./node_modules/.bin/gulp build",
+    "build:prod": "./node_modules/.bin/gulp build:prod",
     "server": "node server/app.js",
     "test": "./node_modules/.bin/karma start karma.conf.js --single-run",
     "test:watch": "./node_modules/.bin/karma start karma.conf.js",

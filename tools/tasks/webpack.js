@@ -1,4 +1,3 @@
-import gulp from 'gulp';
 import webpack from 'webpack';
 import path from 'path';
 import browserSync from 'browser-sync';
@@ -6,7 +5,7 @@ import appConfig from '../config';
 import autoprefixer from 'autoprefixer-core';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-gulp.task('webpack', function webpackTask(cb) {
+export default (cb) => {
 
     const DEBUG = !global.isProd;
     const watch = DEBUG;
@@ -146,5 +145,4 @@ gulp.task('webpack', function webpackTask(cb) {
     } else {
         bundler.run(bundle);
     }
-
-});
+};

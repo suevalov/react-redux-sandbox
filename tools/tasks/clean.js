@@ -1,9 +1,6 @@
 import config from '../config';
-import gulp from 'gulp';
 import del from 'del';
 
-gulp.task('clean', (cb) => {
-
+export default (cb) => {
     del([config.dist.root], cb);
-
-});
+};
