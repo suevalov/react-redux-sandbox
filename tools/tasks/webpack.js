@@ -1,18 +1,18 @@
-var gulp = require('gulp');
-var webpack = require('webpack');
-var path = require('path');
-var browserSync = require('browser-sync');
-var appConfig = require('../config');
-var autoprefixer = require('autoprefixer-core');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+import gulp from 'gulp';
+import webpack from 'webpack';
+import path from 'path';
+import browserSync from 'browser-sync';
+import appConfig from '../config';
+import autoprefixer from 'autoprefixer-core';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 gulp.task('webpack', function webpackTask(cb) {
 
-    var DEBUG = !global.isProd;
-    var watch = DEBUG;
+    const DEBUG = !global.isProd;
+    const watch = DEBUG;
 
-    var started = false;
-    var config = {
+    let started = false;
+    const config = {
 
         entry: path.resolve(__dirname, '../..', appConfig.webpack.src),
 
@@ -33,7 +33,7 @@ gulp.task('webpack', function webpackTask(cb) {
 
         plugins: (function pluginsCollector() {
 
-            var plugins = [];
+            const plugins = [];
 
             plugins.push(new webpack.optimize.OccurenceOrderPlugin());
 
@@ -123,7 +123,8 @@ gulp.task('webpack', function webpackTask(cb) {
         ]
 
     };
-    var bundler = webpack(config);
+
+    const bundler = webpack(config);
 
     function bundle(err) {
         if (err) {

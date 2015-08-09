@@ -1,7 +1,7 @@
-var config = require('../config');
-var gulp = require('gulp');
+import config from '../config';
+import gulp from 'gulp';
 
-gulp.task('watch', ['browserSync', 'server'], function watchBrowserSyncTask() {
+gulp.task('watch', ['browserSync', 'server'], () => {
 
     gulp.watch(config.scripts.src, ['lint']);
     gulp.watch(config.images.src, ['images']);

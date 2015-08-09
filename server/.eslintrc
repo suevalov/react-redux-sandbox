@@ -1,43 +1,11 @@
 {
-  "parser": "babel-eslint",
-  "plugins": [
-    "react"
-  ],
   "env": {
-    "browser": true,
+    "browser": false,
     "node": true
   },
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-    "blockBindings": true,
-    "classes": true,
-    "defaultParams": true,
-    "destructuring": true,
-    "forOf": true,
-    "generators": false,
-    "modules": true,
-    "objectLiteralComputedProperties": true,
-    "objectLiteralDuplicateProperties": false,
-    "objectLiteralShorthandMethods": true,
-    "objectLiteralShorthandProperties": true,
-    "spread": true,
-    "superInFunctions": true,
-    "templateStrings": true,
-    "jsx": true,
-    "restParams": true
-  },
   "rules": {
-/**
- * Strict mode
- */
-    // babel inserts "use strict"; for us
-    // http://eslint.org/docs/rules/strict
-    "strict": [2, "never"],
 
-/**
- * ES6
- */
-    "no-var": 2,                     // http://eslint.org/docs/rules/no-var
+    "strict": [2, "never"],
 
 /**
  * Variables
@@ -105,7 +73,7 @@
     "no-new-wrappers": 2,            // http://eslint.org/docs/rules/no-new-wrappers
     "no-octal": 2,                   // http://eslint.org/docs/rules/no-octal
     "no-octal-escape": 2,            // http://eslint.org/docs/rules/no-octal-escape
-    "no-param-reassign": 2,          // http://eslint.org/docs/rules/no-param-reassign
+    "no-param-reassign": 0,          // http://eslint.org/docs/rules/no-param-reassign
     "no-proto": 2,                   // http://eslint.org/docs/rules/no-proto
     "no-redeclare": 2,               // http://eslint.org/docs/rules/no-redeclare
     "no-return-assign": 2,           // http://eslint.org/docs/rules/no-return-assign
@@ -115,7 +83,7 @@
     "no-throw-literal": 2,           // http://eslint.org/docs/rules/no-throw-literal
     "no-with": 2,                    // http://eslint.org/docs/rules/no-with
     "radix": 2,                      // http://eslint.org/docs/rules/radix
-    "vars-on-top": 2,                // http://eslint.org/docs/rules/vars-on-top
+    "vars-on-top": 1,                // http://eslint.org/docs/rules/vars-on-top
     "wrap-iife": [2, "any"],         // http://eslint.org/docs/rules/wrap-iife
     "yoda": 2,                       // http://eslint.org/docs/rules/yoda
 
@@ -169,47 +137,6 @@
     "space-before-function-paren": [2, "never"], // http://eslint.org/docs/rules/space-before-function-paren
     "space-infix-ops": 2,            // http://eslint.org/docs/rules/space-infix-ops
     "space-return-throw-case": 2,    // http://eslint.org/docs/rules/space-return-throw-case
-    "spaced-line-comment": 2,        // http://eslint.org/docs/rules/spaced-line-comment
-
-/**
- * JSX style
- */
-    "react/display-name": 0,
-    "react/jsx-boolean-value": 2,
-    "react/jsx-quotes": [2, "single"],
-    "react/jsx-no-undef": 2,
-    "react/jsx-sort-props": 0,
-    "react/jsx-sort-prop-types": 0,
-    "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2,
-    "react/no-did-mount-set-state": [2, "allow-in-func"],
-    "react/no-did-update-set-state": 2,
-    "react/no-multi-comp": 2,
-    "react/no-unknown-property": 2,
-    "react/prop-types": 0,
-    "react/react-in-jsx-scope": 2,
-    "react/self-closing-comp": 2,
-    "react/wrap-multilines": 2,
-    "react/sort-comp": [2, {
-      "order": [
-        "displayName",
-        "mixins",
-        "contextTypes",
-        "propTypes",
-        "willTransitionTo",
-        "linkState",
-        "constructor",
-        "componentWillMount",
-        "componentDidMount",
-        "componentWillReceiveProps",
-        "shouldComponentUpdate",
-        "componentWillUpdate",
-        "componentWillUnmount",
-        "/^on.+$/",
-        "/^get.+$/",
-        "/^render.+$/",
-        "render"
-      ]
-    }]
+    "spaced-line-comment": 2        // http://eslint.org/docs/rules/spaced-line-comment
   }
 }

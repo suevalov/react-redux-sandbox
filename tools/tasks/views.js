@@ -1,8 +1,7 @@
-var config = require('../config');
-var gulp = require('gulp');
+import config from '../config';
+import gulp from 'gulp';
 
-// Views task
-gulp.task('views', function viewsTask() {
+gulp.task('views', () => {
 
     // Put our index.html in the dist folder
     gulp.src('app/index.html', {

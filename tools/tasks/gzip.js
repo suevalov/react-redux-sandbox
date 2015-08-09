@@ -1,8 +1,8 @@
-var gulp = require('gulp');
-var gzip = require('gulp-gzip');
-var config = require('../config');
+import gulp from 'gulp';
+import gzip from 'gulp-gzip';
+import config from '../config';
 
-gulp.task('gzip', function gzipTask() {
+gulp.task('gzip', () => {
 
     return gulp.src(config.gzip.src)
         .pipe(gzip(config.gzip.options))

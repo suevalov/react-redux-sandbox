@@ -1,6 +1,6 @@
-var buildPath = 'build/';
+const buildPath = 'build/';
 
-module.exports = {
+export default {
 
     'serverport': 3000,
 

@@ -1,12 +1,9 @@
-var notify = require('gulp-notify');
+import notify from 'gulp-notify';
 
 /* eslint-disable no-console, no-process-exit */
-module.exports = function handleErrors(error) {
-
-    var args = Array.prototype.slice.call(arguments);
+export default function handleErrors(...args) {
 
     if ( !global.isProd ) {
-
 
         // Send error to notification center with gulp-notify
         notify.onError({
@@ -20,9 +17,9 @@ module.exports = function handleErrors(error) {
     } else {
         // Log the error and stop the process
         // to prevent broken code from building
-        console.log(error);
+        console.log(args[0]);
         process.exit(1);
     }
 
-};
+}
 /* eslint-enable no-console, no-process-exit */

@@ -1,10 +1,7 @@
-var gulp = require('gulp');
-var runSequence = require('run-sequence');
-var _ = require('lodash');
+import gulp from 'gulp';
+import runSequence from 'run-sequence';
 
 gulp.task('prod-build', ['clean'], function prodBuildTask(callback) {
-
-    callback = callback || _.noop;
 
     global.isProd = true;
 
@@ -13,8 +10,6 @@ gulp.task('prod-build', ['clean'], function prodBuildTask(callback) {
 });
 
 gulp.task('prod', ['clean'], function prodTask(callback) {
-
-    callback = callback || _.noop;
 
     global.isProd = true;
 

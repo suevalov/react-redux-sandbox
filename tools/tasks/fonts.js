@@ -1,10 +1,10 @@
-var config = require('../config');
-var changed = require('gulp-changed');
-var gulp = require('gulp');
-var gulpif = require('gulp-if');
-var browserSync = require('browser-sync');
+import config from '../config';
+import changed from 'gulp-changed';
+import gulp from 'gulp';
+import gulpif from 'gulp-if';
+import browserSync from 'browser-sync';
 
-gulp.task('fonts', function fontsTask() {
+gulp.task('fonts', () => {
 
     return gulp.src(config.fonts.src)
         .pipe(changed(config.fonts.dest))

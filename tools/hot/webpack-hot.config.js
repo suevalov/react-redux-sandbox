@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer-core');
 var path = require('path');

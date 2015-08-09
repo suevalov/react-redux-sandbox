@@ -1,10 +1,7 @@
-var gulp = require('gulp');
-var runSequence = require('run-sequence');
-var _ = require('lodash');
+import gulp from 'gulp';
+import runSequence from 'run-sequence';
 
-gulp.task('dev', ['clean'], function devTask(callback) {
-
-    callback = callback || _.noop;
+gulp.task('dev', ['clean'], (callback) => {
 
     global.isProd = false;
 

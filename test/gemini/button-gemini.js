@@ -1,3 +1,5 @@
+/* eslint-disable no-var, func-names */
+
 var gemini = require('gemini');
 var _ = require('lodash');
 

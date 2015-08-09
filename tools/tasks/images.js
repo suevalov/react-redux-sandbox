@@ -1,11 +1,11 @@
-var config = require('../config');
-var changed = require('gulp-changed');
-var gulp = require('gulp');
-var gulpif = require('gulp-if');
-var imagemin = require('gulp-imagemin');
-var browserSync = require('browser-sync');
+import config from '../config';
+import changed from 'gulp-changed';
+import gulp from 'gulp';
+import gulpif from 'gulp-if';
+import imagemin from 'gulp-imagemin';
+import browserSync from 'browser-sync';
 
-gulp.task('images', function imagesTask() {
+gulp.task('images', () => {
 
     return gulp.src(config.images.src)
         .pipe(changed(config.images.dest)) // Ignore unchanged files

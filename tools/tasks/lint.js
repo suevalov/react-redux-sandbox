@@ -1,8 +1,8 @@
-var config = require('../config');
-var gulp = require('gulp');
-var eslint = require('gulp-eslint');
+import config from '../config';
+import gulp from 'gulp';
+import eslint from 'gulp-eslint';
 
-gulp.task('lint', function lintTask() {
+gulp.task('lint', () => {
 
     return gulp.src(config.scripts.src)
         .pipe(eslint())
