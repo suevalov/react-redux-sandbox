@@ -1,6 +1,6 @@
 var fs = require('fs');
 var path = require('path');
-var tasks = fs.readdirSync('./gulp/tasks/').filter(function taskFinder(name) {
+var tasks = fs.readdirSync('./tools/tasks/').filter(function taskFinder(name) {
     return /(\.(js)$)/i.test(path.extname(name));
 });
 
