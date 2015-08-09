@@ -9,14 +9,14 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
-        path.resolve(__dirname, '../../app', 'main.js')
+        path.resolve(__dirname, './app', 'main.js')
     ],
 
     output: {
-        path: path.join(__dirname, 'build'),
+        path: path.resolve(__dirname, './build'),
         filename: 'bundle.js',
-        publicPath: '/static/',
-        contentBase: __dirname
+        publicPath: '/assets/',
+        contentBase: path.resolve(__dirname, './app')
     },
 
     cache: true,
@@ -37,7 +37,7 @@ module.exports = {
     ],
 
     resolve: {
-        modulesDirectories: ['node_modules', path.resolve(__dirname, '../..', 'app')],
+        modulesDirectories: ['node_modules', path.resolve(__dirname, './app')],
         extensions: ['', '.js']
     },
 

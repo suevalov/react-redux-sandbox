@@ -1,3 +1,5 @@
+/* eslint-disable no-var */
+
 var webpack = require('webpack');
 
 module.exports = function karmaConfigBuilder(config) {

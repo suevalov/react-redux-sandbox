@@ -13,7 +13,8 @@ const tasks = {
     'gzip': './tasks/gzip',
     'views': './tasks/views',
     'webpack': './tasks/webpack',
-    'server': './tasks/server'
+    'server': './tasks/server',
+    'serverHot': './tasks/serverHot'
 };
 
 forEach(pairs(tasks), function registerGulpTask(task) {
@@ -39,6 +40,8 @@ gulp.task('build:prod', ['clean'], (callback) => {
 gulp.task('prod', (callback) => {
     runSequence('build:prod', 'browserSync', 'server', 'watch', callback);
 });
+
+gulp.task('hot', [ 'serverHot' ]);
 
 gulp.task('default', (callback) => {
     runSequence('build', 'browserSync', 'server', 'watch', callback);

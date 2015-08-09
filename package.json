@@ -7,7 +7,7 @@
   "scripts": {
     "mongod": "mongod --config /usr/local/etc/mongod.conf",
     "start": "./node_modules/.bin/gulp",
-    "start:hot": "node gulp/hot/server.js",
+    "start:hot": "./node_modules/.bin/gulp hot",
     "start:prod": "./node_modules/.bin/gulp prod",
     "build": "./node_modules/.bin/gulp build",
     "build:prod": "./node_modules/.bin/gulp build:prod",

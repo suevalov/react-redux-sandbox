@@ -7,7 +7,7 @@ export default {
     'webpack': {
         'src': 'app/main.js',
         'dest': buildPath + 'assets',
-        'filename': 'app.js'
+        'filename': 'bundle.js'
     },
 
     'styles': {
