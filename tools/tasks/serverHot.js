@@ -1,12 +1,14 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import webpackConfig from '../../webpack-hot.config';
 import gutil from 'gulp-util';
 
 export default () => {
-    new WebpackDevServer(webpack(webpackConfig), {
-        contentBase: webpackConfig.output.contentBase,
-        publicPath: webpackConfig.output.publicPath,
+
+    const config = require('../webpack.config')('hot');
+
+    new WebpackDevServer(webpack(config), {
+        contentBase: config.output.contentBase,
+        publicPath: config.output.publicPath,
         hot: true,
         historyApiFallback: true
     })
