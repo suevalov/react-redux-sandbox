@@ -1,10 +1,13 @@
-### Sandbox.js ###
+React Redux Sandbox
+=========================
 
 A collection of different experiments with JS frameworks and libraries.
+
+#### Credentials
 
 * admin@gmail.com
 * opensesame
 
-#### TODO List
+#### Roadmap
 
 * React 0.14.0 once it's done

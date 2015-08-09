@@ -1,9 +1,8 @@
 {
-  "name": "sails-sandbox",
+  "name": "react-redux-sandbox-sails",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
-  "keywords": [],
+  "version": "0.0.1",
+  "description": "A Sails application for react-redux-sandbox",
   "dependencies": {
     "rc": "~0.5.0",
     "sails": "~0.11.0",
@@ -17,10 +16,6 @@
     "start": "node app.js"
   },
   "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/suevalov/sails.git"
-  },
-  "author": "suevalov",
-  "license": ""
+  "author": "Alexander Suevalov <suevalov.me@gmail.com> (http://github.com/suevalov)",
+  "license": "MIT"
 }

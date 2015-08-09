@@ -1,3 +1,3 @@
-# sails
+# React Redux Sandbox. Sails Application.
 
-a [Sails](http://sailsjs.org) application
+A [Sails](http://sailsjs.org) application for react-redux-sandbox
