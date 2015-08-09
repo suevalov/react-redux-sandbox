@@ -1,18 +1,19 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import gutil from 'gulp-util';
+import config from '../config';
 
 export default () => {
 
-    const config = require('../webpack.config')('hot');
+    const webpackConfig = require('../webpack.config')('hot');
 
-    new WebpackDevServer(webpack(config), {
-        contentBase: config.output.contentBase,
-        publicPath: config.output.publicPath,
+    new WebpackDevServer(webpack(webpackConfig), {
+        contentBase: webpackConfig.output.contentBase,
+        publicPath: webpackConfig.output.publicPath,
         hot: true,
         historyApiFallback: true
     })
-    .listen(3000, 'localhost', function listener(err) {
+    .listen(config.serverport, 'localhost', (err) => {
         if (err) {
             gutil.log(err);
         }

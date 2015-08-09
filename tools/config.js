@@ -21,6 +21,7 @@ export default {
 
     'scripts': {
         'src': 'app/**/*.js',
+        'tests': 'test/**/*.js',
         'dest': buildPath + 'js'
     },
 

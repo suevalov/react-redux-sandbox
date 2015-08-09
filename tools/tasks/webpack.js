@@ -1,35 +1,38 @@
 import webpack from 'webpack';
 import browserSync from 'browser-sync';
 
-export default (cb) => {
+export default (watch) => {
 
-    const DEBUG = !global.isProd;
-    const watch = DEBUG;
-    let started = false;
+    return (cb) => {
 
-    const config = require('../webpack.config')(DEBUG ? 'dev' : 'prod');
+        const DEBUG = !global.isProd;
+        let started = false;
 
-    const bundler = webpack(config);
+        const config = require('../webpack.config')(DEBUG ? 'dev' : 'prod');
 
-    function bundle(err) {
-        if (err) {
-            throw new Error('Webpack build error');
+        const bundler = webpack(config);
+
+        function bundle(err) {
+            if (err) {
+                throw new Error('Webpack build error');
+            }
+
+            if (!started) {
+                started = true;
+                return cb();
+            }
+
+            if (watch && browserSync.active) {
+                browserSync.reload({once: true});
+            }
         }
 
-        if (!started) {
-            started = true;
-            return cb();
+        if (watch) {
+            bundler.watch(100, bundle);
+        } else {
+            bundler.run(bundle);
         }
 
-        if (watch && browserSync.active) {
-            browserSync.reload({once: true});
-        }
-    }
-
-    if (watch) {
-        bundler.watch(100, bundle);
-    } else {
-        bundler.run(bundle);
-    }
+    };
 
 };
